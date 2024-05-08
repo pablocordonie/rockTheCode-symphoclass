@@ -1,22 +1,26 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const { generateSign } = require('../../config/jwt');
+const { hashPassword } = require('../../utils/hash');
 
 const register = async (req, res, next) => {
     try {
-        const newUser = new User({
-            name: req.body.name,
-            email: req.body.email,
-            img: req.body.img,
-            password: req.body.password,
-            role: 'user'
-        });
+        const { username, fullname, email, img, password = hashPassword(password), role } = req.body;
 
-        if (req.file) {
-            newUser.img = req.file.path;
+        const user = new User({ username, fullname, email, img, password, role });
+
+        const duplicatedUser = await User.findOne({ username });
+        const duplicatedEmail = await User.findOne({ email });
+
+        if (duplicatedUser || duplicatedEmail) {
+            return res.status(400).json('Este usuario ya existe');
         }
 
-        const savedNewUser = await newUser.save();
+        if (req.file) {
+            user.img = req.file.path;
+        }
+
+        const savedNewUser = await user.save();
         return res.status(201).json(savedNewUser);
     } catch (err) {
         return res.status(400).json('Los datos proporcionados no son válidos');
@@ -25,13 +29,14 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     try {
-        const user = await User.findOne({ name: req.body.name });
+        const { username, password } = req.body;
+        const user = await User.findOne({ username });
 
         if (!user) {
             return res.status(400).json('El usuario no existe');
         }
 
-        if (bcrypt.compareSync(req.body.password, user.password)) {
+        if (bcrypt.compareSync(password, user.password)) {
             const token = generateSign(user._id);
             return res.status(200).json({ user, token });
         } else {

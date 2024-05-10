@@ -10,10 +10,9 @@ const register = async (req, res, next) => {
         const user = new User({ username, fullname, email, img, password, role });
 
         const duplicatedUser = await User.findOne({ username });
-        const duplicatedEmail = await User.findOne({ email });
 
-        if (duplicatedUser || duplicatedEmail) {
-            return res.status(400).json('Este usuario ya existe');
+        if (duplicatedUser) {
+            return res.status(400).json('Este usuario ya está registrado');
         }
 
         if (req.file) {

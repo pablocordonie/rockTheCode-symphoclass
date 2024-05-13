@@ -9,7 +9,8 @@ const userSchema = new Schema({
     img: { type: String, trim: true, required: false },
     password: { type: String, trim: true, required: true },
     role: { type: String, trim: true, required: true, enum: ['admin', 'user'], default: 'user' },
-    organized_events: [{ type: Schema.Types.ObjectId, required: false, ref: 'events' }]
+    organized_events: [{ type: Schema.Types.ObjectId, required: false, ref: 'events' }],
+    attended_events: [{ type: Schema.Types.ObjectId, required: false, ref: 'events' }]
 }, {
     timestamps: true,
     collection: 'users'

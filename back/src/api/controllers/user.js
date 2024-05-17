@@ -1,6 +1,7 @@
 const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
+const { deleteFile } = require('../../utils/deleteFile');
 const { hashPassword } = require('../../utils/hash');
 const { isAnyModifiedField } = require('../../utils/isAnyModifiedField');
 
@@ -9,7 +10,9 @@ const getUsers = async (req, res, next) => {
         const users = await User.find().populate({ path: 'organized_events', select: 'title' }).populate({ path: 'attended_events', select: 'title' });
         return res.status(200).json(users);
     } catch (err) {
-        return res.status(400).json('Ha ocurrido un error mostrando los datos de los usuarios');
+        const error = new Error('Ha ocurrido un error mostrando los datos de los usuarios');
+        error.statusCode = 400;
+        next(error);
     }
 };
 
@@ -19,7 +22,9 @@ const getUserById = async (req, res, next) => {
         const user = await User.findById(id).populate({ path: 'organized_events', select: 'title' }).populate({ path: 'attended_events', select: 'title' });
         return res.status(200).json(user);
     } catch (err) {
-        return res.status(400).json('Ha ocurrido un error mostrando los datos del usuario');
+        const error = new Error('Ha ocurrido un error mostrando los datos del usuario');
+        error.statusCode = 400;
+        next(error);
     }
 };
 
@@ -29,19 +34,25 @@ const updateUser = async (req, res, next) => {
         const { username, fullname, email, img, password, role } = req.body;
 
         if (req.user.role === 'user' && req.user.id !== id) {
-            return res.status(403).json('No está permitido modificar los datos de otro usuario');
+            const error = new Error('No está permitido modificar los datos de otro usuario');
+            error.statusCode = 400;
+            return next(error);
         }
 
         const oldUser = await User.findById(id);
 
         if (!isAnyModifiedField(req.body, oldUser)) {
-            return res.status(400).json('No se ha modificado ningún campo con la información proporcionada');
+            const error = new Error('No se ha modificado ningún campo con la información proporcionada');
+            error.statusCode = 400;
+            return next(error);
         }
 
         const duplicatedUser = await User.findOne({ username });
 
         if (duplicatedUser) {
-            return res.status(400).json('Este usuario ya está registrado');
+            const error = new Error('Este usuario ya está registrado');
+            error.statusCode = 400;
+            return next(error);
         }
 
         if (password) {
@@ -62,12 +73,15 @@ const updateUser = async (req, res, next) => {
 
         if (req.file) {
             newUser.img = req.file.path;
+            deleteFile(oldUser.img);
         }
 
         const updatedUser = await User.findByIdAndUpdate(id, newUser, { new: true }).populate({ path: 'organized_events', select: 'title' });
         return res.status(201).json(updatedUser);
     } catch (err) {
-        return res.status(400).json('Ha ocurrido un error modificando los datos del usuario');
+        const error = new Error('Ha ocurrido un error modificando los datos del usuario');
+        error.statusCode = 400;
+        next(error);
     }
 };
 
@@ -76,23 +90,27 @@ const deleteUser = async (req, res, next) => {
         const { id } = req.params;
 
         if (req.user.role === 'user' && req.user.id !== id) {
-            return res.status(403).json('No está permitido eliminar los datos de otro usuario');
+            const error = new Error('No está permitido eliminar los datos de otro usuario');
+            error.statusCode = 403;
+            return next(error);
         }
 
-        const user = await User.findById(id);
-
-        if (user.attended_events) {
-            await Attendee.deleteMany({ fullname: user.fullname });
+        if (req.user.attended_events) {
+            await Attendee.deleteMany({ fullname: req.user.fullname });
         }
 
-        if (user.organized_events) {
+        if (req.user.organized_events) {
             await Event.deleteMany({ event_organizer: id });
         }
 
         const deletedUser = await User.findByIdAndDelete(id);
+        deleteFile(deletedUser.img);
+
         return res.status(200).json(deletedUser);
     } catch (err) {
-        return res.status(400).json('Ha ocurrido un error eliminando los datos del usuario');
+        const error = new Error('Ha ocurrido un error eliminando los datos del usuario');
+        error.statusCode = 400;
+        next(error);
     }
 };
 

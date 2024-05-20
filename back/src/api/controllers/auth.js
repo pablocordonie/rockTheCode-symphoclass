@@ -1,20 +1,18 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const { generateSign } = require('../../config/jwt');
-const { hashPassword } = require('../../utils/hash');
 
 const register = async (req, res, next) => {
     try {
-        const { username, fullname, email, password, role } = req.body;
+        const { username, fullname, email, password } = req.body;
 
-        const hashedPassword = hashPassword(password);
-
-        const user = new User({ username, fullname, email, img: '', password: hashedPassword, role });
+        const user = new User({ username, fullname, email, img: '', password });
 
         const duplicatedUser = await User.findOne({ username });
+        const duplicatedEmail = await User.findOne({ email });
 
-        if (duplicatedUser) {
-            const error = new Error('Este usuario ya está registrado');
+        if (duplicatedUser || duplicatedEmail) {
+            const error = new Error('El usuario ya está registrado');
             error.statusCode = 400;
             return next(error);
         }
@@ -26,8 +24,8 @@ const register = async (req, res, next) => {
         const savedNewUser = await user.save();
         return res.status(201).json(savedNewUser);
     } catch (err) {
-        const error = new Error('Los datos proporcionados no son válidos');
-        error.statusCode = 400;
+        const error = new Error('Ha ocurrido algo inesperado al registrarse');
+        error.statusCode = 500;
         next(error);
     }
 };
@@ -37,23 +35,17 @@ const login = async (req, res, next) => {
         const { username, password } = req.body;
         const user = await User.findOne({ username });
 
-        if (!user) {
-            const error = new Error('El usuario no existe');
-            error.statusCode = 400;
-            return next(error);
-        }
-
-        if (bcrypt.compareSync(password, user.password)) {
+        if (user && bcrypt.compareSync(password, user.password)) {
             const token = generateSign(user._id);
             return res.status(200).json({ user, token });
         } else {
-            const error = new Error('La contraseña no es correcta');
+            const error = new Error('Las credenciales no son correctas');
             error.statusCode = 400;
             return next(error);
         }
     } catch (err) {
-        const error = new Error('Los datos proporcionados no son válidos');
-        error.statusCode = 400;
+        const error = new Error('Ha ocurrido algo inesperado al iniciar sesión');
+        error.statusCode = 500;
         next(error);
     }
 };

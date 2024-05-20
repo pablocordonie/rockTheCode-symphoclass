@@ -8,7 +8,7 @@ const userSchema = new Schema({
     email: { type: String, trim: true, required: true },
     img: { type: String, trim: true, required: false },
     password: { type: String, trim: true, required: true },
-    role: { type: String, trim: true, required: true, enum: ['admin', 'user'], default: 'user' },
+    role: { type: String, trim: true, required: false, enum: ['admin', 'user'], default: 'user' },
     organized_events: [{ type: Schema.Types.ObjectId, required: false, ref: 'events' }],
     attended_events: [{ type: Schema.Types.ObjectId, required: false, ref: 'events' }]
 }, {

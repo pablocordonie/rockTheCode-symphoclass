@@ -8,6 +8,7 @@ const users = [
         username: 'pablo_cord',
         fullname: 'Pablo Cordonié',
         email: 'pablo_cord93@gmail.com',
+        img: '',
         password: hashPassword('1234567890'),
         role: 'admin'
     },
@@ -15,18 +16,21 @@ const users = [
         username: 'alice_85',
         fullname: 'Alicia Jovellanos',
         email: 'alice123@gmail.com',
+        img: '',
         password: hashPassword('1234567890')
     },
     {
         username: 'bob_95',
         fullname: 'Roberto López',
         email: 'bob456@gmail.com',
+        img: '',
         password: hashPassword('1234567890')
     },
     {
         username: 'carol_90',
         fullname: 'Carolina Castaño',
         email: 'carol@gmail.com',
+        img: '',
         password: hashPassword('1234567890')
     }
 ];

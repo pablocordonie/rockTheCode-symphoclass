@@ -11,7 +11,7 @@ const getUsers = async (req, res, next) => {
         return res.status(200).json(users);
     } catch (err) {
         const error = new Error('Ha ocurrido un error mostrando los datos de los usuarios');
-        error.statusCode = 400;
+        error.statusCode = 500;
         next(error);
     }
 };
@@ -23,7 +23,7 @@ const getUserById = async (req, res, next) => {
         return res.status(200).json(user);
     } catch (err) {
         const error = new Error('Ha ocurrido un error mostrando los datos del usuario');
-        error.statusCode = 400;
+        error.statusCode = 500;
         next(error);
     }
 };
@@ -31,56 +31,72 @@ const getUserById = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { username, fullname, email, img, password, role } = req.body;
 
         if (req.user.role === 'user' && req.user.id !== id) {
             const error = new Error('No está permitido modificar los datos de otro usuario');
-            error.statusCode = 400;
+            error.statusCode = 403;
+            if (req.file) {
+                deleteFile(req.file.path);
+            }
             return next(error);
         }
 
         const oldUser = await User.findById(id);
 
+        if (!oldUser) {
+            const error = new Error('El usuario no se ha encontrado');
+            error.statusCode = 404;
+            if (req.file) {
+                deleteFile(req.file.path);
+            }
+            return next(error);
+        }
+
+        if (req.file) {
+            req.body.img = req.file.path;
+            if (oldUser.img) {
+                deleteFile(oldUser.img);
+            }
+        } else if (req.body.img === '') {
+            req.body.img = '';
+            if (oldUser.img) {
+                deleteFile(oldUser.img);
+            }
+        }
+
         if (!isAnyModifiedField(req.body, oldUser)) {
             const error = new Error('No se ha modificado ningún campo con la información proporcionada');
             error.statusCode = 400;
+            if (req.file) {
+                deleteFile(req.file.path);
+            }
             return next(error);
         }
 
-        const duplicatedUser = await User.findOne({ username });
-
-        if (duplicatedUser) {
-            const error = new Error('Este usuario ya está registrado');
-            error.statusCode = 400;
-            return next(error);
+        if (req.body.password) {
+            req.body.password = hashPassword(req.body.password);
         }
 
-        if (password) {
-            password = hashPassword(password);
-        }
-
-        const newUser = new User({
-            username: username || oldUser.username,
-            fullname: fullname || oldUser.fullname,
-            email: email || oldUser.email,
-            img: img || oldUser.img,
-            password: password || oldUser.password,
-            role: role || oldUser.role,
+        const updatedUserData = new User({
+            username: req.body.username || oldUser.username,
+            fullname: req.body.fullname || oldUser.fullname,
+            email: req.body.email || oldUser.email,
+            img: req.body.img,
+            password: req.body.password || oldUser.password,
+            role: oldUser.role,
             organized_events: oldUser.organized_events,
             attended_events: oldUser.attended_events
         });
-        newUser._id = id;
+        updatedUserData._id = id;
 
-        if (req.file) {
-            newUser.img = req.file.path;
-            deleteFile(oldUser.img);
-        }
-
-        const updatedUser = await User.findByIdAndUpdate(id, newUser, { new: true }).populate({ path: 'organized_events', select: 'title' });
+        const updatedUser = await User.findByIdAndUpdate(id, updatedUserData, { new: true }).populate({ path: 'organized_events', select: 'title' }).populate({ path: 'attended_events', select: 'title' });
         return res.status(201).json(updatedUser);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error modificando los datos del usuario');
-        error.statusCode = 400;
+        const error = new Error('Ha ocurrido un error al actualizar los datos del usuario');
+        error.statusCode = 500;
+        if (req.file) {
+            deleteFile(req.file.path);
+        }
         next(error);
     }
 };
@@ -90,26 +106,30 @@ const deleteUser = async (req, res, next) => {
         const { id } = req.params;
 
         if (req.user.role === 'user' && req.user.id !== id) {
-            const error = new Error('No está permitido eliminar los datos de otro usuario');
+            const error = new Error('Sólo está permitido eliminar los datos asociados al usuario autenticado');
             error.statusCode = 403;
             return next(error);
         }
 
-        if (req.user.attended_events) {
+        if (req.user.attended_events.length > 0) {
             await Attendee.deleteMany({ fullname: req.user.fullname });
         }
 
-        if (req.user.organized_events) {
+        if (req.user.organized_events.length > 0) {
             await Event.deleteMany({ event_organizer: id });
         }
 
         const deletedUser = await User.findByIdAndDelete(id);
-        deleteFile(deletedUser.img);
+
+        if (deletedUser.img) {
+            deleteFile(deletedUser.img);
+        }
 
         return res.status(200).json(deletedUser);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error eliminando los datos del usuario');
-        error.statusCode = 400;
+        console.log(err);
+        const error = new Error('Ha ocurrido un error al eliminar los datos del usuario');
+        error.statusCode = 500;
         next(error);
     }
 };

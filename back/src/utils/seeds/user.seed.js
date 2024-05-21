@@ -1,5 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+const Attendee = require('../../api/models/Attendee');
+const Event = require('../../api/models/Event');
 const User = require('../../api/models/User');
 const { hashPassword } = require('../hash');
 
@@ -37,6 +39,18 @@ const users = [
 
 mongoose.connect(process.env.DB_URL)
     .then(async () => {
+        const attendeesCollection = await Attendee.find();
+        if (attendeesCollection.length) {
+            await Attendee.collection.drop();
+            console.log(`The attendees collection's been dropped`);
+        }
+
+        const eventsCollection = await Event.find();
+        if (eventsCollection.length) {
+            await Event.collection.drop();
+            console.log(`The events collection's been dropped`);
+        }
+
         const usersCollection = await User.find();
         if (usersCollection.length) {
             await User.collection.drop();

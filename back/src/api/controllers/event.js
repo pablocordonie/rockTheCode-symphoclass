@@ -2,6 +2,7 @@ const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
 const { deleteFile } = require('../../utils/deleteFile');
+const { isAnyModifiedField } = require('../../utils/isAnyModifiedField');
 
 const getEvents = async (req, res, next) => {
     try {
@@ -9,7 +10,7 @@ const getEvents = async (req, res, next) => {
         return res.status(200).json(events);
     } catch (err) {
         const error = new Error('Ha ocurrido un error mostrando los eventos');
-        error.statusCode = 400;
+        error.statusCode = 500;
         next(error);
     }
 };
@@ -21,7 +22,7 @@ const getEventById = async (req, res, next) => {
         return res.status(200).json(event);
     } catch (err) {
         const error = new Error('Ha ocurrido un error mostrando los datos del evento');
-        error.statusCode = 400;
+        error.statusCode = 500;
         next(error);
     }
 };
@@ -30,10 +31,21 @@ const postEvent = async (req, res, next) => {
     try {
         const { title, date, location, description } = req.body;
 
+        const event = await Event.findOne({ title });
+
+        if (event) {
+            const error = new Error('El evento ya está registrado');
+            error.statusCode = 400;
+            if (req.file) {
+                deleteFile(req.file.path);
+            }
+            return next(error);
+        }
+
         const newEvent = new Event({
             title,
             event_organizer: req.user.id,
-            img,
+            img: '',
             date,
             location,
             description
@@ -45,14 +57,17 @@ const postEvent = async (req, res, next) => {
 
         const savedNewEvent = await newEvent.save();
 
-        await User.findByIdAndUpdate(id, {
+        await User.findByIdAndUpdate(req.user.id, {
             $push: { organized_events: savedNewEvent._id }
         });
 
         return res.status(201).json(savedNewEvent);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error creando los datos del evento');
-        error.statusCode = 400;
+        const error = new Error('Ha ocurrido un error al crear el evento');
+        error.statusCode = 500;
+        if (req.file) {
+            deleteFile(req.file.path);
+        }
         next(error);
     }
 };
@@ -89,8 +104,8 @@ const postAttendanceToAnEvent = async (req, res, next) => {
 
         return res.status(201).json(savedNewAttendee);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error creando los datos del asistente');
-        error.statusCode = 400;
+        const error = new Error('Ha ocurrido un error al confirmar asistencia al evento');
+        error.statusCode = 500;
         next(error);
     }
 };
@@ -98,51 +113,67 @@ const postAttendanceToAnEvent = async (req, res, next) => {
 const updateEvent = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { title, date, img, location, description } = req.body;
 
-        if (req.user.role === 'user' && req.user.id !== id) {
-            const error = new Error('Los datos proporcionados no coinciden con tus datos de usuario');
-            error.statusCode = 403;
+        const oldEvent = await Event.findById(id);
+
+        if (!oldEvent) {
+            const error = new Error('El evento no se ha encontrado');
+            error.statusCode = 404;
+            if (req.file) {
+                deleteFile(req.file.path);
+            }
             return next(error);
         }
 
-        const oldEvent = await Event.findById(id);
+        if (req.user.role === 'user' && req.user.id !== oldEvent.event_organizer.toString()) {
+            const error = new Error('Los datos proporcionados no coinciden con tus datos de usuario');
+            error.statusCode = 403;
+            if (req.file) {
+                deleteFile(req.file.path);
+            }
+            return next(error);
+        }
+
+        if (req.file) {
+            req.body.img = req.file.path;
+            if (oldEvent.img) {
+                deleteFile(oldEvent.img);
+            }
+        } else if (req.body.img === '') {
+            req.body.img = '';
+            if (oldEvent.img) {
+                deleteFile(oldEvent.img);
+            }
+        }
 
         if (!isAnyModifiedField(req.body, oldEvent)) {
             const error = new Error('No se ha modificado ningún campo con la información proporcionada');
             error.statusCode = 400;
-            return next(error);
-        }
-
-        const duplicatedEvent = await Event.findOne({ title });
-
-        if (duplicatedEvent) {
-            const error = new Error('Este evento ya está registrado');
-            error.statusCode = 400;
+            if (req.file) {
+                deleteFile(req.body.img);
+            }
             return next(error);
         }
 
         const newEvent = new Event({
-            title: title || oldEvent.title,
+            title: req.body.title || oldEvent.title,
             event_organizer: req.user.id,
-            img: oldEvent.img,
-            date: date || oldEvent.date,
-            location: location || oldEvent.location,
-            description: description || oldEvent.description
+            img: req.body.img,
+            date: req.body.date || oldEvent.date,
+            location: req.body.location || oldEvent.location,
+            description: req.body.description || oldEvent.description
         });
         newEvent._id = id;
 
-        if (req.file) {
-            newEvent.img = req.file.path;
-            deleteFile(oldEvent.img);
-        }
-
-        const updatedEvent = await Event.findByIdAndUpdate(id, newEvent, { new: true }).populate({ path: 'event_organizer', select: 'fullname' });
+        const updatedEvent = await Event.findByIdAndUpdate(id, newEvent, { new: true }).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
         return res.status(201).json(updatedEvent);
 
     } catch (err) {
-        const error = new Error('Ha ocurrido un error modificando los datos del evento');
-        error.statusCode = 400;
+        const error = new Error('Ha ocurrido un error al actualizar los datos del evento');
+        error.statusCode = 500;
+        if (req.file) {
+            deleteFile(req.file.path);
+        }
         next(error);
     }
 };
@@ -153,7 +184,7 @@ const deleteEvent = async (req, res, next) => {
 
         const event = await Event.findById(id);
 
-        if (req.user.role === 'user' && req.user.id !== event.event_organizer) {
+        if (req.user.role === 'user' && req.user.id !== event.event_organizer.toString()) {
             const error = new Error('No está permitido eliminar los datos del evento de otro usuario');
             error.statusCode = 403;
             return next(error);
@@ -163,13 +194,13 @@ const deleteEvent = async (req, res, next) => {
 
         await User.findByIdAndUpdate(req.user.id, { $pull: { organized_events: { _id: id } } }, { new: true });
 
-        const deletedEvent = await Event.findByIdAndDelete(id).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'fullname' });
+        const deletedEvent = await Event.findByIdAndDelete(id).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
         deleteFile(deletedEvent.img);
 
         return res.status(200).json(deletedEvent);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error eliminando los datos del evento');
-        error.statusCode = 400;
+        const error = new Error('Ha ocurrido un error al eliminar los datos del evento');
+        error.statusCode = 500;
         next(error);
     }
 };
@@ -187,8 +218,8 @@ const deleteAttendanceToAnEvent = async (req, res, next) => {
         const deletedAttendee = await Attendee.findByIdAndDelete(attendee._id);
         return res.status(200).json(deletedAttendee);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error eliminando los datos del asistente');
-        error.statusCode = 400;
+        const error = new Error('Ha ocurrido un error al eliminar los datos del asistente');
+        error.statusCode = 500;
         next(error);
     }
 };

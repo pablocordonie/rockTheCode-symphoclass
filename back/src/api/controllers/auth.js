@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const { deleteFile } = require('../../utils/deleteFile');
 const { generateSign } = require('../../config/jwt');
 
 const register = async (req, res, next) => {
@@ -14,6 +15,9 @@ const register = async (req, res, next) => {
         if (duplicatedUser || duplicatedEmail) {
             const error = new Error('El usuario ya está registrado');
             error.statusCode = 400;
+            if (req.file) {
+                deleteFile(req.file.path);
+            }
             return next(error);
         }
 
@@ -24,8 +28,11 @@ const register = async (req, res, next) => {
         const savedNewUser = await user.save();
         return res.status(201).json(savedNewUser);
     } catch (err) {
-        const error = new Error('Ha ocurrido algo inesperado al registrarse');
+        const error = new Error('Ha ocurrido un error al registrarse');
         error.statusCode = 500;
+        if (req.file) {
+            deleteFile(req.file.path);
+        }
         next(error);
     }
 };
@@ -44,7 +51,7 @@ const login = async (req, res, next) => {
             return next(error);
         }
     } catch (err) {
-        const error = new Error('Ha ocurrido algo inesperado al iniciar sesión');
+        const error = new Error('Ha ocurrido un error al iniciar sesión');
         error.statusCode = 500;
         next(error);
     }

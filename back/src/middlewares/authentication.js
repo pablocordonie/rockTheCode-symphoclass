@@ -10,11 +10,19 @@ const isAuth = async (req, res, next) => {
 
         const user = await User.findById(id);
 
+        if (!user) {
+            const error = new Error('No estás autorizado a realizar la petición');
+            error.statusCode = 401;
+            return next(error);
+        }
+
         user.password = null;
         req.user = user;
         next();
     } catch (err) {
-        return res.status(400).json('No estás autorizado a realizar esta petición');
+        const error = new Error('Ha ocurrido un error al procesar el token de autenticación del usuario');
+        error.statusCode = 500;
+        next(error);
     }
 };
 
@@ -27,15 +35,19 @@ const isAdmin = async (req, res, next) => {
 
         const user = await User.findById(id);
 
-        if (user.role === 'admin') {
-            user.password = null;
-            req.user = user;
-            next();
-        } else {
-            return res.status(400).json('Esta acción sólo la puede realizar el administrador');
+        if (!user || user.role === 'user') {
+            const error = new Error('No estás autorizado a realizar la petición');
+            error.statusCode = 401;
+            return next(error);
         }
+
+        user.password = null;
+        req.user = user;
+        next();
     } catch (err) {
-        return res.status(400).json('No estás autorizado a realizar esta petición');
+        const error = new Error('Ha ocurrido un error al procesar el token de autenticación del administrador');
+        error.statusCode = 500;
+        next(error);
     }
 };
 

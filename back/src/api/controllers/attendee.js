@@ -5,7 +5,9 @@ const getAttendees = async (req, res, next) => {
         const attendees = await Attendee.find().populate({ path: 'fullname', select: 'fullname' }).populate({ path: 'attended_events', select: 'title' });
         return res.status(200).json(attendees);
     } catch (err) {
-        return res.status(400).json('Ha ocurrido un error mostrando los datos de los asistentes');
+        const error = new Error('Ha ocurrido un error mostrando los datos de los asistentes');
+        error.statusCode = 500;
+        next(error);
     }
 };
 
@@ -15,7 +17,9 @@ const getAttendeeById = async (req, res, next) => {
         const attendee = await Attendee.findById(id).populate({ path: 'fullname', select: 'fullname' }).populate({ path: 'attended_events', select: 'title' });
         return res.status(200).json(attendee);
     } catch (err) {
-        return res.status(400).json('Ha ocurrido un error mostrando los datos del asistente');
+        const error = new Error('Ha ocurrido un error mostrando los datos del asistente');
+        error.statusCode = 500;
+        next(error);
     }
 };
 

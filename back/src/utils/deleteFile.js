@@ -8,7 +8,7 @@ const deleteFile = (url) => {
     const fileName = splitUrl.at(-1).split('.')[0];
 
     cloudinary.uploader.destroy(`${folderName}/${fileName}`, () => {
-        console.log('Imagen eliminada');
+        console.log("The file's been deleted");
     });
 };
 

@@ -15,6 +15,11 @@ const getAttendeeById = async (req, res, next) => {
     try {
         const { id } = req.params;
         const attendee = await Attendee.findById(id).populate({ path: 'fullname', select: 'fullname' }).populate({ path: 'attended_events', select: 'title' });
+        if (!attendee) {
+            const error = new Error('El asistente no se ha encontrado');
+            error.statusCode = 404;
+            return next(error);
+        }
         return res.status(200).json(attendee);
     } catch (err) {
         const error = new Error('Ha ocurrido un error mostrando los datos del asistente');

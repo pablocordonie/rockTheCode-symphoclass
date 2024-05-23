@@ -19,6 +19,11 @@ const getEventById = async (req, res, next) => {
     try {
         const { id } = req.params;
         const event = await Event.findById(id).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
+        if (!event) {
+            const error = new Error('El evento no se ha encontrado');
+            error.statusCode = 404;
+            return next(error);
+        }
         return res.status(200).json(event);
     } catch (err) {
         const error = new Error('Ha ocurrido un error mostrando los datos del evento');
@@ -58,7 +63,7 @@ const postEvent = async (req, res, next) => {
         const savedNewEvent = await newEvent.save();
 
         await User.findByIdAndUpdate(req.user.id, {
-            $push: { organized_events: savedNewEvent._id }
+            $push: { organized_events: { _id: savedNewEvent._id } }
         });
 
         return res.status(201).json(savedNewEvent);
@@ -77,8 +82,22 @@ const postAttendanceToAnEvent = async (req, res, next) => {
         const { id } = req.params;
         const { username, email } = req.body;
 
+        if (req.user.organized_events.some(event => event._id.toString() === id)) {
+            const error = new Error('El usuario no puede confirmar asistencia por ser el anfitrión del evento');
+            error.statusCode = 400;
+            return next(error);
+        }
+
         if (req.user.role === 'user' && username !== req.user.username || email !== req.user.email) {
             const error = new Error('Los datos proporcionados no coinciden con tus datos de usuario');
+            error.statusCode = 400;
+            return next(error);
+        }
+
+        const attendee = await Attendee.findOne({ username });
+
+        if (attendee) {
+            const error = new Error('El usuario ya ha confirmado su asistencia al evento');
             error.statusCode = 400;
             return next(error);
         }
@@ -91,15 +110,15 @@ const postAttendanceToAnEvent = async (req, res, next) => {
         const savedNewAttendee = await newAttendee.save();
 
         await Attendee.findByIdAndUpdate(savedNewAttendee._id, {
-            $push: { attended_events: id }
+            $push: { attended_events: { _id: id } }
         });
 
         await Event.findByIdAndUpdate(id, {
-            $push: { attendees: savedNewAttendee._id }
+            $push: { attendees: { _id: savedNewAttendee._id } }
         });
 
         await User.findByIdAndUpdate(req.user.id, {
-            $push: { attended_events: id }
+            $push: { attended_events: { _id: id } }
         });
 
         return res.status(201).json(savedNewAttendee);
@@ -134,6 +153,15 @@ const updateEvent = async (req, res, next) => {
             return next(error);
         }
 
+        if (!isAnyModifiedField(req.body, oldEvent)) {
+            const error = new Error('No se ha modificado ningún campo con la información proporcionada');
+            error.statusCode = 400;
+            if (req.file) {
+                deleteFile(req.body.img);
+            }
+            return next(error);
+        }
+
         if (req.file) {
             req.body.img = req.file.path;
             if (oldEvent.img) {
@@ -146,28 +174,19 @@ const updateEvent = async (req, res, next) => {
             }
         }
 
-        if (!isAnyModifiedField(req.body, oldEvent)) {
-            const error = new Error('No se ha modificado ningún campo con la información proporcionada');
-            error.statusCode = 400;
-            if (req.file) {
-                deleteFile(req.body.img);
-            }
-            return next(error);
-        }
-
         const newEvent = new Event({
             title: req.body.title || oldEvent.title,
             event_organizer: req.user.id,
             img: req.body.img,
             date: req.body.date || oldEvent.date,
             location: req.body.location || oldEvent.location,
-            description: req.body.description || oldEvent.description
+            description: req.body.description || oldEvent.description,
+            attendees: oldEvent.attendees
         });
         newEvent._id = id;
 
         const updatedEvent = await Event.findByIdAndUpdate(id, newEvent, { new: true }).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
         return res.status(201).json(updatedEvent);
-
     } catch (err) {
         const error = new Error('Ha ocurrido un error al actualizar los datos del evento');
         error.statusCode = 500;
@@ -210,6 +229,12 @@ const deleteAttendanceToAnEvent = async (req, res, next) => {
         const { id } = req.params;
 
         const attendee = await Attendee.findOne({ attended_events: { _id: id } });
+
+        if (!attendee) {
+            const error = new Error('El asistente no se ha encontrado');
+            error.statusCode = 404;
+            return next(error);
+        }
 
         await Event.findByIdAndUpdate(id, { $pull: { attendees: { _id: attendee._id } } }, { new: true });
 

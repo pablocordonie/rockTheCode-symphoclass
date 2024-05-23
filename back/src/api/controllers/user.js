@@ -20,6 +20,11 @@ const getUserById = async (req, res, next) => {
     try {
         const { id } = req.params;
         const user = await User.findById(id).populate({ path: 'organized_events', select: 'title' }).populate({ path: 'attended_events', select: 'title' });
+        if (!user) {
+            const error = new Error('El usuario no se ha encontrado');
+            error.statusCode = 404;
+            return next(error);
+        }
         return res.status(200).json(user);
     } catch (err) {
         const error = new Error('Ha ocurrido un error mostrando los datos del usuario');
@@ -32,20 +37,20 @@ const updateUser = async (req, res, next) => {
     try {
         const { id } = req.params;
 
-        if (req.user.role === 'user' && req.user.id !== id) {
-            const error = new Error('No está permitido modificar los datos de otro usuario');
-            error.statusCode = 403;
+        const oldUser = await User.findById(id);
+
+        if (!oldUser) {
+            const error = new Error('El usuario no se ha encontrado');
+            error.statusCode = 404;
             if (req.file) {
                 deleteFile(req.file.path);
             }
             return next(error);
         }
 
-        const oldUser = await User.findById(id);
-
-        if (!oldUser) {
-            const error = new Error('El usuario no se ha encontrado');
-            error.statusCode = 404;
+        if (req.user.role === 'user' && req.user.id !== id) {
+            const error = new Error('No está permitido modificar los datos de otro usuario');
+            error.statusCode = 403;
             if (req.file) {
                 deleteFile(req.file.path);
             }

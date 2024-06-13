@@ -1,8 +1,7 @@
-const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
 const { deleteFile } = require('../../utils/deleteFile');
-const { hashPassword } = require('../../utils/hash');
+const { hashedPassword } = require('../../utils/hash');
 const { isAnyModifiedField } = require('../../utils/isAnyModifiedField');
 
 const getUsers = async (req, res, next) => {
@@ -10,7 +9,7 @@ const getUsers = async (req, res, next) => {
         const users = await User.find().populate({ path: 'organized_events', select: 'title' }).populate({ path: 'attended_events', select: 'title' });
         return res.status(200).json(users);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error mostrando los datos de los usuarios');
+        const error = new Error('an error occurred while displaying the user data');
         error.statusCode = 500;
         next(error);
     }
@@ -21,13 +20,13 @@ const getUserById = async (req, res, next) => {
         const { id } = req.params;
         const user = await User.findById(id).populate({ path: 'organized_events', select: 'title' }).populate({ path: 'attended_events', select: 'title' });
         if (!user) {
-            const error = new Error('El usuario no se ha encontrado');
+            const error = new Error("the user couldn't be found");
             error.statusCode = 404;
             return next(error);
         }
         return res.status(200).json(user);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error mostrando los datos del usuario');
+        const error = new Error('an error occurred while displaying the user data');
         error.statusCode = 500;
         next(error);
     }
@@ -40,7 +39,7 @@ const updateUser = async (req, res, next) => {
         const oldUser = await User.findById(id);
 
         if (!oldUser) {
-            const error = new Error('El usuario no se ha encontrado');
+            const error = new Error("the user couldn't be found");
             error.statusCode = 404;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -48,8 +47,8 @@ const updateUser = async (req, res, next) => {
             return next(error);
         }
 
-        if (req.user.role === 'user' && req.user.id !== id) {
-            const error = new Error('No está permitido modificar los datos de otro usuario');
+        if (req.user.role === 'user' && req.user._id !== id) {
+            const error = new Error("it's not allowed to modify another user's data");
             error.statusCode = 403;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -70,7 +69,7 @@ const updateUser = async (req, res, next) => {
         }
 
         if (!isAnyModifiedField(req.body, oldUser)) {
-            const error = new Error('No se ha modificado ningún campo con la información proporcionada');
+            const error = new Error('none of the fields have been modified with the provided information');
             error.statusCode = 400;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -79,7 +78,7 @@ const updateUser = async (req, res, next) => {
         }
 
         if (req.body.password) {
-            req.body.password = hashPassword(req.body.password);
+            req.body.password = hashedPassword(req.body.password);
         }
 
         const updatedUserData = new User({
@@ -97,7 +96,7 @@ const updateUser = async (req, res, next) => {
         const updatedUser = await User.findByIdAndUpdate(id, updatedUserData, { new: true }).populate({ path: 'organized_events', select: 'title' }).populate({ path: 'attended_events', select: 'title' });
         return res.status(201).json(updatedUser);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error al actualizar los datos del usuario');
+        const error = new Error('an error occurred while updating the user data');
         error.statusCode = 500;
         if (req.file) {
             deleteFile(req.file.path);
@@ -110,14 +109,14 @@ const deleteUser = async (req, res, next) => {
     try {
         const { id } = req.params;
 
-        if (req.user.role === 'user' && req.user.id !== id) {
-            const error = new Error('Sólo está permitido eliminar los datos asociados al usuario autenticado');
+        if (req.user.role === 'user' && req.user._id !== id) {
+            const error = new Error("it's not allowed to delete another user's data");
             error.statusCode = 403;
             return next(error);
         }
 
         if (req.user.attended_events.length > 0) {
-            await Attendee.deleteMany({ fullname: req.user.fullname });
+            await Event.deleteMany({ attendees: id });
         }
 
         if (req.user.organized_events.length > 0) {
@@ -133,7 +132,7 @@ const deleteUser = async (req, res, next) => {
         return res.status(200).json(deletedUser);
     } catch (err) {
         console.log(err);
-        const error = new Error('Ha ocurrido un error al eliminar los datos del usuario');
+        const error = new Error("an error occurred deleting the user's data");
         error.statusCode = 500;
         next(error);
     }

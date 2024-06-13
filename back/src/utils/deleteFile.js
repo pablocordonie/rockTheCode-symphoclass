@@ -1,15 +1,22 @@
 const cloudinary = require('cloudinary').v2;
 
-const deleteFile = (url) => {
+const deleteFile = async (url) => {
+    if (!url) {
+        const error = new Error("no image could be found to delete");
+        error.statusCode = 404;
+        return next(error);
+    }
 
-    const splitUrl = url.split('/');
+    const publicId = url.split('/').pop().split('.')[0];
 
-    const folderName = splitUrl.at(-2);
-    const fileName = splitUrl.at(-1).split('.')[0];
-
-    cloudinary.uploader.destroy(`${folderName}/${fileName}`, () => {
-        console.log("The file's been deleted");
-    });
+    try {
+        const result = await cloudinary.uploader.destroy(publicId);
+        return result;
+    } catch (err) {
+        const error = new Error('an error occurred deleting the image');
+        error.statusCode = 500;
+        next(error);
+    }
 };
 
 module.exports = { deleteFile };

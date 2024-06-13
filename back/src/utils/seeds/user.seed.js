@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Attendee = require('../../api/models/Attendee');
 const Event = require('../../api/models/Event');
 const User = require('../../api/models/User');
-const { hashPassword } = require('../hash');
+const { hashedPassword } = require('../hash');
 
 const users = [
     {
@@ -11,7 +11,7 @@ const users = [
         fullname: 'Pablo Cordonié',
         email: 'pablo_cord93@gmail.com',
         img: '',
-        password: hashPassword('1234567890'),
+        password: hashedPassword('1234567890'),
         role: 'admin'
     },
     {
@@ -19,21 +19,21 @@ const users = [
         fullname: 'Alicia Jovellanos',
         email: 'alice123@gmail.com',
         img: '',
-        password: hashPassword('1234567890')
+        password: hashedPassword('1234567890')
     },
     {
         username: 'bob_95',
         fullname: 'Roberto López',
         email: 'bob456@gmail.com',
         img: '',
-        password: hashPassword('1234567890')
+        password: hashedPassword('1234567890')
     },
     {
         username: 'carol_90',
         fullname: 'Carolina Castaño',
         email: 'carol@gmail.com',
         img: '',
-        password: hashPassword('1234567890')
+        password: hashedPassword('1234567890')
     }
 ];
 

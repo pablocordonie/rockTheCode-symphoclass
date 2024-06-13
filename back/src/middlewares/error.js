@@ -1,8 +1,3 @@
-const errorsManager = (err, req, res, next) => res.status(err.statusCode).json(
-    {
-        status: 'error',
-        message: err.message
-    }
-);
+const errorsManager = (err, req, res, next) => res.status(err.statusCode).json({ message: err.message });
 
 module.exports = { errorsManager };

@@ -13,7 +13,7 @@ const register = async (req, res, next) => {
         const duplicatedEmail = await User.findOne({ email });
 
         if (duplicatedUser || duplicatedEmail) {
-            const error = new Error('El usuario ya está registrado');
+            const error = new Error("the user's been already registered");
             error.statusCode = 400;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -28,7 +28,7 @@ const register = async (req, res, next) => {
         const savedNewUser = await user.save();
         return res.status(201).json(savedNewUser);
     } catch (err) {
-        const error = new Error('Ha ocurrido un error al registrarse');
+        const error = new Error('an error occurred while registering');
         error.statusCode = 500;
         if (req.file) {
             deleteFile(req.file.path);
@@ -42,16 +42,21 @@ const login = async (req, res, next) => {
         const { username, password } = req.body;
         const user = await User.findOne({ username });
 
-        if (user && bcrypt.compareSync(password, user.password)) {
-            const token = generateSign(user._id);
-            return res.status(200).json({ user, token });
-        } else {
-            const error = new Error('Las credenciales no son correctas');
-            error.statusCode = 400;
+        if (!user) {
+            const error = new Error("the user couldn't be found");
+            error.statusCode = 404;
             return next(error);
         }
+
+        if (!bcrypt.compareSync(password, user.password)) {
+            const error = new Error('incorrect password');
+            error.statusCode = 401;
+            return next(error);
+        }
+        const token = generateSign(user._id);
+        return res.status(200).json({ user, token });
     } catch (err) {
-        const error = new Error('Ha ocurrido un error al iniciar sesión');
+        const error = new Error('an error occurred while logging in');
         error.statusCode = 500;
         next(error);
     }

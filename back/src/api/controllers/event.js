@@ -2,7 +2,7 @@ const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
 const { deleteFile } = require('../../utils/deleteFile');
-const { isAnyModifiedField } = require('../../utils/isAnyModifiedField');
+const { isAnyUnfilledField } = require('../../utils/isAnyUnfilledField');
 
 const getEvents = async (req, res, next) => {
     try {
@@ -101,7 +101,7 @@ const updateEvent = async (req, res, next) => {
             return next(error);
         }
 
-        if (!isAnyModifiedField(req.body, oldEvent)) {
+        if (isAnyUnfilledField(req.body, oldEvent)) {
             const error = new Error('none of the fields have been modified with the provided information');
             error.statusCode = 400;
             if (req.file) {

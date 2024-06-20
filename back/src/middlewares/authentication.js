@@ -24,7 +24,6 @@ const isAuth = async (req, res, next) => {
 
         user.password = null;
         req.user = user;
-        console.log(req.user);
         next();
     } catch (err) {
         const error = new Error("an error occurred processing the user's authentication token");

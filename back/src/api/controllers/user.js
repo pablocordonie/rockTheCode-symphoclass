@@ -2,7 +2,6 @@ const Event = require('../models/Event');
 const User = require('../models/User');
 const { deleteFile } = require('../../utils/deleteFile');
 const { hashedPassword } = require('../../utils/hash');
-const { isAnyModifiedField } = require('../../utils/isAnyModifiedField');
 
 const getUsers = async (req, res, next) => {
     try {
@@ -47,7 +46,7 @@ const updateUser = async (req, res, next) => {
             return next(error);
         }
 
-        if (req.user.role === 'user' && req.user._id !== id) {
+        if (req.user.role === 'user' && req.user._id != id) {
             const error = new Error("it's not allowed to modify another user's data");
             error.statusCode = 403;
             if (req.file) {
@@ -66,15 +65,6 @@ const updateUser = async (req, res, next) => {
             if (oldUser.img) {
                 deleteFile(oldUser.img);
             }
-        }
-
-        if (!isAnyModifiedField(req.body, oldUser)) {
-            const error = new Error('none of the fields have been modified with the provided information');
-            error.statusCode = 400;
-            if (req.file) {
-                deleteFile(req.file.path);
-            }
-            return next(error);
         }
 
         if (req.body.password) {
@@ -109,7 +99,7 @@ const deleteUser = async (req, res, next) => {
     try {
         const { id } = req.params;
 
-        if (req.user.role === 'user' && req.user._id !== id) {
+        if (req.user.role === 'user' && req.user._id != id) {
             const error = new Error("it's not allowed to delete another user's data");
             error.statusCode = 403;
             return next(error);
@@ -131,7 +121,6 @@ const deleteUser = async (req, res, next) => {
 
         return res.status(200).json(deletedUser);
     } catch (err) {
-        console.log(err);
         const error = new Error("an error occurred deleting the user's data");
         error.statusCode = 500;
         next(error);

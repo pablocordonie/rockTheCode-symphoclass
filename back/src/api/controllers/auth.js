@@ -7,7 +7,7 @@ const register = async (req, res, next) => {
     try {
         const { username, fullname, email, password } = req.body;
 
-        const user = new User({ username, fullname, email, img: '', password });
+        const user = new User({ username, fullname, email, img: req.file ? req.file.path : '', password });
 
         const duplicatedUser = await User.findOne({ username });
         const duplicatedEmail = await User.findOne({ email });
@@ -19,10 +19,6 @@ const register = async (req, res, next) => {
                 deleteFile(req.file.path);
             }
             return next(error);
-        }
-
-        if (req.file) {
-            user.img = req.file.path;
         }
 
         const savedNewUser = await user.save();

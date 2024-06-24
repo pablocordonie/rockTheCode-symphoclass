@@ -5,15 +5,15 @@ const { postEvent, updateEvent, deleteEvent } = require('../controllers/event');
 const { postAttendanceToAnEvent, deleteAttendanceToAnEvent } = require('../controllers/attendee');
 const { isAuth, isAdmin } = require('../../middlewares/authentication');
 const { uploadAvatar, uploadConcert } = require('../../middlewares/file');
-const { validateUpdate } = require('../../middlewares/validators');
+const { validateEvent, validateUpdatedEvent, validateUpdatedUser } = require('../../middlewares/validators');
 
 usersRouter.get('/', isAdmin, getUsers);
 usersRouter.get('/:id', isAdmin, getUserById);
-usersRouter.put('/:id/update', isAuth, uploadAvatar.single('img'), validateUpdate, updateUser);
+usersRouter.put('/:id/update', isAuth, uploadAvatar.single('img'), validateUpdatedUser, updateUser);
 usersRouter.delete('/:id/delete', isAuth, deleteUser);
 
-usersRouter.post('/events', isAuth, uploadConcert.single('img'), postEvent);
-usersRouter.put('/events/:id/update', isAuth, uploadConcert.single('img'), updateEvent);
+usersRouter.post('/events', isAuth, uploadConcert.single('img'), validateEvent, postEvent);
+usersRouter.put('/events/:id/update', isAuth, uploadConcert.single('img'), validateUpdatedEvent, updateEvent);
 usersRouter.delete('/events/:id/delete', isAuth, deleteEvent);
 
 usersRouter.post('/events/:id/attendance', isAuth, postAttendanceToAnEvent);

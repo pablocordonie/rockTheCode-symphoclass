@@ -2,7 +2,6 @@ const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
 const { deleteFile } = require('../../utils/deleteFile');
-const { isAnyUnfilledField } = require('../../utils/isAnyUnfilledField');
 
 const getEvents = async (req, res, next) => {
     try {
@@ -50,15 +49,11 @@ const postEvent = async (req, res, next) => {
         const newEvent = new Event({
             title,
             event_organizer: req.user._id,
-            img: '',
+            img: req.file ? req.file.path : '',
             date,
             location,
             description
         });
-
-        if (req.file) {
-            newEvent.img = req.file.path;
-        }
 
         const savedNewEvent = await newEvent.save();
 
@@ -92,20 +87,11 @@ const updateEvent = async (req, res, next) => {
             return next(error);
         }
 
-        if (req.user.role === 'user' && req.user._id !== oldEvent.event_organizer.toString()) {
+        if (req.user.role === 'user' && req.user._id != oldEvent.event_organizer.toString()) {
             const error = new Error("the provided data doesn't match your user data");
             error.statusCode = 403;
             if (req.file) {
                 deleteFile(req.file.path);
-            }
-            return next(error);
-        }
-
-        if (isAnyUnfilledField(req.body, oldEvent)) {
-            const error = new Error('none of the fields have been modified with the provided information');
-            error.statusCode = 400;
-            if (req.file) {
-                deleteFile(req.body.img);
             }
             return next(error);
         }
@@ -151,7 +137,7 @@ const deleteEvent = async (req, res, next) => {
 
         const event = await Event.findById(id);
 
-        if (req.user.role === 'user' && req.user._id !== event.event_organizer.toString()) {
+        if (req.user.role === 'user' && req.user._id != event.event_organizer.toString()) {
             const error = new Error("it's not allowed to delete another user's event data");
             error.statusCode = 403;
             return next(error);

@@ -33,20 +33,13 @@ const getAttendeeById = async (req, res, next) => {
 const postAttendanceToAnEvent = async (req, res, next) => {
     try {
         const { id } = req.params;
-        //const { username, email } = req.body;
 
         if (req.user.organized_events.some(event => event._id.toString() === id)) {
             const error = new Error("the user can't confirm attendance because of being the event host");
             error.statusCode = 400;
             return next(error);
         }
-        /*
-        if (req.user.role === 'user' && username !== req.user.username || email !== req.user.email) {
-            const error = new Error('Los datos proporcionados no coinciden con tus datos de usuario');
-            error.statusCode = 400;
-            return next(error);
-        }
-        */
+
         const attendee = await Attendee.findOne({ username: req.user.username });
 
         if (attendee) {
@@ -56,8 +49,8 @@ const postAttendanceToAnEvent = async (req, res, next) => {
         }
 
         const newAttendee = new Attendee({
-            username: req.user._id,
-            email: req.user._id
+            username: req.user.username,
+            email: req.user.email
         });
         const savedNewAttendee = await newAttendee.save();
 
@@ -66,7 +59,7 @@ const postAttendanceToAnEvent = async (req, res, next) => {
         });
 
         await Event.findByIdAndUpdate(id, {
-            $push: { attendees: { _id: savedNewAttendee._id } }
+            $push: { attendees: { _id: req.user._id } }
         });
 
         await User.findByIdAndUpdate(req.user._id, {
@@ -85,7 +78,7 @@ const deleteAttendanceToAnEvent = async (req, res, next) => {
     try {
         const { id } = req.params;
 
-        const attendee = await Attendee.findOne({ attended_events: { _id: id } });
+        const attendee = await Attendee.findOne({ username: req.user.username });
 
         if (!attendee) {
             const error = new Error("the attendee couldn't be found");
@@ -93,9 +86,9 @@ const deleteAttendanceToAnEvent = async (req, res, next) => {
             return next(error);
         }
 
-        await Event.findByIdAndUpdate(id, { $pull: { attendees: { _id: attendee._id } } }, { new: true });
+        await Event.findByIdAndUpdate(id, { $pull: { attendees: req.user._id } });
 
-        await User.findByIdAndUpdate(req.user._id, { $pull: { attended_events: { _id: id } } }, { new: true });
+        await User.findByIdAndUpdate(req.user._id, { $pull: { attended_events: id } });
 
         const deletedAttendee = await Attendee.findByIdAndDelete(attendee._id);
         return res.status(200).json(deletedAttendee);

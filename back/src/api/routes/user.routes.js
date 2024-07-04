@@ -7,7 +7,7 @@ const { isAuth, isAdmin } = require('../../middlewares/authentication');
 const { uploadAvatar, uploadConcert } = require('../../middlewares/file');
 const { validateEvent, validateUpdatedEvent, validateUpdatedUser } = require('../../middlewares/validators');
 
-usersRouter.get('/', isAdmin, getUsers);
+usersRouter.get('/', /* isAdmin, */getUsers);
 usersRouter.get('/:id', isAdmin, getUserById);
 usersRouter.put('/:id/update', isAuth, uploadAvatar.single('img'), validateUpdatedUser, updateUser);
 usersRouter.delete('/:id/delete', isAuth, deleteUser);

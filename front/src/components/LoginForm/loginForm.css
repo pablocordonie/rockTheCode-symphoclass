@@ -1,0 +1,21 @@
+.mc-main-login_form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mc-main-login_form-fields div {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mc-main-login_form-fields input {
+  width: 9rem;
+}
+
+.mc-main-login_form-button {
+  align-self: center;
+  height: 1.75rem;
+  width: 4rem;
+}

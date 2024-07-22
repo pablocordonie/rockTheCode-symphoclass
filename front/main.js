@@ -1,15 +1,18 @@
 import './style.css'
+import postLoginForm from './pages/Login/login';
 
+export const BASE_URL = 'http://localhost:8080/api/v1';
+/*
 const getUsers = async () => {
-  const response = await fetch('http://localhost:8080/api/v1/user');
+  const response = await fetch(`${BASE_URL}/user`);
   const users = await response.json();
 
   printUsers(users);
 };
 
 const printUsers = (users) => {
-  const app = document.querySelector('#app');
-  const main = document.createElement('main');
+  const main = document.querySelector('main');
+
 
   users.forEach(user => {
     if (user.role === 'user') {
@@ -23,8 +26,8 @@ const printUsers = (users) => {
     }
   });
 
-  app.appendChild(main);
-  return app;
+  return main;
 };
-
-getUsers();
+*/
+//getUsers();
+postLoginForm();

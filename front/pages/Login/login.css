@@ -1,0 +1,6 @@
+.mc-main-login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0 1rem;
+}

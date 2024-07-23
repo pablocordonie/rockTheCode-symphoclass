@@ -1,12 +1,13 @@
 import './loginForm.css'
+import loginButton from './LoginButton/loginButton';
 import loginField from './LoginField/loginField';
 
 const loginForm = () => `
-    <div class="mc-main-login_form-fields">
+    <div class="sc-main-login_form-fields">
         ${loginField('email', 'Email')}
         ${loginField('password', 'Contraseña', 'password')}
     </div>
-    <button class="mc-main-login_form-button">Enviar</button>
+    ${loginButton()}
 `;
 
 export default loginForm;

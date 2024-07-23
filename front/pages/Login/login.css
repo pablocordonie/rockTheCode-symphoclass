@@ -1,6 +1,12 @@
-.mc-main-login_form {
+.sc-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sc-main-login_form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 0 1rem;
+  padding: 0 0.9rem;
 }

@@ -1,0 +1,14 @@
+.sc-main-register_link-button {
+  background-color: var(--rtc-color-n-600);
+  border: 0.25rem solid var(--rtc-color-n-600);
+  border-radius: 0.5rem;
+  color: var(--rtc-color-n-900);
+  font-size: 0.8rem;
+  font-weight: 700;
+  height: 1.9rem;
+}
+
+.sc-main-register_link-button:hover {
+  color: var(--rtc-color-n-600);
+  text-decoration: underline;
+}

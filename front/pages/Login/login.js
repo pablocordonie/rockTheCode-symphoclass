@@ -1,24 +1,21 @@
 import './login.css'
-//import { app, BASE_URL } from '../../main';
-import loginForm from '../../src/components/LoginForm/loginForm';
-/*
-const postLogin = async () => {
-    const response = await fetch(`${BASE_URL}/auth/login`);
-    const user = await response.json();
+import loginForm from '../../src/templates/Login/LoginForm/loginForm';
+import loginRegisterLink from '../../src/templates/Login/LoginRegisterLink/loginRegisterLink';
 
-    printLogin(user);
-};
-*/
-const postLoginForm = () => {
+const printLoginForm = () => {
     const main = document.querySelector('#app main');
 
     const form = document.createElement('form');
-    form.classList.add('mc-main-login_form');
+    form.classList.add('sc-main-login_form');
 
-    form.innerHTML += `${loginForm()}`;
+    form.innerHTML += `
+        ${loginForm()}
+    `;
 
     main.appendChild(form);
+
+    main.innerHTML += `${loginRegisterLink()}`;
     return main;
 };
 
-export default postLoginForm;
+export default printLoginForm;

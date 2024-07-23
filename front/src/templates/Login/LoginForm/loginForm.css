@@ -1,0 +1,15 @@
+.sc-main-login_form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sc-main-login_form-fields div {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sc-main-login_form-fields input {
+  width: 8rem;
+}

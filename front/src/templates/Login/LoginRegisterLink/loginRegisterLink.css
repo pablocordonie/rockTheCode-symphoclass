@@ -1,0 +1,15 @@
+.sc-main-register_link {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sc-main-register_link-message {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.sc-main-register_link-message {
+  color: var(--rtc-color-n-700);
+}

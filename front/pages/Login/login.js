@@ -1,6 +1,6 @@
 import './login.css'
-import loginForm from '../../src/templates/Login/LoginForm/loginForm';
-import loginRegisterLink from '../../src/templates/Login/LoginRegisterLink/loginRegisterLink';
+import createNewForm from '../../src/templates/Form/form';
+import createRegisterLink from '../../src/templates/Login/RegisterLink/registerLink';
 
 const printLoginForm = () => {
     const main = document.querySelector('#app main');
@@ -9,12 +9,12 @@ const printLoginForm = () => {
     form.classList.add('sc-main-login_form');
 
     form.innerHTML += `
-        ${loginForm()}
+        ${createNewForm('sc-main-login_form-fields')}
     `;
 
     main.appendChild(form);
 
-    main.innerHTML += `${loginRegisterLink()}`;
+    main.innerHTML += `${createRegisterLink('sc-main-register_link')}`;
     return main;
 };
 

@@ -10,6 +10,8 @@
   justify-content: space-between;
 }
 
-.sc-main-login_form-fields input {
-  width: 8rem;
+@media screen and (min-width: 350px) and (min-height: 750px) {
+  .sc-main-login_form-fields {
+    gap: 1.5rem;
+  }
 }

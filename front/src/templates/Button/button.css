@@ -1,14 +1,40 @@
-.sc-main-login_form-button {
-  align-self: center;
-}
-
-.sc-main-register_link-button {
+.sc-main button {
   background-color: var(--rtc-color-n-600);
   border: 0.25rem solid var(--rtc-color-n-600);
   border-radius: 0.5rem;
-  color: var(--rtc-color-n-900);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 700;
+  height: 1.9rem;
 }
 
-.sc-main-register_link-button:hover {
+.sc-main button:hover {
+  background-color: var(--rtc-color-n-900);
+  border-color: var(--rtc-color-n-900);
   color: var(--rtc-color-n-600);
+}
+
+.sc-main-login_form-button,
+.sc-main-register_form-button {
+  align-self: center;
+}
+
+@media screen and (min-width: 350px) {
+  .sc-main button {
+    height: 2rem;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .sc-main button {
+    font-size: 0.9rem;
+    height: 2.125rem;
+  }
+}
+
+@media screen and (min-width: 350px) and (min-height: 750px) {
+  .sc-main button {
+    font-size: 1.15rem;
+    height: 2.5rem;
+  }
 }

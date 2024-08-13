@@ -4,22 +4,6 @@
   gap: 2rem;
 }
 
-.sc-main button {
-  background-color: var(--rtc-color-n-600);
-  border: 0.25rem solid var(--rtc-color-n-600);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 700;
-  height: 1.9rem;
-}
-
-.sc-main button:hover {
-  background-color: var(--rtc-color-n-900);
-  border-color: var(--rtc-color-n-900);
-  color: var(--rtc-color-n-600);
-}
-
 .sc-main-login_form {
   display: flex;
   flex-direction: column;
@@ -28,21 +12,12 @@
 }
 
 @media screen and (min-width: 350px) {
-  .sc-main button {
-    height: 2rem;
-  }
-
   .sc-main-login_form {
     padding: 0 1.5rem;
   }
 }
 
 @media screen and (min-width: 400px) {
-  .sc-main button {
-    font-size: 0.9rem;
-    height: 2.125rem;
-  }
-
   .sc-main-login_form {
     gap: 1.5rem;
     padding: 0 2.5rem;
@@ -52,11 +27,6 @@
 @media screen and (min-width: 350px) and (min-height: 750px) {
   .sc-main {
     gap: 2.5rem;
-  }
-
-  .sc-main button {
-    font-size: 1.15rem;
-    height: 2.5rem;
   }
 
   .sc-main-login_form {

@@ -1,12 +1,12 @@
 import './registerLink.css';
 import createNewButton from '../../Button/button';
 
-const createRegisterLink = (className) => `
+const createRegisterLink = (className, text) => `
     <div class="${className}">
         <p class="${className}-message">
-            ¿No estás registrado en The SymphoClass?
+            ${text}
         </p>
-        ${createNewButton('sc-main-register_link-button', 'Regístrate')}
+        ${createNewButton(`${className}-button`, 'Regístrate')}
     </div>
 `;
 

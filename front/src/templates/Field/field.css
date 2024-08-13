@@ -1,0 +1,101 @@
+.sc-main-login_form-email_field-label,
+.sc-main-login_form-password_field-label,
+.sc-main-register_form-email_field-label,
+.sc-main-register_form-fullname_field-label,
+.sc-main-register_form-password_field-label,
+.sc-main-register_form-username_field-label {
+  color: var(--rtc-color-n-600);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.sc-main-login_form-email_field-input,
+.sc-main-login_form-password_field-input,
+.sc-main-register_form-email_field-input,
+.sc-main-register_form-fullname_field-input,
+.sc-main-register_form-password_field-input,
+.sc-main-register_form-username_field-input {
+  background-color: var(--rtc-color-n-900);
+  border: 0.25rem solid var(--rtc-color-n-600);
+  border-radius: 0.5rem;
+  color: var(--rtc-color-n-000);
+  height: 2rem;
+}
+
+.sc-main-login_form-email_field-input,
+.sc-main-login_form-password_field-input {
+  width: 8rem;
+}
+
+.sc-main-register_form-email_field-input,
+.sc-main-register_form-fullname_field-input,
+.sc-main-register_form-password_field-input,
+.sc-main-register_form-username_field-input {
+  width: 12rem;
+}
+
+.sc-main-login_form-email_field-input:hover,
+.sc-main-login_form-password_field-input:hover,
+.sc-main-register_form-email_field-input:hover,
+.sc-main-register_form-fullname_field-input:hover,
+.sc-main-register_form-password_field-input:hover,
+.sc-main-register_form-username_field-input:hover {
+  border: 0.25rem solid var(--rtc-color-n-600);
+}
+
+@media screen and (min-width: 350px) {
+  .sc-main-login_form-email_field-label,
+  .sc-main-login_form-password_field-label,
+  .sc-main-register_form-email_field-label,
+  .sc-main-register_form-fullname_field-label,
+  .sc-main-register_form-password_field-label,
+  .sc-main-register_form-username_field-label {
+    font-size: 0.95rem;
+  }
+
+  .sc-main-login_form-email_field-input,
+  .sc-main-login_form-password_field-input {
+    width: 9rem;
+  }
+
+  .sc-main-register_form-email_field-input,
+  .sc-main-register_form-fullname_field-input,
+  .sc-main-register_form-password_field-input,
+  .sc-main-register_form-username_field-input {
+    width: 12.5rem;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .sc-main-login_form-email_field-label,
+  .sc-main-login_form-password_field-label,
+  .sc-main-register_form-email_field-label,
+  .sc-main-register_form-fullname_field-label,
+  .sc-main-register_form-password_field-label,
+  .sc-main-register_form-username_field-label {
+    font-size: 1rem;
+  }
+
+  .sc-main-login_form-email_field-input,
+  .sc-main-login_form-password_field-input {
+    width: 10rem;
+  }
+
+  .sc-main-register_form-email_field-input,
+  .sc-main-register_form-fullname_field-input,
+  .sc-main-register_form-password_field-input,
+  .sc-main-register_form-username_field-input {
+    width: 13.5rem;
+  }
+}
+
+@media screen and (min-width: 350px) and (min-height: 750px) {
+  .sc-main-login_form-email_field-label,
+  .sc-main-login_form-password_field-label,
+  .sc-main-register_form-email_field-label,
+  .sc-main-register_form-fullname_field-label,
+  .sc-main-register_form-password_field-label,
+  .sc-main-register_form-username_field-label {
+    font-size: 1.15rem;
+  }
+}

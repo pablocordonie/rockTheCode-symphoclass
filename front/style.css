@@ -50,7 +50,7 @@ body::after {
 .sc {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   padding-top: 5rem;
   z-index: 1;
 }
@@ -95,7 +95,7 @@ a {
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
   .sc {
-    gap: 2.5rem;
+    gap: 2rem;
     padding-top: 12.5rem;
   }
 

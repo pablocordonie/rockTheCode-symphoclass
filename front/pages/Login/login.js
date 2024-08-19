@@ -1,7 +1,8 @@
 import './login.css'
 import createLoginForm from '../../src/templates/Login/LoginForm/loginForm';
-import createNewClickListener from '../../src/components/Listeners/clickListener';
+import createNewClickListener from '../../src/utils/Listeners/clickListener';
 import createRegisterLink from '../../src/templates/Login/RegisterLink/registerLink';
+import printLoader from '../../src/utils/Loader/printLoader';
 import printRegisterForm from '../Register/register';
 
 const printLoginForm = () => {
@@ -23,7 +24,8 @@ const printLoginForm = () => {
 
     createNewClickListener(loginButton, (ev) => {
         ev.preventDefault();
-        console.log('Has clickado Enviar!');
+        printLoader();
+        console.log('Has clickado en Enviar!');
     });
 
     createNewClickListener(registerButton, () => {

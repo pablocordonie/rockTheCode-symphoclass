@@ -1,9 +1,3 @@
-.sc-main {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
 .sc-main-login_form {
   display: flex;
   flex-direction: column;
@@ -25,10 +19,6 @@
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
-  .sc-main {
-    gap: 2.5rem;
-  }
-
   .sc-main-login_form {
     gap: 2rem;
   }

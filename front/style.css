@@ -55,6 +55,12 @@ body::after {
   z-index: 1;
 }
 
+.sc-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 header {
   align-items: center;
   display: flex;
@@ -97,6 +103,10 @@ a {
   .sc {
     gap: 2rem;
     padding-top: 12.5rem;
+  }
+
+  .sc-main {
+    gap: 2.5rem;
   }
 
   header .sc-header-h1 {

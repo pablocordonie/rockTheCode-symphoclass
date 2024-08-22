@@ -1,20 +1,19 @@
-import createNewLoader from '../../templates/Loader/loader';
 import disableLoader from '../Loader/disableLoader';
 
-const printLoader = () => {
+const activateLoader = () => {
     const body = document.querySelector('#app');
     const content = document.querySelector('.sc');
+    const loader = document.querySelector('.sc-loader-container');
     const footer = document.querySelector('footer');
 
     body.style.margin = '0';
     content.style.display = 'none';
     footer.style.display = 'none';
-
-    body.innerHTML += createNewLoader();
+    loader.style.display = 'flex';
 
     setTimeout(function () {
         disableLoader();
     }, 2000);
 };
 
-export default printLoader;
+export default activateLoader;

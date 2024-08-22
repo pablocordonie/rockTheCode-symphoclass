@@ -1,8 +1,9 @@
-import './register.css'
+import './register.css';
+import activateLoader from '../../src/utils/Loader/activateLoader';
 import createLoginLink from '../../src/templates/Register/LoginLink/loginLink';
 import createNewClickListener from '../../src/utils/Listeners/clickListener';
 import createRegisterForm from '../../src/templates/Register/RegisterForm/registerForm';
-import printLoader from '../../src/utils/Loader/printLoader';
+import printEventsList from '../Events-List/events_list';
 import printLoginForm from '../../pages/Login/login';
 
 const printRegisterForm = () => {
@@ -24,8 +25,9 @@ const printRegisterForm = () => {
 
     createNewClickListener(registerButton, (ev) => {
         ev.preventDefault();
-        printLoader();
+        activateLoader();
         console.log('Has clickado en Registrarse!');
+        printEventsList();
     });
 
     createNewClickListener(loginButton, () => {

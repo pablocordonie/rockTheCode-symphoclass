@@ -1,13 +1,12 @@
 import './login.css'
-import activateLoader from '../../src/utils/Loader/activateLoader';
-import createLoginForm from '../../src/templates/Login/LoginForm/loginForm';
-import createNewClickListener from '../../src/utils/Listeners/clickListener';
-import createRegisterLink from '../../src/templates/Login/RegisterLink/registerLink';
-import printEventsList from '../Events-List/events_list';
-import printRegisterForm from '../Register/register';
+import createLoginForm from '../../templates/Login/LoginForm/loginForm';
+import createNewClickListener from '../../utils/Listeners/clickListener';
+import createRegisterLink from '../../templates/Login/RegisterLink/registerLink';
+import { launchEventsPage, launchRegisterPage } from '../../../main';
+import printLoader from '../../utils/Loader/printLoader';
 
-const printLoginForm = () => {
-    const main = document.querySelector('#app main');
+const printLoginForm = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {
+    const main = document.querySelector('.sc-main');
 
     const form = document.createElement('form');
     form.classList.add('sc-main-login_form');
@@ -25,15 +24,14 @@ const printLoginForm = () => {
 
     createNewClickListener(loginButton, (ev) => {
         ev.preventDefault();
-        activateLoader();
-        console.log('Has clickado en Enviar!');
-        printEventsList();
+        printLoader(appId, footerClassName, loaderClassName, webContentClassName);
+        launchEventsPage(currentPage);
     });
 
     createNewClickListener(registerButton, () => {
-        const main = document.querySelector('#app main');
+        const main = document.querySelector('.sc-main');
         main.innerHTML = '';
-        printRegisterForm();
+        launchRegisterPage(currentPage);
     });
 
     return main;

@@ -1,13 +1,13 @@
-const disableLoader = () => {
-    const body = document.querySelector('#app');
-    const content = document.querySelector('.sc');
-    const loader = document.querySelector('.sc-loader-container');
-    const footer = document.querySelector('footer');
+const disableLoader = (appId, footerClassName, loaderClassName, webContentClassName) => {
+    const app = document.querySelector(`#${appId}`);
+    const footer = document.querySelector(`.${footerClassName}`);
+    const loader = document.querySelector(`.${loaderClassName}`);
+    const webContent = document.querySelector(`.${webContentClassName}`);
 
-    body.style.margin = '0 1rem';
-    content.style.display = 'flex';
+    app.style.margin = '0 1rem';
     footer.style.display = 'block';
     loader.style.display = 'none';
+    webContent.style.display = 'flex';
 };
 
 export default disableLoader;

@@ -1,19 +1,19 @@
 import createNewLoader from '../../templates/Loader/loader';
 import disableLoader from '../Loader/disableLoader';
 
-const printLoader = () => {
-    const body = document.querySelector('#app');
-    const content = document.querySelector('.sc');
-    const footer = document.querySelector('footer');
+const printLoader = (appId, footerClassName, loaderClassName, webContentClassName) => {
+    const app = document.querySelector(`#${appId}`);
+    const footer = document.querySelector(`.${footerClassName}`);
+    const loader = document.querySelector(`.${loaderClassName}`);
+    const webContent = document.querySelector(`.${webContentClassName}`);
 
-    body.style.margin = '0';
-    content.style.display = 'none';
+    app.style.margin = '0';
     footer.style.display = 'none';
-
-    body.innerHTML += createNewLoader();
+    loader ? loader.style.display = 'flex' : app.innerHTML += createNewLoader(loaderClassName);
+    webContent.style.display = 'none';
 
     setTimeout(function () {
-        disableLoader();
+        disableLoader(appId, footerClassName, loaderClassName, webContentClassName);
     }, 2000);
 };
 

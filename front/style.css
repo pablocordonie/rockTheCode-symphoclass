@@ -79,11 +79,11 @@ header .sc-header-logo-img {
   display: none;
 }
 
-footer {
+.sc-footer {
   z-index: 1;
 }
 
-footer > p {
+.sc-footer > p {
   color: var(--rtc-color-n-900);
   font-weight: 700;
 }
@@ -113,7 +113,7 @@ a {
     font-size: 2.75rem;
   }
 
-  footer > p {
+  .sc-footer > p {
     font-size: 1.15rem;
   }
 }

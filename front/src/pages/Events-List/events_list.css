@@ -1,6 +1,6 @@
 .sc-events-header {
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .sc-events-header-search {
@@ -9,51 +9,50 @@
   border-radius: 0.5rem;
   color: var(--rtc-color-n-000);
   height: 2rem;
-  width: 8rem;
 }
 
 .sc-events-header-search:hover {
   border: 0.25rem solid var(--rtc-color-n-600);
 }
 
-.event-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+.sc-events-header-create_btn {
+  background-color: var(--rtc-color-n-600);
+  color: white;
+}
+
+.sc-events-main-list {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
-.event-card {
+
+.sc-events-main-card {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 20px;
-  position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.event-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+.sc-events-main-card div {
+  align-self: center;
 }
-.event-card h3 {
+
+.sc-events-main-card h3,
+p {
+  color: var(--rtc-color-n-000);
+}
+.sc-events-main-card h3 {
   margin: 0;
-  font-size: 1.5em;
-}
-.event-card p {
-  margin: 10px 0;
+  font-size: 1.25rem;
 }
 
-.event-options {
-  display: none;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-}
-
-.event-card:hover .event-options {
-  display: block;
-}
-.event-options button {
+.sc-events-header button,
+.sc-events-main-card-options button {
   padding: 10px 15px;
-  margin-left: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -62,7 +61,27 @@
   background-color: #28a745;
   color: white;
 }
-.create-btn {
-  background-color: #007bff;
-  color: white;
+
+@media screen and (min-width: 768px) {
+  .sc-events-main-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .sc-events-main-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .sc-events-main-card-options {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+  }
+
+  .sc-events-main-card:hover .sc-events-main-card-options {
+    display: block;
+  }
 }

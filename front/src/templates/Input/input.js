@@ -1,8 +1,5 @@
-const createNewInput = (className, inputType = 'text') => {
-    const input = document.createElement('input');
-    input.className = `${className}`;
-    input.type = `${inputType}`;
-    return input;
-};
+const createNewInput = (className, inputType, placeholderText) => `
+    <input class="${className} type="${inputType}" placeholder="${placeholderText}">
+`;
 
 export default createNewInput;

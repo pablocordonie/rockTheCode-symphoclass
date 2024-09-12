@@ -14,6 +14,7 @@ dist-ssr
 
 # Editor directories and files
 events-list.md
+user-bar.md
 .vscode/*
 !.vscode/extensions.json
 .idea

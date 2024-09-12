@@ -6,6 +6,7 @@
 :root {
   /* COLOR PALETTE */
   --rtc-color-n-000: #1a1a1a;
+  --rtc-color-n-100: #010818;
   --rtc-color-n-300: #0f3fa78c;
   --rtc-color-n-600: #ff7f0f;
   --rtc-color-n-700: #ffea2b;
@@ -37,6 +38,19 @@ body::after {
   height: 110svh;
   background: var(--rtc-color-n-300);
   pointer-events: none;
+}
+
+input {
+  width: 8rem;
+}
+
+ul {
+  padding: 20px;
+}
+
+ul,
+li {
+  list-style: none;
 }
 
 #app {

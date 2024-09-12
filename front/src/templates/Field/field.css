@@ -22,18 +22,6 @@
   height: 2rem;
 }
 
-.sc-main-login_form-email_field-input,
-.sc-main-login_form-password_field-input {
-  width: 8rem;
-}
-
-.sc-main-register_form-email_field-input,
-.sc-main-register_form-fullname_field-input,
-.sc-main-register_form-password_field-input,
-.sc-main-register_form-username_field-input {
-  width: 12rem;
-}
-
 .sc-main-login_form-email_field-input:hover,
 .sc-main-login_form-password_field-input:hover,
 .sc-main-register_form-email_field-input:hover,

@@ -1,57 +1,52 @@
 import './events_list.css'
+import createNewButton from '../../templates/Button/button';
 import createNewInput from '../../templates/Input/input';
-
-/*
-
-<header>
-    <h1>Lista de Eventos</h1>
-    <input type="text" placeholder="Buscar eventos..." />
-</header>
-
-<main class="event-list">
-    <div class="event-card">
-        <h3>Evento 1</h3>
-        <p>Fecha: 20 de Agosto, 2024</p>
-        <p>Lugar: Ciudad de México</p>
-        <div class="event-options">
-            <button class="confirm-btn">Confirmar Asistencia</button>
-            <button class="create-btn">Crear Evento</button>
-        </div>
-    </div>
-    <div class="event-card">
-        <h3>Evento 2</h3>
-        <p>Fecha: 25 de Agosto, 2024</p>
-        <p>Lugar: Buenos Aires</p>
-        <div class="event-options">
-            <button class="confirm-btn">Confirmar Asistencia</button>
-            <button class="create-btn">Crear Evento</button>
-        </div>
-    </div>
-
-        <!-- Añadir más tarjetas de eventos aquí -->
-    
-</main>
-
-*/
+import createNewUserNav from '../../templates/Nav/user_nav';
+import dropdownMenuToggle from '../../utils/Toggle/dropdown_menu-toggle';
 
 const printEventsList = (webContentClassName) => {
     const webContent = document.querySelector(`.${webContentClassName}`);
 
     const header = document.querySelector('.sc-header');
     header.className = 'sc-events-header';
+    header.innerHTML += createNewUserNav('random_user');
+    header.innerHTML += createNewInput('sc-events-header-search', 'text', 'Buscar eventos...');
+    header.innerHTML += createNewButton('sc-events-header-create_btn', 'Crear nuevo evento');
+    dropdownMenuToggle();
 
     const main = document.querySelector('.sc-main');
-    main.className = 'sc-events-main';
+    main.className = 'sc-events-main-list';
     main.innerHTML = '';
 
-    const searchInput = createNewInput('sc-events-header-search');
-    searchInput.setAttribute('placeholder', 'Buscar eventos...');
-    header.appendChild(searchInput);
+    const eventCard = document.createElement('div');
+    eventCard.className = 'sc-events-main-card';
 
-    const mainText = document.createElement('p');
-    mainText.innerText = 'Aquí aparecería la lista de eventos';
-    main.appendChild(mainText);
+    const eventTitle = document.createElement('h3');
+    eventTitle.className = 'sc-events-main-card-title';
+    eventTitle.innerText = 'Evento 1';
+    eventCard.appendChild(eventTitle);
 
+    const eventDate = document.createElement('p');
+    eventDate.className = 'sc-events-main-card-date';
+    eventDate.innerText = '20 de Agosto, 2025';
+    eventCard.appendChild(eventDate);
+
+    const eventCenter = document.createElement('p');
+    eventCenter.className = 'sc-events-main-card-institution';
+    eventCenter.innerText = 'Escuela de Música Creativa';
+    eventCard.appendChild(eventCenter);
+
+    const eventAddress = document.createElement('p');
+    eventAddress.className = 'sc-events-main-card-address';
+    eventAddress.innerText = 'Calle de la Palma, 35, 28004 Madrid';
+    eventCard.appendChild(eventAddress);
+
+    const eventOptions = document.createElement('div');
+    eventOptions.className = 'sc-events-main-card-options';
+    eventOptions.innerHTML += createNewButton('confirm-btn', 'Confirmar Asistencia');
+
+    eventCard.appendChild(eventOptions);
+    main.appendChild(eventCard);
     return webContent;
 };
 

@@ -10,7 +10,7 @@
   --rtc-color-n-300: #0f3fa78c;
   --rtc-color-n-600: #ff7f0f;
   --rtc-color-n-700: #ffea2b;
-  --rtc-color-n-800: #b8dfff;
+  --rtc-color-n-800: #8fafca;
   --rtc-color-n-900: #e8e8e8;
 
   color-scheme: light dark;
@@ -87,10 +87,6 @@ header .sc-header-h1 {
   font-family: 'Dancing Script', sans-serif;
   font-size: 2.25rem;
   font-weight: 700;
-}
-
-header .sc-header-logo-img {
-  display: none;
 }
 
 .sc-footer {

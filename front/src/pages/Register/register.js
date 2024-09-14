@@ -2,7 +2,8 @@ import './register.css';
 import createLoginLink from '../../templates/Register/LoginLink/loginLink';
 import createNewClickListener from '../../utils/Listeners/clickListener';
 import createRegisterForm from '../../templates/Register/RegisterForm/registerForm';
-import { launchEventsPage, launchLoginPage } from '../../../main';
+import launchEventsPage from '../../utils/Launcher/Events-List/launchEvents_list';
+import launchLoginPage from '../../utils/Launcher/Login/launchLogin';
 import printLoader from '../../utils/Loader/printLoader';
 
 const printRegisterForm = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {

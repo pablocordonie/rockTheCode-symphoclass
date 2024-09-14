@@ -14,7 +14,7 @@ let state = {
 
 printLoader(app.id, footer.className, 'sc-loader-container', webContent.className);
 
-const renderApp = (currentPage) => {
+export const renderApp = (currentPage) => {
     webContent.innerHTML = '';
 
     if (currentPage === 'login') {
@@ -22,29 +22,8 @@ const renderApp = (currentPage) => {
     } else if (currentPage === 'register') {
         printRegisterForm(app.id, currentPage, footer.className, 'sc-loader-container', webContent.className);
     } else if (currentPage === 'events') {
-        printEventsList(webContent.className);
+        printEventsList(app.id, currentPage, footer.className, 'sc-loader-container', webContent.className);
     }
-};
-
-export const launchEventsPage = (currentPage) => {
-    currentPage = 'events';
-
-    console.log('Has iniciado sesión como usuario registrado!');
-    renderApp(currentPage);
-};
-
-export const launchLoginPage = (currentPage) => {
-    currentPage = 'login';
-
-    console.log('Has clickado en Iniciar sesión!');
-    renderApp(currentPage);
-};
-
-export const launchRegisterPage = (currentPage) => {
-    currentPage = 'register';
-
-    console.log('Has clickado en Registrarse!');
-    renderApp(currentPage);
 };
 
 renderApp(state.currentPage);

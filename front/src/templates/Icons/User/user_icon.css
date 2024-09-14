@@ -1,0 +1,13 @@
+.sc-header-nav-user_icon {
+  align-items: center;
+  background-color: var(--rtc-color-n-900);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+}
+
+.sc-header-nav-user_icon i {
+  color: var(--rtc-color-n-300);
+}

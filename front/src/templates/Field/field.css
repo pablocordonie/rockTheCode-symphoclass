@@ -1,5 +1,9 @@
 .sc-main-login_form-email_field-label,
 .sc-main-login_form-password_field-label,
+.sc-main-profile_form-email_field-label,
+.sc-main-profile_form-fullname_field-label,
+.sc-main-profile_form-password_field-label,
+.sc-main-profile_form-username_field-label,
 .sc-main-register_form-email_field-label,
 .sc-main-register_form-fullname_field-label,
 .sc-main-register_form-password_field-label,
@@ -11,6 +15,10 @@
 
 .sc-main-login_form-email_field-input,
 .sc-main-login_form-password_field-input,
+.sc-main-profile_form-email_field-input,
+.sc-main-profile_form-fullname_field-input,
+.sc-main-profile_form-password_field-input,
+.sc-main-profile_form-username_field-input,
 .sc-main-register_form-email_field-input,
 .sc-main-register_form-fullname_field-input,
 .sc-main-register_form-password_field-input,
@@ -24,6 +32,10 @@
 
 .sc-main-login_form-email_field-input:hover,
 .sc-main-login_form-password_field-input:hover,
+.sc-main-profile_form-email_field-input:hover,
+.sc-main-profile_form-fullname_field-input:hover,
+.sc-main-profile_form-password_field-input:hover,
+.sc-main-profile_form-username_field-input:hover,
 .sc-main-register_form-email_field-input:hover,
 .sc-main-register_form-fullname_field-input:hover,
 .sc-main-register_form-password_field-input:hover,
@@ -34,6 +46,10 @@
 @media screen and (min-width: 350px) {
   .sc-main-login_form-email_field-label,
   .sc-main-login_form-password_field-label,
+  .sc-main-profile_form-email_field-label,
+  .sc-main-profile_form-fullname_field-label,
+  .sc-main-profile_form-password_field-label,
+  .sc-main-profile_form-username_field-label,
   .sc-main-register_form-email_field-label,
   .sc-main-register_form-fullname_field-label,
   .sc-main-register_form-password_field-label,
@@ -46,6 +62,10 @@
     width: 9rem;
   }
 
+  .sc-main-profile_form-email_field-input,
+  .sc-main-profile_form-fullname_field-input,
+  .sc-main-profile_form-password_field-input,
+  .sc-main-profile_form-username_field-input,
   .sc-main-register_form-email_field-input,
   .sc-main-register_form-fullname_field-input,
   .sc-main-register_form-password_field-input,
@@ -57,6 +77,10 @@
 @media screen and (min-width: 400px) {
   .sc-main-login_form-email_field-label,
   .sc-main-login_form-password_field-label,
+  .sc-main-profile_form-email_field-label,
+  .sc-main-profile_form-fullname_field-label,
+  .sc-main-profile_form-password_field-label,
+  .sc-main-profile_form-username_field-label,
   .sc-main-register_form-email_field-label,
   .sc-main-register_form-fullname_field-label,
   .sc-main-register_form-password_field-label,
@@ -69,6 +93,10 @@
     width: 10rem;
   }
 
+  .sc-main-profile_form-email_field-input,
+  .sc-main-profile_form-fullname_field-input,
+  .sc-main-profile_form-password_field-input,
+  .sc-main-profile_form-username_field-input,
   .sc-main-register_form-email_field-input,
   .sc-main-register_form-fullname_field-input,
   .sc-main-register_form-password_field-input,
@@ -80,6 +108,10 @@
 @media screen and (min-width: 350px) and (min-height: 750px) {
   .sc-main-login_form-email_field-label,
   .sc-main-login_form-password_field-label,
+  .sc-main-profile_form-email_field-label,
+  .sc-main-profile_form-fullname_field-label,
+  .sc-main-profile_form-password_field-label,
+  .sc-main-profile_form-username_field-label,
   .sc-main-register_form-email_field-label,
   .sc-main-register_form-fullname_field-label,
   .sc-main-register_form-password_field-label,

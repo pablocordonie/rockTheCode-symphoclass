@@ -1,0 +1,66 @@
+.sc-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sc-main-profile_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 0 0.9rem;
+}
+
+@media screen and (min-width: 350px) {
+  .sc-main-profile_form {
+    padding: 0 1.5rem;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .sc-main-profile_form {
+    gap: 2rem;
+    padding: 0 2.5rem;
+  }
+}
+
+@media screen and (min-width: 350px) and (min-height: 750px) {
+  .sc-main {
+    gap: 2.5rem;
+  }
+
+  .sc-main-profile_form {
+    gap: 2.25rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .sc-main-profile_form {
+    gap: 2.5rem;
+    padding: 0 5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sc-main-profile_form {
+    padding: 0 10rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .sc-main-profile_form {
+    padding: 0 15rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .sc-main-profile_form {
+    padding: 0 25rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .sc-main-profile_form {
+    padding: 0 30rem;
+  }
+}

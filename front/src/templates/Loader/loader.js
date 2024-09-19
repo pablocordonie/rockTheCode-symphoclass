@@ -1,7 +1,7 @@
 import './loader.css'
 
-const createNewLoader = (loaderClassName) => `
-    <div class="${loaderClassName}">
+const createNewLoader = (className) => `
+    <div class="${className}">
         <div class="sc-loader"></div>
         <div class="sc-loader-text">Cargando...</div>
     </div>

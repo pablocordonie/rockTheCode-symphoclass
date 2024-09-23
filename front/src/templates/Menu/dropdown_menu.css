@@ -12,10 +12,10 @@
   z-index: 1001;
 }
 
-.sc-header-nav-dropdown_menu a {
+.sc-header-nav-dropdown_menu p {
   color: var(--rtc-color-n-100);
 }
 
-.sc-header-nav-dropdown_menu a:hover {
+.sc-header-nav-dropdown_menu p:hover {
   color: var(--rtc-color-n-800);
 }

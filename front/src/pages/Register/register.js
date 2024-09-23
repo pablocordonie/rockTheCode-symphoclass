@@ -1,10 +1,9 @@
 import './register.css';
 import createLoginLink from '../../templates/Register/LoginLink/loginLink';
-import createNewClickListener from '../../utils/Listeners/clickListener';
+import { createClickListener, createClickListenerWithLoader } from '../../utils/Listeners/Click/clickListeners';
 import createRegisterForm from '../../templates/Register/RegisterForm/registerForm';
 import launchEventsPage from '../../utils/Launcher/Events-List/launchEvents_list';
 import launchLoginPage from '../../utils/Launcher/Login/launchLogin';
-import printLoader from '../../utils/Loader/printLoader';
 
 const printRegisterForm = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {
     const main = document.querySelector('.sc-main');
@@ -23,13 +22,12 @@ const printRegisterForm = (appId, currentPage, footerClassName, loaderClassName,
     const loginButton = document.querySelector('.sc-main-login_link-button');
     const registerButton = document.querySelector('.sc-main-register_form-button');
 
-    createNewClickListener(registerButton, (ev) => {
+    createClickListenerWithLoader(registerButton, (ev) => {
         ev.preventDefault();
-        printLoader(appId, footerClassName, loaderClassName, webContentClassName);
         launchEventsPage(currentPage);
-    });
+    }, appId, footerClassName, loaderClassName, webContentClassName);
 
-    createNewClickListener(loginButton, () => {
+    createClickListener(loginButton, () => {
         const main = document.querySelector('.sc-main');
         main.innerHTML = '';
         launchLoginPage(currentPage);

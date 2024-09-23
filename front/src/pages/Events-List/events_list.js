@@ -11,9 +11,10 @@ const printEventsList = (appId, currentPage, footerClassName, loaderClassName, w
 
     const header = document.querySelector('.sc-header');
     header.className = 'sc-events-header';
-    header.innerHTML += createNewUserNav('random_user');
+    header.innerHTML += createNewUserNav(currentPage, 'random_user');
     header.innerHTML += createNewInput('sc-events-header-search', 'text', 'Buscar eventos...');
     header.innerHTML += createNewButton('sc-events-header-create_btn', 'Crear nuevo evento');
+
     dropdownMenuToggle();
     createLogoutListener(appId, currentPage, footerClassName, loaderClassName, webContentClassName);
     createProfileListener(appId, currentPage, footerClassName, loaderClassName, webContentClassName);

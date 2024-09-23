@@ -1,25 +1,25 @@
-import createMainTitle from '../../../templates/Title/title';
-import createNewClickListener from '../clickListener';
+import { createClickListenerWithLoader } from '../Click/clickListeners';
+import activateHeaderCleaner from '../../Cleaner/headerCleaner';
 import launchProfilePage from '../../Launcher/Profile/launchProfile';
-import printLoader from '../../Loader/printLoader';
 
 const createProfileListener = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {
     const editOption = document.querySelector('#edit-profile');
+    if (!editOption) {
+        return;
+    }
 
-    createNewClickListener(editOption, () => {
+    createClickListenerWithLoader(editOption, () => {
         const header = document.querySelector('.sc-events-header');
         const main = document.querySelector('.sc-events-main-list');
-        printLoader(appId, footerClassName, loaderClassName, webContentClassName);
 
         header.className = 'sc-header';
-        header.innerHTML = '';
-        header.innerHTML += createMainTitle();
+        activateHeaderCleaner(header);
 
         main.className = 'sc-main';
         main.innerHTML = '';
 
         launchProfilePage(currentPage);
-    });
+    }, appId, footerClassName, loaderClassName, webContentClassName);
 };
 
 export default createProfileListener;

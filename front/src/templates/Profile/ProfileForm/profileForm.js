@@ -8,7 +8,7 @@ const createProfileForm = (className) => `
         ${createNewField('sc-main-profile_form-fullname_field', 'fullname', 'Fullname')}
         ${createNewField('sc-main-profile_form-email_field', 'email', 'Email')}
         ${createNewField('sc-main-profile_form-password_field', 'password', 'Contraseña', 'password')}
-        ${''/* Falta incluir un campo para repetir contraseña para poder comparar entre ambos campos de contraseñas */}
+        ${createNewField('sc-main-profile_form-repeat_password_field', 'compare-password', 'Repetir Contraseña', 'password')}
     </div>
     ${createNewButton('sc-main-profile_form-button', 'Modificar Perfil')}
 `;

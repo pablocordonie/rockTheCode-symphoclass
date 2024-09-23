@@ -1,25 +1,30 @@
-import createMainTitle from '../../../templates/Title/title';
-import createNewClickListener from '../clickListener';
+import activateHeaderCleaner from '../../Cleaner/headerCleaner';
+import { createClickListenerWithLoader } from '../Click/clickListeners';
 import launchLoginPage from '../../Launcher/Login/launchLogin';
-import printLoader from '../../Loader/printLoader';
 
 const createLogoutListener = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {
     const logoutOption = document.querySelector('#logout');
 
-    createNewClickListener(logoutOption, () => {
-        const header = document.querySelector('.sc-events-header');
-        const main = document.querySelector('.sc-events-main-list');
-        printLoader(appId, footerClassName, loaderClassName, webContentClassName);
+    createClickListenerWithLoader(logoutOption, () => {
+        if (currentPage === 'events') {
+            const eventsHeader = document.querySelector('.sc-events-header');
+            const eventsMain = document.querySelector('.sc-events-main-list');
 
-        header.className = 'sc-header';
-        header.innerHTML = '';
-        header.innerHTML += createMainTitle();
+            eventsHeader.className = 'sc-header';
+            activateHeaderCleaner(eventsHeader);
 
-        main.className = 'sc-main';
-        main.innerHTML = '';
+            eventsMain.className = 'sc-main';
+            eventsMain.innerHTML = '';
+        } else {
+            const header = document.querySelector('.sc-header');
+            const main = document.querySelector('.sc-main');
+
+            activateHeaderCleaner(header);
+            main.innerHTML = '';
+        }
 
         launchLoginPage(currentPage);
-    });
+    }, appId, footerClassName, loaderClassName, webContentClassName);
 };
 
 export default createLogoutListener;

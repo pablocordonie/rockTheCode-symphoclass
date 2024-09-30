@@ -1,4 +1,4 @@
-import { createClickListener } from '../Click/clickListeners';
+import createClickListener from '../Click/createClickListener';
 
 const closeWarningListener = () => {
     const notification = document.querySelector('.sc-warning');

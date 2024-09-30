@@ -1,24 +1,20 @@
 import './profile.css';
-import activateHeaderCleaner from '../../utils/Cleaner/headerCleaner';
-import { createClickListenerWithLoader } from '../../utils/Listeners/Click/clickListeners';
+import createClickListener from '../../utils/Listeners/Click/createClickListener';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
-import createMainTitle from '../../templates/Title/title';
 import createNewUserNav from '../../templates/Nav/user_nav';
 import createProfileForm from '../../templates/Profile/ProfileForm/profileForm';
-import createProfileListener from '../../utils/Listeners/Menu/profileListener';
 import dropdownMenuToggle from '../../utils/Toggle/dropdown_menu-toggle';
-import launchEventsPage from '../../utils/Launcher/Events-List/launchEvents_list';
+import launchEventsPage from '../../utils/Launcher/Events-List/launchEventsList';
 
-const printProfileForm = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {
-
+const printProfileForm = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
     const header = document.querySelector('.sc-header');
     header.innerHTML += createNewUserNav(currentPage, 'random_user');
 
-    dropdownMenuToggle();
-    createLogoutListener(appId, currentPage, footerClassName, loaderClassName, webContentClassName);
-    createProfileListener(appId, currentPage, footerClassName, loaderClassName, webContentClassName);
+    dropdownMenuToggle(HTMLElements);
+    createLogoutListener(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
 
     const main = document.querySelector('.sc-main');
+    main.innerHTML = '';
 
     const form = document.createElement('form');
     form.classList.add('sc-main-profile_form');
@@ -29,14 +25,17 @@ const printProfileForm = (appId, currentPage, footerClassName, loaderClassName, 
 
     main.appendChild(form);
 
-    const updateButton = document.querySelector('.sc-main-profile_form-button');
+    const updateButton = {
+        callback: (event) => {
+            event.preventDefault();
+            HTMLElements.push(updateButton);
 
-    createClickListenerWithLoader(updateButton, (event) => {
-        event.preventDefault();
+            launchEventsPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+        },
+        querySelector: document.querySelector('.sc-main-profile_form-button')
+    }
 
-        activateHeaderCleaner(header);
-        launchEventsPage(currentPage);
-    }, appId, footerClassName, loaderClassName, webContentClassName);
+    createClickListener(updateButton.querySelector, updateButton.callback);
 };
 
 export default printProfileForm;

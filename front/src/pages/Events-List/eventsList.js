@@ -1,4 +1,4 @@
-import './events_list.css'
+import './eventsList.css';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener'
 import createProfileListener from '../../utils/Listeners/Menu/profileListener';
 import createNewButton from '../../templates/Button/button';
@@ -6,7 +6,7 @@ import createNewInput from '../../templates/Input/input';
 import createNewUserNav from '../../templates/Nav/user_nav';
 import dropdownMenuToggle from '../../utils/Toggle/dropdown_menu-toggle';
 
-const printEventsList = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {
+const printEventsList = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
     const webContent = document.querySelector(`.${webContentClassName}`);
 
     const header = document.querySelector('.sc-header');
@@ -15,9 +15,9 @@ const printEventsList = (appId, currentPage, footerClassName, loaderClassName, w
     header.innerHTML += createNewInput('sc-events-header-search', 'text', 'Buscar eventos...');
     header.innerHTML += createNewButton('sc-events-header-create_btn', 'Crear nuevo evento');
 
-    dropdownMenuToggle();
-    createLogoutListener(appId, currentPage, footerClassName, loaderClassName, webContentClassName);
-    createProfileListener(appId, currentPage, footerClassName, loaderClassName, webContentClassName);
+    dropdownMenuToggle(HTMLElements);
+    createLogoutListener(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+    createProfileListener(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
 
     const main = document.querySelector('.sc-main');
     main.className = 'sc-events-main-list';

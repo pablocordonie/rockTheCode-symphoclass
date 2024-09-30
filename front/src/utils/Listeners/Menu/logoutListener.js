@@ -1,30 +1,36 @@
-import activateHeaderCleaner from '../../Cleaner/headerCleaner';
-import { createClickListenerWithLoader } from '../Click/clickListeners';
+import createClickListener from '../Click/createClickListener';
+import createMainTitle from '../../../templates/Title/title';
 import launchLoginPage from '../../Launcher/Login/launchLogin';
 
-const createLogoutListener = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {
-    const logoutOption = document.querySelector('#logout');
+const createLogoutListener = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+    const logoutOption = {
+        callback: () => {
+            HTMLElements.push(logoutOption);
 
-    createClickListenerWithLoader(logoutOption, () => {
-        if (currentPage === 'events') {
-            const eventsHeader = document.querySelector('.sc-events-header');
-            const eventsMain = document.querySelector('.sc-events-main-list');
+            if (currentPage === 'events') {
+                const eventsHeader = document.querySelector('.sc-events-header');
+                eventsHeader.className = 'sc-header';
+                eventsHeader.innerHTML = '';
+                eventsHeader.innerHTML += createMainTitle();
 
-            eventsHeader.className = 'sc-header';
-            activateHeaderCleaner(eventsHeader);
+                const eventsMain = document.querySelector('.sc-events-main-list');
+                eventsMain.className = 'sc-main';
+                eventsMain.innerHTML = '';
+            } else {
+                const header = document.querySelector('.sc-header');
+                header.innerHTML = '';
+                header.innerHTML += createMainTitle();
 
-            eventsMain.className = 'sc-main';
-            eventsMain.innerHTML = '';
-        } else {
-            const header = document.querySelector('.sc-header');
-            const main = document.querySelector('.sc-main');
+                const main = document.querySelector('.sc-main');
+                main.innerHTML = '';
+            }
 
-            activateHeaderCleaner(header);
-            main.innerHTML = '';
-        }
+            launchLoginPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+        },
+        querySelector: document.querySelector('#logout')
+    };
 
-        launchLoginPage(currentPage);
-    }, appId, footerClassName, loaderClassName, webContentClassName);
+    createClickListener(logoutOption.querySelector, logoutOption.callback);
 };
 
 export default createLogoutListener;

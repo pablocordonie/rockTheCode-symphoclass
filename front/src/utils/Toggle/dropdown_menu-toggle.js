@@ -1,29 +1,22 @@
-import { createClickListener } from '../Listeners/Click/clickListeners';
+import createClickListener from '../Listeners/Click/createClickListener';
 
-const dropdownMenuToggle = () => {
+const dropdownMenuToggle = (HTMLElements) => {
     const dropdownMenu = document.querySelector('.sc-header-nav-dropdown_menu');
-    const userOptions = document.querySelector('.sc-header-nav-user_options');
-
     dropdownMenu.style.display = 'none';
 
+    const userOptions = {
+        callback: () => {
+            HTMLElements.push(userOptions);
+            if (dropdownMenu.style.display === 'flex') {
+                dropdownMenu.style.display = 'none';
+            } else if (dropdownMenu.style.display === 'none') {
+                dropdownMenu.style.display = 'flex';
+            }
+        },
+        querySelector: document.querySelector('.sc-header-nav-user_options')
+    };
     // Listener para mostrar o esconder el menú desplegable
-    createClickListener(userOptions, () => {
-        if (dropdownMenu.style.display === 'flex') {
-            dropdownMenu.style.display = 'none';
-        } else if (dropdownMenu.style.display === 'none') {
-            dropdownMenu.style.display = 'flex';
-        }
-    });
-
-    // Listener para cerrar el menú desplegable si se hace clic fuera de él
-    createClickListener(window, (event) => {
-        console.log(event.target);
-        if (!userOptions.contains(event.target) && dropdownMenu.style.display === 'flex') {
-            dropdownMenu.style.display = 'none';
-        }
-
-        event.stopPropagation();
-    });
+    createClickListener(userOptions.querySelector, userOptions.callback);
 };
 
 export default dropdownMenuToggle;

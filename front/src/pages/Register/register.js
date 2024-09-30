@@ -1,12 +1,13 @@
 import './register.css';
 import createLoginLink from '../../templates/Register/LoginLink/loginLink';
-import { createClickListener, createClickListenerWithLoader } from '../../utils/Listeners/Click/clickListeners';
+import createClickListener from '../../utils/Listeners/Click/createClickListener';
 import createRegisterForm from '../../templates/Register/RegisterForm/registerForm';
-import launchEventsPage from '../../utils/Launcher/Events-List/launchEvents_list';
+import launchEventsPage from '../../utils/Launcher/Events-List/launchEventsList';
 import launchLoginPage from '../../utils/Launcher/Login/launchLogin';
 
-const printRegisterForm = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {
+const printRegisterForm = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
     const main = document.querySelector('.sc-main');
+    main.innerHTML = '';
 
     const form = document.createElement('form');
     form.classList.add('sc-main-register_form');
@@ -19,19 +20,29 @@ const printRegisterForm = (appId, currentPage, footerClassName, loaderClassName,
 
     main.innerHTML += `${createLoginLink('sc-main-login_link', '¿Ya estás registrado en The SymphoClass?')}`;
 
-    const loginButton = document.querySelector('.sc-main-login_link-button');
-    const registerButton = document.querySelector('.sc-main-register_form-button');
+    const loginButton = {
+        callback: () => {
+            const main = document.querySelector('.sc-main');
+            main.innerHTML = '';
+            HTMLElements.push(loginButton);
 
-    createClickListenerWithLoader(registerButton, (ev) => {
-        ev.preventDefault();
-        launchEventsPage(currentPage);
-    }, appId, footerClassName, loaderClassName, webContentClassName);
+            launchLoginPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+        },
+        querySelector: document.querySelector('.sc-main-login_link-button')
+    };
+    createClickListener(loginButton.querySelector, loginButton.callback);
 
-    createClickListener(loginButton, () => {
-        const main = document.querySelector('.sc-main');
-        main.innerHTML = '';
-        launchLoginPage(currentPage);
-    });
+    const registerButton = {
+        callback: (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            HTMLElements.push(registerButton);
+
+            launchEventsPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+        },
+        querySelector: document.querySelector('.sc-main-register_form-button')
+    };
+    createClickListener(registerButton.querySelector, registerButton.callback);
 
     return main;
 };

@@ -1,25 +1,30 @@
-import { createClickListenerWithLoader } from '../Click/clickListeners';
-import activateHeaderCleaner from '../../Cleaner/headerCleaner';
+import createClickListener from '../Click/createClickListener';
+import createMainTitle from '../../../templates/Title/title';
 import launchProfilePage from '../../Launcher/Profile/launchProfile';
 
-const createProfileListener = (appId, currentPage, footerClassName, loaderClassName, webContentClassName) => {
-    const editOption = document.querySelector('#edit-profile');
-    if (!editOption) {
+const createProfileListener = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+    const editOption = {
+        callback: () => {
+            HTMLElements.push(editOption);
+
+            const header = document.querySelector('.sc-events-header');
+            header.className = 'sc-header';
+            header.innerHTML = '';
+            header.innerHTML += createMainTitle();
+
+            const main = document.querySelector('.sc-events-main-list');
+            main.className = 'sc-main';
+            main.innerHTML = '';
+
+            launchProfilePage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+        },
+        querySelector: document.querySelector('#edit-profile')
+    };
+    if (!editOption.querySelector) {
         return;
     }
 
-    createClickListenerWithLoader(editOption, () => {
-        const header = document.querySelector('.sc-events-header');
-        const main = document.querySelector('.sc-events-main-list');
-
-        header.className = 'sc-header';
-        activateHeaderCleaner(header);
-
-        main.className = 'sc-main';
-        main.innerHTML = '';
-
-        launchProfilePage(currentPage);
-    }, appId, footerClassName, loaderClassName, webContentClassName);
+    createClickListener(editOption.querySelector, editOption.callback);
 };
 
 export default createProfileListener;

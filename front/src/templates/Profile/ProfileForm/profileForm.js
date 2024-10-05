@@ -1,5 +1,5 @@
 import './profileForm.css';
-import createNewButton from '../../Button/button';
+import createTagTemplate from '../../Tag/tag';
 import createNewField from '../../Field/field';
 
 const createProfileForm = (className) => `
@@ -10,7 +10,7 @@ const createProfileForm = (className) => `
         ${createNewField('sc-main-profile_form-password_field', 'password', 'Contraseña', 'password')}
         ${createNewField('sc-main-profile_form-repeat_password_field', 'compare-password', 'Repetir Contraseña', 'password')}
     </div>
-    ${createNewButton('sc-main-profile_form-button', 'Modificar Perfil')}
+    ${createTagTemplate('button', 'sc-main-profile_form-button', 'Modificar Perfil')}
 `;
 
 export default createProfileForm;

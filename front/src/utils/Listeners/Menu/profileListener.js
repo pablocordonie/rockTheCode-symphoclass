@@ -1,3 +1,4 @@
+import activateContentCleaner from '../../Cleaner/contentCleaner';
 import createClickListener from '../Click/createClickListener';
 import createMainTitle from '../../../templates/Title/title';
 import launchProfilePage from '../../Launcher/Profile/launchProfile';
@@ -9,21 +10,17 @@ const createProfileListener = (appId, currentPage, footerClassName, HTMLElements
 
             const header = document.querySelector('.sc-events-header');
             header.className = 'sc-header';
-            header.innerHTML = '';
+            activateContentCleaner(header);
             header.innerHTML += createMainTitle();
 
             const main = document.querySelector('.sc-events-main-list');
             main.className = 'sc-main';
-            main.innerHTML = '';
+            activateContentCleaner(main);
 
             launchProfilePage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
         querySelector: document.querySelector('#edit-profile')
     };
-    if (!editOption.querySelector) {
-        return;
-    }
-
     createClickListener(editOption.querySelector, editOption.callback);
 };
 

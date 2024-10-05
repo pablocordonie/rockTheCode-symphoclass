@@ -1,6 +1,6 @@
 import './warning.css';
 
-const createNewWarningWindow = () => `
+const createWarningWindow = () => `
     <div class='sc-warning'>
         <div class='sc-warning-message'>
             <span class='sc-warning-message-close_X' id='close-X'>
@@ -16,4 +16,4 @@ const createNewWarningWindow = () => `
     </div>
 `;
 
-export default createNewWarningWindow;
+export default createWarningWindow;

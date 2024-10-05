@@ -1,9 +1,9 @@
-import './user_nav.css';
+import './userNavbar.css';
 import dropdownBars from '../Icons/Bars/bars';
 import dropdownMenu from '../Menu/dropdown_menu';
 import userIcon from '../Icons/User/user_icon';
 
-const createNewUserNav = (currentPage, userName) => `
+const createUserNavbar = (currentPage, userName) => `
     <nav class="sc-header-nav">
         <div class="sc-header-nav-user_info">
             ${userIcon()}
@@ -14,4 +14,4 @@ const createNewUserNav = (currentPage, userName) => `
     </nav>
 `;
 
-export default createNewUserNav;
+export default createUserNavbar;

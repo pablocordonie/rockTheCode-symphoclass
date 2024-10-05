@@ -1,12 +1,12 @@
 import './loginLink.css';
-import createNewButton from '../../Button/button';
+import createTagTemplate from '../../../Tag/tag';
 
 const createLoginLink = (className, text) => `
     <div class="${className}">
         <p class="${className}-message">
             ${text}
         </p>
-        ${createNewButton(`${className}-button`, 'Iniciar sesión')}
+        ${createTagTemplate('button', `${className}-button`, 'Iniciar sesión')}
     </div>
 `;
 

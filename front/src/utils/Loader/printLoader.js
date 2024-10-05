@@ -1,4 +1,4 @@
-import createNewLoader from '../../templates/Loader/loader';
+import createLoader from '../../templates/Loader/loader';
 import disableLoader from '../Loader/disableLoader';
 
 const printLoader = (appId, footerClassName, loaderClassName, webContentClassName) => {
@@ -9,7 +9,7 @@ const printLoader = (appId, footerClassName, loaderClassName, webContentClassNam
 
     app.style.margin = '0';
     footer.style.display = 'none';
-    loader ? loader.style.display = 'flex' : app.innerHTML += createNewLoader(loaderClassName);
+    loader ? loader.style.display = 'flex' : app.innerHTML += createLoader(loaderClassName);
     webContent.style.display = 'none';
 
     setTimeout(function () {

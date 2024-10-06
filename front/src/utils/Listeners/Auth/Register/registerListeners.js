@@ -10,6 +10,7 @@ const createRegisterPageListeners = (appId, currentPage, footerClassName, HTMLEl
 
             const main = document.querySelector('.sc-main');
             activateContentCleaner(main);
+
             HTMLElements.push(loginButtonFromRegisterPage);
 
             launchLoginPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);

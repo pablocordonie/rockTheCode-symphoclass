@@ -1,6 +1,6 @@
 import activateContentCleaner from '../../Cleaner/contentCleaner';
+import activateHeaderCleaner from '../../Cleaner/headerCleaner';
 import createClickListener from '../Click/createClickListener';
-import createMainTitle from '../../../templates/Title/title';
 import launchProfilePage from '../../Launcher/Profile/launchProfile';
 
 const createProfileListener = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
@@ -10,8 +10,7 @@ const createProfileListener = (appId, currentPage, footerClassName, HTMLElements
 
             const header = document.querySelector('.sc-events-header');
             header.className = 'sc-header';
-            activateContentCleaner(header);
-            header.innerHTML += createMainTitle();
+            activateHeaderCleaner(header);
 
             const main = document.querySelector('.sc-events-main-list');
             main.className = 'sc-main';

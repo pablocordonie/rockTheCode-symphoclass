@@ -1,9 +1,10 @@
 import './profile.css';
 import activateContentCleaner from '../../utils/Cleaner/contentCleaner';
+import activateHeaderCleaner from '../../utils/Cleaner/headerCleaner';
 import createClickListener from '../../utils/Listeners/Click/createClickListener';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
-import createUserNavbar from '../../templates/Navbar/userNavbar';
 import createProfileForm from '../../templates/Profile/ProfileForm/profileForm';
+import createUserNavbar from '../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../utils/Toggle/dropdown_menu-toggle';
 import launchEventsPage from '../../utils/Launcher/Events-List/launchEventsList';
 
@@ -30,6 +31,11 @@ const printProfileForm = (appId, currentPage, footerClassName, HTMLElements, loa
         callback: (event) => {
             event.preventDefault();
             HTMLElements.push(updateButton);
+
+            const header = document.querySelector('.sc-header');
+            activateHeaderCleaner(header);
+
+            activateContentCleaner(main);
 
             launchEventsPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },

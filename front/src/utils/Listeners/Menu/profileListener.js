@@ -3,9 +3,10 @@ import activateHeaderCleaner from '../../Cleaner/headerCleaner';
 import createClickListener from '../Click/createClickListener';
 import launchProfilePage from '../../Launcher/Profile/launchProfile';
 
-const createProfileListener = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+const createProfileListener = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
     const editOption = {
         callback: () => {
+            bodyHeight = 110;
             HTMLElements.push(editOption);
 
             const header = document.querySelector('.sc-events-header');
@@ -16,7 +17,7 @@ const createProfileListener = (appId, currentPage, footerClassName, HTMLElements
             main.className = 'sc-main';
             activateContentCleaner(main);
 
-            launchProfilePage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+            launchProfilePage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
         querySelector: document.querySelector('#edit-profile')
     };

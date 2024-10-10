@@ -1,5 +1,6 @@
 import createLoader from '../../templates/Loader/loader';
 import disableLoader from '../Loader/disableLoader';
+export const mainContainers = [];
 
 const printLoader = (appId, footerClassName, loaderClassName, webContentClassName) => {
     const app = document.querySelector(`#${appId}`);
@@ -7,13 +8,13 @@ const printLoader = (appId, footerClassName, loaderClassName, webContentClassNam
     const loader = document.querySelector(`.${loaderClassName}`);
     const webContent = document.querySelector(`.${webContentClassName}`);
 
-    app.style.margin = '0';
     footer.style.display = 'none';
     loader ? loader.style.display = 'flex' : app.innerHTML += createLoader(loaderClassName);
     webContent.style.display = 'none';
+    webContent.style.margin = '0';
 
     setTimeout(function () {
-        disableLoader(appId, footerClassName, loaderClassName, webContentClassName);
+        disableLoader(footerClassName, loaderClassName, webContentClassName);
     }, 2000);
 };
 

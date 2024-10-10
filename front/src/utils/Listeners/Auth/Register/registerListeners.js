@@ -3,7 +3,7 @@ import createClickListener from '../../Click/createClickListener';
 import launchEventsPage from '../../../Launcher/Events-List/launchEventsList';
 import launchLoginPage from '../../../Launcher/Login/launchLogin';
 
-const createRegisterPageListeners = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+const createRegisterPageListeners = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
     const loginButtonFromRegisterPage = {
         callback: (event) => {
             event.preventDefault();
@@ -13,7 +13,7 @@ const createRegisterPageListeners = (appId, currentPage, footerClassName, HTMLEl
 
             HTMLElements.push(loginButtonFromRegisterPage);
 
-            launchLoginPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+            launchLoginPage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
         querySelector: document.querySelector(`.sc-main-login_link-button`)
     };
@@ -25,7 +25,7 @@ const createRegisterPageListeners = (appId, currentPage, footerClassName, HTMLEl
             event.stopPropagation();
             HTMLElements.push(registerButtonFromRegisterPage);
 
-            launchEventsPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+            launchEventsPage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
         querySelector: document.querySelector(`.sc-main-${currentPage}_form-button`)
     };

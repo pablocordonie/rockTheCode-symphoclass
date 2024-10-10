@@ -2,7 +2,7 @@ import activateListenersCleaner from '../../Cleaner/listenersCleaner';
 import printLoader from '../../Loader/printLoader';
 import { renderApp } from '../../../../main';
 
-const launchLoginPage = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+const launchLoginPage = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
     if (currentPage !== 'register') {
         printLoader(appId, footerClassName, loaderClassName, webContentClassName);
     }
@@ -10,7 +10,7 @@ const launchLoginPage = (appId, currentPage, footerClassName, HTMLElements, load
     HTMLElements.length >= 1 ? activateListenersCleaner(HTMLElements) : console.log('No hay elementos de HTML por eliminar');
 
     currentPage = 'login';
-    renderApp(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+    renderApp(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
 };
 
 export default launchLoginPage;

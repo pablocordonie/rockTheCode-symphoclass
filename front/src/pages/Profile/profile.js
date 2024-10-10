@@ -8,7 +8,7 @@ import createUserNavbar from '../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../utils/Toggle/dropdown_menu-toggle';
 import launchEventsPage from '../../utils/Launcher/Events-List/launchEventsList';
 
-const printProfileForm = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+const printProfileForm = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
     const header = document.querySelector('.sc-header');
     header.innerHTML += createUserNavbar(currentPage, 'random_user');
 
@@ -37,12 +37,14 @@ const printProfileForm = (appId, currentPage, footerClassName, HTMLElements, loa
 
             activateContentCleaner(main);
 
-            launchEventsPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+            launchEventsPage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
         querySelector: document.querySelector('.sc-main-profile_form-button')
     }
 
     createClickListener(updateButton.querySelector, updateButton.callback);
+
+    return main;
 };
 
 export default printProfileForm;

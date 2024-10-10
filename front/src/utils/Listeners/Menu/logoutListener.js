@@ -3,9 +3,10 @@ import activateHeaderCleaner from '../../Cleaner/headerCleaner'
 import createClickListener from '../Click/createClickListener';
 import launchLoginPage from '../../Launcher/Login/launchLogin';
 
-const createLogoutListener = (appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+const createLogoutListener = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
     const logoutOption = {
         callback: () => {
+            bodyHeight = 110;
             HTMLElements.push(logoutOption);
 
             if (currentPage === 'events') {
@@ -24,7 +25,7 @@ const createLogoutListener = (appId, currentPage, footerClassName, HTMLElements,
                 activateContentCleaner(main);
             }
 
-            launchLoginPage(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+            launchLoginPage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
         querySelector: document.querySelector('#logout')
     };

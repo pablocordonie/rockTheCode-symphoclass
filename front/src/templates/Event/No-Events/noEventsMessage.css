@@ -1,0 +1,10 @@
+.sc-events-main-no_events {
+  padding-top: 2rem;
+}
+
+.sc-events-main-no_events-p {
+  color: var(--rtc-color-n-700);
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+}

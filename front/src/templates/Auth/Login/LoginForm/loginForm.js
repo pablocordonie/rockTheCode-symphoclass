@@ -9,7 +9,7 @@ const createLoginFormContent = (className, formClassName) => `
         ${createNewField(`${formClassName}-password_field`, 'password', 'Contraseña', 'password')}
     </div>
     ${createTagTemplate('button', `${formClassName}-button`, 'Enviar')}
-    ${createRegisterLink('sc-main-register_link', '¿No estás registrado en The SymphoClass?')};
+    ${createRegisterLink('sc-main-register_link', '¿No estás registrado en The SymphoClass?')}
 `;
 
 export default createLoginFormContent;

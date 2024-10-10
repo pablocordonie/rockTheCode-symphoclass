@@ -13,6 +13,8 @@
   --rtc-color-n-800: #8fafca;
   --rtc-color-n-900: #e8e8e8;
 
+  --pseudo-height: 110svh;
+
   color-scheme: light dark;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
@@ -27,17 +29,17 @@ body {
   background: url('https://res.cloudinary.com/ddd5cycm4/image/upload/v1721754875/trumpetist-coach_t5g24a.jpg')
     no-repeat center center fixed;
   background-size: cover;
+  min-height: var(--pseudo-height);
 }
 
 body::after {
+  background: var(--rtc-color-n-300);
   content: '';
+  height: var(--pseudo-height);
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
-  height: 110svh;
-  background: var(--rtc-color-n-300);
-  pointer-events: none;
+  z-index: 0;
 }
 
 input {
@@ -56,15 +58,16 @@ li {
 #app {
   display: flex;
   flex-direction: column;
+  height: var(--pseudo-height);
   justify-content: space-between;
-  margin: 0 1rem;
-  height: 110svh;
 }
 
 .sc {
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 2.5rem;
+  margin: 0 1rem;
   padding-top: 5rem;
   z-index: 1;
 }
@@ -90,6 +93,7 @@ header .sc-header-h1 {
 }
 
 .sc-footer {
+  padding-left: 0.5rem;
   z-index: 1;
 }
 

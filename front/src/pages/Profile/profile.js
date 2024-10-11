@@ -13,7 +13,7 @@ const printProfileForm = (appId, bodyHeight, currentPage, footerClassName, HTMLE
     header.innerHTML += createUserNavbar(currentPage, 'random_user');
 
     dropdownMenuToggle(HTMLElements);
-    createLogoutListener(appId, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+    createLogoutListener(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
 
     const main = document.querySelector('.sc-main');
     activateContentCleaner(main);

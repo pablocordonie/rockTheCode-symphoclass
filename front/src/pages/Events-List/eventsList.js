@@ -15,15 +15,14 @@ const printEventsList = (appId, bodyHeight, currentPage, footerClassName, HTMLEl
     header.innerHTML += createNewInput('sc-events-header-search', 'text', 'Buscar eventos...');
     header.innerHTML += createTagTemplate('button', 'sc-events-header-create_btn', 'Crear nuevo evento');
 
-    dropdownMenuToggle(HTMLElements);
-    createLogoutListener(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
-    createProfileListener(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
-
     const main = document.querySelector('.sc-main');
     main.className = 'sc-events-main-list';
     activateContentCleaner(main);
-
     createEventsList(bodyHeight, main);
+
+    dropdownMenuToggle(HTMLElements);
+    createLogoutListener(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+    createProfileListener(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
 
     return main;
 };

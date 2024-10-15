@@ -1,6 +1,6 @@
 import activateContentCleaner from '../../Cleaner/contentCleaner';
 import activateHeaderCleaner from '../../Cleaner/headerCleaner'
-import createClickListener from '../Click/createClickListener';
+import createNewListener from '../Event-Listener/createNewListener';
 import launchLoginPage from '../../Launcher/Login/launchLogin';
 import recalculateBodyHeight from '../../Height/recalculateBodyHeight';
 
@@ -30,9 +30,11 @@ const createLogoutListener = (appId, bodyHeight, currentPage, footerClassName, H
 
             launchLoginPage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
-        querySelector: document.querySelector('#logout')
+        querySelector: document.querySelector('#logout'),
+        type: 'click'
     };
-    createClickListener(logoutOption.querySelector, logoutOption.callback);
+    const { callback, querySelector, type } = logoutOption;
+    createNewListener(querySelector, callback, type);
 };
 
 export default createLogoutListener;

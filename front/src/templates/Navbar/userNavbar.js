@@ -1,7 +1,7 @@
 import './userNavbar.css';
 import dropdownBars from '../Icons/Bars/bars';
-import dropdownMenu from '../Menu/dropdown_menu';
-import userIcon from '../Icons/User/user_icon';
+import dropdownMenu from '../Menu/dropdownMenu';
+import userIcon from '../Icons/User/userIcon';
 
 const createUserNavbar = (currentPage, userName) => `
     <nav class="sc-header-nav">

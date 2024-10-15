@@ -1,9 +1,8 @@
 import createEventCard from '../Card/eventCard';
 import createNoEventsMessage from '../No-Events/noEventsMessage';
 import recalculateBodyHeight from '../../../utils/Height/recalculateBodyHeight';
-import testCards from '../../../../testCards';
 
-const createEventsList = (bodyHeight, main) => {
+const createEventsList = (bodyHeight, main, testCards) => {
     const cardHeightInSvh = 40;
 
     if (!testCards.length) {

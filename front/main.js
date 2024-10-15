@@ -1,5 +1,5 @@
 import './style.css'
-import printEventsList from './src/pages/Events-List/eventsList';
+import printEventsList from './src/pages/Events-List/events';
 import printLoader from './src/utils/Loader/printLoader';
 import printAuthForm from './src/pages/Auth/auth';
 import printProfileForm from './src/pages/Profile/profile';

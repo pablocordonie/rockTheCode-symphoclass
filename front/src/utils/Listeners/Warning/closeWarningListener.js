@@ -1,4 +1,4 @@
-import createClickListener from '../Click/createClickListener';
+import createNewListener from '../Event-Listener/createNewListener';
 
 const closeWarningListener = () => {
     const notification = document.querySelector('.sc-warning');
@@ -6,16 +6,16 @@ const closeWarningListener = () => {
     // Cerrar la notificación al hacer clic en la "X"
     const closeX = document.querySelector('#close-X');
 
-    createClickListener(closeX, () => {
+    createNewListener(closeX, () => {
         notification.style.display = 'none';
-    });
+    }, 'click');
 
     // Cerrar la notificación al hacer clic en el botón "Cerrar"
     const closeButton = document.querySelector('#close-btn');
 
-    createClickListener(closeButton, () => {
+    createNewListener(closeButton, () => {
         notification.style.display = 'none';
-    });
+    }, 'click');
 };
 
 export default closeWarningListener;

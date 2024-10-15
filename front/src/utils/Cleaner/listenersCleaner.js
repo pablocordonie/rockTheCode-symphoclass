@@ -1,8 +1,8 @@
-import removeClickListener from '../Listeners/Click/removeClickListener';
+import removeListener from '../Listeners/Event-Listener/removeListener';
 
 const activateListenersCleaner = (HTMLElements) => {
     for (const HTMLElement of HTMLElements) {
-        removeClickListener(HTMLElement.querySelector, HTMLElement.callback);
+        removeListener(HTMLElement.querySelector, HTMLElement.callback);
     }
     HTMLElements.splice(0);
     return HTMLElements;

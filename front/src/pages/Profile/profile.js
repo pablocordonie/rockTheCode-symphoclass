@@ -1,11 +1,12 @@
 import './profile.css';
 import activateContentCleaner from '../../utils/Cleaner/contentCleaner';
 import activateHeaderCleaner from '../../utils/Cleaner/headerCleaner';
-import createClickListener from '../../utils/Listeners/Click/createClickListener';
+import createNewListener from '../../utils/Listeners/Event-Listener/createNewListener';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
+import createNewForm from '../../templates/Form/form';
 import createProfileForm from '../../templates/Profile/ProfileForm/profileForm';
 import createUserNavbar from '../../templates/Navbar/userNavbar';
-import dropdownMenuToggle from '../../utils/Toggle/dropdown_menu-toggle';
+import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import launchEventsPage from '../../utils/Launcher/Events-List/launchEventsList';
 
 const printProfileForm = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
@@ -17,15 +18,7 @@ const printProfileForm = (appId, bodyHeight, currentPage, footerClassName, HTMLE
 
     const main = document.querySelector('.sc-main');
     activateContentCleaner(main);
-
-    const form = document.createElement('form');
-    form.classList.add('sc-main-profile_form');
-
-    form.innerHTML += `
-        ${createProfileForm('sc-main-profile_form-fields')}
-    `;
-
-    main.appendChild(form);
+    main.innerHTML += createNewForm(`sc-main-${currentPage}_form`, `${createProfileForm(`sc-main-${currentPage}_form-fields`)}`);
 
     const updateButton = {
         callback: (event) => {
@@ -39,10 +32,11 @@ const printProfileForm = (appId, bodyHeight, currentPage, footerClassName, HTMLE
 
             launchEventsPage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
-        querySelector: document.querySelector('.sc-main-profile_form-button')
+        querySelector: document.querySelector(`.sc-main-${currentPage}_form-button`),
+        type: 'click'
     }
-
-    createClickListener(updateButton.querySelector, updateButton.callback);
+    const { callback, querySelector, type } = updateButton;
+    createNewListener(querySelector, callback, type);
 
     return main;
 };

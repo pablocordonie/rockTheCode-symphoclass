@@ -1,5 +1,5 @@
 import activateContentCleaner from '../../../Cleaner/contentCleaner';
-import createClickListener from '../../Click/createClickListener';
+import createNewListener from '../../Event-Listener/createNewListener';
 import launchEventsPage from '../../../Launcher/Events-List/launchEventsList';
 import launchLoginPage from '../../../Launcher/Login/launchLogin';
 
@@ -15,9 +15,10 @@ const createRegisterPageListeners = (appId, bodyHeight, currentPage, footerClass
 
             launchLoginPage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
-        querySelector: document.querySelector(`.sc-main-login_link-button`)
+        querySelector: document.querySelector(`.sc-main-login_link-button`),
+        type: 'click'
     };
-    createClickListener(loginButtonFromRegisterPage.querySelector, loginButtonFromRegisterPage.callback);
+    createNewListener(loginButtonFromRegisterPage.querySelector, loginButtonFromRegisterPage.callback, loginButtonFromRegisterPage.type);
 
     const registerButtonFromRegisterPage = {
         callback: (event) => {
@@ -27,9 +28,10 @@ const createRegisterPageListeners = (appId, bodyHeight, currentPage, footerClass
 
             launchEventsPage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
-        querySelector: document.querySelector(`.sc-main-${currentPage}_form-button`)
+        querySelector: document.querySelector(`.sc-main-${currentPage}_form-button`),
+        type: 'click'
     };
-    createClickListener(registerButtonFromRegisterPage.querySelector, registerButtonFromRegisterPage.callback);
+    createNewListener(registerButtonFromRegisterPage.querySelector, registerButtonFromRegisterPage.callback, registerButtonFromRegisterPage.type);
 };
 
 export default createRegisterPageListeners;

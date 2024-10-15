@@ -1,4 +1,4 @@
-import './user_icon.css';
+import './userIcon.css';
 
 const userIcon = () => `
     <div class="sc-header-nav-user_icon">

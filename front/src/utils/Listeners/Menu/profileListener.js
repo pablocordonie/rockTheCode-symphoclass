@@ -1,6 +1,6 @@
 import activateContentCleaner from '../../Cleaner/contentCleaner';
 import activateHeaderCleaner from '../../Cleaner/headerCleaner';
-import createClickListener from '../Click/createClickListener';
+import createNewListener from '../Event-Listener/createNewListener';
 import launchProfilePage from '../../Launcher/Profile/launchProfile';
 import recalculateBodyHeight from '../../Height/recalculateBodyHeight';
 
@@ -22,9 +22,11 @@ const createProfileListener = (appId, bodyHeight, currentPage, footerClassName, 
 
             launchProfilePage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
-        querySelector: document.querySelector('#edit-profile')
+        querySelector: document.querySelector('#edit-profile'),
+        type: 'click'
     };
-    createClickListener(editOption.querySelector, editOption.callback);
+    const { callback, querySelector, type } = editOption;
+    createNewListener(querySelector, callback, type);
 };
 
 export default createProfileListener;

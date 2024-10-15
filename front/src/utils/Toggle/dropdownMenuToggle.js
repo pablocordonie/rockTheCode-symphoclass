@@ -1,4 +1,4 @@
-import createClickListener from '../Listeners/Click/createClickListener';
+import createNewListener from '../Listeners/Event-Listener/createNewListener';
 
 const dropdownMenuToggle = (HTMLElements) => {
     const dropdownMenu = document.querySelector('.sc-header-nav-dropdown_menu');
@@ -13,10 +13,12 @@ const dropdownMenuToggle = (HTMLElements) => {
                 dropdownMenu.style.display = 'flex';
             }
         },
-        querySelector: document.querySelector('.sc-header-nav-user_options')
+        querySelector: document.querySelector('.sc-header-nav-user_options'),
+        type: 'click'
     };
+    const { callback, querySelector, type } = userOptions;
     // Listener para mostrar o esconder el menú desplegable
-    createClickListener(userOptions.querySelector, userOptions.callback);
+    createNewListener(querySelector, callback, type);
 };
 
 export default dropdownMenuToggle;

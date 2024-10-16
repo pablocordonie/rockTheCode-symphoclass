@@ -10,6 +10,10 @@
   justify-content: space-between;
 }
 
+.sc-main-profile_form-fields input {
+  width: 7.5rem;
+}
+
 @media screen and (min-width: 350px) and (min-height: 750px) {
   .sc-main-profile_form-fields {
     gap: 1.5rem;

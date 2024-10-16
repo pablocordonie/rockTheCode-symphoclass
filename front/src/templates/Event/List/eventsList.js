@@ -6,7 +6,7 @@ const createEventsList = (bodyHeight, main, testCards) => {
     const cardHeightInSvh = 40;
 
     if (!testCards.length) {
-        main.innerHTML += createNoEventsMessage('sc-events-main-no_events', 'No hay eventos en este momento');
+        main.innerHTML += createNoEventsMessage('sc-events-main-no_events', 'No hay eventos');
     } else if (testCards.length === 1) {
         main.innerHTML += createEventCard('sc-events-main-card', testCards[0]);
     } else if (testCards.length === 2) {

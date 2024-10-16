@@ -1,9 +1,10 @@
-import './field.css'
+import './field.css';
+import createNewInput from '../Input/input';
 
 const createNewField = (className, label, labelText, inputType = 'text') => `
     <div class="${className}">
         <label for="${label}" class="${className}-label">${labelText}</label>
-        <input id="${label}" class="${className}-input" type="${inputType}" />
+        ${createNewInput(className, inputType, label)}
     </div>
 `;
 

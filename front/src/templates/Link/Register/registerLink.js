@@ -1,5 +1,5 @@
 import './registerLink.css';
-import createTagTemplate from '../../../Tag/tag';
+import createTagTemplate from '../../Tag/tag';
 
 const createRegisterLink = (className, text) => `
     <div class="${className}">

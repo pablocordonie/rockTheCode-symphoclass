@@ -1,6 +1,6 @@
 import activateContentCleaner from '../../../utils/Cleaner/contentCleaner';
 import createEventsList from '../../../templates/Event/List/eventsList';
-import createNewListener from '../Event-Listener/createNewListener';
+import createNewListener from '../Listener/createNewListener';
 
 const createEventsFilter = (bodyHeight, className, HTMLElements, main, testCards) => {
     const eventsInput = {
@@ -9,7 +9,7 @@ const createEventsFilter = (bodyHeight, className, HTMLElements, main, testCards
             activateContentCleaner(main);
 
             if (testCards.length) {
-                const filteredCards = testCards.filter(card => card.title.includes(event.target.value));
+                const filteredCards = testCards.filter(card => card.title.toLowerCase().includes(event.target.value));
                 createEventsList(bodyHeight, main, filteredCards);
             }
         },

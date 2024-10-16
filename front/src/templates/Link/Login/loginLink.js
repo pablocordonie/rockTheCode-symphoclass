@@ -1,5 +1,5 @@
 import './loginLink.css';
-import createTagTemplate from '../../../Tag/tag';
+import createTagTemplate from '../../Tag/tag';
 
 const createLoginLink = (className, text) => `
     <div class="${className}">

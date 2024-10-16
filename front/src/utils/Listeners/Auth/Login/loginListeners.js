@@ -1,5 +1,5 @@
 import activateContentCleaner from '../../../Cleaner/contentCleaner';
-import createNewListener from '../../Event-Listener/createNewListener';
+import createNewListener from '../../Listener/createNewListener';
 import launchEventsPage from '../../../Launcher/Events-List/launchEventsList';
 import launchRegisterPage from '../../../Launcher/Register/launchRegister';
 

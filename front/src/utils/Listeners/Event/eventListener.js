@@ -1,16 +1,16 @@
 import activateContentCleaner from '../../Cleaner/contentCleaner';
 import activateHeaderCleaner from '../../Cleaner/headerCleaner';
 import createNewListener from '../Listener/createNewListener';
-import launchProfilePage from '../../Launcher/Profile/launchProfile';
+import launchEventCreatorPage from '../../Launcher/Event-Creator/launchEventCreator';
 import recalculateBodyHeight from '../../Height/recalculateBodyHeight';
 
-const createProfileListener = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
-    const editOption = {
+const createEventListener = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+    const createNewEventButton = {
         callback: () => {
-            bodyHeight = 110;
+            bodyHeight = 125;
             recalculateBodyHeight(bodyHeight);
 
-            HTMLElements.push(editOption);
+            HTMLElements.push(createNewEventButton);
 
             const header = document.querySelector('.sc-events-header');
             header.className = 'sc-header';
@@ -20,13 +20,13 @@ const createProfileListener = (appId, bodyHeight, currentPage, footerClassName, 
             main.className = 'sc-main';
             activateContentCleaner(main);
 
-            launchProfilePage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+            launchEventCreatorPage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
         },
-        querySelector: document.querySelector('#edit-profile'),
+        querySelector: document.querySelector('.sc-events-header-create_btn'),
         type: 'click'
     };
-    const { callback, querySelector, type } = editOption;
+    const { callback, querySelector, type } = createNewEventButton;
     createNewListener(querySelector, callback, type);
 };
 
-export default createProfileListener;
+export default createEventListener;

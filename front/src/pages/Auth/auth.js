@@ -1,9 +1,9 @@
 import './auth.css';
 import activateContentCleaner from '../../utils/Cleaner/contentCleaner';
-import createLoginFormContent from '../../templates/Auth/Login/LoginForm/loginForm';
+import createLoginFormContent from '../../templates/Form/LoginForm/loginForm';
 import createLoginPageListeners from '../../utils/Listeners/Auth/Login/loginListeners';
 import createNewForm from '../../templates/Form/form';
-import createRegisterFormContent from '../../templates/Auth/Register/RegisterForm/registerForm';
+import createRegisterFormContent from '../../templates/Form/RegisterForm/registerForm';
 import createRegisterPageListeners from '../../utils/Listeners/Auth/Register/registerListeners';
 
 const printAuthForm = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {

@@ -1,4 +1,4 @@
-import createNewListener from '../Listeners/Event-Listener/createNewListener';
+import createNewListener from '../Listeners/Listener/createNewListener';
 
 const dropdownMenuToggle = (HTMLElements) => {
     const dropdownMenu = document.querySelector('.sc-header-nav-dropdown_menu');

@@ -1,6 +1,6 @@
 import activateContentCleaner from '../../Cleaner/contentCleaner';
 import activateHeaderCleaner from '../../Cleaner/headerCleaner'
-import createNewListener from '../Event-Listener/createNewListener';
+import createNewListener from '../Listener/createNewListener';
 import launchLoginPage from '../../Launcher/Login/launchLogin';
 import recalculateBodyHeight from '../../Height/recalculateBodyHeight';
 

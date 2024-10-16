@@ -1,0 +1,27 @@
+.sc-main-create-event_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 0 2rem;
+}
+
+.sc-main-create-event_form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sc-main-create-event_form-fields div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sc-main-create-event_form-fields div input {
+  width: 100%;
+}
+
+.sc-main-create-event_form-fields button {
+  align-self: center;
+  width: 7.5rem;
+}

@@ -1,7 +1,7 @@
 import './loginForm.css'
-import createNewField from '../../../Field/field';
-import createRegisterLink from '../RegisterLink/registerLink';
-import createTagTemplate from '../../../Tag/tag';
+import createNewField from '../../Field/field';
+import createRegisterLink from '../../Link/Register/registerLink';
+import createTagTemplate from '../../Tag/tag';
 
 const createLoginFormContent = (className, formClassName) => `
     <div class="${className}">

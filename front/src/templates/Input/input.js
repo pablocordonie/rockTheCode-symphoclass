@@ -1,7 +1,9 @@
-import createLabel from './Label/label';
+import './input.css';
+import createIdAttribute from '../Attribute/Id/id';
+import createPlaceholder from '../Attribute/Placeholder/placeholder';
 
 const createNewInput = (className, inputType, label, placeholderText = '') => `
-    <input ${label !== '' ? createLabel(label) : ''} class="${className} type="${inputType}" placeholder="${placeholderText}">
+    <input ${label !== '' ? createIdAttribute(label) : ''} class="${className}" type=${inputType} ${placeholderText !== '' ? createPlaceholder(placeholderText) : ''}>
 `;
 
 export default createNewInput;

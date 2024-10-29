@@ -1,37 +1,37 @@
-.sc-main-register_link {
+.sc-main-login_form-register_link {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-.sc-main-register_link-message {
+.sc-main-login_form-register_link-message {
   font-size: 0.8rem;
   font-weight: 700;
 }
 
-.sc-main-register_link-message {
+.sc-main-login_form-register_link-message {
   color: var(--rtc-color-n-700);
 }
 
 @media screen and (min-width: 350px) {
-  .sc-main-register_link-message {
+  .sc-main-login_form-register_link-message {
     font-size: 0.85rem;
   }
 }
 
 @media screen and (min-width: 400px) {
-  .sc-main-register_link-message {
+  .sc-main-login_form-register_link-message {
     font-size: 0.9rem;
   }
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
-  .sc-main-register_link {
-    gap: 2rem;
+  .sc-main-login_form-register_link {
+    gap: 1.25rem;
   }
 
-  .sc-main-register_link-message {
+  .sc-main-login_form-register_link-message {
     font-size: 1rem;
   }
 }

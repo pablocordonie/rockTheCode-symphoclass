@@ -1,12 +1,9 @@
-const disableLoader = (footerClassName, loaderClassName, webContentClassName) => {
-    const footer = document.querySelector(`.${footerClassName}`);
+const disableLoader = (loaderClassName, scClassName) => {
     const loader = document.querySelector(`.${loaderClassName}`);
-    const webContent = document.querySelector(`.${webContentClassName}`);
+    const sc = document.querySelector(`.${scClassName}`);
 
-    footer.style.display = 'block';
     loader.style.display = 'none';
-    webContent.style.display = 'flex';
-    webContent.style.margin = '0 1rem';
+    sc.style.display = 'grid';
 };
 
 export default disableLoader;

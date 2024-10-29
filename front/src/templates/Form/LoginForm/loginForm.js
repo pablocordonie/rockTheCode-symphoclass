@@ -1,15 +1,15 @@
-import './loginForm.css'
+import './loginForm.css';
+import createButton from '../../Button/button';
 import createNewField from '../../Field/field';
 import createRegisterLink from '../../Link/Register/registerLink';
-import createTagTemplate from '../../Tag/tag';
 
-const createLoginFormContent = (className, formClassName) => `
-    <div class="${className}">
-        ${createNewField(`${formClassName}-email_field`, 'email', 'Email')}
-        ${createNewField(`${formClassName}-password_field`, 'password', 'Contraseña', 'password')}
-    </div>
-    ${createTagTemplate('button', `${formClassName}-button`, 'Enviar')}
-    ${createRegisterLink('sc-main-register_link', '¿No estás registrado en The SymphoClass?')}
+const createLoginFormContent = (className, currentPage) => `
+    <ul class="${className}-fields">
+        ${createNewField(`${className}-fields-email_field`, 'email', 'Email')}
+        ${createNewField(`${className}-fields-password_field`, 'password', 'Contraseña', 'password')}
+    </ul>
+    ${createButton(`${className}-${currentPage}_button`, 'Enviar')}
+    ${createRegisterLink(`${className}-register_link`, '¿No estás registrado en The SymphoClass?')}
 `;
 
 export default createLoginFormContent;

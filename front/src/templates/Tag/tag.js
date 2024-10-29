@@ -1,10 +1,7 @@
-import './tag.css';
-import createLabel from '../Input/Label/label';
+import createIdAttribute from '../Attribute/Id/id';
 
-const createTagTemplate = (tag, className, text, label = '') => `
-    <${tag} ${label !== '' ? createLabel(label) : ''} class=${className}>
-        ${text}
-    </${tag}>
+const createTagTemplate = (tag, className, text, id = '') => `
+    <${tag} ${id !== '' ? createIdAttribute(id) : ''} class=${className}>${text}</${tag}>
 `;
 
 export default createTagTemplate;

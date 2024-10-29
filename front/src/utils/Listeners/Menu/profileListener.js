@@ -2,25 +2,29 @@ import activateContentCleaner from '../../Cleaner/contentCleaner';
 import activateHeaderCleaner from '../../Cleaner/headerCleaner';
 import createNewListener from '../Listener/createNewListener';
 import launchProfilePage from '../../Launcher/Profile/launchProfile';
-import recalculateBodyHeight from '../../Height/recalculateBodyHeight';
 
-const createProfileListener = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+const createProfileListener = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
     const editOption = {
         callback: () => {
-            bodyHeight = 110;
-            recalculateBodyHeight(bodyHeight);
-
             HTMLElements.push(editOption);
 
-            const header = document.querySelector('.sc-events-header');
-            header.className = 'sc-header';
-            activateHeaderCleaner(header);
+            if (currentPage === 'events') {
+                const eventsHeader = document.querySelector('.sc-header-events');
+                eventsHeader.className = 'sc-header';
+                activateHeaderCleaner(eventsHeader);
 
-            const main = document.querySelector('.sc-events-main-list');
-            main.className = 'sc-main';
-            activateContentCleaner(main);
+                const eventsMain = document.querySelector('.sc-main-events');
+                eventsMain.className = 'sc-main';
+                activateContentCleaner(eventsMain);
+            } else {
+                const header = document.querySelector('.sc-header');
+                activateHeaderCleaner(header);
 
-            launchProfilePage(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+                const main = document.querySelector('.sc-main');
+                activateContentCleaner(main);
+            }
+
+            launchProfilePage(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
         },
         querySelector: document.querySelector('#edit-profile'),
         type: 'click'

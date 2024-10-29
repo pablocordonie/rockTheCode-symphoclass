@@ -1,7 +1,7 @@
 import './userIcon.css';
 
-const userIcon = () => `
-    <div class="sc-header-nav-user_icon">
+const userIcon = (className) => `
+    <div class="${className}">
         <i class="fa-solid fa-user fa-sm"></i>
     </div>
 `;

@@ -1,17 +1,18 @@
 .sc-main-login_form-fields {
+  align-items: center;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.sc-main-login_form-fields div {
-  align-items: center;
+.sc-main-login_form-fields li {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-@media screen and (min-width: 350px) and (min-height: 750px) {
+@media screen and (min-width: 360px) {
   .sc-main-login_form-fields {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 }

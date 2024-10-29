@@ -1,18 +1,16 @@
-import './auth.css';
-import activateContentCleaner from '../../utils/Cleaner/contentCleaner';
 import createLoginFormContent from '../../templates/Form/LoginForm/loginForm';
 import createLoginPageListeners from '../../utils/Listeners/Auth/Login/loginListeners';
 import createNewForm from '../../templates/Form/form';
 import createRegisterFormContent from '../../templates/Form/RegisterForm/registerForm';
 import createRegisterPageListeners from '../../utils/Listeners/Auth/Register/registerListeners';
 
-const printAuthForm = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+const printAuthForm = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
     const main = document.querySelector('.sc-main');
-    activateContentCleaner(main);
+    const formClassName = `${main.className}-${currentPage}_form`;
 
-    main.innerHTML += createNewForm(`sc-main-${currentPage}_form`, `${currentPage === 'login' ? createLoginFormContent(`sc-main-${currentPage}_form-fields`, `sc-main-${currentPage}_form`) : createRegisterFormContent(`sc-main-${currentPage}_form-fields`, `sc-main-${currentPage}_form`)}`);
+    main.innerHTML += createNewForm(formClassName, `${currentPage === 'login' ? createLoginFormContent(formClassName, currentPage) : createRegisterFormContent(formClassName, currentPage)}`);
 
-    currentPage === 'login' ? createLoginPageListeners(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) : createRegisterPageListeners(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+    currentPage === 'login' ? createLoginPageListeners(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) : createRegisterPageListeners(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
 
     return main;
 };

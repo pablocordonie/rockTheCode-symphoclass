@@ -1,14 +1,17 @@
 import './eventCard.css';
+import createButton from '../../Button/button';
+import createCardTitle from '../../Title/H3/cardTitle';
+import createNewParagraph from '../../Paragraph/paragraph';
 import createTagTemplate from '../../Tag/tag';
 
 const createEventCard = (className, card) => `
-    <div class="${className}">
-        ${createTagTemplate('h3', 'sc-events-main-card-title', `${card.title}`)}
-        ${createTagTemplate('p', 'sc-events-main-card-date', `${card.date}`)}
-        ${createTagTemplate('p', 'sc-events-main-card-center', `${card.center}`)}
-        ${createTagTemplate('p', 'sc-events-main-card-address', `${card.address}`)}
-        ${createTagTemplate('div', 'sc-events-main-card-options', `${createTagTemplate('button', 'confirm-btn', 'Confirmar Asistencia')}`)}
-    </div>
+    <li class="${className}">
+        ${createCardTitle(`${className}-title`, `${card.title}`)}
+        ${createNewParagraph(`${className}-date`, `${card.date}`)}
+        ${createNewParagraph(`${className}-center`, `${card.center}`)}
+        ${createNewParagraph(`${className}-address`, `${card.address}`)}
+        ${createTagTemplate('div', `${className}-options`, `${createButton('confirm-btn', 'Confirmar Asistencia')}`)}
+    </li>
 `;
 
 export default createEventCard;

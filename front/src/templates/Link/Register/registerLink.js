@@ -1,10 +1,11 @@
 import './registerLink.css';
-import createTagTemplate from '../../Tag/tag';
+import createButton from '../../Button/button';
+import createNewParagraph from '../../Paragraph/paragraph';
 
 const createRegisterLink = (className, text) => `
     <div class="${className}">
-        ${createTagTemplate('p', `${className}-message`, `${text}`)}
-        ${createTagTemplate('button', `${className}-button`, 'Regístrate')}
+        ${createNewParagraph(`${className}-message`, `${text}`)}
+        ${createButton(`${className}-button`, 'Regístrate')}
     </div>
 `;
 

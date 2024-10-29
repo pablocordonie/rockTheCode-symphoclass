@@ -1,11 +1,11 @@
 import './dropdownMenu.css';
-import editProfileOption from './Edit-Profile/edit_profile';
-import logoutOption from './Logout/logout_option';
+import editProfileOption from './Edit-Profile/editProfile';
+import logoutOption from './Logout/logoutOption';
 
-const dropdownMenu = (currentPage) => `
-    <ul class="sc-header-nav-dropdown_menu">
-        ${currentPage === 'events' ? editProfileOption() : ''}
-        ${logoutOption()}
+const dropdownMenu = (className, currentPage) => `
+    <ul class="${className}">
+        ${currentPage === 'events' || currentPage === 'create-event' ? editProfileOption(`${className}-edit`, 'Cambiar Perfil') : ''}
+        ${logoutOption(`${className}-logout`, 'Cerrar Sesión')}
     </ul>
 `;
 

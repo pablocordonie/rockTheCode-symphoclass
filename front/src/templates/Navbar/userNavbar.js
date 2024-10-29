@@ -3,14 +3,14 @@ import dropdownBars from '../Icons/Bars/bars';
 import dropdownMenu from '../Menu/dropdownMenu';
 import userIcon from '../Icons/User/userIcon';
 
-const createUserNavbar = (currentPage, userName) => `
-    <nav class="sc-header-nav">
-        <div class="sc-header-nav-user_info">
-            ${userIcon()}
-            <div class="sc-header-nav-user_name">${userName}</div>
+const createUserNavbar = (className, currentPage, userName) => `
+    <nav class="${className}">
+        <div class="${className}-user_info">
+            ${userIcon(`${className}-user_icon`)}
+            <div class="${className}-user_name">${userName}</div>
         </div>
-        ${dropdownBars()}
-        ${dropdownMenu(currentPage)}
+        ${dropdownBars(`${className}-user_options`)}
+        ${dropdownMenu(`${className}-dropdown_menu`, currentPage)}
     </nav>
 `;
 

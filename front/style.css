@@ -13,123 +13,73 @@
   --rtc-color-n-800: #8fafca;
   --rtc-color-n-900: #e8e8e8;
 
-  --pseudo-height: 110svh;
-
+  /* COLOR-SCHEME */
   color-scheme: light dark;
+
+  /* HEIGHT */
+  line-height: 1.5;
+  --rtc-height: 110svh;
+
+  /* FONT */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
   font-weight: 400;
-  line-height: 1.5;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  /* TEXT */
+  text-rendering: optimizeLegibility;
 }
 
 body {
   background: url('https://res.cloudinary.com/ddd5cycm4/image/upload/v1721754875/trumpetist-coach_t5g24a.jpg')
     no-repeat center center fixed;
   background-size: cover;
-  min-height: var(--pseudo-height);
-}
-
-body::after {
-  background: var(--rtc-color-n-300);
-  content: '';
-  height: var(--pseudo-height);
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 0;
-}
-
-input {
-  width: 8rem;
 }
 
 ul {
-  padding: 20px;
+  padding: 0;
 }
 
 ul,
-li {
+li,
+a {
   list-style: none;
 }
 
-#app {
-  display: flex;
-  flex-direction: column;
-  height: var(--pseudo-height);
-  justify-content: space-between;
+a {
+  text-decoration: none;
 }
 
 .sc {
+  background: var(--rtc-color-n-300);
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-rows: auto 1fr auto;
+  min-height: var(--rtc-height);
+}
+
+.sc-header {
+  display: flex;
+  justify-content: center;
+}
+
+.sc-header-events {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  gap: 2.5rem;
-  margin: 0 1rem;
-  padding-top: 5rem;
-  z-index: 1;
+  gap: 1.25rem;
 }
 
 .sc-main {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-
-header {
-  align-items: center;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-}
-
-header .sc-header-h1 {
-  color: var(--rtc-color-n-700);
-  font-family: 'Dancing Script', sans-serif;
-  font-size: 2.25rem;
-  font-weight: 700;
-}
-
-.sc-footer {
-  padding-left: 0.5rem;
-  z-index: 1;
 }
 
 .sc-footer > p {
   color: var(--rtc-color-n-900);
   font-weight: 700;
-}
-
-a {
-  list-style: none;
-  text-decoration: none;
-}
-
-@media screen and (min-width: 350px) {
-  .sc {
-    padding-top: 10rem;
-  }
-}
-
-@media screen and (min-width: 350px) and (min-height: 750px) {
-  .sc {
-    gap: 2rem;
-    padding-top: 12.5rem;
-  }
-
-  .sc-main {
-    gap: 2.5rem;
-  }
-
-  header .sc-header-h1 {
-    font-size: 2.75rem;
-  }
-
-  .sc-footer > p {
-    font-size: 1.15rem;
-  }
+  margin: 0 0.5rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -140,24 +90,10 @@ a {
   }
 
   .sc {
-    padding-top: 8rem;
+    grid-gap: 2rem;
   }
-}
 
-@media screen and (min-width: 1200px) {
-  .sc {
-    padding-top: 10rem;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  .sc {
-    padding-top: 16rem;
-  }
-}
-
-@media screen and (min-width: 2400px) {
-  .sc {
-    padding-top: 32rem;
+  .sc-footer > p {
+    margin: 0 1rem;
   }
 }

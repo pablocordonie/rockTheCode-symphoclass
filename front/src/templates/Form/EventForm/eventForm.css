@@ -1,3 +1,16 @@
+.sc-main-create-event_form-fields {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sc-main-create-event_form-fields li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .sc-main-create-event_form-description_field {
   height: 6rem;
 }

@@ -1,33 +1,33 @@
 import './style.css';
+import adjustMainContentHeight from './src/utils/Height/adjustMainContentHeight';
+import printAuthForm from './src/pages/Auth/auth';
 import printEventForm from './src/pages/Events/Event-Creator/eventCreator';
 import printEventsList from './src/pages/Events/events';
 import printLoader from './src/utils/Loader/printLoader';
-import printAuthForm from './src/pages/Auth/auth';
 import printProfileForm from './src/pages/Profile/profile';
 
 const app = document.querySelector('#app');
-const bodyHeightAmount = 110;
-const footer = document.querySelector('.sc-footer');
-const loaderClassName = 'sc-loader-container';
-const webContent = document.querySelector('.sc');
-
 const HTMLElementsArray = [];
+const loaderClassName = 'sc-loader-container';
+const main = document.querySelector('.sc-main');
+const sc = document.querySelector('.sc');
 let state = {
     currentPage: 'login'
 };
 
-printLoader(app.id, footer.className, loaderClassName, webContent.className);
+printLoader(app.id, loaderClassName, sc.className);
 
-export const renderApp = (appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName) => {
+export const renderApp = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
     if (currentPage === 'create-event') {
-        printEventForm(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+        printEventForm(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
     } else if (currentPage === 'events') {
-        printEventsList(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+        printEventsList(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
     } else if (currentPage === 'profile') {
-        printProfileForm(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+        printProfileForm(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
     } else {
-        printAuthForm(appId, bodyHeight, currentPage, footerClassName, HTMLElements, loaderClassName, webContentClassName);
+        printAuthForm(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
     }
+    adjustMainContentHeight(currentPage, mainClassName, scClassName);
 };
 
-renderApp(app.id, bodyHeightAmount, state.currentPage, footer.className, HTMLElementsArray, loaderClassName, webContent.className);
+renderApp(app.id, state.currentPage, HTMLElementsArray, loaderClassName, main.className, sc.className);

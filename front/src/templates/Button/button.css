@@ -1,3 +1,21 @@
+.sc-header-events-create_btn,
+.sc-main-events-card-options button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sc-header-events-create_btn {
+  background-color: var(--rtc-color-n-600);
+  color: white;
+}
+
+.confirm-btn {
+  background-color: #28a745;
+  color: white;
+}
+
 .sc-main button {
   background-color: var(--rtc-color-n-600);
   border: 0.25rem solid var(--rtc-color-n-600);
@@ -5,7 +23,7 @@
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 700;
-  height: 1.9rem;
+  height: 1.85rem;
 }
 
 .sc-main button:hover {
@@ -14,28 +32,26 @@
   color: var(--rtc-color-n-600);
 }
 
-.sc-main-login_form-button,
-.sc-main-profile_form-button,
-.sc-main-register_form-button {
+.sc-main-create-event_form-create-event_button,
+.sc-main-login_form-login_button,
+.sc-main-profile_form-profile_button,
+.sc-main-register_form-register_button {
   align-self: center;
 }
 
-@media screen and (min-width: 350px) {
-  .sc-main button {
-    height: 2rem;
-  }
+.sc-main-create-event_form-fields button {
+  align-self: center;
+  width: 7.5rem;
 }
 
 @media screen and (min-width: 400px) {
   .sc-main button {
     font-size: 0.9rem;
-    height: 2.125rem;
   }
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
   .sc-main button {
     font-size: 1.15rem;
-    height: 2.5rem;
   }
 }

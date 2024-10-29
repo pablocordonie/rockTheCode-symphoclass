@@ -2,7 +2,7 @@ import activateContentCleaner from '../../../utils/Cleaner/contentCleaner';
 import createEventsList from '../../../templates/Event/List/eventsList';
 import createNewListener from '../Listener/createNewListener';
 
-const createEventsFilter = (bodyHeight, className, HTMLElements, main, testCards) => {
+const createEventsFilter = (className, HTMLElements, main, testCards) => {
     const eventsInput = {
         callback: (event) => {
             HTMLElements.push(eventsInput);
@@ -10,10 +10,10 @@ const createEventsFilter = (bodyHeight, className, HTMLElements, main, testCards
 
             if (testCards.length) {
                 const filteredCards = testCards.filter(card => card.title.toLowerCase().includes(event.target.value));
-                createEventsList(bodyHeight, main, filteredCards);
+                main.innerHTML = createEventsList(main.className, filteredCards);
             }
         },
-        querySelector: document.querySelector(`.${className}`),
+        querySelector: document.querySelector(`.${className}-search`),
         type: 'input'
     };
     const { callback, querySelector, type } = eventsInput;

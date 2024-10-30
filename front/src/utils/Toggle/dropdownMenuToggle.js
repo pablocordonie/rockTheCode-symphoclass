@@ -1,4 +1,5 @@
 import createNewListener from '../Listeners/Listener/createNewListener';
+import duplicatesRemoverIntoArray from '../Filter/duplicatesRemover';
 
 const dropdownMenuToggle = (HTMLElements) => {
     const dropdownMenu = document.querySelector('.sc-header-nav-dropdown_menu');
@@ -6,7 +7,8 @@ const dropdownMenuToggle = (HTMLElements) => {
 
     const userOptions = {
         callback: () => {
-            HTMLElements.push(userOptions);
+            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, userOptions);
+
             if (dropdownMenu.style.display === 'flex') {
                 dropdownMenu.style.display = 'none';
             } else if (dropdownMenu.style.display === 'none') {

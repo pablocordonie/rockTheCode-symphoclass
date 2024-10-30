@@ -1,11 +1,13 @@
 import activateContentCleaner from '../../../utils/Cleaner/contentCleaner';
 import createEventsList from '../../../templates/Event/List/eventsList';
 import createNewListener from '../Listener/createNewListener';
+import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
 
 const createEventsFilter = (className, HTMLElements, main, testCards) => {
     const eventsInput = {
         callback: (event) => {
-            HTMLElements.push(eventsInput);
+            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, eventsInput);
+
             activateContentCleaner(main);
 
             if (testCards.length) {

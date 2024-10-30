@@ -1,6 +1,7 @@
 import activateContentCleaner from '../../../Cleaner/contentCleaner';
 import activateHeaderCleaner from '../../../Cleaner/headerCleaner';
 import createNewListener from '../../Listener/createNewListener';
+import duplicatesRemoverIntoArray from '../../../Filter/duplicatesRemover';
 import launchEventsPage from '../../../Launcher/Events-List/launchEventsList';
 import launchRegisterPage from '../../../Launcher/Register/launchRegister';
 
@@ -8,7 +9,7 @@ const createLoginPageListeners = (appId, currentPage, HTMLElements, loaderClassN
     const loginButtonFromLoginPage = {
         callback: (event) => {
             event.preventDefault();
-            HTMLElements.push(loginButtonFromLoginPage);
+            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, loginButtonFromLoginPage);
 
             const header = document.querySelector('.sc-header');
             activateHeaderCleaner(header);
@@ -25,7 +26,7 @@ const createLoginPageListeners = (appId, currentPage, HTMLElements, loaderClassN
     const registerButtonFromLoginPage = {
         callback: (event) => {
             event.preventDefault();
-            HTMLElements.push(registerButtonFromLoginPage);
+            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, registerButtonFromLoginPage);
 
             const main = document.querySelector('.sc-main');
             activateContentCleaner(main);

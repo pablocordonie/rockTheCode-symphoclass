@@ -6,6 +6,7 @@ import createNewListener from '../../utils/Listeners/Listener/createNewListener'
 import createProfileForm from '../../templates/Form/ProfileForm/profileForm';
 import createUserNavbar from '../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
+import duplicatesRemoverIntoArray from '../../utils/Filter/duplicatesRemover';
 import launchEventsPage from '../../utils/Launcher/Events-List/launchEventsList';
 
 const printProfileForm = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
@@ -21,7 +22,7 @@ const printProfileForm = (appId, currentPage, HTMLElements, loaderClassName, mai
     const updateButton = {
         callback: (event) => {
             event.preventDefault();
-            HTMLElements.push(updateButton);
+            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, updateButton);
 
             const header = document.querySelector('.sc-header');
             activateHeaderCleaner(header);

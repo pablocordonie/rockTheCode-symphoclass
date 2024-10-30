@@ -7,6 +7,7 @@ import createLogoutListener from '../../../utils/Listeners/Menu/logoutListener';
 import createProfileListener from '../../../utils/Listeners/Menu/profileListener';
 import createUserNavBar from '../../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../../utils/Toggle/dropdownMenuToggle';
+import duplicatesRemoverIntoArray from '../../../utils/Filter/duplicatesRemover';
 import launchEventsPage from '../../../utils/Launcher/Events-List/launchEventsList';
 import testCards from '../../../../testCards';
 
@@ -24,7 +25,7 @@ const printEventCreator = (appId, currentPage, HTMLElements, loaderClassName, ma
     const createEventButton = {
         callback: (event) => {
             event.preventDefault();
-            HTMLElements.push(createEventButton);
+            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, createEventButton);
 
             activateHeaderCleaner(header);
             activateContentCleaner(main);

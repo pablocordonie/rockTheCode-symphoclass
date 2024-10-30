@@ -1,12 +1,13 @@
 import activateContentCleaner from '../../Cleaner/contentCleaner';
 import activateHeaderCleaner from '../../Cleaner/headerCleaner';
 import createNewListener from '../Listener/createNewListener';
+import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
 import launchProfilePage from '../../Launcher/Profile/launchProfile';
 
 const createProfileListener = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
     const editOption = {
         callback: () => {
-            HTMLElements.push(editOption);
+            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, editOption);
 
             if (currentPage === 'events') {
                 const eventsHeader = document.querySelector('.sc-header-events');

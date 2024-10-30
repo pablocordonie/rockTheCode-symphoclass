@@ -4,8 +4,7 @@ import { renderApp } from '../../../../main';
 
 const launchLoginPage = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
     printLoader(appId, loaderClassName, scClassName);
-
-    HTMLElements.length >= 1 ? activateListenersCleaner(HTMLElements) : console.log('No hay elementos de HTML por eliminar');
+    activateListenersCleaner(HTMLElements);
 
     currentPage = 'login';
     renderApp(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);

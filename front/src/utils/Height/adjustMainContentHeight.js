@@ -1,5 +1,5 @@
 const adjustMainContentHeight = (currentPage, mainClassName, scClassName) => {
-    const main = document.querySelector(`.${mainClassName}`);
+    let main = document.querySelector(`.${mainClassName}`);
     const sc = document.querySelector(`.${scClassName}`);
 
     const windowHeight = window.innerHeight;
@@ -11,6 +11,9 @@ const adjustMainContentHeight = (currentPage, mainClassName, scClassName) => {
         sc.style.paddingTop = `${paddingTop}rem`;
         main.style.paddingBottom = `${paddingAmount}rem`;
     } else {
+        if (currentPage === 'events') {
+            main = document.querySelector(`.${mainClassName}-events`);
+        }
         const paddingTop = windowHeight * 0.0075;
         sc.style.paddingTop = `${paddingTop}rem`;
         main.style.paddingBottom = `${paddingAmount}rem`;

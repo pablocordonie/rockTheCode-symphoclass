@@ -1,18 +1,17 @@
 import createLoader from '../../templates/Loader/loader';
-import disableLoader from '../Loader/disableLoader';
-export const mainContainers = [];
+import toggleLoader from '../Toggle/toggleLoader';
 
 const printLoader = (appId, loaderClassName, scClassName) => {
     const app = document.querySelector(`#${appId}`);
     const loader = document.querySelector(`.${loaderClassName}`);
-    const sc = document.querySelector(`.${scClassName}`);
 
-    sc.style.display = 'none';
-
-    loader ? loader.style.display = 'flex' : app.innerHTML += createLoader(loaderClassName);
+    if (!loader) {
+        app.innerHTML += createLoader(loaderClassName);
+    }
+    toggleLoader(loaderClassName, scClassName, true);
 
     setTimeout(function () {
-        disableLoader(loaderClassName, scClassName);
+        toggleLoader(loaderClassName, scClassName, false);
     }, 2000);
 };
 

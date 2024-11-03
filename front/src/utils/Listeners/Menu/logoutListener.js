@@ -3,6 +3,7 @@ import activateHeaderCleaner from '../../Cleaner/headerCleaner'
 import createNewListener from '../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
 import launchLoginPage from '../../Launcher/Login/launchLogin';
+import toggleClass from '../../Toggle/toggleClass';
 
 const createLogoutListener = (appConfig, appId, currentPage, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName) => {
     const logoutOption = {
@@ -11,11 +12,11 @@ const createLogoutListener = (appConfig, appId, currentPage, headerClassName, HT
 
             if (currentPage === 'events') {
                 const eventsHeader = document.querySelector(`.${headerClassName}-events`);
-                eventsHeader.className = `${headerClassName}`;
+                toggleClass(eventsHeader, `${headerClassName}`, currentPage);
                 activateHeaderCleaner(eventsHeader);
 
                 const eventsMain = document.querySelector(`.${mainClassName}-events`);
-                eventsMain.className = `${mainClassName}`;
+                toggleClass(eventsMain, `${mainClassName}`, currentPage);
                 activateContentCleaner(eventsMain);
             } else {
                 const header = document.querySelector(`.${headerClassName}`);

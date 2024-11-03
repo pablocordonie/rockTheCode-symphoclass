@@ -8,18 +8,19 @@ import createProfileListener from '../../utils/Listeners/Menu/profileListener';
 import createUserNavbar from '../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import testCards from '../../../testCards';
+import toggleClass from '../../utils/Toggle/toggleClass';
 
 const printEventsList = (appConfig, currentPage, HTMLElements) => {
     const { appId, headerClassName, loaderClassName, mainClassName, scClassName } = appConfig;
 
     const header = document.querySelector(`.${headerClassName}`);
-    header.className = `${headerClassName}-events`;
+    toggleClass(header, `${headerClassName}-events`, currentPage);
     header.innerHTML += createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
     header.innerHTML += createNewInput(`${header.className}-search`, 'text', '', 'Buscar eventos...');
     header.innerHTML += createButton(`${header.className}-create_btn`, 'Crear Nuevo Evento');
 
     const main = document.querySelector(`.${mainClassName}`);
-    main.className = `${mainClassName}-events`;
+    toggleClass(main, `${mainClassName}-events`, currentPage);
     main.innerHTML += createEventsList(main.className, testCards);
 
     dropdownMenuToggle(`${headerClassName}-nav`, HTMLElements);

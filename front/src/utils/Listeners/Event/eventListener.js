@@ -3,6 +3,7 @@ import activateHeaderCleaner from '../../Cleaner/headerCleaner';
 import createNewListener from '../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
 import launchEventCreatorPage from '../../Launcher/Event-Creator/launchEventCreator';
+import toggleClass from '../../Toggle/toggleClass';
 
 const createEventListener = (appConfig, appId, currentPage, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName) => {
     const createNewEventButton = {
@@ -12,11 +13,11 @@ const createEventListener = (appConfig, appId, currentPage, headerClassName, HTM
 
             const header = document.querySelector(`.${headerClassName}-events`);
             activateHeaderCleaner(header);
-            header.className = `${headerClassName}`;
+            toggleClass(header, `${headerClassName}`, currentPage);
 
             const main = document.querySelector(`.${mainClassName}-events`);
             activateContentCleaner(main);
-            main.className = `${mainClassName}`;
+            toggleClass(main, `${mainClassName}`, currentPage);
 
             launchEventCreatorPage(appConfig, appId, currentPage, HTMLElements, loaderClassName, scClassName);
         },

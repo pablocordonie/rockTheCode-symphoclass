@@ -4,28 +4,28 @@ import createNewListener from '../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
 import launchLoginPage from '../../Launcher/Login/launchLogin';
 
-const createLogoutListener = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
+const createLogoutListener = (appConfig, appId, currentPage, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName) => {
     const logoutOption = {
         callback: () => {
             HTMLElements = duplicatesRemoverIntoArray(HTMLElements, logoutOption);
 
             if (currentPage === 'events') {
-                const eventsHeader = document.querySelector('.sc-header-events');
-                eventsHeader.className = 'sc-header';
+                const eventsHeader = document.querySelector(`.${headerClassName}-events`);
+                eventsHeader.className = `${headerClassName}`;
                 activateHeaderCleaner(eventsHeader);
 
-                const eventsMain = document.querySelector('.sc-main-events');
-                eventsMain.className = 'sc-main';
+                const eventsMain = document.querySelector(`.${mainClassName}-events`);
+                eventsMain.className = `${mainClassName}`;
                 activateContentCleaner(eventsMain);
             } else {
-                const header = document.querySelector('.sc-header');
+                const header = document.querySelector(`.${headerClassName}`);
                 activateHeaderCleaner(header);
 
-                const main = document.querySelector('.sc-main');
+                const main = document.querySelector(`.${mainClassName}`);
                 activateContentCleaner(main);
             }
 
-            launchLoginPage(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
+            launchLoginPage(appConfig, appId, currentPage, HTMLElements, loaderClassName, scClassName);
         },
         querySelector: document.querySelector('#logout'),
         type: 'click'

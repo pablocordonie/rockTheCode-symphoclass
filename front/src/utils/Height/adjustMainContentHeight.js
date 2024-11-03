@@ -1,4 +1,6 @@
-const adjustMainContentHeight = (currentPage, mainClassName, scClassName) => {
+const adjustMainContentHeight = (appConfig, currentPage) => {
+    const { mainClassName, scClassName } = appConfig;
+
     let main = document.querySelector(`.${mainClassName}`);
     const sc = document.querySelector(`.${scClassName}`);
 

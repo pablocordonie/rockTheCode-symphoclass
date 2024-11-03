@@ -1,8 +1,8 @@
 import createNewListener from '../Listeners/Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../Filter/duplicatesRemover';
 
-const dropdownMenuToggle = (HTMLElements) => {
-    const dropdownMenu = document.querySelector('.sc-header-nav-dropdown_menu');
+const dropdownMenuToggle = (className, HTMLElements) => {
+    const dropdownMenu = document.querySelector(`.${className}-dropdown_menu`);
     dropdownMenu.style.display = 'none';
 
     const userOptions = {
@@ -15,7 +15,7 @@ const dropdownMenuToggle = (HTMLElements) => {
                 dropdownMenu.style.display = 'flex';
             }
         },
-        querySelector: document.querySelector('.sc-header-nav-user_options'),
+        querySelector: document.querySelector(`.${className}-user_options`),
         type: 'click'
     };
     const { callback, querySelector, type } = userOptions;

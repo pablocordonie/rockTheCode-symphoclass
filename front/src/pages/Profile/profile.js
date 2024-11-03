@@ -9,29 +9,31 @@ import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import duplicatesRemoverIntoArray from '../../utils/Filter/duplicatesRemover';
 import launchEventsPage from '../../utils/Launcher/Events-List/launchEventsList';
 
-const printProfileForm = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
-    const header = document.querySelector('.sc-header');
-    header.innerHTML += createUserNavbar('sc-header-nav', currentPage, 'random_user');
+const printProfileForm = (appConfig, currentPage, HTMLElements) => {
+    const { appId, headerClassName, loaderClassName, mainClassName, scClassName } = appConfig;
 
-    dropdownMenuToggle(HTMLElements);
-    createLogoutListener(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
+    const header = document.querySelector(`.${headerClassName}`);
+    header.innerHTML += createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
 
-    const main = document.querySelector('.sc-main');
-    main.innerHTML += createNewForm(`sc-main-${currentPage}_form`, `${createProfileForm(`sc-main-${currentPage}_form-fields`, currentPage)}`);
+    dropdownMenuToggle(`${headerClassName}-nav`, HTMLElements);
+    createLogoutListener(appConfig, appId, currentPage, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
+
+    const main = document.querySelector(`.${mainClassName}`);
+    main.innerHTML += createNewForm(`${mainClassName}-${currentPage}_form`, `${createProfileForm(`${mainClassName}-${currentPage}_form-fields`, currentPage)}`);
 
     const updateButton = {
         callback: (event) => {
             event.preventDefault();
             HTMLElements = duplicatesRemoverIntoArray(HTMLElements, updateButton);
 
-            const header = document.querySelector('.sc-header');
+            const header = document.querySelector(`.${headerClassName}`);
             activateHeaderCleaner(header);
-            const main = document.querySelector('.sc-main');
+            const main = document.querySelector(`.${mainClassName}`);
             activateContentCleaner(main);
 
-            launchEventsPage(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
+            launchEventsPage(appConfig, appId, currentPage, HTMLElements, loaderClassName, scClassName);
         },
-        querySelector: document.querySelector(`.sc-main-${currentPage}_form-${currentPage}_button`),
+        querySelector: document.querySelector(`.${mainClassName}-${currentPage}_form-${currentPage}_button`),
         type: 'click'
     }
     const { callback, querySelector, type } = updateButton;

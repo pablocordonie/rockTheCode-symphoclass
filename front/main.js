@@ -7,7 +7,8 @@ import printLoader from './src/utils/Loader/printLoader';
 import printProfileForm from './src/pages/Profile/profile';
 
 const app = document.querySelector('#app');
-const HTMLElementsArray = [];
+const header = document.querySelector('.sc-header');
+let HTMLElements = [];
 const loaderClassName = 'sc-loader-container';
 const main = document.querySelector('.sc-main');
 const sc = document.querySelector('.sc');
@@ -15,19 +16,31 @@ let state = {
     currentPage: 'login'
 };
 
-printLoader(app.id, loaderClassName, sc.className);
+const appConfig = {
+    appId: app.id,
+    currentPage: state.currentPage,
+    headerClassName: header.className,
+    HTMLElements,
+    loaderClassName,
+    mainClassName: main.className,
+    scClassName: sc.className
+};
+const { appId, scClassName } = appConfig;
+let { currentPage } = appConfig;
 
-export const renderApp = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
+printLoader(appId, loaderClassName, scClassName);
+
+export const renderApp = (appConfig, currentPage, HTMLElements) => {
     if (currentPage === 'create-event') {
-        printEventForm(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
+        printEventForm(appConfig, currentPage, HTMLElements);
     } else if (currentPage === 'events') {
-        printEventsList(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
+        printEventsList(appConfig, currentPage, HTMLElements);
     } else if (currentPage === 'profile') {
-        printProfileForm(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
+        printProfileForm(appConfig, currentPage, HTMLElements);
     } else {
-        printAuthForm(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
+        printAuthForm(appConfig, currentPage, HTMLElements);
     }
-    adjustMainContentHeight(currentPage, mainClassName, scClassName);
+    adjustMainContentHeight(appConfig, currentPage);
 };
 
-renderApp(app.id, state.currentPage, HTMLElementsArray, loaderClassName, main.className, sc.className);
+renderApp(appConfig, currentPage, HTMLElements);

@@ -9,22 +9,24 @@ import createUserNavbar from '../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import testCards from '../../../testCards';
 
-const printEventsList = (appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName) => {
-    const header = document.querySelector('.sc-header');
-    header.className = 'sc-header-events';
-    header.innerHTML += createUserNavbar('sc-header-nav', currentPage, 'random_user');
+const printEventsList = (appConfig, currentPage, HTMLElements) => {
+    const { appId, headerClassName, loaderClassName, mainClassName, scClassName } = appConfig;
+
+    const header = document.querySelector(`.${headerClassName}`);
+    header.className = `${headerClassName}-events`;
+    header.innerHTML += createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
     header.innerHTML += createNewInput(`${header.className}-search`, 'text', '', 'Buscar eventos...');
     header.innerHTML += createButton(`${header.className}-create_btn`, 'Crear Nuevo Evento');
 
-    const main = document.querySelector('.sc-main');
-    main.className = 'sc-main-events';
+    const main = document.querySelector(`.${mainClassName}`);
+    main.className = `${mainClassName}-events`;
     main.innerHTML += createEventsList(main.className, testCards);
 
-    dropdownMenuToggle(HTMLElements);
-    createEventListener(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
+    dropdownMenuToggle(`${headerClassName}-nav`, HTMLElements);
+    createEventListener(appConfig, appId, currentPage, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
     createEventsFilter(header.className, HTMLElements, main, testCards);
-    createLogoutListener(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
-    createProfileListener(appId, currentPage, HTMLElements, loaderClassName, mainClassName, scClassName);
+    createLogoutListener(appConfig, appId, currentPage, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
+    createProfileListener(appConfig, appId, currentPage, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
 
     return main;
 };

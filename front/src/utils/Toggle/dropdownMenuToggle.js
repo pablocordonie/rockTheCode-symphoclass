@@ -1,21 +1,20 @@
 import createNewListener from '../Listeners/Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../Filter/duplicatesRemover';
+import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 
-const dropdownMenuToggle = (className, HTMLElements) => {
-    const dropdownMenu = document.querySelector(`.${className}-dropdown_menu`);
-    dropdownMenu.style.display = 'none';
-
+const dropdownMenuToggle = (className, appConfig, HTMLElements) => {
     const userOptions = {
         callback: () => {
             HTMLElements = duplicatesRemoverIntoArray(HTMLElements, userOptions);
 
-            if (dropdownMenu.style.display === 'flex') {
-                dropdownMenu.style.display = 'none';
-            } else if (dropdownMenu.style.display === 'none') {
-                dropdownMenu.style.display = 'flex';
+            const dropdownMenu = document.querySelector(`.${className}-dropdown_menu`);
+            if (!dropdownMenu) {
+                throw new Error(`El elemento de className .${className}-dropdown_menu no se ha encontrado`);
+            } else {
+                dropdownMenu.style.display === 'flex' ? dropdownMenu.style.display = 'none' : dropdownMenu.style.display = 'flex';
             }
         },
-        querySelector: document.querySelector(`.${className}-user_options`),
+        querySelector: querySelectorChecker(`.${className}-user_options`, appConfig, 'dropdownMenuToggle', `El elemento de className .${className}-user_options no se ha encontrado`, HTMLElements),
         type: 'click'
     };
     const { callback, querySelector, type } = userOptions;

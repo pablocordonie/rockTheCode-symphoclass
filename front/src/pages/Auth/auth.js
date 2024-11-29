@@ -5,24 +5,41 @@ import createNewForm from '../../templates/Form/form';
 import createRegisterFormContent from '../../templates/Form/RegisterForm/registerForm';
 import createRegisterListenerInLoginPage from '../../utils/Listeners/Auth/Login/registerListener';
 import createRegisterListenerInRegisterPage from '../../utils/Listeners/Auth/Register/registerListener';
+import errorHandler from '../../utils/Error/errorHandler';
+import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';
 
 const printAuthForm = (appConfig, currentPage, HTMLElements) => {
-    const { appId, headerClassName, loaderClassName, mainClassName, scClassName } = appConfig;
-
-    const main = document.querySelector(`.${mainClassName}`);
-    const formClassName = `${main.className}-${currentPage}_form`;
-
-    main.innerHTML += createNewForm(formClassName, `${currentPage === 'login' ? createLoginFormContent(formClassName, currentPage) : createRegisterFormContent(formClassName, currentPage)}`);
+    const { mainClassName } = appConfig;
 
     if (currentPage === 'login') {
-        createLoginListenerInLoginPage(appConfig, appId, currentPage, formClassName, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
-        createRegisterListenerInLoginPage(appConfig, appId, currentPage, formClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
-    } else {
-        createLoginListenerInRegisterPage(appConfig, appId, currentPage, formClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
-        createRegisterListenerInRegisterPage(appConfig, appId, currentPage, formClassName, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
-    }
+        try {
+            const main = querySelectorChecker(`.${mainClassName}`, 'printAuthForm', `El HTMLElement de className .${mainClassName} no ha podido ser encontrado`);
+            const formClassName = `${main.className}-${currentPage}_form`;
 
-    return main;
+            main.innerHTML += createNewForm(formClassName, createLoginFormContent(formClassName, currentPage));
+
+            createLoginListenerInLoginPage(formClassName, appConfig, currentPage, HTMLElements);
+            createRegisterListenerInLoginPage(formClassName, appConfig, currentPage, HTMLElements);
+
+            return main;
+        } catch (error) {
+            errorHandler(error, 'printAuthForm');
+        }
+    } else {
+        try {
+            const main = querySelectorChecker(`.${mainClassName}`, 'printAuthForm', `El HTMLElement de className .${mainClassName} no ha podido ser encontrado`);
+            const formClassName = `${main.className}-${currentPage}_form`;
+
+            main.innerHTML += createNewForm(formClassName, createRegisterFormContent(formClassName, currentPage));
+
+            createLoginListenerInRegisterPage(formClassName, appConfig, currentPage, HTMLElements);
+            createRegisterListenerInRegisterPage(formClassName, appConfig, currentPage, HTMLElements);
+
+            return main;
+        } catch (error) {
+            errorHandler(error, 'printAuthForm');
+        }
+    }
 };
 
 export default printAuthForm;

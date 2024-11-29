@@ -2,22 +2,30 @@ import activateContentCleaner from '../../../Cleaner/contentCleaner';
 import activateHeaderCleaner from '../../../Cleaner/headerCleaner';
 import createNewListener from '../../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../../Filter/duplicatesRemover';
+import errorHandler from '../../../Error/errorHandler';
 import launchEventsPage from '../../../Launcher/Events-List/launchEventsList';
+import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createLoginListenerInLoginPage = (appConfig, appId, currentPage, formClassName, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName) => {
+const createLoginListenerInLoginPage = (className, appConfig, currentPage, HTMLElements) => {
+    const { headerClassName, mainClassName } = appConfig;
     const loginButton = {
         callback: (event) => {
-            event.preventDefault();
             HTMLElements = duplicatesRemoverIntoArray(HTMLElements, loginButton);
 
-            const header = document.querySelector(`.${headerClassName}`);
+            const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'createLoginListenerInLoginPage', `El HTMLElement de className .${headerClassName} no ha podido ser encontrado`, HTMLElements);
             activateHeaderCleaner(header);
-            const main = document.querySelector(`.${mainClassName}`);
+
+            const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'createLoginListenerInLoginPage', `El HTMLElement de className .${mainClassName} no ha podido ser encontrado`, HTMLElements);
             activateContentCleaner(main);
 
-            launchEventsPage(appConfig, appId, currentPage, HTMLElements, loaderClassName, scClassName);
+            try {
+                event.preventDefault();
+                launchEventsPage(appConfig, currentPage, HTMLElements);
+            } catch (error) {
+                errorHandler(error, 'createLoginListenerInLoginPage');
+            }
         },
-        querySelector: document.querySelector(`.${formClassName}-${currentPage}_button`),
+        querySelector: querySelectorChecker(`.${className}-${currentPage}_button`, appConfig, 'createLoginListenerInLoginPage', `El HTMLElement de className .${className}-${currentPage}_button no ha podido ser encontrado`, HTMLElements),
         type: 'click'
     };
 

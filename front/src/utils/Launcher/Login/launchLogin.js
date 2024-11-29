@@ -2,8 +2,8 @@ import activateListenersCleaner from '../../Cleaner/listenersCleaner';
 import printLoader from '../../Loader/printLoader';
 import { renderApp } from '../../../../main';
 
-const launchLoginPage = (appConfig, appId, currentPage, HTMLElements, loaderClassName, scClassName) => {
-    printLoader(appId, loaderClassName, scClassName);
+const launchLoginPage = (appConfig, currentPage, HTMLElements) => {
+    printLoader(appConfig, HTMLElements);
     activateListenersCleaner(HTMLElements);
 
     currentPage = 'login';

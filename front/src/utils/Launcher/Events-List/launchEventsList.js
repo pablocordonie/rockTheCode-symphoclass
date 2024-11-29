@@ -2,8 +2,8 @@ import activateListenersCleaner from '../../Cleaner/listenersCleaner';
 import printLoader from '../../Loader/printLoader';
 import { renderApp } from '../../../../main';
 
-const launchEventsPage = (appConfig, appId, currentPage, HTMLElements, loaderClassName, scClassName) => {
-    printLoader(appId, loaderClassName, scClassName);
+const launchEventsPage = (appConfig, currentPage, HTMLElements) => {
+    printLoader(appConfig, HTMLElements);
     activateListenersCleaner(HTMLElements);
 
     currentPage = 'events';

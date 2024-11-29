@@ -1,55 +1,36 @@
-import activateContentCleaner from '../../../utils/Cleaner/contentCleaner';
-import activateHeaderCleaner from '../../../utils/Cleaner/headerCleaner';
+import createEventCreatorListener from '../../../utils/Listeners/Event/Event-Creator/eventCreatorListener';
 import createEventForm from '../../../templates/Form/EventForm/eventForm';
 import createNewForm from '../../../templates/Form/form';
-import createNewListener from '../../../utils/Listeners/Listener/createNewListener';
 import createLogoutListener from '../../../utils/Listeners/Menu/logoutListener';
 import createProfileListener from '../../../utils/Listeners/Menu/profileListener';
+//import createUploadImageListener from '../../../utils/Listeners/Image/Upload-Image/uploadImageListener';
 import createUserNavBar from '../../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../../utils/Toggle/dropdownMenuToggle';
-import duplicatesRemoverIntoArray from '../../../utils/Filter/duplicatesRemover';
-import launchEventsPage from '../../../utils/Launcher/Events-List/launchEventsList';
-import testCards from '../../../../testCards';
+import errorHandler from '../../../utils/Error/errorHandler';
+import querySelectorChecker from '../../../utils/QuerySelector/querySelectorChecker';
 
 const printEventCreator = (appConfig, currentPage, HTMLElements) => {
-    const { appId, headerClassName, loaderClassName, mainClassName, scClassName } = appConfig;
+    const { headerClassName, mainClassName } = appConfig;
 
-    const header = document.querySelector(`.${headerClassName}`);
-    header.innerHTML += createUserNavBar(`${headerClassName}-nav`, currentPage, 'random_user');
+    try {
+        const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'printEventCreator', `El HTMLElement de className .${headerClassName} no se ha encontrado`, HTMLElements);
+        header.innerHTML += createUserNavBar(`${headerClassName}-nav`, currentPage, 'random_user');
 
-    dropdownMenuToggle(`${headerClassName}-nav`, HTMLElements);
-    createLogoutListener(appConfig, appId, currentPage, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
-    createProfileListener(appConfig, appId, currentPage, headerClassName, HTMLElements, loaderClassName, mainClassName, scClassName);
+        dropdownMenuToggle(`${headerClassName}-nav`, appConfig, HTMLElements);
+        createLogoutListener(appConfig, currentPage, HTMLElements);
+        createProfileListener(appConfig, currentPage, HTMLElements);
 
-    const main = document.querySelector(`.${mainClassName}`);
-    main.innerHTML += createNewForm(`${mainClassName}-${currentPage}_form`, `${createEventForm(`${mainClassName}-${currentPage}_form-fields`, currentPage)}`);
+        const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'printEventCreator', `El HTMLElement de className .${mainClassName} no se ha encontrado`, HTMLElements);
+        main.innerHTML += createNewForm(`${mainClassName}-${currentPage}_form`, `${createEventForm(`${mainClassName}-${currentPage}_form-fields`, currentPage)}`);
 
-    const createEventButton = {
-        callback: (event) => {
-            event.preventDefault();
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, createEventButton);
+        //createUploadImageListener(appConfig, currentPage, HTMLElements);
 
-            activateHeaderCleaner(header);
-            activateContentCleaner(main);
+        createEventCreatorListener(appConfig, currentPage, HTMLElements);
 
-            /* SIMULADOR DE CREACIÓN DE EVENTOS */
-            const newEvent = {
-                address: 'Calle Albasanz, 2, 28037 Madrid',
-                center: 'Escuela de Música Joaquín Turina',
-                date: '20 de Septiembre, 2025',
-                title: `Evento ${testCards.length + 1}`,
-            };
-            testCards.push(newEvent);
-
-            launchEventsPage(appConfig, appId, currentPage, HTMLElements, loaderClassName, scClassName);
-        },
-        querySelector: document.querySelector(`.${mainClassName}-${currentPage}_form-${currentPage}_button`),
-        type: 'click'
+        return main;
+    } catch (error) {
+        errorHandler(error, 'printEventCreator');
     }
-    const { callback, querySelector, type } = createEventButton;
-    createNewListener(querySelector, callback, type);
-
-    return main;
 };
 
 export default printEventCreator;

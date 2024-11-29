@@ -1,21 +1,27 @@
 import activateContentCleaner from '../../../Cleaner/contentCleaner';
 import createNewListener from '../../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../../Filter/duplicatesRemover';
+import errorHandler from '../../../Error/errorHandler';
 import launchRegisterPage from '../../../Launcher/Register/launchRegister';
+import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createRegisterListenerInLoginPage = (appConfig, appId, currentPage, formClassName, HTMLElements, loaderClassName, mainClassName, scClassName) => {
-
+const createRegisterListenerInLoginPage = (className, appConfig, currentPage, HTMLElements) => {
+    const { mainClassName } = appConfig;
     const registerButton = {
         callback: (event) => {
-            event.preventDefault();
             HTMLElements = duplicatesRemoverIntoArray(HTMLElements, registerButton);
 
-            const main = document.querySelector(`.${mainClassName}`);
+            const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'createRegisterListenerInLoginPage', `El HTMLElement de className .${mainClassName} no ha podido ser encontrado`, HTMLElements);
             activateContentCleaner(main);
 
-            launchRegisterPage(appConfig, appId, currentPage, HTMLElements, loaderClassName, scClassName);
+            try {
+                event.preventDefault();
+                launchRegisterPage(appConfig, currentPage, HTMLElements);
+            } catch (error) {
+                errorHandler(error, 'createRegisterListenerInLoginPage');
+            }
         },
-        querySelector: document.querySelector(`.${formClassName}-register_link-button`),
+        querySelector: querySelectorChecker(`.${className}-register_link-button`, appConfig, 'createRegisterListenerInLoginPage', `El HTMLElement de className .${className}-register_link-button no ha podido ser encontrado`, HTMLElements),
         type: 'click'
     };
 

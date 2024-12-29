@@ -1,17 +1,31 @@
 import './userNavbar.css';
-import dropdownBars from '../Icons/Bars/bars';
-import dropdownMenu from '../Menu/dropdownMenu';
-import userIcon from '../Icons/User/userIcon';
+import createDropdownBars from '../Icons/Bars/bars';
+import createDropdownMenu from '../Menu/dropdownMenu';
+import createUserIcon from '../Icons/User/userIcon';
 
-const createUserNavbar = (className, currentPage, userName) => `
-    <nav class="${className}">
-        <div class="${className}-user_info">
-            ${userIcon(`${className}-user_icon`)}
-            <div class="${className}-user_name">${userName}</div>
-        </div>
-        ${dropdownBars(`${className}-user_options`)}
-        ${dropdownMenu(`${className}-dropdown_menu`, currentPage)}
-    </nav>
-`;
+const createUserNavbar = (className, currentPage, userName) => {
+    const userNavbar = document.createElement('nav');
+    userNavbar.className = `${className}`;
+
+    const userInfoContainer = document.createElement('div');
+    userInfoContainer.className = `${className}-user_info`;
+
+    const userIconContainer = createUserIcon(`${className}-user_icon`);
+    userInfoContainer.appendChild(userIconContainer);
+
+    const userNameParagraph = document.createElement('p');
+    userNameParagraph.className = `${className}-user_name`;
+    userNameParagraph.textContent = `${userName}`;
+    userInfoContainer.appendChild(userNameParagraph);
+    userNavbar.appendChild(userInfoContainer);
+
+    const dropdownBarsContainer = createDropdownBars(`${className}-user_options`);
+    userNavbar.appendChild(dropdownBarsContainer);
+
+    const dropdownMenu = createDropdownMenu(`${className}-dropdown_menu`, currentPage);
+    userNavbar.appendChild(dropdownMenu);
+
+    return userNavbar;
+};
 
 export default createUserNavbar;

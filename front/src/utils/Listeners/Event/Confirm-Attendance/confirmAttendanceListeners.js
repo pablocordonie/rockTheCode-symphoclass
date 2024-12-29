@@ -1,26 +1,12 @@
-import createNewListener from '../../Listener/createNewListener';
-import duplicatesRemoverIntoArray from '../../../Filter/duplicatesRemover';
-import errorHandler from '../../../Error/errorHandler';
-import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
+import createConfirmBtnListener from './Confirm-Btn/confirmBtn';
+import createConfirmedIcon from '../../../../templates/Icons/Confirmed/confirmed';
 
-const createConfirmAttendanceListeners = (HTMLElements) => {
-    const confirmAttendanceButton = {
-        callback: (event) => {
-            event.preventDefault();
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, confirmAttendanceButton);
+const createConfirmAttendanceListeners = (eventItems, HTMLElementsWithListeners) => {
+    const confirmedIcon = createConfirmedIcon('confirm-btn-confirmed_icon');
 
-            try {
-                /* Aplicar un estilo a elegir (subrayar los bordes de color verde o bien añadir un visto verde) al evento seleccionado */
-            } catch (error) {
-                errorHandler(error, 'createConfirmAttendanceButton');
-            }
-        },
-        querySelector: querySelectorChecker('.confirm-btn', 'createConfirmAttendanceListeners', `El HTMLElement de className .confirm-btn no se ha encontrado`),
-        type: 'click'
-    };
-
-    const { callback, querySelector, type } = confirmAttendanceButton;
-    createNewListener(querySelector, callback, type);
+    eventItems.forEach(eventItem => {
+        createConfirmBtnListener(confirmedIcon.cloneNode(true), eventItem, HTMLElementsWithListeners);
+    });
 };
 
 export default createConfirmAttendanceListeners;

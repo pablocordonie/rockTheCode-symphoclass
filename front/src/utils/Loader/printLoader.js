@@ -2,20 +2,21 @@ import createLoader from '../../templates/Loader/loader';
 import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 import toggleLoader from '../Toggle/toggleLoader';
 
-const printLoader = (appConfig, HTMLElements) => {
-    const { appId, loaderClassName } = appConfig;
+const printLoader = (appConfig) => {
+    const { appId, loaderClassName, loaderTimeout } = appConfig;
 
-    const app = querySelectorChecker(`#${appId}`, appConfig, 'printLoader', `El HTMLElement de className #${appId} no se ha encontrado`, HTMLElements);
+    const app = querySelectorChecker(`#${appId}`, 'printLoader');
     const loader = document.querySelector(`.${loaderClassName}`);
 
     if (!loader) {
-        app.innerHTML += createLoader(loaderClassName);
+        const newLoader = createLoader(loaderClassName);
+        app.insertAdjacentHTML('beforeend', newLoader);
     }
-    toggleLoader(appConfig, HTMLElements, true);
+    toggleLoader(appConfig, true);
 
     setTimeout(function () {
-        toggleLoader(appConfig, HTMLElements, false);
-    }, 2000);
+        toggleLoader(appConfig, false);
+    }, loaderTimeout);
 };
 
 export default printLoader;

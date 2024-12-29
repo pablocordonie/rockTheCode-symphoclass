@@ -1,42 +1,45 @@
-import activateContentCleaner from '../../Cleaner/contentCleaner';
-import activateHeaderCleaner from '../../Cleaner/headerCleaner';
+import activatePageCleaner from '../../Cleaner/pageCleaner';
 import createNewListener from '../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
 import errorHandler from '../../Error/errorHandler';
-import launchProfilePage from '../../Launcher/Profile/launchProfile';
+import launchNewPage from '../../Launcher/launchNewPage';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
 import toggleClass from '../../Toggle/toggleClass';
 
-const createProfileListener = (appConfig, currentPage, HTMLElements) => {
+const createProfileListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
+
+    const pageActions = {
+        events: () => {
+            const eventsHeader = querySelectorChecker(`.${headerClassName}-events`, 'createProfileListener');
+
+            const eventsMain = querySelectorChecker(`.${mainClassName}-events`, 'createProfileListener');
+            activatePageCleaner(eventsHeader, eventsMain);
+
+            toggleClass(eventsHeader, `${headerClassName}`, currentPage);
+            toggleClass(eventsMain, `${mainClassName}`, currentPage);
+        },
+        default: () => {
+            const header = querySelectorChecker(`.${headerClassName}`, 'createProfileListener');
+
+            const main = querySelectorChecker(`.${mainClassName}`, 'createProfileListener');
+            activatePageCleaner(header, main);
+        }
+    };
 
     const editOption = {
         callback: () => {
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, editOption);
-
-            if (currentPage === 'events') {
-                const eventsHeader = querySelectorChecker(`.${headerClassName}-events`, appConfig, 'createProfileListener', `El HTMLElement de className .${headerClassName}-events no se ha encontrado`, HTMLElements);
-                toggleClass(eventsHeader, `${headerClassName}`, currentPage);
-                activateHeaderCleaner(eventsHeader);
-
-                const eventsMain = querySelectorChecker(`.${mainClassName}-events`, appConfig, 'createProfileListener', `El HTMLElement de className .${mainClassName}-events no se ha encontrado`, HTMLElements);
-                toggleClass(eventsMain, `${mainClassName}`, currentPage);
-                activateContentCleaner(eventsMain);
-            } else {
-                const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'createProfileListener', `El HTMLElement de className .${headerClassName} no se ha encontrado`, HTMLElements);
-                activateHeaderCleaner(header);
-
-                const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'createProfileListener', `El HTMLElement de className .${mainClassName} no se ha encontrado`, HTMLElements);
-                activateContentCleaner(main);
-            }
-
             try {
-                launchProfilePage(appConfig, currentPage, HTMLElements);
+                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, editOption);
+
+                currentPage === 'events' || currentPage === 'create-event' ? pageActions.events() : pageActions.default();
+
+                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'edit_profile');
             } catch (error) {
-                errorHandler(error, 'createProfileListener');
+                return errorHandler(error, 'createProfileListener');
             }
         },
-        querySelector: document.querySelector('#edit-profile'),
+        querySelector: querySelectorChecker('#edit-profile', 'createProfileListener'),
         type: 'click'
     };
     const { callback, querySelector, type } = editOption;

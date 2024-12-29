@@ -1,28 +1,25 @@
 import './style.css';
 import adjustMainContentHeight from './src/utils/Height/adjustMainContentHeight';
-import appConfig from './src/config/config';
-import printAuthForm from './src/pages/Auth/auth';
-import printEventCreator from './src/pages/Events/Event-Creator/eventCreator';
-import printEventsList from './src/pages/Events/events';
+import { appConfig, pageRenderers } from './src/config/config';
+import errorHandler from './src/utils/Error/errorHandler';
 import printLoader from './src/utils/Loader/printLoader';
-import printProfileForm from './src/pages/Profile/profile';
 
-let { currentPage, HTMLElements } = appConfig;
+let { currentPage, HTMLElementsWithListeners } = appConfig;
 
-printLoader(appConfig, HTMLElements);
+printLoader(appConfig, HTMLElementsWithListeners);
 
-export const renderApp = (appConfig, currentPage, HTMLElements) => {
+export const renderApp = (appConfig, currentPage, HTMLElementsWithListeners) => {
+    try {
+        if (!pageRenderers[currentPage]) {
+            throw new Error(`No se encontró un renderizador para la página de ${currentPage}`);
+        }
 
-    if (currentPage === 'create-event') {
-        printEventCreator(appConfig, currentPage, HTMLElements);
-    } else if (currentPage === 'events') {
-        printEventsList(appConfig, currentPage, HTMLElements);
-    } else if (currentPage === 'profile') {
-        printProfileForm(appConfig, currentPage, HTMLElements);
-    } else {
-        printAuthForm(appConfig, currentPage, HTMLElements);
+        const renderPage = pageRenderers[currentPage];
+        renderPage(appConfig, currentPage, HTMLElementsWithListeners);
+        adjustMainContentHeight(appConfig, currentPage);
+    } catch (error) {
+        return errorHandler(error, 'renderApp');
     }
-    adjustMainContentHeight(appConfig, currentPage, HTMLElements);
 };
 
-renderApp(appConfig, currentPage, HTMLElements);
+renderApp(appConfig, currentPage, HTMLElementsWithListeners);

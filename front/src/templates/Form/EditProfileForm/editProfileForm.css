@@ -1,18 +1,18 @@
-.sc-main-profile_form-fields {
+.sc-main-edit_profile_form-fields {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.sc-main-profile_form-fields li {
+.sc-main-edit_profile_form-fields li {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
 @media screen and (min-width: 360px) {
-  .sc-main-profile_form-fields {
+  .sc-main-edit_profile_form-fields {
     gap: 1rem;
   }
 }

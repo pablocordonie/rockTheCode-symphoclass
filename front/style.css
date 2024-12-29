@@ -54,7 +54,7 @@ a {
 .sc {
   background: var(--rtc-color-n-300);
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 2rem;
   grid-template-rows: auto 1fr auto;
   min-height: var(--rtc-height);
 }
@@ -87,10 +87,6 @@ a {
     background: url('https://res.cloudinary.com/ddd5cycm4/image/upload/v1722965956/guitar-coach_jndee5.jpg')
       no-repeat center center fixed;
     background-size: cover;
-  }
-
-  .sc {
-    grid-gap: 2rem;
   }
 
   .sc-footer > p {

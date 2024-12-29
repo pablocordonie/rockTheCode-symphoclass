@@ -32,14 +32,14 @@
   color: var(--rtc-color-n-600);
 }
 
-.sc-main-create-event_form-create-event_button,
+.sc-main-create_event_form-create_event_button,
 .sc-main-login_form-login_button,
-.sc-main-profile_form-profile_button,
+.sc-main-edit_profile_form-edit_profile_button,
 .sc-main-register_form-register_button {
   align-self: center;
 }
 
-.sc-main-create-event_form-fields button {
+.sc-main-create_event_form-fields button {
   align-self: center;
   width: 7.5rem;
 }

@@ -1,9 +1,16 @@
-import './bars.css'
+import './bars.css';
 
-const dropdownBars = (className) => `
-    <div class="${className}">
-        <i class="${className}-icon fa-solid fa-bars"></i>
-    </div>
-`;
+const createDropdownBars = (className) => {
+    const dropdownBarsContainer = document.createElement('div');
+    dropdownBarsContainer.className = `${className}`;
 
-export default dropdownBars;
+    const barsClassNames = ['fa-solid', 'fa-bars'];
+    const dropdownBars = document.createElement('i');
+    dropdownBars.className = `${className}-icon`;
+    barsClassNames.forEach(barsClassName => dropdownBars.classList.add(barsClassName));
+    dropdownBarsContainer.appendChild(dropdownBars);
+
+    return dropdownBarsContainer;
+};
+
+export default createDropdownBars;

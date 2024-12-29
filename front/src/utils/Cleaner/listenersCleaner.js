@@ -1,11 +1,9 @@
 import removeListener from '../Listeners/Listener/removeListener';
 
-const activateListenersCleaner = (HTMLElements) => {
-    for (let HTMLElement of HTMLElements) {
-        removeListener(HTMLElement.querySelector, HTMLElement.callback);
-    }
-    HTMLElements.splice(0);
-    return HTMLElements;
+const activateListenersCleaner = (HTMLElementsWithListeners) => {
+    HTMLElementsWithListeners.filter(HTMLElement => HTMLElement).forEach(HTMLElement => removeListener(HTMLElement.querySelector, HTMLElement.callback));
+    HTMLElementsWithListeners.splice(0);
+    return HTMLElementsWithListeners;
 };
 
 export default activateListenersCleaner;

@@ -1,9 +1,13 @@
 import createNewParagraph from '../../Paragraph/paragraph';
 
-const logoutOption = (className, text) => `
-    <li class="${className}">
-        ${createNewParagraph(`${className}_action`, text, 'logout')}
-    </li>
-`;
+const createLogoutOption = (className, text) => {
+    const logoutOptionItem = document.createElement('li');
+    logoutOptionItem.className = `${className}`;
 
-export default logoutOption;
+    const logoutOptionParagraph = createNewParagraph(`${className}_action`, text, 'logout');
+    logoutOptionItem.appendChild(logoutOptionParagraph);
+
+    return logoutOptionItem;
+};
+
+export default createLogoutOption;

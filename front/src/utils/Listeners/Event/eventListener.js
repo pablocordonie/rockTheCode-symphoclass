@@ -1,35 +1,35 @@
-import activateContentCleaner from '../../Cleaner/contentCleaner';
-import activateHeaderCleaner from '../../Cleaner/headerCleaner';
+import activatePageCleaner from '../../Cleaner/pageCleaner';
 import createNewListener from '../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
 import errorHandler from '../../Error/errorHandler';
-import launchEventCreatorPage from '../../Launcher/Event-Creator/launchEventCreator';
+import launchNewPage from '../../Launcher/launchNewPage';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
 import toggleClass from '../../Toggle/toggleClass';
 
-const createEventListener = (appConfig, currentPage, HTMLElements) => {
+const createEventListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
 
     const createNewEventButton = {
         callback: (event) => {
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, createNewEventButton);
-
-            const header = querySelectorChecker(`.${headerClassName}-events`, appConfig, 'createEventListener', `El HTMLElement de className .${headerClassName} no se ha encontrado`, HTMLElements);
-            activateHeaderCleaner(header);
-            toggleClass(header, `${headerClassName}`, currentPage);
-
-            const main = querySelectorChecker(`.${mainClassName}-events`, appConfig, 'createEventListener', `El HTMLElement de className .${mainClassName} no se ha encontrado`, HTMLElements);
-            activateContentCleaner(main);
-            toggleClass(main, `${mainClassName}`, currentPage);
-
             try {
                 event.preventDefault();
-                launchEventCreatorPage(appConfig, currentPage, HTMLElements);
+
+                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, createNewEventButton);
+
+                const header = querySelectorChecker(`.${headerClassName}-events`, 'createEventListener');
+
+                const main = querySelectorChecker(`.${mainClassName}-events`, 'createEventListener');
+                activatePageCleaner(header, main);
+
+                toggleClass(header, `${headerClassName}`, currentPage);
+                toggleClass(main, `${mainClassName}`, currentPage);
+
+                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'create_event');
             } catch (error) {
-                errorHandler(error, 'createEventListener');
+                return errorHandler(error, 'createEventListener');
             }
         },
-        querySelector: querySelectorChecker(`.${headerClassName}-events-create_btn`, appConfig, 'createEventListener', `El HTMLElement de className .${headerClassName}-events-create_btn no se ha encontrado`, HTMLElements),
+        querySelector: querySelectorChecker(`.${headerClassName}-events-create_btn`, 'createEventListener'),
         type: 'click'
     };
     const { callback, querySelector, type } = createNewEventButton;

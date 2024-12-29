@@ -1,11 +1,8 @@
-import errorHandler from '../Error/errorHandler';
-
-const querySelectorChecker = (className, context, error) => {
-    const HTMLElement = document.querySelector(className);
+const querySelectorChecker = (className, context, scope = document) => {
+    const HTMLElement = scope.querySelector(className);
 
     if (!HTMLElement) {
-        errorHandler(error, context);
-        return null;
+        throw new Error(`Error en ${context}: El selector .${className} no encontró ningún elemento`);
     }
 
     return HTMLElement;

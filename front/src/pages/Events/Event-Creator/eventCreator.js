@@ -9,28 +9,31 @@ import dropdownMenuToggle from '../../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../../utils/Error/errorHandler';
 import querySelectorChecker from '../../../utils/QuerySelector/querySelectorChecker';
 
-const printEventCreator = (appConfig, currentPage, HTMLElements) => {
+const printEventCreatorForm = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
 
     try {
-        const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'printEventCreator', `El HTMLElement de className .${headerClassName} no se ha encontrado`, HTMLElements);
-        header.innerHTML += createUserNavBar(`${headerClassName}-nav`, currentPage, 'random_user');
+        const header = querySelectorChecker(`.${headerClassName}`, 'printEventCreatorForm');
 
-        dropdownMenuToggle(`${headerClassName}-nav`, appConfig, HTMLElements);
-        createLogoutListener(appConfig, currentPage, HTMLElements);
-        createProfileListener(appConfig, currentPage, HTMLElements);
+        const headerNavbar = createUserNavBar(`${headerClassName}-nav`, currentPage, 'random_user');
+        header.appendChild(headerNavbar);
 
-        const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'printEventCreator', `El HTMLElement de className .${mainClassName} no se ha encontrado`, HTMLElements);
-        main.innerHTML += createNewForm(`${mainClassName}-${currentPage}_form`, `${createEventForm(`${mainClassName}-${currentPage}_form-fields`, currentPage)}`);
+        dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
+        createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
-        //createUploadImageListener(appConfig, currentPage, HTMLElements);
+        const main = querySelectorChecker(`.${mainClassName}`, 'printEventCreatorForm');
 
-        createEventCreatorListener(appConfig, currentPage, HTMLElements);
+        const eventCreatorForm = createNewForm(`${mainClassName}-${currentPage}_form`, createEventForm(`${mainClassName}-${currentPage}_form-fields`, currentPage));
+        main.appendChild(eventCreatorForm);
+
+        //createUploadImageListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createEventCreatorListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         return main;
     } catch (error) {
-        errorHandler(error, 'printEventCreator');
+        return errorHandler(error, 'printEventCreatorForm');
     }
 };
 
-export default printEventCreator;
+export default printEventCreatorForm;

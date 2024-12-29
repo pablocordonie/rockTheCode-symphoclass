@@ -1,9 +1,9 @@
-//import createConfirmAttendanceListeners from '';
-import createButton from '../../templates/Button/button';
+import createConfirmAttendanceListeners from '../../utils/Listeners/Event/Confirm-Attendance/confirmAttendanceListeners';
 import createEventsFilter from '../../utils/Listeners/Filter/eventsFilter';
 import createEventsList from '../../templates/Event/List/eventsList';
 import createEventListener from '../../utils/Listeners/Event/eventListener';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
+import createNewButton from '../../templates/Button/button';
 import createNewInput from '../../templates/Input/input';
 import createProfileListener from '../../utils/Listeners/Menu/profileListener';
 import createUserNavbar from '../../templates/Navbar/userNavbar';
@@ -13,32 +13,41 @@ import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker
 import testCards from '../../../testCards';
 import toggleClass from '../../utils/Toggle/toggleClass';
 
-const printEventsList = (appConfig, currentPage, HTMLElements) => {
+const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
 
     try {
-        const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'printEventsList', `El HTMLElement de className .${headerClassName} no ha podido ser encontrado`, HTMLElements);
+        const header = querySelectorChecker(`.${headerClassName}`, 'printEventsList');
         toggleClass(header, `${headerClassName}-events`, currentPage);
-        header.innerHTML += createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
-        header.innerHTML += createNewInput(`${header.className}-search`, 'text', '', 'Buscar eventos...');
-        header.innerHTML += createButton(`${header.className}-create_btn`, 'Crear Nuevo Evento');
 
-        dropdownMenuToggle(`${headerClassName}-nav`, appConfig, HTMLElements);
-        createLogoutListener(appConfig, currentPage, HTMLElements);
-        createProfileListener(appConfig, currentPage, HTMLElements);
+        const headerNavbar = createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
+        header.appendChild(headerNavbar);
 
-        const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'printEventsList', `El HTMLElement de className .${mainClassName} no se ha encontrado`, HTMLElements);
+        const headerInput = createNewInput(`${header.className}-search`, '', 'text', 'Buscar eventos...');
+        header.appendChild(headerInput);
+
+        const headerEventCreatorButton = createNewButton(`${headerClassName}-events-create_btn`, 'Crear Nuevo Evento');
+        header.appendChild(headerEventCreatorButton);
+
+        dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
+        createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
+
+        const main = querySelectorChecker(`.${mainClassName}`, 'printEventsList');
         toggleClass(main, `${mainClassName}-events`, currentPage);
-        main.innerHTML += createEventsList(main.className, testCards);
 
-        createEventListener(appConfig, currentPage, HTMLElements);
-        createEventsFilter(header.className, appConfig, HTMLElements);
-        /* Hay que crear un listener de confirmación de asistencia por cada evento mostrado en la lista de eventos */
-        //createConfirmAttendanceListeners(HTMLElements);
+        const eventsList = createEventsList(main.className, testCards);
+        main.appendChild(eventsList);
+
+        createEventListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createEventsFilter(header.className, appConfig, HTMLElementsWithListeners);
+
+        const eventItems = Array.from(document.querySelectorAll(`.${main.className}-card`));
+        createConfirmAttendanceListeners(eventItems, HTMLElementsWithListeners);
 
         return main;
     } catch (error) {
-        errorHandler(error, 'printEventsList');
+        return errorHandler(error, 'printEventsList');
     }
 };
 

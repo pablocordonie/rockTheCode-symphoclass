@@ -1,42 +1,45 @@
-import activateContentCleaner from '../../Cleaner/contentCleaner';
-import activateHeaderCleaner from '../../Cleaner/headerCleaner'
+import activatePageCleaner from '../../Cleaner/pageCleaner';
 import createNewListener from '../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
 import errorHandler from '../../Error/errorHandler';
-import launchLoginPage from '../../Launcher/Login/launchLogin';
+import launchNewPage from '../../Launcher/launchNewPage';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
 import toggleClass from '../../Toggle/toggleClass';
 
-const createLogoutListener = (appConfig, currentPage, HTMLElements) => {
+const createLogoutListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
+
+    const pageActions = {
+        events: () => {
+            const eventsHeader = querySelectorChecker(`.${headerClassName}-events`, 'createLogoutListener');
+
+            const eventsMain = querySelectorChecker(`.${mainClassName}-events`, 'createLogoutListener');
+            activatePageCleaner(eventsHeader, eventsMain);
+
+            toggleClass(eventsHeader, `${headerClassName}`, currentPage);
+            toggleClass(eventsMain, `${mainClassName}`, currentPage);
+        },
+        default: () => {
+            const header = querySelectorChecker(`.${headerClassName}`, 'createLogoutListener');
+
+            const main = querySelectorChecker(`.${mainClassName}`, 'createLogoutListener');
+            activatePageCleaner(header, main);
+        }
+    };
 
     const logoutOption = {
         callback: () => {
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, logoutOption);
-
-            if (currentPage === 'events') {
-                const eventsHeader = querySelectorChecker(`.${headerClassName}-events`, appConfig, 'createLogoutListener', `El HTMLElement de className .${headerClassName}-events no se ha encontrado`, HTMLElements);
-                toggleClass(eventsHeader, `${headerClassName}`, currentPage);
-                activateHeaderCleaner(eventsHeader);
-
-                const eventsMain = querySelectorChecker(`.${mainClassName}-events`, appConfig, 'createLogoutListener', `El HTMLElement de className .${mainClassName}-events no se ha encontrado`, HTMLElements);
-                toggleClass(eventsMain, `${mainClassName}`, currentPage);
-                activateContentCleaner(eventsMain);
-            } else {
-                const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'createLogoutListener', `El HTMLElement de className .${headerClassName} no se ha encontrado`, HTMLElements);
-                activateHeaderCleaner(header);
-
-                const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'createLogoutListener', `El HTMLElement de className .${mainClassName} no se ha encontrado`, HTMLElements);
-                activateContentCleaner(main);
-            }
-
             try {
-                launchLoginPage(appConfig, currentPage, HTMLElements);
+                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, logoutOption);
+
+                currentPage === 'events' || currentPage === 'create-event' || currentPage === 'profile' ? pageActions.events() : pageActions.default();
+
+                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'login');
             } catch (error) {
-                errorHandler(error, 'createLogoutListener');
+                return errorHandler(error, 'createLogoutListener');
             }
         },
-        querySelector: document.querySelector('#logout'),
+        querySelector: querySelectorChecker('#logout', 'createLogoutListener'),
         type: 'click'
     };
     const { callback, querySelector, type } = logoutOption;

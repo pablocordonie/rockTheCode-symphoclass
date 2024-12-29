@@ -1,3 +1,3 @@
-const removeListener = (HTMLElement, callback, type) => HTMLElement.removeEventListener(type, callback);
+const removeListener = (HTMLElementWithListener, callback, type) => HTMLElementWithListener.removeEventListener(type, callback);
 
 export default removeListener;

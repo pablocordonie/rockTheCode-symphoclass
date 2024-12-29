@@ -1,32 +1,31 @@
-import activateContentCleaner from '../../../utils/Cleaner/contentCleaner';
-import activateHeaderCleaner from '../../../utils/Cleaner/headerCleaner';
+import activatePageCleaner from '../../../utils/Cleaner/pageCleaner';
 import createNewListener from '../../../utils/Listeners/Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../../utils/Filter/duplicatesRemover';
 import errorHandler from '../../../utils/Error/errorHandler';
-import launchEventsPage from '../../../utils/Launcher/Events-List/launchEventsList';
+import launchNewPage from '../../../utils/Launcher/launchNewPage';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
 
-const createUpdateProfileListener = (appConfig, currentPage, HTMLElements) => {
+const createUpdateProfileListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
 
     const updateButton = {
         callback: (event) => {
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, updateButton);
-
-            const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'createUpdateProfileListener', `El HTMLElement de className .${headerClassName} no se ha encontrado`, HTMLElements);
-            activateHeaderCleaner(header);
-
-            const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'createUpdateProfileListener', `El HTMLElement de className .${mainClassName} no se ha encontrado`, HTMLElements);
-            activateContentCleaner(main);
-
             try {
                 event.preventDefault();
-                launchEventsPage(appConfig, currentPage, HTMLElements);
+
+                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, updateButton);
+
+                const header = querySelectorChecker(`.${headerClassName}`, 'createUpdateProfileListener');
+
+                const main = querySelectorChecker(`.${mainClassName}`, 'createUpdateProfileListener');
+                activatePageCleaner(header, main);
+
+                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
             } catch (error) {
-                errorHandler(error, 'createUpdateProfileListener');
+                return errorHandler(error, 'createUpdateProfileListener');
             }
         },
-        querySelector: querySelectorChecker(`.${mainClassName}-${currentPage}_form-${currentPage}_button`, appConfig, 'createUpdateProfileListener', `El HTMLElement de className .${mainClassName}-${currentPage}_form-${currentPage}_button no se ha encontrado`, HTMLElements),
+        querySelector: querySelectorChecker(`.${mainClassName}-${currentPage}_form-${currentPage}_button`, 'createUpdateProfileListener'),
         type: 'click'
     }
     const { callback, querySelector, type } = updateButton;

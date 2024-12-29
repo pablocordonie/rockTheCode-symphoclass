@@ -1,9 +1,20 @@
 import './input.css';
-import createIdAttribute from '../Attribute/Id/id';
-import createPlaceholder from '../Attribute/Placeholder/placeholder';
 
-const createNewInput = (className, inputType, label, placeholderText = '') => `
-    <input ${label !== '' ? createIdAttribute(label) : ''} class="${className}" type=${inputType} ${placeholderText !== '' ? createPlaceholder(placeholderText) : ''}>
-`;
+const createNewInput = (className, fieldName, inputType = 'text', placeholderText = '') => {
+    const newInput = document.createElement('input');
+    newInput.type = `${inputType}`;
+
+    if (fieldName !== '') {
+        newInput.setAttribute('id', `${fieldName}`);
+    }
+
+    newInput.className = `${className}-input`;
+
+    if (placeholderText !== '') {
+        newInput.setAttribute('placeholder', `${placeholderText}`);
+    }
+
+    return newInput;
+};
 
 export default createNewInput;

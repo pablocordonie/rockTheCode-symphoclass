@@ -1,12 +1,20 @@
 import './dropdownMenu.css';
-import editProfileOption from './Edit-Profile/editProfile';
-import logoutOption from './Logout/logoutOption';
+import createEditProfileOption from './EditProfile/editProfile';
+import createLogoutOption from './Logout/logoutOption';
 
-const dropdownMenu = (className, currentPage) => `
-    <ul class="${className}">
-        ${currentPage === 'events' || currentPage === 'create-event' ? editProfileOption(`${className}-edit`, 'Cambiar Perfil') : ''}
-        ${logoutOption(`${className}-logout`, 'Cerrar Sesión')}
-    </ul>
-`;
+const createDropdownMenu = (className, currentPage) => {
+    const dropdownMenu = document.createElement('ul');
+    dropdownMenu.className = `${className}`;
 
-export default dropdownMenu;
+    if (currentPage === 'events' || currentPage === 'create_event') {
+        const editProfileOption = createEditProfileOption(`${className}-edit`, 'Cambiar Perfil');
+        dropdownMenu.appendChild(editProfileOption);
+    }
+
+    const logoutOption = createLogoutOption(`${className}-logout`, 'Cerrar Sesión');
+    dropdownMenu.appendChild(logoutOption);
+
+    return dropdownMenu;
+};
+
+export default createDropdownMenu;

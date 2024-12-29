@@ -1,3 +1,6 @@
-const errorHandler = (error, context) => console.error(`${context}`, error);
+const errorHandler = (error, context, returnValue = null) => {
+    console.error(`${context}`, error);
+    return returnValue;
+};
 
 export default errorHandler;

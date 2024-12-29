@@ -1,30 +1,34 @@
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
 import createNewForm from '../../templates/Form/form';
-import createProfileForm from '../../templates/Form/ProfileForm/profileForm';
+import createProfileForm from '../../templates/Form/EditProfileForm/editProfileForm';
 import createUpdateProfileListener from '../../utils/Listeners/Profile/updateListener';
 import createUserNavbar from '../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../utils/Error/errorHandler';
 import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';
 
-const printProfileForm = (appConfig, currentPage, HTMLElements) => {
+const printProfileForm = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
 
     try {
-        const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'printProfileForm', `El HTMLElement de className .${headerClassName} no se ha encontrado`, HTMLElements);
-        header.innerHTML += createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
+        const header = querySelectorChecker(`.${headerClassName}`, 'printProfileForm');
 
-        dropdownMenuToggle(`${headerClassName}-nav`, appConfig, HTMLElements);
-        createLogoutListener(appConfig, currentPage, HTMLElements);
+        const headerNavbar = createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
+        header.appendChild(headerNavbar);
 
-        const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'printProfileForm', `El HTMLElement de className .${mainClassName} no se ha encontrado`, HTMLElements);
-        main.innerHTML += createNewForm(`${mainClassName}-${currentPage}_form`, `${createProfileForm(`${mainClassName}-${currentPage}_form-fields`, currentPage)}`);
+        dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
+        createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
 
-        createUpdateProfileListener(appConfig, currentPage, HTMLElements);
+        const main = querySelectorChecker(`.${mainClassName}`, 'printProfileForm');
+
+        const editProfileForm = createNewForm(`${mainClassName}-${currentPage}_form`, createProfileForm(`${mainClassName}-${currentPage}_form-fields`, currentPage));
+        main.appendChild(editProfileForm);
+
+        createUpdateProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         return main;
     } catch (error) {
-        errorHandler(error, 'printProfileForm');
+        return errorHandler(error, 'printProfileForm');
     }
 };
 

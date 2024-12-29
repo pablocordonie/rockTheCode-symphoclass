@@ -1,30 +1,30 @@
-import activateContentCleaner from '../../../Cleaner/contentCleaner';
-import activateHeaderCleaner from '../../../Cleaner/headerCleaner';
+import activatePageCleaner from '../../../Cleaner/pageCleaner';
 import createNewListener from '../../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../../Filter/duplicatesRemover';
 import errorHandler from '../../../Error/errorHandler';
-import launchEventsPage from '../../../Launcher/Events-List/launchEventsList';
+import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createRegisterListenerInRegisterPage = (className, appConfig, currentPage, HTMLElements) => {
+const createRegisterListenerInRegisterPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
     const registerButton = {
         callback: (event) => {
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, registerButton);
-
-            const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'createRegisterListenerInRegisterPage', `El HTMLElement de className .${headerClassName} no ha podido ser encontrado`, HTMLElements);
-            activateHeaderCleaner(header);
-            const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'createRegisterListenerInRegisterPage', `El HTMLElement de className .${mainClassName} no ha podido ser encontrado`, HTMLElements);
-            activateContentCleaner(main);
-
             try {
                 event.preventDefault();
-                launchEventsPage(appConfig, currentPage, HTMLElements);
+
+                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, registerButton);
+
+                const header = querySelectorChecker(`.${headerClassName}`, 'createRegisterListenerInRegisterPage');
+
+                const main = querySelectorChecker(`.${mainClassName}`, 'createRegisterListenerInRegisterPage');
+                activatePageCleaner(header, main);
+
+                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
             } catch (error) {
-                errorHandler(error, 'createRegisterListenerInRegisterPage');
+                return errorHandler(error, 'createRegisterListenerInRegisterPage');
             }
         },
-        querySelector: querySelectorChecker(`.${className}-${currentPage}_button`, appConfig, 'createRegisterListenerInRegisterPage', `El HTMLElement de className .${className}-${currentPage}_button no ha podido ser encontrado`, HTMLElements),
+        querySelector: querySelectorChecker(`.${className}-${currentPage}_button`, 'createRegisterListenerInRegisterPage'),
         type: 'click'
     };
 

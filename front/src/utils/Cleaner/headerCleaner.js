@@ -3,7 +3,10 @@ import createMainTitle from '../../templates/Title/H1/mainTitle';
 
 const activateHeaderCleaner = (header) => {
     activateContentCleaner(header);
-    header.innerHTML += createMainTitle('sc-header-h1', 'The SymphoClass');
+
+    const mainTitle = createMainTitle('sc-header-h1', 'The SymphoClass');
+    header.appendChild(mainTitle);
+
     return header;
 };
 

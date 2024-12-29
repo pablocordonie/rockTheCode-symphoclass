@@ -3,20 +3,20 @@ import duplicatesRemoverIntoArray from '../../../Filter/duplicatesRemover';
 import errorHandler from '../../../Error/errorHandler';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createUploadImageListener = (appConfig, currentPage, HTMLElements) => {
+const createUploadImageListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;
     const uploadImageButton = {
         callback: (event) => {
             event.preventDefault();
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, uploadImageButton);
 
             try {
+                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, uploadImageButton);
                 /* Generar un acceso a los archivos del usuario para poder subir una imagen como avatar del perfil de usuario */
             } catch (error) {
-                errorHandler(error, 'createUploadImageListener');
+                return errorHandler(error, 'createUploadImageListener');
             }
         },
-        querySelector: querySelectorChecker(`.${mainClassName}-${currentPage}_form-img_field`, 'createUploadImageListener', `El HTMLElement de className .${mainClassName}-${currentPage}_form-img_field no se ha encontrado`),
+        querySelector: querySelectorChecker(`.${mainClassName}-${currentPage}_form-img_field`, 'createUploadImageListener'),
         type: 'click'
     };
 

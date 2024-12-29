@@ -1,37 +1,42 @@
-.sc-main-register_form-login_link {
+.sc-main-register_form-login {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
+  padding-top: 0.75rem;
 }
 
-.sc-main-register_form-login_link-message {
+.sc-main-register_form-login_message {
   font-size: 0.8rem;
   font-weight: 700;
 }
 
-.sc-main-register_form-login_link-message {
+.sc-main-register_form-login_message {
   color: var(--rtc-color-n-700);
 }
 
-@media screen and (min-width: 350px) {
-  .sc-main-register_form-login_link-message {
+@media screen and (min-width: 360px) {
+  .sc-main-register_form-login {
+    padding-top: 1rem;
+  }
+
+  .sc-main-register_form-login_message {
     font-size: 0.85rem;
   }
 }
 
 @media screen and (min-width: 400px) {
-  .sc-main-register_form-login_link-message {
+  .sc-main-register_form-login_message {
     font-size: 0.9rem;
   }
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
-  .sc-main-register_form-login_link {
+  .sc-main-register_form-login {
     gap: 1.5rem;
   }
 
-  .sc-main-register_form-login_link-message {
+  .sc-main-register_form-login_message {
     font-size: 1rem;
   }
 }

@@ -1,30 +1,29 @@
-import activateContentCleaner from '../../../../utils/Cleaner/contentCleaner';
-import activateHeaderCleaner from '../../../../utils/Cleaner/headerCleaner';
+import activatePageCleaner from '../../../../utils/Cleaner/pageCleaner';
 import createNewListener from '../../../../utils/Listeners/Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../../../utils/Filter/duplicatesRemover';
 import errorHandler from '../../../../utils/Error/errorHandler';
-import launchEventsPage from '../../../../utils/Launcher/Events-List/launchEventsList';
+import launchNewPage from '../../../../utils/Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 import testCards from '../../../../../testCards';
 
-const createEventCreatorListener = (appConfig, currentPage, HTMLElements) => {
+const createEventCreatorListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
 
     const createEventButton = {
         callback: (event) => {
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, createEventButton);
-
-            const header = querySelectorChecker(`.${headerClassName}`, appConfig, 'createEventCreatorListener', `El HTMLElement de className .${headerClassName} no se ha encontrado`, HTMLElements);
-            activateHeaderCleaner(header);
-
-            const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'createEventCreatorListener', `El HTMLElement de className .${mainClassName} no se ha encontrado`, HTMLElements);
-            activateContentCleaner(main);
-
             try {
                 event.preventDefault();
 
+                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, createEventButton);
+
+                const header = querySelectorChecker(`.${headerClassName}`, 'createEventCreatorListener');
+
+                const main = querySelectorChecker(`.${mainClassName}`, 'createEventCreatorListener');
+                activatePageCleaner(header, main);
+
                 /* SIMULADOR DE CREACIÓN DE EVENTOS */
                 const newEvent = {
+                    id: testCards.length + 1,
                     address: 'Calle Albasanz, 2, 28037 Madrid',
                     center: 'Escuela de Música Joaquín Turina',
                     date: '20 de Septiembre, 2025',
@@ -32,12 +31,12 @@ const createEventCreatorListener = (appConfig, currentPage, HTMLElements) => {
                 };
                 testCards.push(newEvent);
 
-                launchEventsPage(appConfig, currentPage, HTMLElements);
+                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
             } catch (error) {
-                errorHandler(error, 'createEventCreatorListener');
+                return errorHandler(error, 'createEventCreatorListener');
             }
         },
-        querySelector: querySelectorChecker(`.${mainClassName}-${currentPage}_form-${currentPage}_button`, appConfig, 'createEventCreatorListener', `El HTMLElement de className .${mainClassName}-${currentPage}_form-${currentPage}_button no se ha encontrado`, HTMLElements),
+        querySelector: querySelectorChecker(`.${mainClassName}-${currentPage}_form-${currentPage}_button`, 'createEventCreatorListener'),
         type: 'click'
     }
 

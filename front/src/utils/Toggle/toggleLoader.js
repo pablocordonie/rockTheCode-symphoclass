@@ -1,12 +1,12 @@
 import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 
-const toggleLoader = (appConfig, HTMLElements, isVisible) => {
+const toggleLoader = (appConfig, isVisible) => {
     const { loaderClassName, scClassName } = appConfig;
 
-    const loader = querySelectorChecker(`.${loaderClassName}`, appConfig, 'toggleLoader', `El HTMLElement de className .${loaderClassName} no se ha encontrado`, HTMLElements);
+    const loader = querySelectorChecker(`.${loaderClassName}`, 'toggleLoader');
     loader.style.display = isVisible ? 'flex' : 'none';
 
-    const sc = querySelectorChecker(`.${scClassName}`, appConfig, 'toggleLoader', `El HTMLElement de className .${scClassName} no se ha encontrado`, HTMLElements);
+    const sc = querySelectorChecker(`.${scClassName}`, 'toggleLoader');
     sc.style.display = isVisible ? 'none' : 'grid';
 };
 

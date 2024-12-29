@@ -1,6 +1,6 @@
-.sc-main-create-event_form,
+.sc-main-create_event_form,
 .sc-main-login_form,
-.sc-main-profile_form,
+.sc-main-edit_profile_form,
 .sc-main-register_form {
   display: flex;
   flex-direction: column;
@@ -8,27 +8,27 @@
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
-  .sc-main-create-event_form,
+  .sc-main-create_event_form,
   .sc-main-login_form,
-  .sc-main-profile_form,
+  .sc-main-edit_profile_form,
   .sc-main-register_form {
     gap: 2rem;
   }
 }
 
 @media screen and (min-width: 400px) {
-  .sc-main-create-event_form,
+  .sc-main-create_event_form,
   .sc-main-login_form,
-  .sc-main-profile_form,
+  .sc-main-edit_profile_form,
   .sc-main-register_form {
     gap: 2.25rem;
   }
 }
 
 @media screen and (min-width: 600px) {
-  .sc-main-create-event_form,
+  .sc-main-create_event_form,
   .sc-main-login_form,
-  .sc-main-profile_form,
+  .sc-main-edit_profile_form,
   .sc-main-register_form {
     gap: 2.5rem;
   }

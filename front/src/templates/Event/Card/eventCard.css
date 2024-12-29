@@ -9,8 +9,9 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sc-main-events-card div {
-  align-self: center;
+.confirmed {
+  position: relative;
+  outline: 4px solid green;
 }
 
 @media screen and (min-width: 768px) {

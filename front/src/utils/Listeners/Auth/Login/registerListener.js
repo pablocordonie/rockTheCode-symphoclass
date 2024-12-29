@@ -2,26 +2,26 @@ import activateContentCleaner from '../../../Cleaner/contentCleaner';
 import createNewListener from '../../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../../Filter/duplicatesRemover';
 import errorHandler from '../../../Error/errorHandler';
-import launchRegisterPage from '../../../Launcher/Register/launchRegister';
+import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createRegisterListenerInLoginPage = (className, appConfig, currentPage, HTMLElements) => {
+const createRegisterListenerInLoginPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;
     const registerButton = {
         callback: (event) => {
-            HTMLElements = duplicatesRemoverIntoArray(HTMLElements, registerButton);
-
-            const main = querySelectorChecker(`.${mainClassName}`, appConfig, 'createRegisterListenerInLoginPage', `El HTMLElement de className .${mainClassName} no ha podido ser encontrado`, HTMLElements);
-            activateContentCleaner(main);
-
             try {
                 event.preventDefault();
-                launchRegisterPage(appConfig, currentPage, HTMLElements);
+
+                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, registerButton);
+                const main = querySelectorChecker(`.${mainClassName}`, 'createRegisterListenerInLoginPage');
+                activateContentCleaner(main);
+
+                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'register');
             } catch (error) {
-                errorHandler(error, 'createRegisterListenerInLoginPage');
+                return errorHandler(error, 'createRegisterListenerInLoginPage');
             }
         },
-        querySelector: querySelectorChecker(`.${className}-register_link-button`, appConfig, 'createRegisterListenerInLoginPage', `El HTMLElement de className .${className}-register_link-button no ha podido ser encontrado`, HTMLElements),
+        querySelector: querySelectorChecker(`.${className}-register_button`, 'createRegisterListenerInLoginPage'),
         type: 'click'
     };
 

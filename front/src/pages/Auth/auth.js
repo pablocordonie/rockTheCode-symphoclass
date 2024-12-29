@@ -8,37 +8,32 @@ import createRegisterListenerInRegisterPage from '../../utils/Listeners/Auth/Reg
 import errorHandler from '../../utils/Error/errorHandler';
 import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';
 
-const printAuthForm = (appConfig, currentPage, HTMLElements) => {
+const printAuthForm = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;
 
-    if (currentPage === 'login') {
-        try {
-            const main = querySelectorChecker(`.${mainClassName}`, 'printAuthForm', `El HTMLElement de className .${mainClassName} no ha podido ser encontrado`);
-            const formClassName = `${main.className}-${currentPage}_form`;
+    const formContentCreators = {
+        login: createLoginFormContent,
+        register: createRegisterFormContent
+    };
 
-            main.innerHTML += createNewForm(formClassName, createLoginFormContent(formClassName, currentPage));
+    const listenerCreators = {
+        login: [createLoginListenerInLoginPage, createRegisterListenerInLoginPage],
+        register: [createLoginListenerInRegisterPage, createRegisterListenerInRegisterPage]
+    };
 
-            createLoginListenerInLoginPage(formClassName, appConfig, currentPage, HTMLElements);
-            createRegisterListenerInLoginPage(formClassName, appConfig, currentPage, HTMLElements);
+    try {
+        const main = querySelectorChecker(`.${mainClassName}`, 'printAuthForm');
+        const formClassName = `${main.className}-${currentPage}_form`;
 
-            return main;
-        } catch (error) {
-            errorHandler(error, 'printAuthForm');
-        }
-    } else {
-        try {
-            const main = querySelectorChecker(`.${mainClassName}`, 'printAuthForm', `El HTMLElement de className .${mainClassName} no ha podido ser encontrado`);
-            const formClassName = `${main.className}-${currentPage}_form`;
+        const formContent = formContentCreators[currentPage](formClassName, currentPage);
+        const printForm = createNewForm(formClassName, formContent);
+        main.appendChild(printForm);
 
-            main.innerHTML += createNewForm(formClassName, createRegisterFormContent(formClassName, currentPage));
+        listenerCreators[currentPage].forEach(activateListener => activateListener(formClassName, appConfig, currentPage, HTMLElementsWithListeners));
 
-            createLoginListenerInRegisterPage(formClassName, appConfig, currentPage, HTMLElements);
-            createRegisterListenerInRegisterPage(formClassName, appConfig, currentPage, HTMLElements);
-
-            return main;
-        } catch (error) {
-            errorHandler(error, 'printAuthForm');
-        }
+        return main;
+    } catch (error) {
+        return errorHandler(error, 'printAuthForm');
     }
 };
 

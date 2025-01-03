@@ -20,7 +20,11 @@ const createConfirmBtnListener = (confirmedIcon, eventItem, HTMLElementsWithList
 
                 if (eventItem.classList.contains('confirmed')) {
                     eventItem.classList.remove('confirmed');
-                    eventItem.removeChild(confirmedIcon);
+
+                    if (confirmedIcon && confirmedIcon.parentNode === eventItem) {
+                        eventItem.removeChild(confirmedIcon);
+                    }
+
                     eventData.confirmed = false;
                 } else {
                     eventItem.classList.add('confirmed');

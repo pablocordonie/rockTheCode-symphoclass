@@ -1,14 +1,13 @@
 import './input.css';
 
-const createNewInput = (className, fieldName, inputType = 'text', placeholderText = '') => {
+const createNewInput = (className, placeholderText = '', id = '', inputType = 'text') => {
     const newInput = document.createElement('input');
+    newInput.className = `${className}`;
     newInput.type = `${inputType}`;
 
-    if (fieldName !== '') {
-        newInput.setAttribute('id', `${fieldName}`);
+    if (id !== '') {
+        newInput.id = `${id}`;
     }
-
-    newInput.className = `${className}-input`;
 
     if (placeholderText !== '') {
         newInput.setAttribute('placeholder', `${placeholderText}`);

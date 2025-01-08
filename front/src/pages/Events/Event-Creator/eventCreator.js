@@ -2,8 +2,8 @@ import createEventCreatorListener from '../../../utils/Listeners/Event/Event-Cre
 import createEventForm from '../../../templates/Form/EventForm/eventForm';
 import createNewForm from '../../../templates/Form/form';
 import createLogoutListener from '../../../utils/Listeners/Menu/logoutListener';
-import createProfileListener from '../../../utils/Listeners/Menu/profileListener';
-//import createUploadImageListener from '../../../utils/Listeners/Image/Upload-Image/uploadImageListener';
+import createEditProfileListener from '../../../utils/Listeners/Menu/editProfileListener';
+import createUploadImageListener from '../../../utils/Listeners/Image/Upload-Image/uploadImageListener';
 import createUserNavBar from '../../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../../utils/Error/errorHandler';
@@ -20,14 +20,14 @@ const printEventCreatorForm = (appConfig, currentPage, HTMLElementsWithListeners
 
         dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
         createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
-        createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createEditProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printEventCreatorForm');
 
-        const eventCreatorForm = createNewForm(`${mainClassName}-${currentPage}_form`, createEventForm(`${mainClassName}-${currentPage}_form-fields`, currentPage));
+        const eventCreatorForm = createNewForm(`${mainClassName}-${currentPage}_form`, createEventForm(appConfig, `${mainClassName}-${currentPage}_form-fields`, currentPage));
         main.appendChild(eventCreatorForm);
 
-        //createUploadImageListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createUploadImageListener(appConfig, currentPage, HTMLElementsWithListeners);
         createEventCreatorListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         return main;

@@ -36,7 +36,7 @@ const createEventsFilter = (className, appConfig, HTMLElementsWithListeners) => 
                 return errorHandler(error, 'createEventsFilter');
             }
         },
-        querySelector: querySelectorChecker(`.${className}-search-input`, 'createEventsFilter'),
+        querySelector: querySelectorChecker(`.${className}-search_input`, 'createEventsFilter'),
         type: 'input'
     };
     const { callback, querySelector, type } = eventsInput;

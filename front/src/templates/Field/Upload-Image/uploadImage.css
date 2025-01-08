@@ -1,0 +1,10 @@
+.sc-main-create_event_form-img_field-input {
+  display: none;
+}
+
+.sc-main-create_event_form-img_field-preview_img {
+  display: none;
+  align-self: center;
+  height: 4rem;
+  width: 4rem;
+}

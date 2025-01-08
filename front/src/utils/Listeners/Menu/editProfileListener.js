@@ -6,23 +6,23 @@ import launchNewPage from '../../Launcher/launchNewPage';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
 import toggleClass from '../../Toggle/toggleClass';
 
-const createProfileListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
+const createEditProfileListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
 
     const pageActions = {
         events: () => {
-            const eventsHeader = querySelectorChecker(`.${headerClassName}-events`, 'createProfileListener');
+            const eventsHeader = querySelectorChecker(`.${headerClassName}-events`, 'createEditProfileListener');
 
-            const eventsMain = querySelectorChecker(`.${mainClassName}-events`, 'createProfileListener');
+            const eventsMain = querySelectorChecker(`.${mainClassName}-events`, 'createEditProfileListener');
             activatePageCleaner(eventsHeader, eventsMain);
 
             toggleClass(eventsHeader, `${headerClassName}`, currentPage);
             toggleClass(eventsMain, `${mainClassName}`, currentPage);
         },
         default: () => {
-            const header = querySelectorChecker(`.${headerClassName}`, 'createProfileListener');
+            const header = querySelectorChecker(`.${headerClassName}`, 'createEditProfileListener');
 
-            const main = querySelectorChecker(`.${mainClassName}`, 'createProfileListener');
+            const main = querySelectorChecker(`.${mainClassName}`, 'createEditProfileListener');
             activatePageCleaner(header, main);
         }
     };
@@ -36,14 +36,14 @@ const createProfileListener = (appConfig, currentPage, HTMLElementsWithListeners
 
                 launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'edit_profile');
             } catch (error) {
-                return errorHandler(error, 'createProfileListener');
+                return errorHandler(error, 'createEditProfileListener');
             }
         },
-        querySelector: querySelectorChecker('#edit-profile', 'createProfileListener'),
+        querySelector: querySelectorChecker('#edit-profile', 'createEditProfileListener'),
         type: 'click'
     };
     const { callback, querySelector, type } = editOption;
     createNewListener(querySelector, callback, type);
 };
 
-export default createProfileListener;
+export default createEditProfileListener;

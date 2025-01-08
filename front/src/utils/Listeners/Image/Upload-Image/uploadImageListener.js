@@ -11,12 +11,42 @@ const createUploadImageListener = (appConfig, currentPage, HTMLElementsWithListe
 
             try {
                 HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, uploadImageButton);
-                /* Generar un acceso a los archivos del usuario para poder subir una imagen como avatar del perfil de usuario */
+
+                const uploadImageField = querySelectorChecker(`.${mainClassName}-${currentPage}_form-img_field`, 'createUploadImageListener');
+
+                const fileInput = uploadImageField.querySelector(`.${mainClassName}-${currentPage}_form-img_field-input`);
+                if (!fileInput) {
+                    throw new Error('No se ha encontrado el input oculto');
+                }
+
+                const previewImage = uploadImageField.querySelector(`.${mainClassName}-${currentPage}_form-img_field-preview_img`);
+
+                fileInput.click();
+
+                const handleFileChange = () => {
+                    const file = fileInput.files[0];
+                    if (file) {
+                        if (file.type.startsWith('image/') && file.size < 2 * 1024 * 1024) {
+                            const reader = new FileReader();
+                            reader.onload = () => {
+                                previewImage.src = reader.result;
+                                previewImage.style.display = 'flex';
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            throw new Error('Por favor, seleccione un archivo de imagen inferior a 2 MB');
+                        }
+                    }
+                    fileInput.value = '';
+                };
+
+                fileInput.removeEventListener('change', handleFileChange);
+                fileInput.addEventListener('change', handleFileChange);
             } catch (error) {
                 return errorHandler(error, 'createUploadImageListener');
             }
         },
-        querySelector: querySelectorChecker(`.${mainClassName}-${currentPage}_form-img_field`, 'createUploadImageListener'),
+        querySelector: querySelectorChecker(`.${mainClassName}-${currentPage}_form-img_field-button`, 'createUploadImageListener'),
         type: 'click'
     };
 

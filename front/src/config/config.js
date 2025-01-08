@@ -1,6 +1,7 @@
 import printAuthForm from '../pages/Auth/auth';
 import printEventCreatorForm from '../pages/Events/Event-Creator/eventCreator';
 import printEventsForm from '../pages/Events/events';
+import printEditProfileForm from '../pages/Profile/Edit-Profile/editProfile';
 import printProfileForm from '../pages/Profile/profile';
 
 const app = document.querySelector('#app');
@@ -16,9 +17,10 @@ let state = {
 
 export const pageRenderers = {
     create_event: printEventCreatorForm,
-    edit_profile: printProfileForm,
+    edit_profile: printEditProfileForm,
     events: printEventsForm,
     login: printAuthForm,
+    profile: printProfileForm,
     register: printAuthForm
 };
 

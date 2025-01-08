@@ -32,7 +32,7 @@ const createLogoutListener = (appConfig, currentPage, HTMLElementsWithListeners)
             try {
                 HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, logoutOption);
 
-                currentPage === 'events' || currentPage === 'create-event' || currentPage === 'profile' ? pageActions.events() : pageActions.default();
+                currentPage === 'events' || currentPage === 'create-event' || currentPage === 'edit-profile' ? pageActions.events() : pageActions.default();
 
                 launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'login');
             } catch (error) {

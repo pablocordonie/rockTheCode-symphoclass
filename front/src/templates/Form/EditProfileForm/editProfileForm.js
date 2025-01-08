@@ -2,7 +2,7 @@ import './editProfileForm.css';
 import createNewButton from '../../Button/button';
 import createNewField from '../../Field/field';
 
-const createProfileForm = (className, currentPage) => {
+const createEditProfileForm = (className, currentPage) => {
     const profileFormList = document.createElement('ul');
     profileFormList.className = `${className}`;
 
@@ -30,4 +30,4 @@ const createProfileForm = (className, currentPage) => {
     return profileFormList;
 };
 
-export default createProfileForm;
+export default createEditProfileForm;

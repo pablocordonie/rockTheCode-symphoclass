@@ -1,7 +1,7 @@
 import './field.css';
 import createNewInput from '../Input/input';
 
-const createNewField = (className, fieldName, fieldTitle, inputType = 'text', placeholderText = '') => {
+const createNewField = (className, fieldName, fieldTitle, inputType, placeholderText) => {
     const newField = document.createElement('li');
     newField.className = `${className}`;
 
@@ -10,7 +10,7 @@ const createNewField = (className, fieldName, fieldTitle, inputType = 'text', pl
     label.className = `${className}-label`;
     label.textContent = `${fieldTitle}`;
 
-    const input = createNewInput(className, fieldName, inputType, placeholderText);
+    const input = createNewInput(`${className}-input`, placeholderText, fieldName, inputType);
 
     newField.appendChild(label);
     newField.appendChild(input);

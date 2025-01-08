@@ -5,7 +5,7 @@ import createEventListener from '../../utils/Listeners/Event/eventListener';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
 import createNewButton from '../../templates/Button/button';
 import createNewInput from '../../templates/Input/input';
-import createProfileListener from '../../utils/Listeners/Menu/profileListener';
+import createEditProfileListener from '../../utils/Listeners/Menu/editProfileListener';
 import createUserNavbar from '../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../utils/Error/errorHandler';
@@ -23,7 +23,7 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
         const headerNavbar = createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
         header.appendChild(headerNavbar);
 
-        const headerInput = createNewInput(`${header.className}-search`, '', 'text', 'Buscar eventos...');
+        const headerInput = createNewInput(`${header.className}-search_input`, 'Buscar eventos...');
         header.appendChild(headerInput);
 
         const headerEventCreatorButton = createNewButton(`${headerClassName}-events-create_btn`, 'Crear Nuevo Evento');
@@ -31,7 +31,7 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
 
         dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
         createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
-        createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createEditProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printEventsList');
         toggleClass(main, `${mainClassName}-events`, currentPage);

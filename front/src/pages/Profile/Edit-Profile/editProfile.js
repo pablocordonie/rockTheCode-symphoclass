@@ -1,6 +1,7 @@
+import createEditProfileForm from '../../../templates/Form/EditProfileForm/editProfileForm';
 import createLogoutListener from '../../../utils/Listeners/Menu/logoutListener';
 import createNewForm from '../../../templates/Form/form';
-import createEditProfileForm from '../../../templates/Form/EditProfileForm/editProfileForm';
+import createProfileListener from '../../../utils/Listeners/Menu/profileListener';
 import createUpdateProfileListener from '../../../utils/Listeners/Profile/updateListener';
 import createUserNavbar from '../../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../../utils/Toggle/dropdownMenuToggle';
@@ -18,6 +19,7 @@ const printEditProfileForm = (appConfig, currentPage, HTMLElementsWithListeners)
 
         dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
         createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printEditProfileForm');
 

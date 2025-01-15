@@ -1,3 +1,5 @@
+import './image.css';
+
 const createNewImage = (className, src, altText) => {
     const newImg = document.createElement('img');
     newImg.className = `${className}`;

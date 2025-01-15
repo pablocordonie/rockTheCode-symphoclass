@@ -1,11 +1,12 @@
 import createConfirmAttendanceListeners from '../../utils/Listeners/Event/Confirm-Attendance/confirmAttendanceListeners';
+import createEditProfileListener from '../../utils/Listeners/Menu/editProfileListener';
 import createEventsFilter from '../../utils/Listeners/Filter/eventsFilter';
 import createEventsList from '../../templates/Event/List/eventsList';
 import createEventListener from '../../utils/Listeners/Event/eventListener';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
 import createNewButton from '../../templates/Button/button';
 import createNewInput from '../../templates/Input/input';
-import createEditProfileListener from '../../utils/Listeners/Menu/editProfileListener';
+import createProfileListener from '../../utils/Listeners/Menu/profileListener';
 import createUserNavbar from '../../templates/Navbar/userNavbar';
 import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../utils/Error/errorHandler';
@@ -32,6 +33,7 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
         dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
         createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
         createEditProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printEventsList');
         toggleClass(main, `${mainClassName}-events`, currentPage);

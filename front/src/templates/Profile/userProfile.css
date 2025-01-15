@@ -1,0 +1,30 @@
+.sc-main-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sc-main-profile_info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+}
+
+.sc-main-profile_info-profile_avatar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sc-main-profile_info-profile_data {
+  display: flex;
+  align-items: center;
+  background-color: var(--rtc-color-n-900);
+  border: 0.4rem solid var(--rtc-color-n-600);
+  border-radius: 0.625rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem;
+}

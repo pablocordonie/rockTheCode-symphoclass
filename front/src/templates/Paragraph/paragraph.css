@@ -1,3 +1,9 @@
 .sc-main-events-card p {
   color: var(--rtc-color-n-000);
 }
+
+.sc-main-profile_info-profile_email,
+.sc-main-profile_info-profile_fullname {
+  color: var(--rtc-color-n-100);
+  font-size: 1.15rem;
+}

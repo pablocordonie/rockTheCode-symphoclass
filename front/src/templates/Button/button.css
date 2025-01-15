@@ -44,6 +44,24 @@
   width: 7.5rem;
 }
 
+.sc-main-profile_info-editProfile_btn {
+  display: flex;
+  align-items: center;
+  background-color: var(--rtc-color-n-600);
+  border: none;
+  border-radius: 0.3125rem;
+  color: var(--rtc-color-n-900);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.625rem 1.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.sc-main-profile_info-editProfile_btn:hover {
+  background-color: var(--rtc-color-n-900);
+  color: var(--rtc-color-n-600);
+}
+
 @media screen and (min-width: 400px) {
   .sc-main button {
     font-size: 0.9rem;

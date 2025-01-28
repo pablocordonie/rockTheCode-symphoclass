@@ -13,6 +13,6 @@ const createLoginLink = (className, text) => {
     loginLinkContainer.appendChild(registerButton);
 
     return loginLinkContainer;
-}
+};
 
 export default createLoginLink;

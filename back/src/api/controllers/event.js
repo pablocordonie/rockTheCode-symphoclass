@@ -33,7 +33,7 @@ const getEventById = async (req, res, next) => {
 
 const postEvent = async (req, res, next) => {
     try {
-        const { title, date, location, description } = req.body;
+        const { title, address, center, date } = req.body;
 
         const event = await Event.findOne({ title });
 
@@ -48,11 +48,12 @@ const postEvent = async (req, res, next) => {
 
         const newEvent = new Event({
             title,
+            address,
+            center,
+            confirmed: false,
+            date,
             event_organizer: req.user._id,
             img: req.file ? req.file.path : '',
-            date,
-            location,
-            description
         });
 
         const savedNewEvent = await newEvent.save();
@@ -110,12 +111,13 @@ const updateEvent = async (req, res, next) => {
 
         const newEvent = new Event({
             title: req.body.title || oldEvent.title,
+            address: req.body.address || oldEvent.address,
+            attendees: oldEvent.attendees,
+            center: req.body.center || oldEvent.center,
+            confirmed: oldEvent.confirmed,
+            date: req.body.date || oldEvent.date,
             event_organizer: req.user._id,
             img: req.body.img,
-            date: req.body.date || oldEvent.date,
-            location: req.body.location || oldEvent.location,
-            description: req.body.description || oldEvent.description,
-            attendees: oldEvent.attendees
         });
         newEvent._id = id;
 

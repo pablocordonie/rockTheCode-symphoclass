@@ -1,4 +1,4 @@
-import createLoader from '../../templates/Loader/loader';
+import createLoader from '../../components/Loader/loader';
 import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 import toggleLoader from '../Toggle/toggleLoader';
 

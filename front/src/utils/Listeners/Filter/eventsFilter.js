@@ -1,11 +1,11 @@
 import activateContentCleaner from '../../../utils/Cleaner/contentCleaner';
 import createConfirmAttendanceListeners from '../Event/Confirm-Attendance/confirmAttendanceListeners';
-import createEventsList from '../../../templates/Event/List/eventsList';
+import createEventsList from '../../../components/Event/List/eventsList';
 import createNewListener from '../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
 import errorHandler from '../../Error/errorHandler';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
-import testCards from '../../../../testCards';
+import testCards from '../../Data/testCards';
 
 const createEventsFilter = (className, appConfig, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;

@@ -1,3 +1,4 @@
+const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
 const { deleteFile } = require('../../utils/deleteFile');
@@ -99,6 +100,12 @@ const deleteUser = async (req, res, next) => {
     try {
         const { id } = req.params;
 
+        if (req.user.role === 'admin') {
+            const error = new Error("it's not allowed to delete the admin's account");
+            error.statusCode = 403;
+            return next(error);
+        }
+
         if (req.user.role === 'user' && req.user._id != id) {
             const error = new Error("it's not allowed to delete another user's data");
             error.statusCode = 403;
@@ -106,7 +113,8 @@ const deleteUser = async (req, res, next) => {
         }
 
         if (req.user.attended_events.length > 0) {
-            await Event.deleteMany({ attendees: id });
+            const attendee = await Attendee.findOne({ username: req.user.username });
+            await Attendee.findByIdAndDelete(attendee._id);
         }
 
         if (req.user.organized_events.length > 0) {

@@ -1,17 +1,17 @@
 import createConfirmAttendanceListeners from '../../utils/Listeners/Event/Confirm-Attendance/confirmAttendanceListeners';
 import createEditProfileListener from '../../utils/Listeners/Menu/editProfileListener';
 import createEventsFilter from '../../utils/Listeners/Filter/eventsFilter';
-import createEventsList from '../../templates/Event/List/eventsList';
+import createEventsList from '../../components/Event/List/eventsList';
 import createEventListener from '../../utils/Listeners/Event/eventListener';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
-import createNewButton from '../../templates/Button/button';
-import createNewInput from '../../templates/Input/input';
+import createNewButton from '../../components/Button/button';
+import createNewInput from '../../components/Input/input';
 import createProfileListener from '../../utils/Listeners/Menu/profileListener';
-import createUserNavbar from '../../templates/Navbar/userNavbar';
+import createUserNavbar from '../../components/Navbar/userNavbar';
 import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../utils/Error/errorHandler';
 import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';
-import testCards from '../../../testCards';
+import testCards from '../../utils/Data/testCards';
 import toggleClass from '../../utils/Toggle/toggleClass';
 
 const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {

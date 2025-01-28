@@ -4,7 +4,7 @@ import duplicatesRemoverIntoArray from '../../../../utils/Filter/duplicatesRemov
 import errorHandler from '../../../../utils/Error/errorHandler';
 import launchNewPage from '../../../../utils/Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
-import testCards from '../../../../../testCards';
+import testCards from '../../../Data/testCards';
 
 const createEventCreatorListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;

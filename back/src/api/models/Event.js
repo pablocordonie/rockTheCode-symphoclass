@@ -3,14 +3,15 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
     title: { type: String, required: true },
-    event_organizer: { type: Schema.Types.ObjectId, ref: 'users', required: true },
-    img: { type: String, trim: true },
-    date: { type: String, required: true },
-    location: { type: String, required: true },
-    description: { type: String, required: true },
+    address: { type: String, required: true },
     attendees: [
         { type: Schema.Types.ObjectId, ref: 'users' }
-    ]
+    ],
+    center: { type: String, required: true },
+    confirmed: { type: Boolean },
+    date: { type: String, required: true },
+    event_organizer: { type: Schema.Types.ObjectId, ref: 'users', required: true },
+    img: { type: String, trim: true }
 }, {
     timestamps: true,
     collection: 'events'

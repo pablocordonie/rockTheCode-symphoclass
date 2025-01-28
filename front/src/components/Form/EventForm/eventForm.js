@@ -15,11 +15,11 @@ const createEventForm = (appConfig, className, currentPage) => {
     const eventDateField = createNewField(`${mainClassName}-${currentPage}_form-date_field`, 'date', 'Fecha');
     eventFormList.appendChild(eventDateField);
 
-    const eventLocationField = createNewField(`${mainClassName}-${currentPage}_form-location_field`, 'location', 'Lugar');
-    eventFormList.appendChild(eventLocationField);
+    const eventAddressField = createNewField(`${mainClassName}-${currentPage}_form-address_field`, 'address', 'Dirección');
+    eventFormList.appendChild(eventAddressField);
 
-    const eventDescriptionField = createNewField(`${mainClassName}-${currentPage}_form-description_field`, 'description', 'Descripción');
-    eventFormList.appendChild(eventDescriptionField);
+    const eventCenterField = createNewField(`${mainClassName}-${currentPage}_form-center_field`, 'center', 'Centro de enseñanza');
+    eventFormList.appendChild(eventCenterField);
 
     const eventImageField = createUploadImageField(`${mainClassName}-${currentPage}_form-img_field`, 'image', 'Imagen');
     eventFormList.appendChild(eventImageField);

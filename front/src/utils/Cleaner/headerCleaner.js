@@ -1,5 +1,5 @@
 import activateContentCleaner from '../Cleaner/contentCleaner';
-import createMainTitle from '../../templates/Title/H1/mainTitle';
+import createMainTitle from '../../components/Title/H1/mainTitle';
 
 const activateHeaderCleaner = (header) => {
     activateContentCleaner(header);

@@ -1,5 +1,5 @@
 import createConfirmBtnListener from './Confirm-Btn/confirmBtn';
-import createConfirmedIcon from '../../../../templates/Icons/Confirmed/confirmed';
+import createConfirmedIcon from '../../../../components/Icons/Confirmed/confirmed';
 
 const createConfirmAttendanceListeners = (eventItems, HTMLElementsWithListeners) => {
     const confirmedIcon = createConfirmedIcon('confirm-btn-confirmed_icon');

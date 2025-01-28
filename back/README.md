@@ -14,7 +14,7 @@ Proyecto 10: Sistema de Gestión de Eventos
 
     - Event.js
 
-      - Este modelo representa los eventos. Incluye los campos title, event_organizer, img, date, location, description, y una lista de asistentes al evento.
+      - Este modelo representa los eventos. Incluye los campos title, address, center, confirmed (campo relativo a la asistencia al evento), date, event_organizer, img y una lista de asistentes al evento.
 
     - User.js
 

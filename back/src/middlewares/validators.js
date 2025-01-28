@@ -4,10 +4,10 @@ const { deleteFile } = require('../utils/deleteFile');
 
 const eventSchema = Joi.object({
     title: Joi.string().min(3).max(100).required(),
+    address: Joi.string().min(3).max(100).required(),
+    center: Joi.string().min(10).max(100).required(),
     date: Joi.string().pattern(/^\d{2}[-/]\d{2}[-/]\d{4}$/).required().custom(customDateValidation),
-    img: Joi.any().optional(),
-    location: Joi.string().min(3).max(50).required(),
-    description: Joi.string().min(10).max(500).required()
+    img: Joi.any().optional()
 });
 
 const registerSchema = Joi.object({
@@ -25,10 +25,11 @@ const loginSchema = Joi.object({
 
 const updatedEventSchema = Joi.object({
     title: Joi.string().min(3).max(100).optional(),
+    address: Joi.string().min(3).max(100).optional(),
+    center: Joi.string().max(100).optional(),
+    confirmed: Joi.any().optional(),
     date: Joi.string().pattern(/^\d{2}[-/]\d{2}[-/]\d{4}$/).optional().custom(customDateValidation),
-    img: Joi.any().optional(),
-    location: Joi.string().min(3).max(50).optional(),
-    description: Joi.string().max(500).optional()
+    img: Joi.any().optional()
 });
 
 const updatedUserSchema = Joi.object({

@@ -2,7 +2,7 @@ import createNewListener from '../../../Listener/createNewListener';
 import duplicatesRemoverIntoArray from '../../../../Filter/duplicatesRemover';
 import errorHandler from '../../../../Error/errorHandler';
 import querySelectorChecker from '../../../../QuerySelector/querySelectorChecker';
-import testCards from '../../../../../../testCards';
+import testCards from '../../../../Data/testCards';
 
 const createConfirmBtnListener = (confirmedIcon, eventItem, HTMLElementsWithListeners) => {
     const confirmAttendanceBtn = {

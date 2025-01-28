@@ -6,6 +6,8 @@ const createEditProfileForm = (className, currentPage) => {
     const profileFormList = document.createElement('ul');
     profileFormList.className = `${className}`;
 
+    /* TO-DO: Dar opción para poder cambiar la imagen del perfil */
+
     const userNameField = createNewField(`sc-main-${currentPage}_form-username_field`, 'username', 'Nombre de Usuario');
     profileFormList.appendChild(userNameField);
 
@@ -26,6 +28,8 @@ const createEditProfileForm = (className, currentPage) => {
     const submitProfileButton = createNewButton(`sc-main-${currentPage}_form-${currentPage}_button`, 'Modificar Perfil');
     submitProfileItem.appendChild(submitProfileButton);
     profileFormList.appendChild(submitProfileItem);
+
+    /* TO-DO: Dar opción para poder eliminar la cuenta del usuario y volver a la página de login */
 
     return profileFormList;
 };

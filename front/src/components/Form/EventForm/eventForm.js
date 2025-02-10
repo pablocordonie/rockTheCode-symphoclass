@@ -2,35 +2,43 @@ import './eventForm.css';
 import createNewButton from '../../Button/button';
 import createNewField from '../../Field/field';
 import createUploadImageField from '../../Field/Upload-Image/uploadImage';
+import generateFieldData from '../../../utils/Data/generateFieldData';
+import generateList from '../../../utils/List/generateList';
 
 const createEventForm = (appConfig, className, currentPage) => {
     const { mainClassName } = appConfig;
+    const eventFormFields = [];
 
-    const eventFormList = document.createElement('ul');
-    eventFormList.className = `${className}`;
+    const eventFormFieldsList = document.createElement('ul');
+    eventFormFieldsList.className = `${className}`;
 
-    const eventTitleField = createNewField(`${mainClassName}-${currentPage}_form-title_field`, 'title', 'Nombre del evento');
-    eventFormList.appendChild(eventTitleField);
+    const eventTitleField = generateFieldData(`${mainClassName}-${currentPage}_form-title_field`, 'title', 'Nombre del evento');
+    eventFormFields.push(eventTitleField);
 
-    const eventDateField = createNewField(`${mainClassName}-${currentPage}_form-date_field`, 'date', 'Fecha');
-    eventFormList.appendChild(eventDateField);
+    const eventDateField = generateFieldData(`${mainClassName}-${currentPage}_form-date_field`, 'date', 'Fecha');
+    eventFormFields.push(eventDateField);
 
-    const eventAddressField = createNewField(`${mainClassName}-${currentPage}_form-address_field`, 'address', 'Dirección');
-    eventFormList.appendChild(eventAddressField);
+    const eventAddressField = generateFieldData(`${mainClassName}-${currentPage}_form-address_field`, 'address', 'Dirección');
+    eventFormFields.push(eventAddressField);
 
-    const eventCenterField = createNewField(`${mainClassName}-${currentPage}_form-center_field`, 'center', 'Centro de enseñanza');
-    eventFormList.appendChild(eventCenterField);
+    const eventCenterField = generateFieldData(`${mainClassName}-${currentPage}_form-center_field`, 'center', 'Centro de enseñanza');
+    eventFormFields.push(eventCenterField);
 
-    const eventImageField = createUploadImageField(`${mainClassName}-${currentPage}_form-img_field`, 'image', 'Imagen');
-    eventFormList.appendChild(eventImageField);
+    console.log(eventFormFields);
+    generateList(eventFormFieldsList, eventFormFields, field => createNewField(field));
 
+    const eventImageField = generateFieldData(`${mainClassName}-${currentPage}_form-img_field`, 'image', 'Imagen', 'file');
+    const eventUploadImageField = createUploadImageField(eventImageField);
+    eventFormFieldsList.appendChild(eventUploadImageField);
+
+    /* Util => generateOptionsToClick.js */
     const submitEventItem = document.createElement('li');
     submitEventItem.className = `${mainClassName}-${currentPage}_form-${currentPage}_item`;
     const submitEventButton = createNewButton(`${mainClassName}-${currentPage}_form-${currentPage}_button`, 'Crear Evento');
     submitEventItem.appendChild(submitEventButton);
-    eventFormList.appendChild(submitEventItem);
+    eventFormFieldsList.appendChild(submitEventItem);
 
-    return eventFormList;
+    return eventFormFieldsList;
 };
 
 export default createEventForm;

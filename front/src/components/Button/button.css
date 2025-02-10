@@ -20,6 +20,7 @@
   background-color: var(--rtc-color-n-600);
   border: 0.25rem solid var(--rtc-color-n-600);
   border-radius: 0.5rem;
+  color: var(--rtc-color-n-900);
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 700;

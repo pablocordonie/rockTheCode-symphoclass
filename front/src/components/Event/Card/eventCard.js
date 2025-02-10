@@ -5,7 +5,7 @@ import createNewButton from '../../Button/button';
 import createNewParagraph from '../../Paragraph/paragraph';
 import createTagTemplate from '../../Tag/tag';
 
-const createEventCard = (className, card) => {
+const createEventCard = (card, className) => {
     const eventCardItem = document.createElement('li');
     eventCardItem.className = `${className}`;
     eventCardItem.setAttribute('data-id', `${card.id}`);

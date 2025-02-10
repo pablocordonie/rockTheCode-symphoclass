@@ -1,37 +1,49 @@
 import './editProfileForm.css';
+import { appConfig } from '../../../config/config';
 import createNewButton from '../../Button/button';
 import createNewField from '../../Field/field';
+import generateFieldData from '../../../utils/Data/generateFieldData';
+import generateList from '../../../utils/List/generateList';
 
 const createEditProfileForm = (className, currentPage) => {
-    const profileFormList = document.createElement('ul');
-    profileFormList.className = `${className}`;
+    const { mainClassName } = appConfig;
+
+    const editProfileFormList = document.createElement('ul');
+    editProfileFormList.className = `${className}`;
+
+    const editProfileFormFields = [];
 
     /* TO-DO: Dar opción para poder cambiar la imagen del perfil */
 
-    const userNameField = createNewField(`sc-main-${currentPage}_form-username_field`, 'username', 'Nombre de Usuario');
-    profileFormList.appendChild(userNameField);
+    const userNameField = generateFieldData(`${mainClassName}-${currentPage}_form-username_field`, 'username', 'Nombre de Usuario');
+    editProfileFormFields.push(userNameField);
 
-    const fullNameField = createNewField(`sc-main-${currentPage}_form-fullname_field`, 'fullname', 'Nombre Completo');
-    profileFormList.appendChild(fullNameField);
+    const fullNameField = generateFieldData(`${mainClassName}-${currentPage}_form-fullname_field`, 'fullname', 'Nombre Completo');
+    editProfileFormFields.push(fullNameField);
 
-    const emailField = createNewField(`sc-main-${currentPage}_form-email_field`, 'email', 'Email');
-    profileFormList.appendChild(emailField);
+    const emailField = generateFieldData(`${mainClassName}-${currentPage}_form-email_field`, 'email', 'Email');
+    editProfileFormFields.push(emailField);
 
-    const passwordField = createNewField(`sc-main-${currentPage}_form-password_field`, 'password', 'Contraseña', 'password');
-    profileFormList.appendChild(passwordField);
+    const passwordField = generateFieldData(`${mainClassName}-${currentPage}_form-password_field`, 'password', 'Contraseña', 'password');
+    editProfileFormFields.push(passwordField);
 
-    const repeatPasswordField = createNewField(`sc-main-${currentPage}_form-repeat_password_field`, 'compare-password', 'Repetir Contraseña', 'password');
-    profileFormList.appendChild(repeatPasswordField);
+    const repeatPasswordField = generateFieldData(`${mainClassName}-${currentPage}_form-repeat_password_field`, 'compare-password', 'Repetir Contraseña', 'password');
+    editProfileFormFields.push(repeatPasswordField);
 
+    console.log(editProfileFormFields);
+    generateList(editProfileFormList, editProfileFormFields, field => createNewField(field));
+
+    /* Util => generateOptionsToClick.js */
     const submitProfileItem = document.createElement('li');
-    submitProfileItem.className = `sc-main-${currentPage}_form-${currentPage}_item`;
-    const submitProfileButton = createNewButton(`sc-main-${currentPage}_form-${currentPage}_button`, 'Modificar Perfil');
+    submitProfileItem.className = `${mainClassName}-${currentPage}_form-${currentPage}_item`;
+
+    const submitProfileButton = createNewButton(`${mainClassName}-${currentPage}_form-${currentPage}_button`, 'Modificar Perfil');
     submitProfileItem.appendChild(submitProfileButton);
-    profileFormList.appendChild(submitProfileItem);
+    editProfileFormList.appendChild(submitProfileItem);
 
     /* TO-DO: Dar opción para poder eliminar la cuenta del usuario y volver a la página de login */
 
-    return profileFormList;
+    return editProfileFormList;
 };
 
 export default createEditProfileForm;

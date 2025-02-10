@@ -1,6 +1,7 @@
 import './eventsList.css';
 import createEventCard from '../Card/eventCard';
 import createNoEventsMessage from '../No-Events/noEventsMessage';
+import generateList from '../../../utils/List/generateList';
 
 const createEventsList = (mainClassName, testCards) => {
     const eventsList = document.createElement('ul');
@@ -10,10 +11,7 @@ const createEventsList = (mainClassName, testCards) => {
         const noEventsListItem = createNoEventsMessage(`${mainClassName}-no_events`, 'No hay eventos');
         eventsList.appendChild(noEventsListItem);
     } else {
-        testCards.map(card => {
-            const eventCardItem = createEventCard(`${mainClassName}-card`, card);
-            eventsList.appendChild(eventCardItem);
-        }).join('');
+        generateList(eventsList, testCards, card => createEventCard(card, `${mainClassName}-card`));
     }
 
     return eventsList;

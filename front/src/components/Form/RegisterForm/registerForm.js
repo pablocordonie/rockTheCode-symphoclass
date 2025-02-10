@@ -2,38 +2,46 @@ import './registerForm.css';
 import createLoginLink from '../../Link/Login/loginLink';
 import createNewButton from '../../Button/button';
 import createNewField from '../../Field/field';
+import generateFieldData from '../../../utils/Data/generateFieldData';
+import generateList from '../../../utils/List/generateList';
 
 const createRegisterFormContent = (className, currentPage) => {
-    const registerFieldsList = document.createElement('ul');
-    registerFieldsList.className = `${className}-fields`;
+    const registerFormFields = [];
+    const registerOptionsToClick = [];
 
-    const usernameField = createNewField(`${className}-username_field`, 'username', 'Username');
-    registerFieldsList.appendChild(usernameField);
+    const registerFormFieldsList = document.createElement('ul');
+    registerFormFieldsList.className = `${className}-fields`;
 
-    const fullnameField = createNewField(`${className}-fullname_field`, 'fullname', 'Fullname');
-    registerFieldsList.appendChild(fullnameField);
+    const usernameField = generateFieldData(`${className}-username_field`, 'username', 'Username');
+    registerFormFields.push(usernameField);
 
-    const emailField = createNewField(`${className}-email_field`, 'email', 'Email');
-    registerFieldsList.appendChild(emailField);
+    const fullnameField = generateFieldData(`${className}-fullname_field`, 'fullname', 'Fullname');
+    registerFormFields.push(fullnameField);
 
-    const passwordField = createNewField(`${className}-password_field`, 'password', 'Contraseña');
-    registerFieldsList.appendChild(passwordField);
+    const emailField = generateFieldData(`${className}-email_field`, 'email', 'Email');
+    registerFormFields.push(emailField);
 
-    const registerFieldsItems = [];
+    const passwordField = generateFieldData(`${className}-password_field`, 'password', 'Contraseña', 'password');
+    registerFormFields.push(passwordField);
+
+    console.log(registerFormFields);
+    generateList(registerFormFieldsList, registerFormFields, field => createNewField(field));
+
+    /* Util => generateOptionsToClick.js */
     const submitButtonItem = document.createElement('li');
     submitButtonItem.className = `${className}-${currentPage}_item`;
     const submitButton = createNewButton(`${className}-${currentPage}_button`, 'Registrarse');
     submitButtonItem.appendChild(submitButton);
-    registerFieldsItems.push(submitButtonItem);
+    registerOptionsToClick.push(submitButtonItem);
 
     const loginLinkItem = document.createElement('li');
     loginLinkItem.className = `${className}-${currentPage}_item`;
     const loginLink = createLoginLink(`${className}-login`, '¿Ya estás registrado en The SymphoClass?');
     loginLinkItem.appendChild(loginLink);
-    registerFieldsItems.push(loginLinkItem);
+    registerOptionsToClick.push(loginLinkItem);
 
-    registerFieldsItems.forEach(item => registerFieldsList.appendChild(item));
-    return registerFieldsList;
+    registerOptionsToClick.forEach(item => registerFormFieldsList.appendChild(item));
+    return registerFormFieldsList;
 };
 
 export default createRegisterFormContent;

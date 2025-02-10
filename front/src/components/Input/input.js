@@ -1,6 +1,6 @@
 import './input.css';
 
-const createNewInput = (className, placeholderText = '', id = '', inputType = 'text') => {
+const createNewInput = (className, id, inputType, placeholderText) => {
     const newInput = document.createElement('input');
     newInput.className = `${className}`;
     newInput.type = `${inputType}`;

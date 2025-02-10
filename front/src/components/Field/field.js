@@ -1,16 +1,18 @@
 import './field.css';
 import createNewInput from '../Input/input';
 
-const createNewField = (className, fieldName, fieldTitle, inputType, placeholderText) => {
+const createNewField = (field) => {
+    const { className, inputType, name, placeholderText, title } = field;
+
     const newField = document.createElement('li');
     newField.className = `${className}`;
 
     const label = document.createElement('label');
-    label.setAttribute('for', `${fieldName}`);
+    label.setAttribute('for', `${name}`);
     label.className = `${className}-label`;
-    label.textContent = `${fieldTitle}`;
+    label.textContent = `${title}`;
 
-    const input = createNewInput(`${className}-input`, placeholderText, fieldName, inputType);
+    const input = createNewInput(`${className}-input`, name, inputType, placeholderText);
 
     newField.appendChild(label);
     newField.appendChild(input);

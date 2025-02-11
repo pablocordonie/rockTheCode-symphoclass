@@ -17,6 +17,7 @@
 }
 
 .sc-main button {
+  align-self: center;
   background-color: var(--rtc-color-n-600);
   border: 0.25rem solid var(--rtc-color-n-600);
   border-radius: 0.5rem;
@@ -31,18 +32,6 @@
   background-color: var(--rtc-color-n-900);
   border-color: var(--rtc-color-n-900);
   color: var(--rtc-color-n-600);
-}
-
-.sc-main-create_event_form-create_event_button,
-.sc-main-login_form-login_button,
-.sc-main-edit_profile_form-edit_profile_button,
-.sc-main-register_form-register_button {
-  align-self: center;
-}
-
-.sc-main-create_event_form-fields button {
-  align-self: center;
-  width: 7.5rem;
 }
 
 .sc-main-profile_info-editProfile_btn {

@@ -54,7 +54,7 @@ a {
 .sc {
   background: var(--rtc-color-n-300);
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 1.25rem;
   grid-template-rows: auto 1fr auto;
   min-height: var(--rtc-height);
 }

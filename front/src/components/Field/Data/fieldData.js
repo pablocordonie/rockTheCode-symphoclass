@@ -1,4 +1,4 @@
-const generateFieldData = (className, name, title, inputType = 'text', inputId = '', placeholderText = '') => {
+const createNewFieldData = (className, name, title, inputType = 'text', inputId = '', placeholderText = '') => {
 
     const newFieldData = {
         className,
@@ -11,4 +11,4 @@ const generateFieldData = (className, name, title, inputType = 'text', inputId =
     return newFieldData;
 };
 
-export default generateFieldData;
+export default createNewFieldData;

@@ -1,4 +1,4 @@
-const generateList = (listContainer, listItems, createListItemFn) => {
+const createNewList = (listContainer, listItems, createListItemFn) => {
     if (!listContainer) return;
 
     // Limpia el contenedor antes de renderizar
@@ -12,4 +12,4 @@ const generateList = (listContainer, listItems, createListItemFn) => {
     return listContainer;
 };
 
-export default generateList;
+export default createNewList;

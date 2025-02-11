@@ -1,4 +1,4 @@
-.sc-main-register_form-login {
+.sc-main-register_form-login_option {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
 }
 
 @media screen and (min-width: 360px) {
-  .sc-main-register_form-login {
+  .sc-main-register_form-login_option {
     padding-top: 1rem;
   }
 
@@ -32,7 +32,7 @@
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
-  .sc-main-register_form-login {
+  .sc-main-register_form-login_option {
     gap: 1.5rem;
   }
 

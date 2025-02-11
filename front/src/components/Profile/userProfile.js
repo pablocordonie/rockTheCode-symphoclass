@@ -30,7 +30,7 @@ const createUserProfileInfo = (appConfig, currentPage) => {
     const userProfileEmail = createNewParagraph(`${mainClassName}-${currentPage}_info-${currentPage}_email`, email);
     userProfileData.appendChild(userProfileEmail);
 
-    const editProfileButton = createNewButton(`${mainClassName}-${currentPage}_info-editProfile_btn`, 'Editar perfil', 'button', 'edit-profile');
+    const editProfileButton = createNewButton(`${mainClassName}-${currentPage}_info-editProfile_btn`, 'Editar', 'edit-profile');
     userProfileContainer.appendChild(editProfileButton);
 
     userProfile.appendChild(userProfileContainer);

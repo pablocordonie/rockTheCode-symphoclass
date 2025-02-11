@@ -1,35 +1,23 @@
-.sc-main-create_event_form,
-.sc-main-login_form,
-.sc-main-edit_profile_form,
-.sc-main-register_form {
+.sc-main form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
-  .sc-main-create_event_form,
-  .sc-main-login_form,
-  .sc-main-edit_profile_form,
-  .sc-main-register_form {
+  .sc-main form {
     gap: 2rem;
   }
 }
 
 @media screen and (min-width: 400px) {
-  .sc-main-create_event_form,
-  .sc-main-login_form,
-  .sc-main-edit_profile_form,
-  .sc-main-register_form {
+  .sc-main form {
     gap: 2.25rem;
   }
 }
 
 @media screen and (min-width: 600px) {
-  .sc-main-create_event_form,
-  .sc-main-login_form,
-  .sc-main-edit_profile_form,
-  .sc-main-register_form {
+  .sc-main form {
     gap: 2.5rem;
   }
 }

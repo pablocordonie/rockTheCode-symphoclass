@@ -1,21 +1,19 @@
 import './userNavbar.css';
 import createDropdownBars from '../Icons/Bars/bars';
 import createDropdownMenu from '../Menu/dropdownMenu';
+import createNewParagraph from '../Paragraph/paragraph';
+import createNewTagTemplate from '../Tag/tag';
 import createUserIcon from '../Icons/User/userIcon';
 
 const createUserNavbar = (className, currentPage, userName) => {
-    const userNavbar = document.createElement('nav');
-    userNavbar.className = `${className}`;
+    const userNavbar = createNewTagTemplate('nav', className);
 
-    const userInfoContainer = document.createElement('div');
-    userInfoContainer.className = `${className}-user_info`;
+    const userInfoContainer = createNewTagTemplate('div', `${className}-user_info`);
 
     const userIconContainer = createUserIcon(`${className}-user_icon`);
     userInfoContainer.appendChild(userIconContainer);
 
-    const userNameParagraph = document.createElement('p');
-    userNameParagraph.className = `${className}-user_name`;
-    userNameParagraph.textContent = `${userName}`;
+    const userNameParagraph = createNewParagraph(`${className}-user_name`, userName);
     userInfoContainer.appendChild(userNameParagraph);
     userNavbar.appendChild(userInfoContainer);
 

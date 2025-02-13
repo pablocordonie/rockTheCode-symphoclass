@@ -2,10 +2,10 @@ import './dropdownMenu.css';
 import createEditProfileOption from './EditProfile/editProfile';
 import createLogoutOption from './Logout/logoutOption';
 import createMyProfileOption from './Profile/myProfile';
+import createNewTagTemplate from '../Tag/tag';
 
 const createDropdownMenu = (className, currentPage) => {
-    const dropdownMenu = document.createElement('ul');
-    dropdownMenu.className = `${className}`;
+    const dropdownMenu = createNewTagTemplate('ul', className);
 
     if (currentPage === 'events' || currentPage === 'create_event' || currentPage === 'edit_profile') {
         const myProfileOption = createMyProfileOption(`${className}-profile`, 'Mi Perfil');

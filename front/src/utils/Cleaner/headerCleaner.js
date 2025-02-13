@@ -1,10 +1,10 @@
 import activateContentCleaner from '../Cleaner/contentCleaner';
-import createMainTitle from '../../components/Title/H1/mainTitle';
+import createNewH1Title from '../../components/Title/H1/h1';
 
 const activateHeaderCleaner = (header) => {
     activateContentCleaner(header);
 
-    const mainTitle = createMainTitle('sc-header-h1', 'The SymphoClass');
+    const mainTitle = createNewH1Title('sc-header-h1', 'The SymphoClass');
     header.appendChild(mainTitle);
 
     return header;

@@ -1,12 +1,11 @@
 import './bars.css';
+import createNewTagTemplate from '../../Tag/tag';
 
 const createDropdownBars = (className) => {
-    const dropdownBarsContainer = document.createElement('div');
-    dropdownBarsContainer.className = `${className}`;
+    const dropdownBarsContainer = createNewTagTemplate('div', className);
 
     const barsClassNames = ['fa-solid', 'fa-bars'];
-    const dropdownBars = document.createElement('i');
-    dropdownBars.className = `${className}-icon`;
+    const dropdownBars = createNewTagTemplate('i', `${className}-icon`);
     barsClassNames.forEach(barsClassName => dropdownBars.classList.add(barsClassName));
     dropdownBarsContainer.appendChild(dropdownBars);
 

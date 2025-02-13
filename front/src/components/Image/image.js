@@ -1,11 +1,8 @@
 import './image.css';
+import createNewTagTemplate from '../Tag/tag';
 
-const createNewImage = (className, src, altText) => {
-    const newImg = document.createElement('img');
-    newImg.className = `${className}`;
-    newImg.src = `${src}`;
-    newImg.alt = `${altText}`;
-
+const createNewImage = (className, srcText, altText) => {
+    const newImg = createNewTagTemplate('img', className, { alt: `${altText}`, src: `${srcText}` });
     return newImg;
 };
 

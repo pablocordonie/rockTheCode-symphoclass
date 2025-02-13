@@ -1,8 +1,8 @@
 import './button.css';
-import createTagTemplate from '../Tag/tag';
+import createNewTagTemplate from '../Tag/tag';
 
 const createNewButton = (className, text, id = '') => {
-    const newButton = createTagTemplate('button', className, text, id, 'button');
+    const newButton = createNewTagTemplate('button', className, { id, type: 'button' }, text);
     return newButton;
 };
 

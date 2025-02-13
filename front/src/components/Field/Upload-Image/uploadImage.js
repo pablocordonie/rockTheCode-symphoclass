@@ -2,23 +2,20 @@ import './uploadImage.css';
 import createNewButton from '../../Button/button';
 import createNewImage from '../../Image/image';
 import createNewInput from '../../Input/input';
+import createNewTagTemplate from '../../Tag/tag';
 
 const createUploadImageField = (field) => {
     const { className, inputType, name, title } = field;
 
-    const uploadImageField = document.createElement('li');
-    uploadImageField.className = `${className}`;
+    const uploadImageField = createNewTagTemplate('li', className);
 
-    const label = document.createElement('label');
-    label.setAttribute('for', `${name}`);
-    label.className = `${className}-label`;
-    label.textContent = `${title}`;
+    const label = createNewTagTemplate('label', `${className}-label`, { for: name }, title);
     uploadImageField.appendChild(label);
 
-    const uploadButton = createNewButton(`${className}-button`, 'Subir archivo', inputType);
+    const uploadButton = createNewButton(`${className}-button`, 'Subir archivo');
     uploadImageField.appendChild(uploadButton);
 
-    const fileInput = createNewInput(`${className}-input`, name, inputType);
+    const fileInput = createNewInput(`${className}-input`, name, '', inputType);
     fileInput.setAttribute('accept', 'image/*');
     uploadImageField.appendChild(fileInput);
 

@@ -1,10 +1,10 @@
 import './loginLink.css';
 import createNewButton from '../../Button/button';
 import createNewParagraph from '../../Paragraph/paragraph';
+import createNewTagTemplate from '../../Tag/tag';
 
 const createLoginLink = (className) => {
-    const loginLinkContainer = document.createElement('li');
-    loginLinkContainer.className = `${className}_option`;
+    const loginLinkContainer = createNewTagTemplate('li', `${className}_option`);
 
     const loginParagraph = createNewParagraph(`${className}_message`, '¿Ya estás registrado en The SymphoClass?');
     loginLinkContainer.appendChild(loginParagraph);

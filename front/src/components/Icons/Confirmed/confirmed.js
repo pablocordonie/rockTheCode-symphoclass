@@ -1,9 +1,8 @@
 import './confirmed.css';
+import createNewTagTemplate from '../../Tag/tag';
 
 const createConfirmedIcon = (className) => {
-    const confirmedIcon = document.createElement('div');
-    confirmedIcon.className = `${className}`;
-    confirmedIcon.innerHTML = '&#10004;';
+    const confirmedIcon = createNewTagTemplate('div', className, {}, '&#10004;');
     return confirmedIcon;
 };
 

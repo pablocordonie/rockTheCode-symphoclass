@@ -1,14 +1,12 @@
 import './eventCard.css';
-import createCardTitle from '../../Title/H3/cardTitle';
+import createNewH3Title from '../../Title/H3/h3';
 import createConfirmedIcon from '../../Icons/Confirmed/confirmed';
 import createNewButton from '../../Button/button';
 import createNewParagraph from '../../Paragraph/paragraph';
-import createTagTemplate from '../../Tag/tag';
+import createNewTagTemplate from '../../Tag/tag';
 
 const createEventCard = (card, className) => {
-    const eventCardItem = document.createElement('li');
-    eventCardItem.className = `${className}`;
-    eventCardItem.setAttribute('data-id', `${card.id}`);
+    const eventCardItem = createNewTagTemplate('li', className, { dataId: card.id });
 
     if (card.confirmed) {
         eventCardItem.classList.add('confirmed');
@@ -17,7 +15,7 @@ const createEventCard = (card, className) => {
         eventCardItem.appendChild(confirmedIcon);
     }
 
-    const eventCardTitle = createCardTitle(`${className}-title`, `${card.title}`);
+    const eventCardTitle = createNewH3Title(`${className}-title`, `${card.title}`);
     eventCardItem.appendChild(eventCardTitle);
 
     const dateParagraph = createNewParagraph(`${className}-date`, `${card.date}`);
@@ -29,7 +27,7 @@ const createEventCard = (card, className) => {
     const addressParagraph = createNewParagraph(`${className}-address`, `${card.address}`);
     eventCardItem.appendChild(addressParagraph);
 
-    const eventCardOption = createTagTemplate('div', `${className}-options`);
+    const eventCardOption = createNewTagTemplate('div', `${className}-options`);
     const eventCardButton = createNewButton('confirm-btn', 'Confirmar Asistencia');
     eventCardOption.appendChild(eventCardButton);
 

@@ -1,17 +1,16 @@
 import './eventForm.css';
-import createNewButton from '../../Button/button';
 import createNewField from '../../Field/field';
 import createUploadImageField from '../../Field/Upload-Image/uploadImage';
 import createNewFieldData from '../../Field/Data/fieldData';
 import createNewList from '../../List/list';
 import createNewSubmitButton from '../../Button/Submit/submitButton';
+import createNewTagTemplate from '../../Tag/tag';
 
 const createEventForm = (appConfig, className, currentPage) => {
     const { mainClassName } = appConfig;
     const eventFormFields = [];
 
-    const eventFormFieldsList = document.createElement('ul');
-    eventFormFieldsList.className = `${className}`;
+    const eventFormFieldsList = createNewTagTemplate('ul', className);
 
     const eventTitleField = createNewFieldData(`${mainClassName}-${currentPage}_form-title_field`, 'title', 'Nombre del evento');
     eventFormFields.push(eventTitleField);

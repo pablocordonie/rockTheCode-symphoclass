@@ -24,7 +24,7 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
         const headerNavbar = createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
         header.appendChild(headerNavbar);
 
-        const headerInput = createNewInput(`${header.className}-search_input`, '', '', 'Buscar eventos...');
+        const headerInput = createNewInput(`${header.className}-search_input`, '', 'Buscar eventos...');
         header.appendChild(headerInput);
 
         const headerEventCreatorButton = createNewButton(`${headerClassName}-events-create_btn`, 'Crear Nuevo Evento');

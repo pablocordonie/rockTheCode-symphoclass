@@ -5,13 +5,13 @@ import createRegisterLink from '../../Link/Register/registerLink';
 import createNewFieldData from '../../Field/Data/fieldData';
 import createNewList from '../../List/list';
 import createNewSubmitButton from '../../Button/Submit/submitButton';
+import createNewTagTemplate from '../../Tag/tag';
 
 const createAuthFormContent = (className, currentPage) => {
     const authFormFields = [];
     const authOptionsToClick = [];
 
-    const authFormFieldsList = document.createElement('ul');
-    authFormFieldsList.className = `${className}-fields`;
+    const authFormFieldsList = createNewTagTemplate('ul', `${className}-fields`);
 
     if (currentPage === 'register') {
         const usernameField = createNewFieldData(`${className}-username_field`, 'username', 'Username');
@@ -30,13 +30,13 @@ const createAuthFormContent = (className, currentPage) => {
     createNewList(authFormFieldsList, authFormFields, field => createNewField(field));
 
     if (currentPage === 'login') {
-        const submitButtonItem = createNewSubmitButton(`${className}`, currentPage, 'Iniciar sesión');
+        const submitButtonItem = createNewSubmitButton(className, currentPage, 'Iniciar sesión');
         authOptionsToClick.push(submitButtonItem);
 
         const registerLinkItem = createRegisterLink(`${className}-register`);
         authOptionsToClick.push(registerLinkItem);
     } else {
-        const submitButtonItem = createNewSubmitButton(`${className}`, currentPage, 'Registrarse');
+        const submitButtonItem = createNewSubmitButton(className, currentPage, 'Registrarse');
         authOptionsToClick.push(submitButtonItem);
 
         const loginLinkItem = createLoginLink(`${className}-login`);

@@ -1,18 +1,8 @@
 import './input.css';
+import createNewTagTemplate from '../Tag/tag';
 
-const createNewInput = (className, id, inputType, placeholderText) => {
-    const newInput = document.createElement('input');
-    newInput.className = `${className}`;
-    newInput.type = `${inputType}`;
-
-    if (id !== '') {
-        newInput.id = `${id}`;
-    }
-
-    if (placeholderText !== '') {
-        newInput.setAttribute('placeholder', `${placeholderText}`);
-    }
-
+const createNewInput = (className, id, placeholderText, type) => {
+    const newInput = createNewTagTemplate('input', className, { id, placeholder: placeholderText, type });
     return newInput;
 };
 

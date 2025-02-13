@@ -1,6 +1,6 @@
 import './paragraph.css';
-import createTagTemplate from '../Tag/tag';
+import createNewTagTemplate from '../Tag/tag';
 
-const createNewParagraph = (className, text, id) => createTagTemplate('p', className, text, id);
+const createNewParagraph = (className, text, id) => createNewTagTemplate('p', className, { id }, text);
 
 export default createNewParagraph;

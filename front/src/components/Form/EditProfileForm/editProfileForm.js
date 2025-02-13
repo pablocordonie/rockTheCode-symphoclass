@@ -1,16 +1,15 @@
 import './editProfileForm.css';
 import { appConfig } from '../../../config/config';
-import createNewButton from '../../Button/button';
 import createNewField from '../../Field/field';
 import createNewFieldData from '../../Field/Data/fieldData';
 import createNewList from '../../List/list';
 import createNewSubmitButton from '../../Button/Submit/submitButton';
+import createNewTagTemplate from '../../Tag/tag';
 
 const createEditProfileForm = (className, currentPage) => {
     const { mainClassName } = appConfig;
 
-    const editProfileFormList = document.createElement('ul');
-    editProfileFormList.className = `${className}`;
+    const editProfileFormList = createNewTagTemplate('ul', className);
 
     const editProfileFormFields = [];
 

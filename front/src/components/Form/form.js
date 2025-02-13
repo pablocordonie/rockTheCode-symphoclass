@@ -1,11 +1,10 @@
 import './form.css';
+import createNewTagTemplate from '../Tag/tag';
 
 const createNewForm = (className, content) => {
-    const newForm = document.createElement('form');
-    newForm.setAttribute('method', 'post');
-    newForm.className = `${className}`;
-
+    const newForm = createNewTagTemplate('form', className, { method: 'post' });
     newForm.appendChild(content);
+
     return newForm;
 };
 

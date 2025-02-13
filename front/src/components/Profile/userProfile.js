@@ -2,26 +2,26 @@ import './userProfile.css';
 import createNewButton from '../Button/button';
 import createNewImage from '../Image/image';
 import createNewParagraph from '../Paragraph/paragraph';
-import createProfileTitle from '../Title/H2/profileTitle';
-import createTagTemplate from '../Tag/tag';
+import createNewH2Title from '../Title/H2/h2';
+import createNewTagTemplate from '../Tag/tag';
 import { userInfo } from '../../config/config';
 
 const createUserProfileInfo = (appConfig, currentPage) => {
     const { mainClassName } = appConfig;
     const { email, fullname, img, username } = userInfo;
 
-    const userProfile = createTagTemplate('div', `${mainClassName}-${currentPage}`);
-    const userProfileContainer = createTagTemplate('div', `${mainClassName}-${currentPage}_info`);
+    const userProfile = createNewTagTemplate('div', `${mainClassName}-${currentPage}`);
+    const userProfileContainer = createNewTagTemplate('div', `${mainClassName}-${currentPage}_info`);
 
-    const userProfileAvatar = createTagTemplate('div', `${mainClassName}-${currentPage}_info-${currentPage}_avatar`);
+    const userProfileAvatar = createNewTagTemplate('div', `${mainClassName}-${currentPage}_info-${currentPage}_avatar`);
     const userProfileImg = createNewImage(`${mainClassName}-${currentPage}_info-${currentPage}_avatar-img`, img, 'User Avatar');
     userProfileAvatar.appendChild(userProfileImg);
     userProfileContainer.appendChild(userProfileAvatar);
 
-    const userProfileData = createTagTemplate('div', `${mainClassName}-${currentPage}_info-${currentPage}_data`);
+    const userProfileData = createNewTagTemplate('div', `${mainClassName}-${currentPage}_info-${currentPage}_data`);
     userProfileContainer.appendChild(userProfileData);
 
-    const userProfileName = createProfileTitle(`${mainClassName}-${currentPage}_info-${currentPage}_username`, username);
+    const userProfileName = createNewH2Title(`${mainClassName}-${currentPage}_info-${currentPage}_username`, username);
     userProfileData.appendChild(userProfileName);
 
     const userProfileFullName = createNewParagraph(`${mainClassName}-${currentPage}_info-${currentPage}_fullname`, fullname);
@@ -34,6 +34,7 @@ const createUserProfileInfo = (appConfig, currentPage) => {
     userProfileContainer.appendChild(editProfileButton);
 
     userProfile.appendChild(userProfileContainer);
+
     return userProfile;
 };
 

@@ -1,4 +1,4 @@
-import removeListener from '../Listeners/Listener/removeListener';
+import removeListener from '../Listeners/Listener/removeEventListener';
 
 const activateListenersCleaner = (HTMLElementsWithListeners) => {
     HTMLElementsWithListeners.filter(HTMLElement => HTMLElement).forEach(HTMLElement => removeListener(HTMLElement.querySelector, HTMLElement.callback));

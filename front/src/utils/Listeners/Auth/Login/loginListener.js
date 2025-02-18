@@ -1,35 +1,32 @@
 import activatePageCleaner from '../../../Cleaner/pageCleaner';
-import createNewListener from '../../Listener/createNewListener';
-import duplicatesRemoverIntoArray from '../../../Filter/duplicatesRemover';
+import createListenerConstructor from '../../Listener/Constructor/listener';
+import createNewListener from '../../Listener/eventListener';
 import errorHandler from '../../../Error/errorHandler';
 import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createLoginListenerInLoginPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
+const createLoginListenerFromLoginPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
-    const loginButton = {
-        callback: (event) => {
-            try {
-                event.preventDefault();
+    const context = 'createLoginListenerFromLoginPage';
 
-                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, loginButton);
+    const callback = event => {
+        try {
+            event.preventDefault();
 
-                const header = querySelectorChecker(`.${headerClassName}`, 'createLoginListenerInLoginPage');
+            const header = querySelectorChecker(`.${headerClassName}`, context);
 
-                const main = querySelectorChecker(`.${mainClassName}`, 'createLoginListenerInLoginPage');
-                activatePageCleaner(header, main);
+            const main = querySelectorChecker(`.${mainClassName}`, context);
+            activatePageCleaner(header, main);
 
-                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
-            } catch (error) {
-                return errorHandler(error, 'createLoginListenerInLoginPage');
-            }
-        },
-        querySelector: querySelectorChecker(`.${className}-${currentPage}_button`, 'createLoginListenerInLoginPage'),
-        type: 'click'
+            launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
+        } catch (error) {
+            return errorHandler(error, context);
+        }
     };
 
-    const { callback, querySelector, type } = loginButton;
-    createNewListener(querySelector, callback, type);
+    const loginEventListenerFromLoginPage = createListenerConstructor(`.${className}-${currentPage}_button`, context, callback, 'click');
+
+    createNewListener(loginEventListenerFromLoginPage, HTMLElementsWithListeners, context);
 };
 
-export default createLoginListenerInLoginPage;
+export default createLoginListenerFromLoginPage;

@@ -1,39 +1,36 @@
 import activatePageCleaner from '../../Cleaner/pageCleaner';
-import createNewListener from '../Listener/createNewListener';
-import duplicatesRemoverIntoArray from '../../Filter/duplicatesRemover';
+import createListenerConstructor from '../Listener/Constructor/listener';
+import createNewListener from '../Listener/eventListener';
 import errorHandler from '../../Error/errorHandler';
 import launchNewPage from '../../Launcher/launchNewPage';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
 import toggleClass from '../../Toggle/toggleClass';
 
-const createEventListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
+const createEventCreatorPageListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
+    const context = 'createEventCreatorPageListener';
 
-    const createNewEventButton = {
-        callback: (event) => {
-            try {
-                event.preventDefault();
+    const callback = event => {
+        try {
+            event.preventDefault();
 
-                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, createNewEventButton);
+            const header = querySelectorChecker(`.${headerClassName}-events`, context);
 
-                const header = querySelectorChecker(`.${headerClassName}-events`, 'createEventListener');
+            const main = querySelectorChecker(`.${mainClassName}-events`, context);
+            activatePageCleaner(header, main);
 
-                const main = querySelectorChecker(`.${mainClassName}-events`, 'createEventListener');
-                activatePageCleaner(header, main);
+            toggleClass(header, `${headerClassName}`, currentPage);
+            toggleClass(main, `${mainClassName}`, currentPage);
 
-                toggleClass(header, `${headerClassName}`, currentPage);
-                toggleClass(main, `${mainClassName}`, currentPage);
-
-                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'create_event');
-            } catch (error) {
-                return errorHandler(error, 'createEventListener');
-            }
-        },
-        querySelector: querySelectorChecker(`.${headerClassName}-events-create_btn`, 'createEventListener'),
-        type: 'click'
+            launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'create_event');
+        } catch (error) {
+            return errorHandler(error, context);
+        }
     };
-    const { callback, querySelector, type } = createNewEventButton;
-    createNewListener(querySelector, callback, type);
+
+    const eventCreatorListener = createListenerConstructor(`.${headerClassName}-events-create_btn`, context, callback, 'click');
+
+    createNewListener(eventCreatorListener, HTMLElementsWithListeners, context);
 };
 
-export default createEventListener;
+export default createEventCreatorPageListener;

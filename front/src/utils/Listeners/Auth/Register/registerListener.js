@@ -1,35 +1,32 @@
 import activatePageCleaner from '../../../Cleaner/pageCleaner';
-import createNewListener from '../../Listener/createNewListener';
-import duplicatesRemoverIntoArray from '../../../Filter/duplicatesRemover';
+import createListenerConstructor from '../../Listener/Constructor/listener';
+import createNewListener from '../../Listener/eventListener';
 import errorHandler from '../../../Error/errorHandler';
 import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createRegisterListenerInRegisterPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
+const createRegisterListenerFromRegisterPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, mainClassName } = appConfig;
-    const registerButton = {
-        callback: (event) => {
-            try {
-                event.preventDefault();
+    const context = 'createRegisterListenerFromRegisterPage';
 
-                HTMLElementsWithListeners = duplicatesRemoverIntoArray(HTMLElementsWithListeners, registerButton);
+    const callback = event => {
+        try {
+            event.preventDefault();
 
-                const header = querySelectorChecker(`.${headerClassName}`, 'createRegisterListenerInRegisterPage');
+            const header = querySelectorChecker(`.${headerClassName}`, 'createRegisterListenerFromRegisterPage');
 
-                const main = querySelectorChecker(`.${mainClassName}`, 'createRegisterListenerInRegisterPage');
-                activatePageCleaner(header, main);
+            const main = querySelectorChecker(`.${mainClassName}`, 'createRegisterListenerFromRegisterPage');
+            activatePageCleaner(header, main);
 
-                launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
-            } catch (error) {
-                return errorHandler(error, 'createRegisterListenerInRegisterPage');
-            }
-        },
-        querySelector: querySelectorChecker(`.${className}-${currentPage}_button`, 'createRegisterListenerInRegisterPage'),
-        type: 'click'
+            launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
+        } catch (error) {
+            return errorHandler(error, 'createRegisterListenerFromRegisterPage');
+        }
     };
 
-    const { callback, querySelector, type } = registerButton;
-    createNewListener(querySelector, callback, type);
+    const registerEventListenerFromRegisterPage = createListenerConstructor(`.${className}-${currentPage}_button`, context, callback, 'click');
+
+    createNewListener(registerEventListenerFromRegisterPage, HTMLElementsWithListeners, context);
 };
 
-export default createRegisterListenerInRegisterPage;
+export default createRegisterListenerFromRegisterPage;

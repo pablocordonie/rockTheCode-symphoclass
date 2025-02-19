@@ -17,8 +17,8 @@ const createEditProfileListener = (appConfig, currentPage, HTMLElementsWithListe
             const eventsMain = querySelectorChecker(`.${mainClassName}-events`, context);
             activatePageCleaner(eventsHeader, eventsMain);
 
-            toggleClass(eventsHeader, `${headerClassName}`, currentPage);
-            toggleClass(eventsMain, `${mainClassName}`, currentPage);
+            toggleClass(eventsHeader, headerClassName, `${headerClassName}-events`);
+            toggleClass(eventsMain, mainClassName, `${mainClassName}-events`);
         },
         default: () => {
             const header = querySelectorChecker(`.${headerClassName}`, context);

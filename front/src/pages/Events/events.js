@@ -19,7 +19,7 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
 
     try {
         const header = querySelectorChecker(`.${headerClassName}`, 'printEventsList');
-        toggleClass(header, `${headerClassName}-events`, currentPage);
+        toggleClass(header, headerClassName, `${headerClassName}-events`);
 
         const headerNavbar = createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
         header.appendChild(headerNavbar);
@@ -36,7 +36,7 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
         createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printEventsList');
-        toggleClass(main, `${mainClassName}-events`, currentPage);
+        toggleClass(main, mainClassName, `${mainClassName}-events`);
 
         const eventsList = createEventsList(main.className, testCards);
         main.appendChild(eventsList);

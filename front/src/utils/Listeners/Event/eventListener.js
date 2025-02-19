@@ -19,8 +19,8 @@ const createEventCreatorPageListener = (appConfig, currentPage, HTMLElementsWith
             const main = querySelectorChecker(`.${mainClassName}-events`, context);
             activatePageCleaner(header, main);
 
-            toggleClass(header, `${headerClassName}`, currentPage);
-            toggleClass(main, `${mainClassName}`, currentPage);
+            toggleClass(header, headerClassName, `${headerClassName}-events`);
+            toggleClass(main, mainClassName, `${mainClassName}-events`);
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'create_event');
         } catch (error) {

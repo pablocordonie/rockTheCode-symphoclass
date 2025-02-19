@@ -1,5 +1,5 @@
 const errorHandler = (error, context, returnValue = null) => {
-    console.error(`${context}`, error);
+    console.error(context, error);
     return returnValue;
 };
 

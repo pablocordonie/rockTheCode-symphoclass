@@ -1,3 +1,6 @@
-const toggleClass = (element, className, currentPage) => currentPage === 'events' ? element.className = className : element.classList.remove(className);
+const toggleClass = (element, ...classes) => {
+    if (!element) return;
+    classes.forEach(cls => element.classList.toggle(cls));
+};
 
 export default toggleClass;

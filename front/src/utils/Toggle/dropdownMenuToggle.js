@@ -1,13 +1,14 @@
 import createListenerConstructor from '../Listeners/Listener/Constructor/listener';
 import createNewListener from '../Listeners/Listener/eventListener';
 import errorHandler from '../Error/errorHandler';
+import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 
 const dropdownMenuToggle = (className, HTMLElementsWithListeners) => {
     const context = 'dropdownMenuToggle';
 
     const callback = () => {
         try {
-            const dropdownMenu = document.querySelector(`.${className}-dropdown_menu`);
+            const dropdownMenu = querySelectorChecker(`.${className}-dropdown_menu`, 'dropdownMenuToggle');
             if (!dropdownMenu) {
                 throw new Error(`El elemento de className .${className}-dropdown_menu no se ha encontrado`);
             } else {

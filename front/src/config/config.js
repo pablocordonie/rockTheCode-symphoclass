@@ -3,14 +3,15 @@ import printEventCreatorForm from '../pages/Events/Event-Creator/eventCreator';
 import printEventsForm from '../pages/Events/events';
 import printEditProfileForm from '../pages/Profile/Edit-Profile/editProfile';
 import printUserProfile from '../pages/Profile/profile';
+import querySelectorChecker from '../utils/QuerySelector/querySelectorChecker';
 
-const app = document.querySelector('#app');
-const header = document.querySelector('.sc-header');
+const app = querySelectorChecker('#app', 'appConfig');
+const header = querySelectorChecker('.sc-header', 'appConfig');
 let HTMLElementsWithListeners = [];
 const loaderClassName = 'sc-loader-container';
 const loaderTimeout = 2000;
-const main = document.querySelector('.sc-main');
-const sc = document.querySelector('.sc');
+const main = querySelectorChecker('.sc-main', 'appConfig');
+const sc = querySelectorChecker('.sc', 'appConfig');
 let state = {
     currentPage: 'login'
 };

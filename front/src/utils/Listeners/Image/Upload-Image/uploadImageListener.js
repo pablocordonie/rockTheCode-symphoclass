@@ -11,14 +11,14 @@ const createUploadImageListener = (appConfig, currentPage, HTMLElementsWithListe
         event.preventDefault();
 
         try {
-            const uploadImageField = querySelectorChecker(`.${mainClassName}-${currentPage}_form-img_field`, 'createUploadImageListener');
+            const uploadImageField = querySelectorChecker(`.${mainClassName}-${currentPage}_form-img_field`, context);
 
-            const fileInput = uploadImageField.querySelector(`.${mainClassName}-${currentPage}_form-img_field-input`);
+            const fileInput = querySelectorChecker(`.${mainClassName}-${currentPage}_form-img_field-input`, context, uploadImageField);
             if (!fileInput) {
                 throw new Error('No se ha encontrado el input oculto');
             }
 
-            const previewImage = uploadImageField.querySelector(`.${mainClassName}-${currentPage}_form-img_field-preview_img`);
+            const previewImage = querySelectorChecker(`.${mainClassName}-${currentPage}_form-img_field-preview_img`, context, uploadImageField);
 
             fileInput.click();
 

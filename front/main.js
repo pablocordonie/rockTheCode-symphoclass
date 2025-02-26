@@ -1,5 +1,5 @@
 import './src/styles/style.css';
-import adjustMainContentHeight from './src/utils/Height/adjustMainContentHeight';
+//import adjustMainContentHeight from './src/utils/Height/adjustMainContentHeight';
 import { appConfig, pageRenderers } from './src/config/config';
 import errorHandler from './src/utils/Error/errorHandler';
 import printLoader from './src/utils/Loader/printLoader';
@@ -19,7 +19,7 @@ export const renderApp = (appConfig, currentPage, HTMLElementsWithListeners) => 
         renderPage(appConfig, currentPage, HTMLElementsWithListeners);
         adjustMainContentHeight(appConfig, currentPage);
     } catch (error) {
-        return errorHandler(error, 'renderApp');
+        return errorHandler(error, 'renderApp', appConfig, HTMLElementsWithListeners);
     }
 };
 

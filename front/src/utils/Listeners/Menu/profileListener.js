@@ -1,6 +1,6 @@
 import activatePageCleaner from '../../Cleaner/pageCleaner';
 import createListenerConstructor from '../Listener/Constructor/listener';
-import createNewListener from '../Listener/eventListener';
+import createNewListener from '../Listener/newListener';
 import errorHandler from '../../Error/errorHandler';
 import launchNewPage from '../../Launcher/launchNewPage';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
@@ -34,13 +34,13 @@ const createProfileListener = (appConfig, currentPage, HTMLElementsWithListeners
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'profile');
         } catch (error) {
-            return errorHandler(error, context);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
         }
     };
 
     const profileListener = createListenerConstructor('#profile', context, callback, 'click');
 
-    createNewListener(profileListener, HTMLElementsWithListeners, context);
+    createNewListener(profileListener, appConfig, HTMLElementsWithListeners, context);
 };
 
 export default createProfileListener;

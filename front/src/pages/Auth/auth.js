@@ -27,7 +27,7 @@ const printAuthForm = (appConfig, currentPage, HTMLElementsWithListeners) => {
 
         return main;
     } catch (error) {
-        return errorHandler(error, 'printAuthForm');
+        return errorHandler(error, 'printAuthForm', appConfig, HTMLElementsWithListeners);
     }
 };
 

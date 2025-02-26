@@ -17,20 +17,20 @@ const printEditProfileForm = (appConfig, currentPage, HTMLElementsWithListeners)
         const headerNavbar = createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
         header.appendChild(headerNavbar);
 
-        dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
+        dropdownMenuToggle(`${headerClassName}-nav`, appConfig, HTMLElementsWithListeners);
         createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
         createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printEditProfileForm');
 
-        const editProfileForm = createNewForm(`${mainClassName}-${currentPage}_form`, createEditProfileForm(`${mainClassName}-${currentPage}_form-fields`, currentPage));
+        const editProfileForm = createNewForm(`${mainClassName}-${currentPage}_form`, createEditProfileForm(`${mainClassName}-${currentPage}_form-fields`, appConfig, currentPage));
         main.appendChild(editProfileForm);
 
         createUpdateProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         return main;
     } catch (error) {
-        return errorHandler(error, 'printEditProfileForm');
+        return errorHandler(error, 'printEditProfileForm', appConfig, HTMLElementsWithListeners);
     }
 };
 

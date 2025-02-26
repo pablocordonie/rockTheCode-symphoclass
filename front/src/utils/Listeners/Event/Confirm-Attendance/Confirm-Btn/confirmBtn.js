@@ -1,9 +1,9 @@
 import createListenerConstructor from '../../../Listener/Constructor/listener';
-import createNewListener from '../../../Listener/eventListener';
+import createNewListener from '../../../Listener/newListener';
 import errorHandler from '../../../../Error/errorHandler';
 import testCards from '../../../../Data/testCards';
 
-const createConfirmBtnListener = (confirmedIcon, eventItem, HTMLElementsWithListeners) => {
+const createConfirmBtnListener = (appConfig, confirmedIcon, eventItem, HTMLElementsWithListeners) => {
     const context = 'createConfirmBtnListener';
 
     const callback = event => {
@@ -30,13 +30,13 @@ const createConfirmBtnListener = (confirmedIcon, eventItem, HTMLElementsWithList
                 eventData.confirmed = true;
             };
         } catch (error) {
-            return errorHandler(error, 'createConfirmBtnListener');
+            return errorHandler(error, 'createConfirmBtnListener', appConfig, HTMLElementsWithListeners);
         }
     };
 
     const confirmBtnListener = createListenerConstructor('.confirm-btn', context, callback, 'click', eventItem);
 
-    createNewListener(confirmBtnListener, HTMLElementsWithListeners, context);
+    createNewListener(confirmBtnListener, appConfig, HTMLElementsWithListeners, context);
 };
 
 export default createConfirmBtnListener;

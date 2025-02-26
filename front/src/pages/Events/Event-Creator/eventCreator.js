@@ -3,6 +3,7 @@ import createEventForm from '../../../components/Form/EventForm/eventForm';
 import createNewForm from '../../../components/Form/form';
 import createLogoutListener from '../../../utils/Listeners/Menu/logoutListener';
 import createEditProfileListener from '../../../utils/Listeners/Menu/editProfileListener';
+import createProfileListener from '../../../utils/Listeners/Menu/profileListener';
 import createUploadImageListener from '../../../utils/Listeners/Image/Upload-Image/uploadImageListener';
 import createUserNavBar from '../../../components/Navbar/userNavbar';
 import dropdownMenuToggle from '../../../utils/Toggle/dropdownMenuToggle';
@@ -18,9 +19,10 @@ const printEventCreatorForm = (appConfig, currentPage, HTMLElementsWithListeners
         const headerNavbar = createUserNavBar(`${headerClassName}-nav`, currentPage, 'random_user');
         header.appendChild(headerNavbar);
 
-        dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
+        dropdownMenuToggle(`${headerClassName}-nav`, appConfig, HTMLElementsWithListeners);
         createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
         createEditProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printEventCreatorForm');
 
@@ -32,7 +34,7 @@ const printEventCreatorForm = (appConfig, currentPage, HTMLElementsWithListeners
 
         return main;
     } catch (error) {
-        return errorHandler(error, 'printEventCreatorForm');
+        return errorHandler(error, 'printEventCreatorForm', appConfig, HTMLElementsWithListeners);
     }
 };
 

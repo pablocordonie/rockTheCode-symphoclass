@@ -1,6 +1,6 @@
 import activatePageCleaner from '../../../../utils/Cleaner/pageCleaner';
 import createListenerConstructor from '../../Listener/Constructor/listener';
-import createNewListener from '../../Listener/eventListener';
+import createNewListener from '../../Listener/newListener';
 import errorHandler from '../../../../utils/Error/errorHandler';
 import launchNewPage from '../../../../utils/Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
@@ -31,13 +31,13 @@ const createNewEventListener = (appConfig, currentPage, HTMLElementsWithListener
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
         } catch (error) {
-            return errorHandler(error, 'createNewEventListener');
+            return errorHandler(error, 'createNewEventListener', appConfig, HTMLElementsWithListeners);
         }
     };
 
     const newEventListener = createListenerConstructor(`.${mainClassName}-${currentPage}_form-${currentPage}_button`, context, callback, 'click');
 
-    createNewListener(newEventListener, HTMLElementsWithListeners, context);
+    createNewListener(newEventListener, appConfig, HTMLElementsWithListeners, context);
 };
 
 export default createNewEventListener;

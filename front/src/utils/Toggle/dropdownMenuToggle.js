@@ -1,9 +1,9 @@
 import createListenerConstructor from '../Listeners/Listener/Constructor/listener';
-import createNewListener from '../Listeners/Listener/eventListener';
+import createNewListener from '../Listeners/Listener/newListener';
 import errorHandler from '../Error/errorHandler';
 import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 
-const dropdownMenuToggle = (className, HTMLElementsWithListeners) => {
+const dropdownMenuToggle = (className, appConfig, HTMLElementsWithListeners) => {
     const context = 'dropdownMenuToggle';
 
     const callback = () => {
@@ -15,13 +15,13 @@ const dropdownMenuToggle = (className, HTMLElementsWithListeners) => {
                 dropdownMenu.style.display === 'flex' ? dropdownMenu.style.display = 'none' : dropdownMenu.style.display = 'flex';
             }
         } catch (error) {
-            return errorHandler(error, context);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
         }
     };
 
     const dropdownMenuListener = createListenerConstructor(`.${className}-user_options`, context, callback, 'click');
 
-    createNewListener(dropdownMenuListener, HTMLElementsWithListeners, context);
+    createNewListener(dropdownMenuListener, appConfig, HTMLElementsWithListeners, context);
 };
 
 export default dropdownMenuToggle;

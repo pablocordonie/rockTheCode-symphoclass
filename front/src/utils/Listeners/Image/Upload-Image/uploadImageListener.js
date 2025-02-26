@@ -1,5 +1,5 @@
 import createListenerConstructor from '../../Listener/Constructor/listener';
-import createNewListener from '../../Listener/eventListener';
+import createNewListener from '../../Listener/newListener';
 import errorHandler from '../../../Error/errorHandler';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
@@ -42,13 +42,13 @@ const createUploadImageListener = (appConfig, currentPage, HTMLElementsWithListe
             fileInput.removeEventListener('change', handleFileChange);
             fileInput.addEventListener('change', handleFileChange);
         } catch (error) {
-            return errorHandler(error, 'createUploadImageListener');
+            return errorHandler(error, 'createUploadImageListener', appConfig, HTMLElementsWithListeners);
         }
     };
 
     const uploadImageListener = createListenerConstructor(`.${mainClassName}-${currentPage}_form-img_field-button`, context, callback, 'click');
 
-    createNewListener(uploadImageListener, HTMLElementsWithListeners, context);
+    createNewListener(uploadImageListener, appConfig, HTMLElementsWithListeners, context);
 };
 
 export default createUploadImageListener;

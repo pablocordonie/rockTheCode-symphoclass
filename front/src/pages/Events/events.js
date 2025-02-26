@@ -30,7 +30,7 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
         const headerEventCreatorButton = createNewButton(`${headerClassName}-events-create_btn`, 'Crear Nuevo Evento');
         header.appendChild(headerEventCreatorButton);
 
-        dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
+        dropdownMenuToggle(`${headerClassName}-nav`, appConfig, HTMLElementsWithListeners);
         createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
         createEditProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
         createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
@@ -45,11 +45,11 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
         createEventsFilter(header.className, appConfig, HTMLElementsWithListeners);
 
         const eventItems = Array.from(document.querySelectorAll(`.${main.className}-card`));
-        createConfirmAttendanceListeners(eventItems, HTMLElementsWithListeners);
+        createConfirmAttendanceListeners(appConfig, eventItems, HTMLElementsWithListeners);
 
         return main;
     } catch (error) {
-        return errorHandler(error, 'printEventsList');
+        return errorHandler(error, 'printEventsList', appConfig, HTMLElementsWithListeners);
     }
 };
 

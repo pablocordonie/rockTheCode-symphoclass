@@ -1,6 +1,6 @@
 import activatePageCleaner from '../../Cleaner/pageCleaner';
 import createListenerConstructor from '../Listener/Constructor/listener';
-import createNewListener from '../Listener/eventListener';
+import createNewListener from '../Listener/newListener';
 import errorHandler from '../../Error/errorHandler';
 import launchNewPage from '../../Launcher/launchNewPage';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
@@ -24,13 +24,13 @@ const createEventCreatorPageListener = (appConfig, currentPage, HTMLElementsWith
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'create_event');
         } catch (error) {
-            return errorHandler(error, context);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
         }
     };
 
     const eventCreatorListener = createListenerConstructor(`.${headerClassName}-events-create_btn`, context, callback, 'click');
 
-    createNewListener(eventCreatorListener, HTMLElementsWithListeners, context);
+    createNewListener(eventCreatorListener, appConfig, HTMLElementsWithListeners, context);
 };
 
 export default createEventCreatorPageListener;

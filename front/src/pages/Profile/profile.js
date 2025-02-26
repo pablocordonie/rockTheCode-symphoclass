@@ -15,7 +15,7 @@ const printUserProfile = (appConfig, currentPage, HTMLElementsWithListeners) => 
         const headerNavbar = createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
         header.appendChild(headerNavbar);
 
-        dropdownMenuToggle(`${headerClassName}-nav`, HTMLElementsWithListeners);
+        dropdownMenuToggle(`${headerClassName}-nav`, appConfig, HTMLElementsWithListeners);
         createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printUserProfile');
@@ -27,7 +27,7 @@ const printUserProfile = (appConfig, currentPage, HTMLElementsWithListeners) => 
 
         return main;
     } catch (error) {
-        return errorHandler(error, 'printUserProfile');
+        return errorHandler(error, 'printUserProfile', appConfig, HTMLElementsWithListeners);
     }
 };
 

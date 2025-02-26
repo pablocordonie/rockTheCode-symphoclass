@@ -1,6 +1,6 @@
 import activatePageCleaner from '../../Cleaner/pageCleaner';
 import createListenerConstructor from '../Listener/Constructor/listener';
-import createNewListener from '../Listener/eventListener';
+import createNewListener from '../Listener/newListener';
 import errorHandler from '../../Error/errorHandler';
 import launchNewPage from '../../Launcher/launchNewPage';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
@@ -34,13 +34,13 @@ const createEditProfileListener = (appConfig, currentPage, HTMLElementsWithListe
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'edit_profile');
         } catch (error) {
-            return errorHandler(error, context);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
         }
     };
 
     const editProfileListener = createListenerConstructor('#edit-profile', context, callback, 'click');
 
-    createNewListener(editProfileListener, HTMLElementsWithListeners, context);
+    createNewListener(editProfileListener, appConfig, HTMLElementsWithListeners, context);
 };
 
 export default createEditProfileListener;

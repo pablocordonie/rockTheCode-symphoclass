@@ -2,7 +2,7 @@ const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
 const { deleteFile } = require('../../utils/deleteFile');
-const { hashedPassword } = require('../../utils/hash');
+const { hashPassword } = require('../../utils/hash');
 
 const getUsers = async (req, res, next) => {
     try {
@@ -69,13 +69,14 @@ const updateUser = async (req, res, next) => {
         }
 
         if (req.body.password) {
-            req.body.password = hashedPassword(req.body.password);
+            req.body.password = hashPassword(req.body.password);
         }
 
         const updatedUserData = new User({
             username: req.body.username || oldUser.username,
             fullname: req.body.fullname || oldUser.fullname,
             email: req.body.email || oldUser.email,
+            birthdate: req.body.birthdate || oldUser.birthdate,
             img: req.body.img,
             password: req.body.password || oldUser.password,
             role: oldUser.role,

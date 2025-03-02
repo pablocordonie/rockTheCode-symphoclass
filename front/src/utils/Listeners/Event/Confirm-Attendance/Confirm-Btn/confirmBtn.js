@@ -30,7 +30,7 @@ const createConfirmBtnListener = (appConfig, confirmedIcon, eventItem, HTMLEleme
                 eventData.confirmed = true;
             };
         } catch (error) {
-            return errorHandler(error, 'createConfirmBtnListener', appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, 'createConfirmBtnListener', appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

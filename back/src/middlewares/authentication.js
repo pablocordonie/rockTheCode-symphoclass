@@ -1,5 +1,5 @@
 const User = require('../api/models/User');
-const { verifyJwt } = require('../config/jwt');
+const { verifyJwt } = require('../utils/jwt');
 
 const isAuth = async (req, res, next) => {
     try {
@@ -14,7 +14,7 @@ const isAuth = async (req, res, next) => {
 
         const { id } = verifyJwt(parsedToken);
 
-        const user = await User.findById(id);
+        const user = await User.findById(id).select('-password');
 
         if (!user) {
             const error = new Error("you're not authorized to make the request");
@@ -22,7 +22,6 @@ const isAuth = async (req, res, next) => {
             return next(error);
         }
 
-        user.password = null;
         req.user = user;
         next();
     } catch (err) {
@@ -45,15 +44,14 @@ const isAdmin = async (req, res, next) => {
 
         const { id } = verifyJwt(parsedToken);
 
-        const user = await User.findById(id);
+        const user = await User.findById(id).select('-password');
 
-        if (!user || user.role === 'user') {
+        if (!user || user.role !== 'admin') {
             const error = new Error("you're not authorized to make the request");
             error.statusCode = 401;
             return next(error);
         }
 
-        user.password = null;
         req.user = user;
         next();
     } catch (err) {

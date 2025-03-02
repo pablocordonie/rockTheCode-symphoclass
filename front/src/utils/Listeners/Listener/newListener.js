@@ -9,7 +9,7 @@ const createNewListener = (eventListener, appConfig, HTMLElementsWithListeners, 
 
         addNewEventListener(querySelector, callback, type);
     } catch (error) {
-        return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
+        return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
     }
 };
 

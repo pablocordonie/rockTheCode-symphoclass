@@ -34,7 +34,7 @@ const createEditProfileListener = (appConfig, currentPage, HTMLElementsWithListe
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'edit_profile');
         } catch (error) {
-            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

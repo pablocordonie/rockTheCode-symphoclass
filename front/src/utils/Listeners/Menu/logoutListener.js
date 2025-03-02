@@ -34,7 +34,7 @@ const createLogoutListener = (appConfig, currentPage, HTMLElementsWithListeners)
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'login');
         } catch (error) {
-            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

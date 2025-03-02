@@ -1,16 +1,20 @@
 import './error.css';
 import createNewButton from '../Button/button';
+import createNewH3Title from '../Title/H3/h3';
 import createNewParagraph from '../Paragraph/paragraph';
 
-const createErrorNotification = (context, severity) => {
+const createErrorNotification = (severity) => {
     const errorNotification = document.createElement('div');
     errorNotification.className = `error-notification${severity === 'critical' ? ' error-critical' : ''}`;
     errorNotification.style.display = 'flex';
 
+    const errorTitle = createNewH3Title('error-title', `${severity === 'critical' ? 'Error Crítico' : 'Error'}`);
+    errorNotification.appendChild(errorTitle);
+
     const errorMessage = createNewParagraph('error-message',
         severity === 'critical'
-            ? `Error crítico en ${context}: Recarga la página o inténtalo más tarde`
-            : `Error en ${context}: Ocurrió un problema al procesar la solicitud`
+            ? 'Recarga la página o inténtalo más tarde'
+            : 'Ocurrió un problema al procesar la solicitud'
     );
     errorNotification.appendChild(errorMessage);
 

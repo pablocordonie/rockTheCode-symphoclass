@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const { hashPassword } = require('../../utils/hash');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -6,6 +6,7 @@ const userSchema = new Schema({
     username: { type: String, trim: true, required: true },
     fullname: { type: String, trim: true, required: true },
     email: { type: String, trim: true, required: true },
+    birthdate: { type: String, required: true },
     img: { type: String, trim: true },
     password: { type: String, trim: true, required: true },
     role: { type: String, trim: true, enum: ['admin', 'user'], default: 'user' },
@@ -18,7 +19,7 @@ const userSchema = new Schema({
 
 userSchema.pre('save', function (next) {
     if (this.isModified('password')) {
-        this.password = bcrypt.hashSync(this.password, 10);
+        this.password = hashPassword(this.password);
     }
     next();
 });

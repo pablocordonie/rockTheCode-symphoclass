@@ -42,7 +42,7 @@ const createUploadImageListener = (appConfig, currentPage, HTMLElementsWithListe
             fileInput.removeEventListener('change', handleFileChange);
             fileInput.addEventListener('change', handleFileChange);
         } catch (error) {
-            return errorHandler(error, 'createUploadImageListener', appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, 'createUploadImageListener', appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

@@ -24,7 +24,7 @@ const createEventCreatorPageListener = (appConfig, currentPage, HTMLElementsWith
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'create_event');
         } catch (error) {
-            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

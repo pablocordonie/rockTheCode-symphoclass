@@ -20,7 +20,7 @@ const createLoginListenerFromLoginPage = (className, appConfig, currentPage, HTM
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
         } catch (error) {
-            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

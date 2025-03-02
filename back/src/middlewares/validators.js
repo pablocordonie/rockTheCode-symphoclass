@@ -1,12 +1,13 @@
 const Joi = require('joi');
-const { customDateValidation } = require('../utils/customDateValidation');
+const { customBirthdateValidation } = require('../utils/Date-Validation/User/birthdateValidation');
+const { customEventDateValidation } = require('../utils/Date-Validation/Event/eventValidation');
 const { deleteFile } = require('../utils/deleteFile');
 
 const eventSchema = Joi.object({
     title: Joi.string().min(3).max(100).required(),
     address: Joi.string().min(3).max(100).required(),
     center: Joi.string().min(10).max(100).required(),
-    date: Joi.string().pattern(/^\d{2}[-/]\d{2}[-/]\d{4}$/).required().custom(customDateValidation),
+    date: Joi.string().pattern(/^(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[0-2])[-/](19\d{2}|20\d{2})$/).required().custom(customEventDateValidation),
     img: Joi.any().optional()
 });
 
@@ -14,6 +15,7 @@ const registerSchema = Joi.object({
     username: Joi.string().min(3).max(30).required(),
     fullname: Joi.string().min(3).max(100).required(),
     email: Joi.string().email().required(),
+    birthdate: Joi.string().pattern(/^(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[0-2])[-/](19\d{2}|20\d{2})$/).required().custom(customBirthdateValidation),
     img: Joi.any().optional(),
     password: Joi.string().min(6).required()
 });
@@ -28,7 +30,7 @@ const updatedEventSchema = Joi.object({
     address: Joi.string().min(3).max(100).optional(),
     center: Joi.string().max(100).optional(),
     confirmed: Joi.any().optional(),
-    date: Joi.string().pattern(/^\d{2}[-/]\d{2}[-/]\d{4}$/).optional().custom(customDateValidation),
+    date: Joi.string().pattern(/^(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[0-2])[-/](19\d{2}|20\d{2})$/).optional().custom(customEventDateValidation),
     img: Joi.any().optional()
 });
 
@@ -36,6 +38,7 @@ const updatedUserSchema = Joi.object({
     username: Joi.string().min(3).max(30).optional(),
     fullname: Joi.string().min(3).max(100).optional(),
     email: Joi.string().email().optional(),
+    birthdate: Joi.string().pattern(/^(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[0-2])[-/](19\d{2}|20\d{2})$/).optional().custom(customBirthdateValidation),
     img: Joi.any().optional(),
     password: Joi.string().min(6).optional()
 });

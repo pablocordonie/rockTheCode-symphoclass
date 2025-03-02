@@ -20,7 +20,7 @@ const createRegisterListenerFromRegisterPage = (className, appConfig, currentPag
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
         } catch (error) {
-            return errorHandler(error, 'createRegisterListenerFromRegisterPage', appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, 'createRegisterListenerFromRegisterPage', appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

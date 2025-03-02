@@ -18,7 +18,7 @@ const createRegisterListenerFromLoginPage = (className, appConfig, currentPage, 
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'register');
         } catch (error) {
-            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

@@ -1,13 +1,11 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const { deleteFile } = require('../../utils/deleteFile');
-const { generateSign } = require('../../config/jwt');
+const { generateSign } = require('../../utils/jwt');
 
 const register = async (req, res, next) => {
     try {
-        const { username, fullname, email, password } = req.body;
-
-        const user = new User({ username, fullname, email, img: req.file ? req.file.path : '', password });
+        const { username, fullname, email, birthdate, password } = req.body;
 
         const duplicatedUser = await User.findOne({ username });
         const duplicatedEmail = await User.findOne({ email });
@@ -20,6 +18,8 @@ const register = async (req, res, next) => {
             }
             return next(error);
         }
+
+        const user = new User({ username, fullname, email, birthdate, img: req.file ? req.file.path : '', password });
 
         const savedNewUser = await user.save();
         return res.status(201).json(savedNewUser);

@@ -31,7 +31,7 @@ const createNewEventListener = (appConfig, currentPage, HTMLElementsWithListener
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
         } catch (error) {
-            return errorHandler(error, 'createNewEventListener', appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, 'createNewEventListener', appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

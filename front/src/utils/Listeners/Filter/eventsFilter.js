@@ -32,7 +32,7 @@ const createEventsFilter = (className, appConfig, HTMLElementsWithListeners) => 
             }
             return main;
         } catch (error) {
-            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

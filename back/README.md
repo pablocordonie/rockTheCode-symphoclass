@@ -48,9 +48,13 @@ Proyecto 10: Sistema de Gestión de Eventos
 
       - Este middleware verifica si un usuario está autenticado y si un usuario es administrador.
 
-    - customDateValidation.js
+    - customBirthdateValidation.js
 
-      - Esta utilidad valida fechas personalizadas utilizando moment.js.
+      - Esta utilidad valida la fecha de nacimiento del usuario de forma personalizada utilizando moment.js.
+
+    - customEventDateValidation.js
+
+      - Esta utilidad valida la fecha de la celebración del evento publicado de forma personalizada utilizando moment.js.
 
     - deleteFile.js
 

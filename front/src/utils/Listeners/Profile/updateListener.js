@@ -20,7 +20,7 @@ const createUpdateProfileListener = (appConfig, currentPage, HTMLElementsWithLis
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
         } catch (error) {
-            return errorHandler(error, 'createUpdateProfileListener', appConfig, HTMLElementsWithListeners);
+            return errorHandler(error, 'createUpdateProfileListener', appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 

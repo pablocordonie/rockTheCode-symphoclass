@@ -2,7 +2,6 @@ import './src/styles/style.css';
 import adjustMainContentHeight from './src/utils/Height/adjustMainContentHeight';
 import { appConfig, pageRenderers } from './src/config/config';
 import errorHandler from './src/utils/Error/errorHandler';
-import { LOCALHOST } from '../back/index';
 import printLoader from './src/utils/Loader/printLoader';
 import readData from './src/utils/Fetch/GET/readData';
 
@@ -25,7 +24,7 @@ export const renderApp = (appConfig, currentPage, HTMLElementsWithListeners) => 
 };
 
 
-const users = await readData(`${LOCALHOST}/api/v1/user`, appConfig, HTMLElementsWithListeners);
+const users = await readData('http://localhost:8080/api/v1/user', appConfig, HTMLElementsWithListeners);
 console.log(users);
 
 

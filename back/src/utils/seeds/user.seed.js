@@ -32,7 +32,7 @@ const users = [
         password: hashPassword('1234567890')
     },
     {
-        username: 'carol_90',
+        username: 'carol_99',
         fullname: 'Carolina Castaño',
         email: 'carol@gmail.com',
         birthdate: '19/12/1999',

@@ -11,7 +11,7 @@ const register = async (req, res, next) => {
         const duplicatedEmail = await User.findOne({ email });
 
         if (duplicatedUser || duplicatedEmail) {
-            const error = new Error("the user's been already registered");
+            const error = new Error(`the user's been already registered`);
             error.statusCode = 400;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -39,7 +39,7 @@ const login = async (req, res, next) => {
         const user = await User.findOne({ username });
 
         if (!user) {
-            const error = new Error("the user couldn't be found");
+            const error = new Error(`the user couldn't be found`);
             error.statusCode = 404;
             return next(error);
         }

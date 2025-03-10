@@ -5,7 +5,7 @@ const isAuth = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
         if (!token) {
-            const error = new Error("the user's authentication token couldn't be found");
+            const error = new Error(`the user's authentication token couldn't be found`);
             error.statusCode = 404;
             return next(error);
         }
@@ -17,7 +17,7 @@ const isAuth = async (req, res, next) => {
         const user = await User.findById(id).select('-password');
 
         if (!user) {
-            const error = new Error("you're not authorized to make the request");
+            const error = new Error(`you're not authorized to make the request`);
             error.statusCode = 401;
             return next(error);
         }
@@ -25,7 +25,7 @@ const isAuth = async (req, res, next) => {
         req.user = user;
         next();
     } catch (err) {
-        const error = new Error("an error occurred processing the user's authentication token");
+        const error = new Error(`an error occurred processing the user's authentication token`);
         error.statusCode = 500;
         next(error);
     }
@@ -35,7 +35,7 @@ const isAdmin = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
         if (!token) {
-            const error = new Error("the administrator's authentication token couldn't be found");
+            const error = new Error(`the administrator's authentication token couldn't be found`);
             error.statusCode = 404;
             return next(error);
         }
@@ -47,7 +47,7 @@ const isAdmin = async (req, res, next) => {
         const user = await User.findById(id).select('-password');
 
         if (!user || user.role !== 'admin') {
-            const error = new Error("you're not authorized to make the request");
+            const error = new Error(`you're not authorized to make the request`);
             error.statusCode = 401;
             return next(error);
         }
@@ -55,7 +55,7 @@ const isAdmin = async (req, res, next) => {
         req.user = user;
         next();
     } catch (err) {
-        const error = new Error("an error occurred processing the administrator's authentication token");
+        const error = new Error(`an error occurred processing the administrator's authentication token`);
         error.statusCode = 500;
         next(error);
     }

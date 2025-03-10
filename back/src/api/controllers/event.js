@@ -16,16 +16,16 @@ const getEvents = async (req, res, next) => {
 
 const getEventById = async (req, res, next) => {
     try {
-        const { id } = req.params;
-        const event = await Event.findById(id).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
+        const { eventId } = req.params;
+        const event = await Event.findById(eventId).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
         if (!event) {
-            const error = new Error("the event couldn't be found");
+            const error = new Error(`the event couldn't be found`);
             error.statusCode = 404;
             return next(error);
         }
         return res.status(200).json(event);
     } catch (err) {
-        const error = new Error("an error occurred displaying the event's data");
+        const error = new Error(`an error occurred displaying the event's data`);
         error.statusCode = 500;
         next(error);
     }
@@ -34,11 +34,12 @@ const getEventById = async (req, res, next) => {
 const postEvent = async (req, res, next) => {
     try {
         const { title, address, center, date } = req.body;
+        const userId = req.params.id;
 
         const event = await Event.findOne({ title });
 
         if (event) {
-            const error = new Error("the event's already been registered");
+            const error = new Error(`the event's already been registered`);
             error.statusCode = 400;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -52,13 +53,13 @@ const postEvent = async (req, res, next) => {
             center,
             confirmed: false,
             date,
-            event_organizer: req.user._id,
+            event_organizer: userId,
             img: req.file ? req.file.path : '',
         });
 
         const savedNewEvent = await newEvent.save();
 
-        await User.findByIdAndUpdate(req.user._id, {
+        await User.findByIdAndUpdate(userId, {
             $push: { organized_events: { _id: savedNewEvent._id } }
         });
 
@@ -75,12 +76,13 @@ const postEvent = async (req, res, next) => {
 
 const updateEvent = async (req, res, next) => {
     try {
-        const { id } = req.params;
+        const userId = req.params.id;
+        const eventId = req.params.eventId;
 
-        const oldEvent = await Event.findById(id);
+        const oldEvent = await Event.findById(eventId);
 
         if (!oldEvent) {
-            const error = new Error("the event couldn't be found");
+            const error = new Error(`the event couldn't be found`);
             error.statusCode = 404;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -88,8 +90,8 @@ const updateEvent = async (req, res, next) => {
             return next(error);
         }
 
-        if (req.user.role === 'user' && req.user._id != oldEvent.event_organizer.toString()) {
-            const error = new Error("the provided data doesn't match your user data");
+        if (req.user.role === 'user' && userId !== oldEvent.event_organizer._id.toString()) {
+            const error = new Error(`the provided data doesn't match your user data`);
             error.statusCode = 403;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -116,15 +118,15 @@ const updateEvent = async (req, res, next) => {
             center: req.body.center || oldEvent.center,
             confirmed: oldEvent.confirmed,
             date: req.body.date || oldEvent.date,
-            event_organizer: req.user._id,
+            event_organizer: userId,
             img: req.body.img,
         });
-        newEvent._id = id;
+        newEvent._id = eventId;
 
-        const updatedEvent = await Event.findByIdAndUpdate(id, newEvent, { new: true }).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
+        const updatedEvent = await Event.findByIdAndUpdate(eventId, newEvent, { new: true }).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
         return res.status(201).json(updatedEvent);
     } catch (err) {
-        const error = new Error("an error occurred updating the event's data");
+        const error = new Error(`an error occurred updating the event's data`);
         error.statusCode = 500;
         if (req.file) {
             deleteFile(req.file.path);
@@ -135,26 +137,28 @@ const updateEvent = async (req, res, next) => {
 
 const deleteEvent = async (req, res, next) => {
     try {
-        const { id } = req.params;
+        const userId = req.params.id;
+        const eventId = req.params.eventId;
 
-        const event = await Event.findById(id);
+        const event = await Event.findById(eventId);
 
-        if (req.user.role === 'user' && req.user._id != event.event_organizer.toString()) {
-            const error = new Error("it's not allowed to delete another user's event data");
+        if (req.user.role === 'user' && userId !== event.event_organizer._id.toString()) {
+            const error = new Error(`it's not allowed to delete another user's event data`);
             error.statusCode = 403;
             return next(error);
         }
 
-        await Attendee.findByIdAndUpdate(event.attendees._id, { $pull: { attended_events: { _id: id } } }, { new: true });
+        const attendee = await Attendee.findOne({ username: req.user.username });
+        await Attendee.findByIdAndDelete(attendee._id);
 
-        await User.findByIdAndUpdate(req.user._id, { $pull: { organized_events: { _id: id } } }, { new: true });
+        await User.findByIdAndUpdate(userId, { $pull: { organized_events: { _id: eventId } } }, { new: true });
 
-        const deletedEvent = await Event.findByIdAndDelete(id).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
+        const deletedEvent = await Event.findByIdAndDelete(eventId).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
         deleteFile(deletedEvent.img);
 
         return res.status(200).json(deletedEvent);
     } catch (err) {
-        const error = new Error("an error occurred deleting the event's data");
+        const error = new Error(`an error occurred deleting the event's data`);
         error.statusCode = 500;
         next(error);
     }

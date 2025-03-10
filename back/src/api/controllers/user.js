@@ -20,7 +20,7 @@ const getUserById = async (req, res, next) => {
         const { id } = req.params;
         const user = await User.findById(id).populate({ path: 'organized_events', select: 'title' }).populate({ path: 'attended_events', select: 'title' });
         if (!user) {
-            const error = new Error("the user couldn't be found");
+            const error = new Error(`the user couldn't be found`);
             error.statusCode = 404;
             return next(error);
         }
@@ -39,7 +39,7 @@ const updateUser = async (req, res, next) => {
         const oldUser = await User.findById(id);
 
         if (!oldUser) {
-            const error = new Error("the user couldn't be found");
+            const error = new Error(`the user couldn't be found`);
             error.statusCode = 404;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -48,7 +48,7 @@ const updateUser = async (req, res, next) => {
         }
 
         if (req.user.role === 'user' && req.user._id != id) {
-            const error = new Error("it's not allowed to modify another user's data");
+            const error = new Error(`it's not allowed to modify another user's data`);
             error.statusCode = 403;
             if (req.file) {
                 deleteFile(req.file.path);
@@ -102,13 +102,13 @@ const deleteUser = async (req, res, next) => {
         const { id } = req.params;
 
         if (req.user.role === 'admin') {
-            const error = new Error("it's not allowed to delete the admin's account");
+            const error = new Error(`it's not allowed to delete the admin's account`);
             error.statusCode = 403;
             return next(error);
         }
 
         if (req.user.role === 'user' && req.user._id != id) {
-            const error = new Error("it's not allowed to delete another user's data");
+            const error = new Error(`it's not allowed to delete another user's data`);
             error.statusCode = 403;
             return next(error);
         }
@@ -130,7 +130,7 @@ const deleteUser = async (req, res, next) => {
 
         return res.status(200).json(deletedUser);
     } catch (err) {
-        const error = new Error("an error occurred deleting the user's data");
+        const error = new Error(`an error occurred deleting the user's data`);
         error.statusCode = 500;
         next(error);
     }

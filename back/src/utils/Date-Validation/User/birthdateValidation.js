@@ -1,11 +1,11 @@
-const { createDateObj } = require('../date');
-
 const customBirthdateValidation = (value, helpers) => {
     const legalAge = 18;
 
-    const date = createDateObj(value);
+    // Extraer día, mes y año como números dividiendo la fecha en partes
+    const dateParts = value.split(/[-/]/);
 
-    const { day, month, year } = date;
+    // Introducir las partes en un objeto de fecha
+    const [day, month, year] = dateParts.map(datePart => Number(datePart));
 
     // Verificar que el mes y el día sean válidos en el pasado (dependiendo del mes y del año) así como la cantidad de días del mes correspondiente
     const daysInMonth = new Date(year, month, 0).getDate(); // Nº de días del mes de la fecha

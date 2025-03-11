@@ -33,7 +33,7 @@ const getEventById = async (req, res, next) => {
 
 const postEvent = async (req, res, next) => {
     try {
-        const { title, address, center, date } = req.body;
+        const { title, address, center, datetime } = req.body;
         const userId = req.params.id;
 
         const event = await Event.findOne({ title });
@@ -52,7 +52,7 @@ const postEvent = async (req, res, next) => {
             address,
             center,
             confirmed: false,
-            date,
+            datetime,
             event_organizer: userId,
             img: req.file ? req.file.path : '',
         });
@@ -117,7 +117,7 @@ const updateEvent = async (req, res, next) => {
             attendees: oldEvent.attendees,
             center: req.body.center || oldEvent.center,
             confirmed: oldEvent.confirmed,
-            date: req.body.date || oldEvent.date,
+            datetime: req.body.datetime || oldEvent.datetime,
             event_organizer: userId,
             img: req.body.img,
         });
@@ -148,8 +148,11 @@ const deleteEvent = async (req, res, next) => {
             return next(error);
         }
 
-        const attendee = await Attendee.findOne({ username: req.user.username });
-        await Attendee.findByIdAndDelete(attendee._id);
+        // Borrar de la lista de asistentes a todos los que acudan al evento en proceso de eliminación
+        await Attendee.deleteMany({ attended_events: eventId });
+
+        /* Borrar dentro de cada usuario de la lista de usuarios la referencia al evento en proceso de eliminación alojada dentro de attended_events */
+        await User.updateMany({ attended_events: eventId }, { $pull: { attended_events: eventId } });
 
         await User.findByIdAndUpdate(userId, { $pull: { organized_events: { _id: eventId } } }, { new: true });
 

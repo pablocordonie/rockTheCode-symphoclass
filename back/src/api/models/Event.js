@@ -9,7 +9,7 @@ const eventSchema = new Schema({
     ],
     center: { type: String, required: true },
     confirmed: { type: Boolean },
-    date: { type: String, required: true },
+    datetime: { type: String, required: true },
     event_organizer: { type: Schema.Types.ObjectId, ref: 'users', required: true },
     img: { type: String, trim: true }
 }, {

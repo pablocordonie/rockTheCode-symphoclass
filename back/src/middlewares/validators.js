@@ -1,13 +1,13 @@
 const Joi = require('joi');
 const { customBirthdateValidation } = require('../utils/Date-Validation/User/birthdateValidation');
-const { customEventDateValidation } = require('../utils/Date-Validation/Event/eventValidation');
+const { customEventDateTimeValidation } = require('../utils/Date-Validation/Event/eventValidation');
 const { deleteFile } = require('../utils/deleteFile');
 
 const eventSchema = Joi.object({
     title: Joi.string().min(3).max(100).required(),
     address: Joi.string().min(3).max(100).required(),
     center: Joi.string().min(10).max(100).required(),
-    date: Joi.string().required().custom(customEventDateValidation),
+    datetime: Joi.string().required().custom(customEventDateTimeValidation),
     img: Joi.any().optional()
 });
 
@@ -30,7 +30,7 @@ const updatedEventSchema = Joi.object({
     address: Joi.string().min(3).max(100).optional(),
     center: Joi.string().max(100).optional(),
     confirmed: Joi.any().optional(),
-    date: Joi.string().optional().custom(customEventDateValidation),
+    datetime: Joi.string().optional().custom(customEventDateTimeValidation),
     img: Joi.any().optional()
 });
 

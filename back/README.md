@@ -52,7 +52,7 @@ Proyecto 10: Sistema de Gestión de Eventos
 
       - Esta utilidad valida la fecha de nacimiento del usuario de forma personalizada utilizando moment.js.
 
-    - customEventDateValidation.js
+    - customEventDateTimeValidation.js
 
       - Esta utilidad valida la fecha de la celebración del evento publicado de forma personalizada utilizando moment.js.
 

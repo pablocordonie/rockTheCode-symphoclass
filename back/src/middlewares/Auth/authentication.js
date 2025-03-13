@@ -1,5 +1,5 @@
-const User = require('../api/models/User');
-const { verifyJwt } = require('../utils/jwt');
+const User = require('../../api/models/User');
+const { verifyToken } = require('../../utils/Token/verifyToken');
 
 const isAuth = async (req, res, next) => {
     try {
@@ -11,11 +11,9 @@ const isAuth = async (req, res, next) => {
         }
 
         const parsedToken = token.replace('Bearer ', '');
-
-        const { id } = verifyJwt(parsedToken);
+        const id = verifyToken(parsedToken);
 
         const user = await User.findById(id).select('-password');
-
         if (!user) {
             const error = new Error(`you're not authorized to make the request`);
             error.statusCode = 401;
@@ -41,8 +39,7 @@ const isAdmin = async (req, res, next) => {
         }
 
         const parsedToken = token.replace('Bearer ', '');
-
-        const { id } = verifyJwt(parsedToken);
+        const id = verifyToken(parsedToken);
 
         const user = await User.findById(id).select('-password');
 

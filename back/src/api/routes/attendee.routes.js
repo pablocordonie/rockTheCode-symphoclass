@@ -1,6 +1,6 @@
 const attendeesRouter = require('express').Router();
 const { getAttendees, getAttendeeById } = require('../controllers/attendee');
-const { isAdmin } = require('../../middlewares/authentication');
+const { isAdmin } = require('../../middlewares/Auth/authentication');
 
 attendeesRouter.get('/', isAdmin, getAttendees);
 attendeesRouter.get('/:id', isAdmin, getAttendeeById);

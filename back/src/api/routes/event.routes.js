@@ -2,9 +2,10 @@ const eventsRouter = require('express').Router({ mergeParams: true });
 const { getEvents, getEventById } = require('../controllers/event');
 const { postEvent, updateEvent, deleteEvent } = require('../controllers/event');
 const { postAttendanceToAnEvent, deleteAttendanceToAnEvent } = require('../controllers/attendee');
-const { isAuth } = require('../../middlewares/authentication');
-const { uploadEvent } = require('../../middlewares/file');
-const { validateEvent, validateUpdatedEvent } = require('../../middlewares/validators');
+const { isAuth } = require('../../middlewares/Auth/authentication');
+const { uploadEvent } = require('../../middlewares/File/uploadFile');
+const { validateEvent } = require('../../middlewares/Validators/Event/validateEvent');
+const { validateUpdatedEvent } = require('../../middlewares/Validators/Event/Update/validateUpdatedEvent');
 
 eventsRouter.get('/', isAuth, getEvents);
 eventsRouter.get('/:eventId', isAuth, getEventById);

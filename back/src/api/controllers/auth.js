@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
-const { deleteFile } = require('../../utils/deleteFile');
-const { generateSign } = require('../../utils/jwt');
+const { deleteFile } = require('../../utils/File/deleteFile');
+const { generateSign } = require('../../utils/Token/verifyJwt');
 
 const register = async (req, res, next) => {
     try {

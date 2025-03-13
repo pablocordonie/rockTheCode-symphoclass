@@ -1,7 +1,7 @@
 const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
-const { deleteFile } = require('../../utils/deleteFile');
+const { deleteFile } = require('../../utils/File/deleteFile');
 
 const getEvents = async (req, res, next) => {
     try {

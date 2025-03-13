@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "seed": "node src/utils/seeds/user.seed.js",
+    "seed": "node src/utils/Seeds/user.seed.js",
     "start": "node index.js"
   },
   "keywords": [],

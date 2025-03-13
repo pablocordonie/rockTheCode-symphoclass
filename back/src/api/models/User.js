@@ -1,6 +1,6 @@
-const { hashPassword } = require('../../utils/hash');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { hashPassword } = require('../../utils/Password/hashPassword');
 
 const userSchema = new Schema({
     username: { type: String, trim: true, required: true },

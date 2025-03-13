@@ -38,39 +38,61 @@ Proyecto 10: Sistema de Gestión de Eventos
 
       - Este controlador maneja las operaciones relacionadas con los usuarios, como obtener la lista de usuarios, obtener un usuario por ID, actualizar un usuario, y eliminar un usuario.
 
-  - Middlewares y Utilidades
-
-    - jwt.js
-
-      - Este archivo contiene funciones para generar y verificar tokens JWT.
+  - Middlewares
 
     - authentication.js
 
       - Este middleware verifica si un usuario está autenticado y si un usuario es administrador.
 
+    - errorsManager.js
+
+      - Este middleware maneja los errores en la aplicación.
+
+    - uploadFile.js
+
+      - Este middleware maneja la subida de archivos a Cloudinary.
+
+    - validateAuth.js
+
+      - Este middleware contiene esquemas de validación utilizando Joi para validar el inicio de sesión y el registro del usuario.
+
+    - validateEvent.js
+
+      - Este middleware contiene esquemas de validación utilizando Joi para validar un nuevo evento publicado.
+
+    - validateUpdatedEvent.js
+
+      - Este middleware contiene esquemas de validación utilizando Joi para validar la actualización de un evento.
+
+    - validateUpdatedUser.js
+
+      - Este middleware contiene esquemas de validación utilizando Joi para validar la actualización de los datos de perfil de un usuario.
+
+  - Utilidades
+
     - customBirthdateValidation.js
 
-      - Esta utilidad valida la fecha de nacimiento del usuario de forma personalizada utilizando moment.js.
+      - Esta utilidad valida la fecha de nacimiento del usuario de forma personalizada.
 
     - customEventDateTimeValidation.js
 
-      - Esta utilidad valida la fecha de la celebración del evento publicado de forma personalizada utilizando moment.js.
+      - Esta utilidad valida la fecha de la celebración del evento publicado de forma personalizada.
 
     - deleteFile.js
 
       - Esta utilidad maneja la eliminación de archivos en Cloudinary.
 
-    - error.js
+    - hashPassword.js
 
-      - Este middleware maneja los errores en la aplicación.
+      - Esta herramienta se encarga de codificar una contraseña usando bcrypt.
 
-    - file.js
+    - user.seed.js
 
-      - Este middleware maneja la subida de archivos a Cloudinary.
+      - Este script se encarga de borrar e insertar nuevos usuarios predefinidos a través de su respectivo comando alojado en el package.json.
 
-    - validators.js
+    - verifyJwt.js y verifyToken.js
 
-      - Este middleware contiene esquemas de validación utilizando Joi.
+      - Ambos archivos contienen funciones para generar y verificar tokens JWT.
 
 - Instalación y Configuración
 
@@ -87,13 +109,15 @@ Proyecto 10: Sistema de Gestión de Eventos
 
     - Crear un archivo .env en la raíz del proyecto con las siguientes variables:
 
-      JWT_SECRET=<TU_SECRETO_JWT>
-      MONGODB_URI=<URL_DE_TU_BASE_DE_DATOS_MONGODB>
-      CLOUDINARY_URL=<URL_DE_TU_CLOUDINARY>
+      API_KEY=<API_KEY_DE_TU_CUENTA_DE_CLOUDINARY>
+      API_SECRET=<API_SECRET_DE_TU_CUENTA_DE_CLOUDINARY>
+      CLOUD_NAME=<URL_DE_TU_CUENTA_DE_CLOUDINARY>
+      DB_URL=<URL_DE_TU_BASE_DE_DATOS_MONGODB>
+      USER_PASSWORD=<TU_CONTRASEÑA>
 
   - Iniciar la aplicación:
 
-    npm start
+    npm run start
 
 - Uso
 
@@ -113,19 +137,19 @@ Proyecto 10: Sistema de Gestión de Eventos
 
     - Obtener todos los usuarios
 
-      GET /api/v1/user
+      GET /api/v1/users
 
     - Obtener un usuario por ID
 
-      GET /api/v1/user/:id
+      GET /api/v1/users/:id
 
     - Actualizar un usuario
 
-      PUT /api/v1/user/:id/update
+      PUT /api/v1/users/:id/update
 
     - Eliminar un usuario
 
-      DELETE /api/v1/user/:id/delete
+      DELETE /api/v1/users/:id/delete
 
   - Eventos
 
@@ -135,19 +159,19 @@ Proyecto 10: Sistema de Gestión de Eventos
 
     - Obtener un evento por ID
 
-      GET /api/v1/events/:id
+      GET /api/v1/events/:eventId
 
     - Crear un nuevo evento
 
-      POST /api/v1/user/events
+      POST /api/v1/users/:id/events
 
     - Actualizar un evento
 
-      PUT /api/v1/user/events/:id/update
+      PUT /api/v1/users/:id/events/:eventId/update
 
     - Eliminar un evento
 
-      DELETE /api/v1/user/events/:id/delete
+      DELETE /api/v1/users/:id/events/:eventId/delete
 
   - Asistentes
 
@@ -161,11 +185,11 @@ Proyecto 10: Sistema de Gestión de Eventos
 
     - Confirmar asistencia a un evento
 
-      POST /api/v1/user/events/:id/attendance
+      POST /api/v1/users/:id/events/:eventId/attendance
 
     - Eliminar asistencia a un evento
 
-      DELETE /api/v1/user/events/:id/attendance/delete
+      DELETE /api/v1/users/:id/events/:eventId/attendance/delete
 
 - Contribución
 

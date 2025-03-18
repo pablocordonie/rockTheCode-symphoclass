@@ -1,6 +1,6 @@
 const Joi = require('joi');
 const { customBirthdateValidation } = require('../../../../utils/Date-Validation/User/birthdateValidation');
-const { deleteFile } = require('../../../../utils/File/deleteFile');
+const { validateSchema } = require('../../validateSchema');
 
 const updatedUserSchema = Joi.object({
     username: Joi.string().trim().min(3).max(30).optional(),
@@ -11,15 +11,6 @@ const updatedUserSchema = Joi.object({
     password: Joi.string().trim().min(6).optional()
 });
 
-const validateUpdatedUser = (req, res, next) => {
-    const { error } = updatedUserSchema.validate(req.body);
-    if (error) {
-        if (req.file) {
-            deleteFile(req.file.path);
-        }
-        return res.status(400).json({ message: error.details[0].message });
-    }
-    next();
-};
+const validateUpdatedUser = validateSchema(updatedUserSchema);
 
 module.exports = { validateUpdatedUser };

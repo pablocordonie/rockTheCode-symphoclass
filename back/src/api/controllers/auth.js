@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
-const { deleteFile } = require('../../utils/File/deleteFile');
 const { generateSign } = require('../../utils/Token/verifyJwt');
+const { handleFileDeletionError } = require('../../utils/Error/handleFileDeletionError');
 
 const register = async (req, res, next) => {
     try {
@@ -14,7 +14,7 @@ const register = async (req, res, next) => {
             const error = new Error(`the user's been already registered`);
             error.statusCode = 400;
             if (req.file) {
-                deleteFile(req.file.path);
+                await handleFileDeletionError(req.file.path, next);
             }
             return next(error);
         }
@@ -27,9 +27,9 @@ const register = async (req, res, next) => {
         const error = new Error('an error occurred while registering');
         error.statusCode = 500;
         if (req.file) {
-            deleteFile(req.file.path);
+            await handleFileDeletionError(req.file.path, next);
         }
-        next(error);
+        return next(error);
     }
 };
 
@@ -54,7 +54,7 @@ const login = async (req, res, next) => {
     } catch (err) {
         const error = new Error('an error occurred while logging in');
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 

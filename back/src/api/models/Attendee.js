@@ -14,4 +14,4 @@ const attendeeSchema = new Schema({
 
 const Attendee = mongoose.model('attendees', attendeeSchema, 'attendees');
 
-module.exports = Attendee;
+module.exports = { Attendee };

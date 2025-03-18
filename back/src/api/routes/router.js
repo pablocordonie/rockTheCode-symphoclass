@@ -13,4 +13,4 @@ mainRouter.use('/users', usersRouter);
 
 mainRouter.use(errorsManager);
 
-module.exports = mainRouter;
+module.exports = { mainRouter };

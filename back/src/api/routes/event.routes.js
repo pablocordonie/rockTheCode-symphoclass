@@ -18,4 +18,4 @@ eventsRouter.put('/:eventId/update', isAuth, uploadEvent.single('img'), validate
 eventsRouter.delete('/:eventId/delete', isAuth, deleteEvent);
 eventsRouter.delete('/:eventId/attendance/delete', isAuth, deleteAttendanceToAnEvent);
 
-module.exports = eventsRouter;
+module.exports = { eventsRouter };

@@ -1,7 +1,7 @@
 const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
-const { deleteFile } = require('../../utils/File/deleteFile');
+const { handleFileDeletionError } = require('../../utils/Error/handleFileDeletionError');
 
 const getEvents = async (req, res, next) => {
     try {
@@ -10,7 +10,7 @@ const getEvents = async (req, res, next) => {
     } catch (err) {
         const error = new Error('an error occurred displaying the events');
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 
@@ -27,7 +27,7 @@ const getEventById = async (req, res, next) => {
     } catch (err) {
         const error = new Error(`an error occurred displaying the event's data`);
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 
@@ -42,7 +42,7 @@ const postEvent = async (req, res, next) => {
             const error = new Error(`the event's already been registered`);
             error.statusCode = 400;
             if (req.file) {
-                deleteFile(req.file.path);
+                await handleFileDeletionError(req.file.path, next);
             }
             return next(error);
         }
@@ -68,9 +68,9 @@ const postEvent = async (req, res, next) => {
         const error = new Error('an error occurred creating the event');
         error.statusCode = 500;
         if (req.file) {
-            deleteFile(req.file.path);
+            await handleFileDeletionError(req.file.path, next);
         }
-        next(error);
+        return next(error);
     }
 };
 
@@ -85,7 +85,7 @@ const updateEvent = async (req, res, next) => {
             const error = new Error(`the event couldn't be found`);
             error.statusCode = 404;
             if (req.file) {
-                deleteFile(req.file.path);
+                await handleFileDeletionError(req.file.path, next);
             }
             return next(error);
         }
@@ -94,7 +94,7 @@ const updateEvent = async (req, res, next) => {
             const error = new Error(`the provided data doesn't match your user data`);
             error.statusCode = 403;
             if (req.file) {
-                deleteFile(req.file.path);
+                await handleFileDeletionError(req.file.path, next);
             }
             return next(error);
         }
@@ -102,12 +102,12 @@ const updateEvent = async (req, res, next) => {
         if (req.file) {
             req.body.img = req.file.path;
             if (oldEvent.img) {
-                deleteFile(oldEvent.img);
+                await handleFileDeletionError(oldEvent.img, next);
             }
         } else if (req.body.img === '') {
             req.body.img = '';
             if (oldEvent.img) {
-                deleteFile(oldEvent.img);
+                await handleFileDeletionError(oldEvent.img, next);
             }
         }
 
@@ -129,9 +129,9 @@ const updateEvent = async (req, res, next) => {
         const error = new Error(`an error occurred updating the event's data`);
         error.statusCode = 500;
         if (req.file) {
-            deleteFile(req.file.path);
+            await handleFileDeletionError(req.file.path, next);
         }
-        next(error);
+        return next(error);
     }
 };
 
@@ -151,19 +151,19 @@ const deleteEvent = async (req, res, next) => {
         // Borrar de la lista de asistentes a todos los que acudan al evento en proceso de eliminación
         await Attendee.deleteMany({ attended_events: eventId });
 
-        /* Borrar dentro de cada usuario de la lista de usuarios la referencia al evento en proceso de eliminación alojada dentro de attended_events */
+        // Borrar dentro de cada usuario de la lista de usuarios la referencia al evento en proceso de eliminación alojada dentro de attended_events
         await User.updateMany({ attended_events: eventId }, { $pull: { attended_events: eventId } });
 
         await User.findByIdAndUpdate(userId, { $pull: { organized_events: { _id: eventId } } }, { new: true });
 
         const deletedEvent = await Event.findByIdAndDelete(eventId).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
-        deleteFile(deletedEvent.img);
+        await handleFileDeletionError(deletedEvent.img, next);
 
         return res.status(200).json(deletedEvent);
     } catch (err) {
         const error = new Error(`an error occurred deleting the event's data`);
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 

@@ -1,6 +1,6 @@
 const Joi = require('joi');
 const { customEventDateTimeValidation } = require('../../../../utils/Date-Validation/Event/eventValidation');
-const { deleteFile } = require('../../../../utils/File/deleteFile');
+const { validateSchema } = require('../../validateSchema');
 
 const updatedEventSchema = Joi.object({
     title: Joi.string().trim().min(3).max(100).optional(),
@@ -10,15 +10,6 @@ const updatedEventSchema = Joi.object({
     img: Joi.string().trim().uri().optional()
 });
 
-const validateUpdatedEvent = (req, res, next) => {
-    const { error } = updatedEventSchema.validate(req.body);
-    if (error) {
-        if (req.file) {
-            deleteFile(req.file.path);
-        }
-        return res.status(400).json({ message: error.details[0].message });
-    }
-    next();
-};
+const validateUpdatedEvent = validateSchema(updatedEventSchema);
 
 module.exports = { validateUpdatedEvent };

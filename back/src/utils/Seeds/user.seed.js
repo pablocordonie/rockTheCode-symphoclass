@@ -6,6 +6,11 @@ const User = require('../../api/models/User');
 const { hashPassword } = require('../Password/hashPassword');
 
 const seedUsers = async () => {
+    const userPassword = process.env.USER_PASSWORD;
+    if (!userPassword) {
+        throw new Error('La variable de entorno USER_PASSWORD no se ha encontrado');
+    }
+
     const users = [
         {
             username: 'pablo_cord',
@@ -13,7 +18,7 @@ const seedUsers = async () => {
             email: 'pablo_cord93@gmail.com',
             birthdate: '26/01/1993',
             img: '',
-            password: process.env.USER_PASSWORD,
+            password: hashPassword(userPassword),
             role: 'admin'
         },
         {
@@ -22,7 +27,7 @@ const seedUsers = async () => {
             email: 'alice123@gmail.com',
             birthdate: '15/03/1985',
             img: '',
-            password: process.env.USER_PASSWORD
+            password: hashPassword(userPassword)
         },
         {
             username: 'bob_95',
@@ -30,7 +35,7 @@ const seedUsers = async () => {
             email: 'bob456@gmail.com',
             birthdate: '11/10/1978',
             img: '',
-            password: process.env.USER_PASSWORD
+            password: hashPassword(userPassword)
         },
         {
             username: 'carol_99',
@@ -38,16 +43,11 @@ const seedUsers = async () => {
             email: 'carol@gmail.com',
             birthdate: '19/12/1999',
             img: '',
-            password: process.env.USER_PASSWORD
+            password: hashPassword(userPassword)
         }
     ];
 
-    const hashedUsers = await Promise.all(users.map(async (user) => ({
-        ...user,
-        password: hashPassword(user.password)
-    })));
-
-    return hashedUsers;
+    return users;
 };
 
 mongoose.connect(process.env.DB_URL)

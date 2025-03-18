@@ -12,4 +12,4 @@ usersRouter.delete('/:id/delete', isAuth, deleteUser);
 
 usersRouter.use('/:id/events', eventsRouter);
 
-module.exports = usersRouter;
+module.exports = { usersRouter };

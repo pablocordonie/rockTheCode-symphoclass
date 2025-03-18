@@ -7,7 +7,7 @@ const verifyToken = (token) => {
         payload = verifyJwt(token);
     } catch (err) {
         const error = new Error(`Invalid or expired authentication token`);
-        error.statusCode = 401;
+        error.statusCode = 403;
         return next(error);
     }
 

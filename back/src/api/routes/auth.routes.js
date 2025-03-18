@@ -6,4 +6,4 @@ const { validateRegister, validateLogin } = require('../../middlewares/Validator
 authsRouter.post('/register', uploadAvatar.single('img'), validateRegister, register);
 authsRouter.post('/login', validateLogin, login);
 
-module.exports = authsRouter;
+module.exports = { authsRouter };

@@ -9,7 +9,7 @@ const getAttendees = async (req, res, next) => {
     } catch (err) {
         const error = new Error('an error occurred displaying the attendees');
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 
@@ -26,7 +26,7 @@ const getAttendeeById = async (req, res, next) => {
     } catch (err) {
         const error = new Error(`an error occurred displaying the attendee's data`);
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 
@@ -109,7 +109,7 @@ const deleteAttendanceToAnEvent = async (req, res, next) => {
     } catch (err) {
         const error = new Error(`an error occurred deleting the attendee's data`);
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 

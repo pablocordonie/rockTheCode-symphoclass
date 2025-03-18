@@ -5,4 +5,4 @@ const { isAdmin } = require('../../middlewares/Auth/authentication');
 attendeesRouter.get('/', isAdmin, getAttendees);
 attendeesRouter.get('/:id', isAdmin, getAttendeeById);
 
-module.exports = attendeesRouter;
+module.exports = { attendeesRouter };

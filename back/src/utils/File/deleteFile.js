@@ -7,7 +7,6 @@ const deleteFile = async (url) => {
         return error;
     }
 
-    // Extraer el publicId de la URL de Cloudinary
     const parts = url.split('/');
     const file = parts.pop();
     const folder = parts.pop();
@@ -16,13 +15,12 @@ const deleteFile = async (url) => {
     const result = await cloudinary.uploader.destroy(publicId);
     if (result.result === 'ok') {
         console.log(`The image's been deleted`);
+        return result;
     } else {
         const error = new Error('An error occurred deleting the image');
         error.statusCode = 500;
         return error;
     }
-
-    return result;
 };
 
 module.exports = { deleteFile };

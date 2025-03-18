@@ -1,7 +1,6 @@
 const Attendee = require('../models/Attendee');
 const Event = require('../models/Event');
 const User = require('../models/User');
-const { deleteFile } = require('../../utils/File/deleteFile');
 const { hashPassword } = require('../../utils/Password/hashPassword');
 
 const getUsers = async (req, res, next) => {
@@ -11,7 +10,7 @@ const getUsers = async (req, res, next) => {
     } catch (err) {
         const error = new Error('an error occurred while displaying the user data');
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 
@@ -28,7 +27,7 @@ const getUserById = async (req, res, next) => {
     } catch (err) {
         const error = new Error('an error occurred while displaying the user data');
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 
@@ -42,7 +41,7 @@ const updateUser = async (req, res, next) => {
             const error = new Error(`the user couldn't be found`);
             error.statusCode = 404;
             if (req.file) {
-                deleteFile(req.file.path);
+                await handleFileDeletionError(req.file.path, next);
             }
             return next(error);
         }
@@ -51,7 +50,7 @@ const updateUser = async (req, res, next) => {
             const error = new Error(`it's not allowed to modify another user's data`);
             error.statusCode = 403;
             if (req.file) {
-                deleteFile(req.file.path);
+                await handleFileDeletionError(req.file.path, next);
             }
             return next(error);
         }
@@ -59,12 +58,12 @@ const updateUser = async (req, res, next) => {
         if (req.file) {
             req.body.img = req.file.path;
             if (oldUser.img) {
-                deleteFile(oldUser.img);
+                await handleFileDeletionError(oldUser.img, next);
             }
         } else if (req.body.img === '') {
             req.body.img = '';
             if (oldUser.img) {
-                deleteFile(oldUser.img);
+                await handleFileDeletionError(oldUser.img, next);
             }
         }
 
@@ -91,9 +90,9 @@ const updateUser = async (req, res, next) => {
         const error = new Error('an error occurred while updating the user data');
         error.statusCode = 500;
         if (req.file) {
-            deleteFile(req.file.path);
+            await handleFileDeletionError(req.file.path, next);
         }
-        next(error);
+        return next(error);
     }
 };
 
@@ -125,14 +124,14 @@ const deleteUser = async (req, res, next) => {
         const deletedUser = await User.findByIdAndDelete(id);
 
         if (deletedUser.img) {
-            deleteFile(deletedUser.img);
+            await handleFileDeletionError(deletedUser.img, next);
         }
 
         return res.status(200).json(deletedUser);
     } catch (err) {
         const error = new Error(`an error occurred deleting the user's data`);
         error.statusCode = 500;
-        next(error);
+        return next(error);
     }
 };
 

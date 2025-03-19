@@ -6,6 +6,8 @@ const connectDB = async () => {
         console.log('Database connection status: online');
     } catch (error) {
         console.log('Database connection status: offline // Connection error: ', error);
+        // Proceso de salida en caso de fallo de conexión
+        process.exit(1);
     }
 };
 

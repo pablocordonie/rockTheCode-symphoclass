@@ -8,7 +8,7 @@ const verifyToken = (token) => {
     } catch (err) {
         const error = new Error(`Invalid or expired authentication token`);
         error.statusCode = 403;
-        return next(error);
+        throw error;
     }
 
     const { id } = payload;

@@ -23,9 +23,11 @@ const isAuth = async (req, res, next) => {
         req.user = user;
         next();
     } catch (err) {
-        const error = new Error(`an error occurred processing the user's authentication token`);
-        error.statusCode = 500;
-        return next(error);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = `an error occurred processing the user's authentication token`;
+        }
+        return next(err);
     }
 };
 
@@ -52,9 +54,11 @@ const isAdmin = async (req, res, next) => {
         req.user = user;
         next();
     } catch (err) {
-        const error = new Error(`an error occurred processing the administrator's authentication token`);
-        error.statusCode = 500;
-        return next(error);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = `an error occurred processing the administrator's authentication token`;
+        }
+        return next(err);
     }
 };
 

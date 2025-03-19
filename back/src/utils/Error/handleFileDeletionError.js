@@ -1,10 +1,7 @@
-const { deleteFile } = require('./deleteFile');
+const { deleteFile } = require('../File/deleteFile');
 
-const handleFileDeletionError = async (filePath, next) => {
+const handleFileDeletionError = async (filePath) => {
     const result = await deleteFile(filePath);
-    if (result && typeof result === 'object' && 'statusCode' in result && 'message' in result) {
-        return next(result);
-    }
     return result;
 };
 

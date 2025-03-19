@@ -25,9 +25,11 @@ const getEventById = async (req, res, next) => {
         }
         return res.status(200).json(event);
     } catch (err) {
-        const error = new Error(`an error occurred displaying the event's data`);
-        error.statusCode = 500;
-        return next(error);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = `an error occurred displaying the event's data`;
+        }
+        return next(err);
     }
 };
 
@@ -42,7 +44,7 @@ const postEvent = async (req, res, next) => {
             const error = new Error(`the event's already been registered`);
             error.statusCode = 400;
             if (req.file) {
-                await handleFileDeletionError(req.file.path, next);
+                await handleFileDeletionError(req.file.path);
             }
             return next(error);
         }
@@ -65,12 +67,11 @@ const postEvent = async (req, res, next) => {
 
         return res.status(201).json(savedNewEvent);
     } catch (err) {
-        const error = new Error('an error occurred creating the event');
-        error.statusCode = 500;
-        if (req.file) {
-            await handleFileDeletionError(req.file.path, next);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = 'an error occurred creating the event';
         }
-        return next(error);
+        return next(err);
     }
 };
 
@@ -85,7 +86,7 @@ const updateEvent = async (req, res, next) => {
             const error = new Error(`the event couldn't be found`);
             error.statusCode = 404;
             if (req.file) {
-                await handleFileDeletionError(req.file.path, next);
+                await handleFileDeletionError(req.file.path);
             }
             return next(error);
         }
@@ -94,7 +95,7 @@ const updateEvent = async (req, res, next) => {
             const error = new Error(`the provided data doesn't match your user data`);
             error.statusCode = 403;
             if (req.file) {
-                await handleFileDeletionError(req.file.path, next);
+                await handleFileDeletionError(req.file.path);
             }
             return next(error);
         }
@@ -102,12 +103,12 @@ const updateEvent = async (req, res, next) => {
         if (req.file) {
             req.body.img = req.file.path;
             if (oldEvent.img) {
-                await handleFileDeletionError(oldEvent.img, next);
+                await handleFileDeletionError(oldEvent.img);
             }
         } else if (req.body.img === '') {
             req.body.img = '';
             if (oldEvent.img) {
-                await handleFileDeletionError(oldEvent.img, next);
+                await handleFileDeletionError(oldEvent.img);
             }
         }
 
@@ -126,12 +127,14 @@ const updateEvent = async (req, res, next) => {
         const updatedEvent = await Event.findByIdAndUpdate(eventId, newEvent, { new: true }).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
         return res.status(201).json(updatedEvent);
     } catch (err) {
-        const error = new Error(`an error occurred updating the event's data`);
-        error.statusCode = 500;
+        err.statusCode = err.statusCode || 500;
         if (req.file) {
-            await handleFileDeletionError(req.file.path, next);
+            await handleFileDeletionError(req.file.path);
         }
-        return next(error);
+        if (err.statusCode === 500) {
+            err.message = `an error occurred updating the event's data`;
+        }
+        return next(err);
     }
 };
 
@@ -157,13 +160,15 @@ const deleteEvent = async (req, res, next) => {
         await User.findByIdAndUpdate(userId, { $pull: { organized_events: { _id: eventId } } }, { new: true });
 
         const deletedEvent = await Event.findByIdAndDelete(eventId).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
-        await handleFileDeletionError(deletedEvent.img, next);
+        await handleFileDeletionError(deletedEvent.img);
 
         return res.status(200).json(deletedEvent);
     } catch (err) {
-        const error = new Error(`an error occurred deleting the event's data`);
-        error.statusCode = 500;
-        return next(error);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = `an error occurred deleting the event's data`;
+        }
+        return next(err);
     }
 };
 

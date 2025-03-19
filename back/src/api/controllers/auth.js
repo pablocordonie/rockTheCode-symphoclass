@@ -14,7 +14,7 @@ const register = async (req, res, next) => {
             const error = new Error(`the user's been already registered`);
             error.statusCode = 400;
             if (req.file) {
-                await handleFileDeletionError(req.file.path, next);
+                await handleFileDeletionError(req.file.path);
             }
             return next(error);
         }
@@ -24,12 +24,11 @@ const register = async (req, res, next) => {
         const savedNewUser = await user.save();
         return res.status(201).json(savedNewUser);
     } catch (err) {
-        const error = new Error('an error occurred while registering');
-        error.statusCode = 500;
-        if (req.file) {
-            await handleFileDeletionError(req.file.path, next);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = 'an error occurred while registering';
         }
-        return next(error);
+        return next(err);
     }
 };
 
@@ -52,9 +51,11 @@ const login = async (req, res, next) => {
         const token = generateSign(user._id);
         return res.status(200).json({ user, token });
     } catch (err) {
-        const error = new Error('an error occurred while logging in');
-        error.statusCode = 500;
-        return next(error);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = 'an error occurred while logging in';
+        }
+        return next(err);
     }
 };
 

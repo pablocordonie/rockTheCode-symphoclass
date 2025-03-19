@@ -4,7 +4,7 @@ const deleteFile = async (url) => {
     if (!url) {
         const error = new Error(`No image could be found to delete`);
         error.statusCode = 404;
-        return error;
+        throw error;
     }
 
     const parts = url.split('/');
@@ -19,7 +19,7 @@ const deleteFile = async (url) => {
     } else {
         const error = new Error('An error occurred deleting the image');
         error.statusCode = 500;
-        return error;
+        throw error;
     }
 };
 

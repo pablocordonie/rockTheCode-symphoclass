@@ -24,9 +24,11 @@ const getAttendeeById = async (req, res, next) => {
         }
         return res.status(200).json(attendee);
     } catch (err) {
-        const error = new Error(`an error occurred displaying the attendee's data`);
-        error.statusCode = 500;
-        return next(error);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = `an error occurred displaying the attendee's data`;
+        }
+        return next(err);
     }
 };
 
@@ -75,9 +77,11 @@ const postAttendanceToAnEvent = async (req, res, next) => {
 
         return res.status(201).json(savedNewAttendee);
     } catch (err) {
-        const error = new Error('an error occurred confirming attendance to the event');
-        error.statusCode = 500;
-        return next(error);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = 'an error occurred confirming attendance to the event';
+        }
+        return next(err);
     }
 };
 
@@ -107,9 +111,11 @@ const deleteAttendanceToAnEvent = async (req, res, next) => {
         const deletedAttendee = await Attendee.findByIdAndDelete(attendee._id);
         return res.status(200).json(deletedAttendee);
     } catch (err) {
-        const error = new Error(`an error occurred deleting the attendee's data`);
-        error.statusCode = 500;
-        return next(error);
+        err.statusCode = err.statusCode || 500;
+        if (err.statusCode === 500) {
+            err.message = `an error occurred deleting the attendee's data`;
+        }
+        return next(err);
     }
 };
 

@@ -1,32 +1,41 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/User');
+const { User } = require('../models/User');
+const { deleteFile } = require('../../utils/File/deleteFile');
 const { generateSign } = require('../../utils/Token/verifyJwt');
-const { handleFileDeletionError } = require('../../utils/Error/handleFileDeletionError');
 
 const register = async (req, res, next) => {
     try {
         const { username, fullname, email, birthdate, password } = req.body;
 
+        // Buscar a un usuario por su nombre de usuario y por su correo electrónico
         const duplicatedUser = await User.findOne({ username });
         const duplicatedEmail = await User.findOne({ email });
 
+        // Devolver un error HTTP 400 si el nombre de usuario o el correo electrónico ya estaban registrados previamente
         if (duplicatedUser || duplicatedEmail) {
-            const error = new Error(`the user's been already registered`);
+            const error = new Error('El usuario ya está registrado');
             error.statusCode = 400;
+            // Eliminar la imagen subida si existe
             if (req.file) {
-                await handleFileDeletionError(req.file.path);
+                await deleteFile(req.file.path);
             }
             return next(error);
         }
 
+        // Crear un nuevo usuario con los datos proporcionados
         const user = new User({ username, fullname, email, birthdate, img: req.file ? req.file.path : '', password });
 
+        // Guardar el nuevo usuario en la base de datos
         const savedNewUser = await user.save();
-        return res.status(201).json(savedNewUser);
+
+        // Devolver una respuesta exitosa con la información del nuevo usuario creada
+        const statusCode = 201;
+        return res.status(statusCode).json({ statusCode, message: 'El usuario se ha registrado de forma satisfactoria', data: savedNewUser });
     } catch (err) {
+        // Devolver un error HTTP 500 en caso de fallo de conexión o de petición
         err.statusCode = err.statusCode || 500;
         if (err.statusCode === 500) {
-            err.message = 'an error occurred while registering';
+            err.message = 'Ha ocurrido un error al registrarse';
         }
         return next(err);
     }
@@ -35,25 +44,35 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
     try {
         const { username, password } = req.body;
+
+        // Buscar al usuario por nombre de usuario
         const user = await User.findOne({ username });
 
+        // Devolver un error HTTP 404 si el usuario no existe
         if (!user) {
-            const error = new Error(`the user couldn't be found`);
+            const error = new Error('No se ha podido encontrar a este usuario');
             error.statusCode = 404;
             return next(error);
         }
 
+        // Devolver un error HTTP 401 si la contraseña proporcionada es incorrecta
         if (!bcrypt.compareSync(password, user.password)) {
-            const error = new Error('incorrect password');
+            const error = new Error('La contraseña proporcionada es incorrecta');
             error.statusCode = 401;
             return next(error);
         }
+
+        // Generar un token JWT para el usuario
         const token = generateSign(user._id);
-        return res.status(200).json({ user, token });
+
+        // Devolver una respuesta exitosa con la información del usuario y el token
+        const statusCode = 200;
+        return res.status(statusCode).json({ statusCode, message: 'El usuario ha iniciado sesión con éxito', data: user, token });
     } catch (err) {
+        // Devolver un error en caso de fallo de conexión o de petición
         err.statusCode = err.statusCode || 500;
         if (err.statusCode === 500) {
-            err.message = 'an error occurred while logging in';
+            err.message = 'Ha ocurrido un error al iniciar sesión';
         }
         return next(err);
     }

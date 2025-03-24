@@ -7,7 +7,7 @@ const customBirthdateValidation = (value, helpers) => {
     // Introducir las partes en un objeto de fecha
     const [day, month, year] = dateParts.map(datePart => Number(datePart));
 
-    // Verificar que el mes y el día sean válidos en el pasado (dependiendo del mes y del año) así como la cantidad de días del mes correspondiente
+    // Verificar que el mes y el día estén en tiempo pasado (dependiendo del mes y del año) así como la cantidad de días del mes correspondiente
     const daysInMonth = new Date(year, month, 0).getDate(); // Nº de días del mes de la fecha
 
     const isInvalidDay = (isNaN(day) || day < 1 || day > daysInMonth);
@@ -15,15 +15,18 @@ const customBirthdateValidation = (value, helpers) => {
     const isInvalidYear = (isNaN(year) || year < 1900 || year >= new Date().getFullYear());
 
     if (isInvalidDay || isInvalidMonth || isInvalidYear) {
-        return helpers.message('Invalid date.');
+        // Devolver un mensaje de error si la fecha no es válida
+        return helpers.message('La fecha no es válida, compruébela y pruebe a insertarla de nuevo');
     }
 
     // Verificar que la fecha de nacimiento es correcta para el registro del usuario
     const currentYear = new Date().getFullYear();
     if (currentYear - year < legalAge) {
-        return helpers.message(`Invalid date: The user hasn't reached the required age to register.`);
+        // Devolver un mensaje de error si la fecha de nacimiento del usuario no es válida
+        return helpers.message(`La fecha de nacimiento del usuario no es válida, el usuario debe ser mayor de edad`);
     }
 
+    // Retornar el valor original después de pasar la validación
     return value;
 };
 

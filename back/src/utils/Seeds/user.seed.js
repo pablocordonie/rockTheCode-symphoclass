@@ -1,14 +1,14 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const Attendee = require('../../api/models/Attendee');
-const Event = require('../../api/models/Event');
-const User = require('../../api/models/User');
+const { Attendee } = require('../../api/models/Attendee');
+const { Event } = require('../../api/models/Event');
+const { User } = require('../../api/models/User');
 const { hashPassword } = require('../Password/hashPassword');
 
 const seedUsers = async () => {
     const userPassword = process.env.USER_PASSWORD;
     if (!userPassword) {
-        throw new Error('La variable de entorno USER_PASSWORD no se ha encontrado');
+        throw new Error('No se ha podido encontrar la contraseña de los usuarios predefinidos');
     }
 
     const users = [
@@ -76,8 +76,8 @@ mongoose.connect(process.env.DB_URL)
             const usersData = await seedUsers();
             await User.insertMany(usersData);
             console.log('The new users data are inserted on the DB');
-        } catch (error) {
-            console.log(`Error creating the new data: ${error}`)
+        } catch (err) {
+            console.log(`Error creating the new data: ${err}`)
         } finally {
             await mongoose.disconnect();
         }

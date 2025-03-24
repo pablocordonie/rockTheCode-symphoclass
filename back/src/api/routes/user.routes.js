@@ -1,5 +1,5 @@
 const usersRouter = require('express').Router();
-const eventsRouter = require('./event.routes');
+const { eventsRouter } = require('./event.routes');
 const { getUsers, getUserById, updateUser, deleteUser } = require('../controllers/user');
 const { isAuth, isAdmin } = require('../../middlewares/Auth/authentication');
 const { uploadAvatar } = require('../../middlewares/File/uploadFile');

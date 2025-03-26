@@ -51,6 +51,17 @@ const postEvent = async (req, res, next) => {
         const { title, address, center, datetime } = req.body;
         const userId = req.params.id;
 
+        // Devolver un error HTTP 403 si el usuario registrado está intentando publicar un evento en la cuenta de otro usuario
+        if (req.user.role === 'user' && userId !== req.user._id.toString()) {
+            const error = new Error('No está permitido publicar un evento en la cuenta de otro usuario o en una cuenta inexistente');
+            error.statusCode = 403;
+            // Eliminar la imagen subida si existe
+            if (req.file) {
+                await deleteFile(req.file.path);
+            }
+            return next(error);
+        }
+
         // Buscar un evento para comprobar si existe
         const event = await Event.findOne({ title });
 
@@ -102,13 +113,10 @@ const updateEvent = async (req, res, next) => {
         const userId = req.params.id;
         const eventId = req.params.eventId;
 
-        // Buscar el evento que coincida con su respectiva ID
-        const oldEvent = await Event.findById(eventId);
-
-        // Devolver un error HTTP 404 si el evento no coincide con su ID o no existe
-        if (!oldEvent) {
-            const error = new Error('No se ha podido encontrar este evento');
-            error.statusCode = 404;
+        // Devolver un error HTTP 403 si el usuario registrado está intentando modificar los datos del evento organizado por otro usuario
+        if (req.user.role === 'user' && userId !== req.user._id.toString()) {
+            const error = new Error('No está permitido modificar los datos de este evento con la cuenta de otro usuario');
+            error.statusCode = 403;
             // Eliminar la imagen subida si existe
             if (req.file) {
                 await deleteFile(req.file.path);
@@ -116,10 +124,13 @@ const updateEvent = async (req, res, next) => {
             return next(error);
         }
 
-        // Devolver un error HTTP 403 si el usuario registrado está intentando modificar los datos del evento organizado por otro usuario
-        if (req.user.role === 'user' && userId !== oldEvent.event_organizer._id.toString()) {
-            const error = new Error('No está permitido modificar los datos de este evento con la cuenta de otro usuario');
-            error.statusCode = 403;
+        // Buscar el evento que coincida con su respectiva ID
+        const oldEvent = await Event.findById(eventId);
+
+        // Devolver un error HTTP 404 si el evento no coincide con su ID o no existe
+        if (!oldEvent) {
+            const error = new Error('No se ha podido encontrar este evento');
+            error.statusCode = 404;
             // Eliminar la imagen subida si existe
             if (req.file) {
                 await deleteFile(req.file.path);
@@ -178,30 +189,48 @@ const deleteEvent = async (req, res, next) => {
         const userId = req.params.id;
         const eventId = req.params.eventId;
 
-        // Buscar el evento que coincida con su respectiva ID
-        const event = await Event.findById(eventId);
-
         // Devolver un error HTTP 403 si el usuario registrado está intentando eliminar los datos del evento organizado por otro usuario
-        if (req.user.role === 'user' && userId !== event.event_organizer._id.toString()) {
+        if (req.user.role === 'user' && userId !== req.user._id.toString()) {
             const error = new Error('No está permitido eliminar los datos del evento de otro usuario');
             error.statusCode = 403;
             return next(error);
         }
 
-        // Eliminar a los asistentes que acudan al evento en proceso de eliminación
-        await Attendee.deleteMany({ attended_events: eventId });
+        // Buscar el evento que coincida con su respectiva ID
+        const event = await Event.findById(eventId);
 
-        // Eliminar la referencia al evento en proceso de eliminación dentro de cada usuario que iba a asistir a dicho evento
-        await User.updateMany({ attended_events: eventId }, { $pull: { attended_events: eventId } });
+        // Devolver un error HTTP 404 si el evento no coincide con su ID o no existe
+        if (!event) {
+            const error = new Error('No se ha podido encontrar este evento');
+            error.statusCode = 404;
+            return next(error);
+        }
 
         // Actualizar la lista de eventos organizados del usuario
         await User.findByIdAndUpdate(userId, { $pull: { organized_events: { _id: eventId } } }, { new: true });
 
+        // Eliminar la imagen del evento si existe
+        if (event.img) {
+            await deleteFile(event.img);
+        }
+
+        // Eliminar la referencia al evento en proceso de eliminación dentro de cada usuario y de cada asistente que iba a asistir a dicho evento
+        if (event.attendees.length) {
+            await User.updateMany({ attended_events: eventId }, { $pull: { attended_events: eventId } });
+
+            const attendees = await Attendee.find({ attended_events: eventId });
+
+            await Promise.all(attendees.map(async attendee => {
+                const updatedAttendee = await Attendee.findByIdAndUpdate(attendee._id, { $pull: { attended_events: eventId } }, { new: true });
+
+                if (!updatedAttendee.attended_events.length) {
+                    await Attendee.findByIdAndDelete(attendee._id);
+                }
+            }));
+        }
+
         // Eliminar el evento
         const deletedEvent = await Event.findByIdAndDelete(eventId).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
-
-        // Eliminar la imagen del evento si existe
-        await deleteFile(deletedEvent.img);
 
         // Devolver una respuesta exitosa con el evento eliminado
         const statusCode = 200;

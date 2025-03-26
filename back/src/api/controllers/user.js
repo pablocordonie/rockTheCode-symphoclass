@@ -66,7 +66,7 @@ const updateUser = async (req, res, next) => {
         }
 
         // Devolver un error HTTP 403 si el usuario registrado está intentando modificar los datos de otro usuario
-        if (req.user.role === 'user' && req.user._id != id) {
+        if (req.user.role === 'user' && id !== req.user._id.toString()) {
             const error = new Error('No está permitido modificar los datos de otro usuario');
             error.statusCode = 403;
             // Eliminar la imagen subida si existe
@@ -150,30 +150,58 @@ const deleteUser = async (req, res, next) => {
         }
 
         // Devolver un error HTTP 403 si el usuario registrado está intentando modificar los datos de otro usuario
-        if (user.role === 'user' && user._id !== id) {
+        if (user.role === 'user' && id !== req.user._id.toString()) {
             const error = new Error('No está permitido eliminar los datos de otro usuario');
             error.statusCode = 403;
             return next(error);
         }
 
         // Eliminar los eventos pendientes por asistir por parte del usuario
-        if (user.attended_events.length > 0) {
+        if (user.attended_events.length) {
             const attendee = await Attendee.findOne({ username: req.user.username });
-            await Attendee.findByIdAndDelete(attendee._id);
+            if (attendee) {
+                await Attendee.findByIdAndDelete(attendee._id);
+            }
         }
 
-        // Eliminar los eventos organizados por el usuario
-        if (user.organized_events.length > 0) {
+        if (user.organized_events.length) {
+            const organizedEvents = await Event.find({ event_organizer: id });
+
+            // Eliminar la referencia a cada evento organizado por el usuario dentro de cada usuario y de cada asistente que iba a asistir a dichos eventos
+            await Promise.all(organizedEvents.map(async organizedEvent => {
+                if (organizedEvent.attendees.length) {
+                    await User.updateMany({ attended_events: organizedEvent._id }, { $pull: { attended_events: organizedEvent._id } });
+
+                    const attendees = await Attendee.find({ attended_events: organizedEvent._id });
+
+                    await Promise.all(attendees.map(async attendee => {
+                        const updatedAttendee = await Attendee.findByIdAndUpdate(attendee._id, { $pull: { attended_events: organizedEvent._id } }, { new: true });
+
+                        if (!updatedAttendee.attended_events.length) {
+                            await Attendee.findByIdAndDelete(attendee._id);
+                        }
+                    }));
+                }
+
+                if (organizedEvent.img) {
+                    await deleteFile(organizedEvent.img);
+                }
+            }));
+
+            // Eliminar los eventos organizados por el usuario
             await Event.deleteMany({ event_organizer: id });
+
+            // Actualizar la lista de eventos organizados del usuario
+            await User.findByIdAndUpdate(id, { $set: { organized_events: [] } }, { new: true });
+        }
+
+        // Eliminar la imagen del usuario si existe
+        if (user.img) {
+            await deleteFile(user.img);
         }
 
         // Eliminar al usuario de la base de datos
         const deletedUser = await User.findByIdAndDelete(id);
-
-        // Eliminar la imagen del usuario si existe
-        if (deletedUser.img) {
-            await deleteFile(deletedUser.img);
-        }
 
         // Devolver una respuesta exitosa con la información del usuario recién eliminado
         const statusCode = 200;

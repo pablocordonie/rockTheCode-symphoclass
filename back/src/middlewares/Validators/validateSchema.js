@@ -21,7 +21,7 @@ const validateSchema = (schema) => async (req, res, next) => {
 
         // Devolver un error HTTP 400 con el mensaje de error de validación del cuerpo de la solicitud
         const statusCode = 400;
-        return res.status(statusCode).json({ statusCode, message: error.details[0].message, data: error });
+        return res.status(statusCode).json({ statusCode, message: 'Ha ocurrido un error al validar la información proporcionada por el usuario', data: error });
     }
     next();
 };

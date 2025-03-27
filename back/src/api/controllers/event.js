@@ -6,7 +6,7 @@ const { deleteFile } = require('../../utils/File/deleteFile');
 const getEvents = async (req, res, next) => {
     try {
         // Buscar todos los eventos
-        const events = await Event.find().populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
+        const events = await Event.find().sort({ datetime: 1 }).populate({ path: 'event_organizer', select: 'fullname' }).populate({ path: 'attendees', select: 'username' });
 
         // Devolver una respuesta exitosa con la información de los eventos obtenida
         const statusCode = 200;

@@ -1,24 +1,24 @@
 .sc-main-events-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--tsc-gap-600);
 }
 
 @media screen and (min-width: 360px) {
   .sc-main-events-list {
-    padding: 0 1rem;
+    padding: var(--tsc-padding-000) var(--tsc-padding-400);
   }
 }
 
 @media screen and (min-width: 400px) {
   .sc-main-events-list {
-    padding: 0 2.5rem;
+    padding: var(--tsc-padding-000) var(--tsc-padding-900);
   }
 }
 
 @media screen and (min-width: 500px) {
   .sc-main-events-list {
-    padding: 0 6rem;
+    padding: var(--tsc-padding-000) var(--tsc-padding-1000);
   }
 }
 

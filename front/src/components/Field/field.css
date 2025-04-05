@@ -1,11 +1,11 @@
 label {
-  color: var(--rtc-color-n-600);
-  font-size: 0.85rem;
-  font-weight: 700;
+  color: var(--tsc-color-600);
+  font-size: var(--tsc-font-size-200);
+  font-weight: var(--tsc-font-weight-100);
 }
 
 @media screen and (min-width: 400px) {
   label {
-    font-size: 0.9rem;
+    font-size: var(--tsc-font-size-300);
   }
 }

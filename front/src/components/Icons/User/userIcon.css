@@ -1,13 +1,13 @@
 .sc-header-nav-user_icon {
   align-items: center;
-  background-color: var(--rtc-color-n-900);
-  border-radius: 50%;
+  background-color: var(--tsc-color-900);
+  border-radius: var(--tsc-border-200);
   display: flex;
   justify-content: center;
-  height: 40px;
-  width: 40px;
+  height: var(--tsc-height-300);
+  width: var(--tsc-width-200);
 }
 
 .sc-header-nav-user_icon i {
-  color: var(--rtc-color-n-300);
+  color: var(--tsc-color-200);
 }

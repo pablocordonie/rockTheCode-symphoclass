@@ -2,15 +2,15 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--tsc-gap-300);
 }
 
 .sc-main-create_event_form-fields li {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--tsc-gap-200);
 }
 
 .sc-main-create_event_form-img_field {
-  width: 12rem;
+  width: var(--tsc-width-600);
 }

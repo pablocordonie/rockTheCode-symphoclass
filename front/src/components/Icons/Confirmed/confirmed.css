@@ -1,13 +1,13 @@
 .confirm-btn-confirmed_icon {
   background-color: white;
-  border-radius: 50%;
-  color: green;
-  font-size: 0.9rem;
-  height: 1.25rem;
-  line-height: 1.25rem;
+  border-radius: var(--tsc-border-200);
+  color: var(--tsc-color-400);
+  font-size: var(--tsc-font-size-300);
+  height: var(--tsc-height-100);
+  line-height: var(--tsc-line-height-100);
   position: absolute;
-  right: 5px;
+  right: var(--tsc-position-right-100);
   text-align: center;
-  top: 5px;
-  width: 1.25rem;
+  top: var(--tsc-position-top-100);
+  width: var(--tsc-width-100);
 }

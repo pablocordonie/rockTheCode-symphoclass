@@ -2,17 +2,17 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--tsc-gap-300);
 }
 
 .sc-main-edit_profile_form-fields li {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--tsc-gap-100);
 }
 
 @media screen and (min-width: 360px) {
   .sc-main-edit_profile_form-fields {
-    gap: 1rem;
+    gap: var(--tsc-gap-400);
   }
 }

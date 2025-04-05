@@ -8,23 +8,23 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--tsc-gap-600);
   overflow: hidden;
 }
 
 .sc-main-profile_info-profile_avatar {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: var(--tsc-width-full);
 }
 
 .sc-main-profile_info-profile_data {
   display: flex;
   align-items: center;
-  background-color: var(--rtc-color-n-900);
-  border: 0.4rem solid var(--rtc-color-n-600);
-  border-radius: 0.625rem;
+  background-color: var(--tsc-color-900);
+  border: var(--tsc-border-200) solid var(--tsc-color-600);
+  border-radius: var(--tsc-border-200);
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.5rem 2rem;
+  gap: var(--tsc-gap-200);
+  padding: var(--tsc-padding-600) var(--tsc-padding-800);
 }

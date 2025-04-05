@@ -3,7 +3,6 @@ import adjustMainContentHeight from './src/utils/Height/adjustMainContentHeight'
 import { appConfig, pageRenderers } from './src/config/config';
 import errorHandler from './src/utils/Error/errorHandler';
 import printLoader from './src/utils/Loader/printLoader';
-import readData from './src/utils/Fetch/GET/readData';
 
 let { currentPage, HTMLElementsWithListeners } = appConfig;
 
@@ -22,10 +21,5 @@ export const renderApp = (appConfig, currentPage, HTMLElementsWithListeners) => 
         return errorHandler(error, 'renderApp', appConfig, HTMLElementsWithListeners, 'critical');
     }
 };
-
-
-const users = await readData('http://localhost:8080/api/v1/user', appConfig, HTMLElementsWithListeners);
-console.log(users);
-
 
 renderApp(appConfig, currentPage, HTMLElementsWithListeners);

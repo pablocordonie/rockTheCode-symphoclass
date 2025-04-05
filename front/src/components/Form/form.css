@@ -1,23 +1,23 @@
 .sc-main form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--tsc-gap-600);
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
   .sc-main form {
-    gap: 2rem;
+    gap: var(--tsc-gap-800);
   }
 }
 
 @media screen and (min-width: 400px) {
   .sc-main form {
-    gap: 2.25rem;
+    gap: var(--tsc-gap-800);
   }
 }
 
 @media screen and (min-width: 600px) {
   .sc-main form {
-    gap: 2.5rem;
+    gap: var(--tsc-gap-1000);
   }
 }

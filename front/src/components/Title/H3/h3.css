@@ -1,5 +1,5 @@
 .sc-main-events-card-title {
-  color: var(--rtc-color-n-000);
-  font-size: 1.25rem;
-  margin: 0;
+  color: var(--tsc-color-000);
+  font-size: var(--tsc-font-size-600);
+  margin: var(--tsc-margin-000);
 }

@@ -1,16 +1,16 @@
 input {
-  background-color: var(--rtc-color-n-900);
-  border: 0.25rem solid var(--rtc-color-n-600);
-  border-radius: 0.5rem;
-  color: var(--rtc-color-n-000);
-  height: 1.85rem;
-  width: 12rem;
+  background-color: var(--tsc-color-900);
+  border: var(--tsc-border-100) solid var(--tsc-color-600);
+  border-radius: var(--tsc-border-200);
+  color: var(--tsc-color-000);
+  height: var(--tsc-height-200);
+  width: var(--tsc-width-600);
 }
 
 input:hover {
-  border: 0.25rem solid var(--rtc-color-n-600);
+  border: var(--tsc-border-100) solid var(--tsc-color-600);
 }
 
 .sc-main-create_event_form-fields div input {
-  width: 100%;
+  width: var(--tsc-width-full);
 }

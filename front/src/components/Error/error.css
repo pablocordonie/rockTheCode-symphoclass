@@ -1,43 +1,44 @@
 .error-notification {
   display: none;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--tsc-gap-400);
   position: fixed;
-  bottom: 50%;
-  left: 50%;
+  bottom: var(--tsc-position-bottom-200);
+  left: var(--tsc-position-left-100);
   transform: translateX(-50%);
-  background-color: var(--rtc-color-n-900);
-  padding: 16px 20px;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: bold;
+  background-color: var(--tsc-color-900);
+  padding: var(--tsc-padding-400) var(--tsc-padding-500);
+  border-radius: var(--tsc-border-100);
+  font-size: var(--tsc-font-size-300);
+  font-weight: var(--tsc-font-weight-200);
   text-align: center;
-  box-shadow: 0px 4px 6px var(--rtc-color-n-000);
-  z-index: 1000;
-  width: 80%;
+  box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
+    var(--tsc-box-shadow-200) var(--tsc-color-000);
+  z-index: var(--tsc-z-index-200);
+  width: var(--tsc-width-900);
   animation: fadeIn 0.3s ease-in-out;
 }
 
 .error-message {
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--tsc-padding-200);
 }
 
 .error-title,
 .error-message {
-  color: var(--rtc-color-n-000);
+  color: var(--tsc-color-000);
 }
 
 .error-critical {
-  background-color: var(--rtc-color-n-500);
+  background-color: var(--tsc-color-500);
 }
 
 .error-critical > .error-title,
 .error-critical > .error-message {
-  color: var(--rtc-color-n-900);
+  color: var(--tsc-color-900);
 }
 
 .error-btn {
-  width: 6rem;
+  width: var(--tsc-width-500);
 }
 
 @keyframes fadeIn {

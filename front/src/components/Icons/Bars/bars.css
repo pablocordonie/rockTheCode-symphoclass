@@ -2,5 +2,5 @@
   align-items: center;
   cursor: pointer;
   display: flex;
-  height: 40px;
+  height: var(--tsc-height-300);
 }

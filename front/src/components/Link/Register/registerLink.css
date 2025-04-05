@@ -2,41 +2,41 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding-top: 0.75rem;
+  gap: var(--tsc-gap-400);
+  padding-top: var(--tsc-padding-300);
 }
 
 .sc-main-login_form-register_message {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: var(--tsc-font-size-100);
+  font-weight: var(--tsc-font-weight-100);
 }
 
 .sc-main-login_form-register_message {
-  color: var(--rtc-color-n-700);
+  color: var(--tsc-color-700);
 }
 
 @media screen and (min-width: 360px) {
   .sc-main-login_form-register_option {
-    padding-top: 1rem;
+    padding-top: var(--tsc-padding-400);
   }
 
   .sc-main-login_form-register_message {
-    font-size: 0.85rem;
+    font-size: var(--tsc-font-size-200);
   }
 }
 
 @media screen and (min-width: 400px) {
   .sc-main-login_form-register_message {
-    font-size: 0.9rem;
+    font-size: var(--tsc-font-size-300);
   }
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
   .sc-main-login_form-register_option {
-    gap: 1.25rem;
+    gap: var(--tsc-gap-500);
   }
 
   .sc-main-login_form-register_message {
-    font-size: 1rem;
+    font-size: var(--tsc-font-size-400);
   }
 }

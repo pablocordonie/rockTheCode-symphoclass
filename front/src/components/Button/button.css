@@ -1,65 +1,65 @@
 .sc-header-events-create_btn,
 .sc-main-events-card-options button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
+  padding: var(--tsc-padding-200) var(--tsc-padding-400);
+  border: var(--tsc-border-000);
+  border-radius: var(--tsc-border-100);
   cursor: pointer;
 }
 
 .sc-header-events-create_btn {
-  background-color: var(--rtc-color-n-600);
-  color: white;
+  background-color: var(--tsc-color-600);
+  color: var(--tsc-color-900);
 }
 
 .confirm-btn {
-  background-color: #28a745;
-  color: white;
+  background-color: var(--tsc-color-400);
+  color: var(--tsc-color-900);
 }
 
 .sc-main button {
   align-self: center;
-  background-color: var(--rtc-color-n-600);
-  border: 0.25rem solid var(--rtc-color-n-600);
-  border-radius: 0.5rem;
-  color: var(--rtc-color-n-900);
+  background-color: var(--tsc-color-600);
+  border: var(--tsc-border-100) solid var(--tsc-color-600);
+  border-radius: var(--tsc-border-200);
+  color: var(--tsc-color-900);
   cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 700;
-  height: 1.85rem;
+  font-size: var(--tsc-font-size-200);
+  font-weight: var(--tsc-font-weight-100);
+  height: var(--tsc-height-200);
 }
 
 .sc-main button:hover {
-  background-color: var(--rtc-color-n-900);
-  border-color: var(--rtc-color-n-900);
-  color: var(--rtc-color-n-600);
+  background-color: var(--tsc-color-900);
+  border-color: var(--tsc-color-900);
+  color: var(--tsc-color-600);
 }
 
 .sc-main-profile_info-editProfile_btn {
   display: flex;
   align-items: center;
-  background-color: var(--rtc-color-n-600);
-  border: none;
-  border-radius: 0.3125rem;
-  color: var(--rtc-color-n-900);
+  background-color: var(--tsc-color-600);
+  border: var(--tsc-border-000);
+  border-radius: var(--tsc-border-100);
+  color: var(--tsc-color-900);
   cursor: pointer;
-  font-size: 1rem;
-  padding: 0.625rem 1.25rem;
+  font-size: var(--tsc-font-size-400);
+  padding: var(--tsc-padding-200) var(--tsc-padding-500);
   transition: background-color 0.3s ease;
 }
 
 .sc-main-profile_info-editProfile_btn:hover {
-  background-color: var(--rtc-color-n-900);
-  color: var(--rtc-color-n-600);
+  background-color: var(--tsc-color-900);
+  color: var(--tsc-color-600);
 }
 
 @media screen and (min-width: 400px) {
   .sc-main button {
-    font-size: 0.9rem;
+    font-size: var(--tsc-font-size-300);
   }
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
   .sc-main button {
-    font-size: 1.15rem;
+    font-size: var(--tsc-font-size-500);
   }
 }

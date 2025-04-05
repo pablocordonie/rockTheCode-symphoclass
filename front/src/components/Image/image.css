@@ -1,9 +1,9 @@
 .sc-main-profile_info-profile_avatar-img {
-  width: 16rem;
+  width: var(--tsc-width-700);
 }
 
 @media screen and (min-width: 900px) {
   .sc-main-profile_info-profile_avatar-img {
-    width: 22.5rem;
+    width: var(--tsc-width-800);
   }
 }

@@ -1,36 +1,38 @@
 .sc-main-events-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--tsc-color-900);
+  border-radius: var(--tsc-border-200);
+  box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
+    var(--tsc-box-shadow-200) var(--tsc-color-000-transparent);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 1.25rem;
+  gap: var(--tsc-gap-300);
+  padding: var(--tsc-padding-500);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sc-main-events-card-options {
   display: flex;
   justify-content: center;
-  padding-top: 1rem;
+  padding-top: var(--tsc-padding-400);
 }
 
 .confirmed {
   position: relative;
-  outline: 4px solid green;
+  outline: var(--tsc-outline-100) solid var(--tsc-color-400);
 }
 
 @media screen and (min-width: 768px) {
   .sc-main-events-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
+      var(--tsc-box-shadow-300) var(--tsc-color-000-transparent);
   }
 
   .sc-main-events-card-options {
     display: none;
     position: absolute;
-    bottom: 10px;
-    right: 20px;
+    bottom: var(--tsc-position-bottom-100);
+    right: var(--tsc-position-right-200);
   }
 
   .sc-main-events-card:hover .sc-main-events-card-options {

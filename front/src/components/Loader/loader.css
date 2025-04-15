@@ -1,18 +1,18 @@
-.sc-loader-container {
+.tsc-loader {
   align-items: center;
   background-color: var(--tsc-color-900-transparent);
   display: flex;
   flex-direction: column;
-  height: var(--tsc-height-full);
+  height: inherit;
   justify-content: center;
   position: absolute;
   width: var(--tsc-width-full);
 }
 
-.sc-loader {
+.tsc-spinner {
   animation: spin 1s linear infinite;
   border: var(--tsc-border-200) solid var(--tsc-color-800);
-  border-radius: var(--tsc-border-200);
+  border-radius: var(--tsc-border-300);
   border-top: var(--tsc-border-200) solid var(--tsc-color-300);
   height: var(--tsc-height-500);
   width: var(--tsc-width-400);

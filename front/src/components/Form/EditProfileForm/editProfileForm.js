@@ -26,9 +26,6 @@ const createEditProfileForm = (className, appConfig, currentPage) => {
     const passwordField = createNewFieldData(`${mainClassName}-${currentPage}_form-password_field`, 'password', 'Contraseña', 'password');
     editProfileFormFields.push(passwordField);
 
-    const repeatPasswordField = createNewFieldData(`${mainClassName}-${currentPage}_form-repeat_password_field`, 'compare-password', 'Repetir Contraseña', 'password');
-    editProfileFormFields.push(repeatPasswordField);
-
     createNewList(editProfileFormList, editProfileFormFields, field => createNewField(field));
 
     const submitProfileItem = createNewSubmitButton(`${mainClassName}-${currentPage}_form`, currentPage, 'Actualizar');

@@ -1,4 +1,4 @@
-header .sc-header-h1 {
+header .tsc-header-h1 {
   color: var(--tsc-color-700);
   font-family: 'Dancing Script', sans-serif;
   font-size: var(--tsc-font-size-1000);
@@ -6,7 +6,7 @@ header .sc-header-h1 {
 }
 
 @media screen and (min-width: 900px) {
-  header .sc-header-h1 {
+  header .tsc-header-h1 {
     font-size: var(--tsc-font-size-1100);
   }
 }

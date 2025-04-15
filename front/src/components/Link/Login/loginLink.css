@@ -1,4 +1,4 @@
-.sc-main-register_form-login_option {
+.tsc-main-register_form-login_option {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -6,37 +6,37 @@
   padding-top: var(--tsc-padding-300);
 }
 
-.sc-main-register_form-login_message {
+.tsc-main-register_form-login_message {
   font-size: var(--tsc-font-size-100);
   font-weight: var(--tsc-font-weight-100);
 }
 
-.sc-main-register_form-login_message {
+.tsc-main-register_form-login_message {
   color: var(--tsc-color-700);
 }
 
 @media screen and (min-width: 360px) {
-  .sc-main-register_form-login_option {
+  .tsc-main-register_form-login_option {
     padding-top: var(--tsc-padding-400);
   }
 
-  .sc-main-register_form-login_message {
+  .tsc-main-register_form-login_message {
     font-size: var(--tsc-font-size-200);
   }
 }
 
 @media screen and (min-width: 400px) {
-  .sc-main-register_form-login_message {
+  .tsc-main-register_form-login_message {
     font-size: var(--tsc-font-size-300);
   }
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
-  .sc-main-register_form-login_option {
+  .tsc-main-register_form-login_option {
     gap: var(--tsc-gap-600);
   }
 
-  .sc-main-register_form-login_message {
+  .tsc-main-register_form-login_message {
     font-size: var(--tsc-font-size-400);
   }
 }

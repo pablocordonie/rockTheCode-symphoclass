@@ -6,12 +6,12 @@ import printUserProfile from '../pages/Profile/profile';
 import querySelectorChecker from '../utils/QuerySelector/querySelectorChecker';
 
 const app = querySelectorChecker('#app', 'appConfig');
-const header = querySelectorChecker('.sc-header', 'appConfig');
+const header = querySelectorChecker('.tsc-header', 'appConfig');
 let HTMLElementsWithListeners = [];
-const loaderClassName = 'sc-loader-container';
+const loaderClassName = 'tsc-loader';
 const loaderTimeout = 2000;
-const main = querySelectorChecker('.sc-main', 'appConfig');
-const sc = querySelectorChecker('.sc', 'appConfig');
+const main = querySelectorChecker('.tsc-main', 'appConfig');
+const tsc = querySelectorChecker('.tsc', 'appConfig');
 let state = {
     currentPage: 'login'
 };
@@ -24,7 +24,7 @@ export const appConfig = {
     loaderClassName,
     loaderTimeout,
     mainClassName: main.className,
-    scClassName: sc.className
+    scClassName: tsc.className
 };
 
 export const pageRenderers = {

@@ -1,4 +1,4 @@
-.sc-main-events-card {
+.tsc-main-events-card {
   background-color: var(--tsc-color-900);
   border-radius: var(--tsc-border-200);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
@@ -10,7 +10,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sc-main-events-card-options {
+.tsc-main-events-card-options {
   display: flex;
   justify-content: center;
   padding-top: var(--tsc-padding-400);
@@ -22,20 +22,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .sc-main-events-card:hover {
+  .tsc-main-events-card:hover {
     transform: translateY(-10px);
     box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
       var(--tsc-box-shadow-300) var(--tsc-color-000-transparent);
   }
 
-  .sc-main-events-card-options {
-    display: none;
-    position: absolute;
-    bottom: var(--tsc-position-bottom-100);
-    right: var(--tsc-position-right-200);
-  }
-
-  .sc-main-events-card:hover .sc-main-events-card-options {
+  .tsc-main-events-card:hover .tsc-main-events-card-options {
     display: block;
   }
 }

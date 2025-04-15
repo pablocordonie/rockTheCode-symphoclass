@@ -1,31 +1,25 @@
-.sc-main-login_form-fields {
+.tsc-main-login_form-fields {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-400);
 }
 
-.sc-main-login_form-fields li {
+.tsc-main-login_form-fields li {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-300);
 }
 
-.sc-main-register_form-fields {
+.tsc-main-register_form-fields {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-300);
 }
 
-.sc-main-register_form-fields li {
+.tsc-main-register_form-fields li {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-300);
-}
-
-@media screen and (min-width: 360px) {
-  .sc-main-register_form-fields {
-    gap: var(--tsc-gap-400);
-  }
 }

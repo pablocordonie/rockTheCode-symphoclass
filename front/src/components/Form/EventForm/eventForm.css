@@ -1,16 +1,16 @@
-.sc-main-create_event_form-fields {
+.tsc-main-create_event_form-fields {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-300);
 }
 
-.sc-main-create_event_form-fields li {
+.tsc-main-create_event_form-fields li {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-200);
 }
 
-.sc-main-create_event_form-img_field {
+.tsc-main-create_event_form-img_field {
   width: var(--tsc-width-600);
 }

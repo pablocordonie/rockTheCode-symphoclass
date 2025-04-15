@@ -9,11 +9,8 @@ const dropdownMenuToggle = (className, appConfig, HTMLElementsWithListeners) => 
     const callback = () => {
         try {
             const dropdownMenu = querySelectorChecker(`.${className}-dropdown_menu`, 'dropdownMenuToggle');
-            if (!dropdownMenu) {
-                throw new Error(`El elemento de className .${className}-dropdown_menu no se ha encontrado`);
-            } else {
-                dropdownMenu.style.display === 'flex' ? dropdownMenu.style.display = 'none' : dropdownMenu.style.display = 'flex';
-            }
+
+            dropdownMenu.style.display === 'flex' ? dropdownMenu.style.display = 'none' : dropdownMenu.style.display = 'flex';
         } catch (error) {
             return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
         }

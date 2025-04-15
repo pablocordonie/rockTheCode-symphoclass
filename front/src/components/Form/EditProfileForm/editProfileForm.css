@@ -1,18 +1,18 @@
-.sc-main-edit_profile_form-fields {
+.tsc-main-edit_profile_form-fields {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-300);
 }
 
-.sc-main-edit_profile_form-fields li {
+.tsc-main-edit_profile_form-fields li {
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-100);
+  gap: var(--tsc-gap-300);
 }
 
 @media screen and (min-width: 360px) {
-  .sc-main-edit_profile_form-fields {
+  .tsc-main-edit_profile_form-fields {
     gap: var(--tsc-gap-400);
   }
 }

@@ -1,4 +1,4 @@
-import createEventCreatorListener from '../../../utils/Listeners/Event/Event-Creator/eventCreatorListener';
+import createEventCreatorListener from '../../../utils/Listeners/Event/Event-Creator/eventListener';
 import createEventForm from '../../../components/Form/EventForm/eventForm';
 import createNewForm from '../../../components/Form/form';
 import createLogoutListener from '../../../utils/Listeners/Menu/logoutListener';

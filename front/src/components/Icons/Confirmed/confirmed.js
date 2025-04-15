@@ -1,9 +1,6 @@
 import './confirmed.css';
 import createNewTagTemplate from '../../Tag/tag';
 
-const createConfirmedIcon = (className) => {
-    const confirmedIcon = createNewTagTemplate('div', className, {}, '✔');
-    return confirmedIcon;
-};
+const createConfirmedIcon = (className) => createNewTagTemplate('div', className, {}, '✔');
 
 export default createConfirmedIcon;

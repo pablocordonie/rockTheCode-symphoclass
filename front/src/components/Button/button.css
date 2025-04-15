@@ -1,12 +1,12 @@
-.sc-header-events-create_btn,
-.sc-main-events-card-options button {
+.tsc-header-events-create_btn,
+.tsc-main-events-card-options button {
   padding: var(--tsc-padding-200) var(--tsc-padding-400);
   border: var(--tsc-border-000);
   border-radius: var(--tsc-border-100);
   cursor: pointer;
 }
 
-.sc-header-events-create_btn {
+.tsc-header-events-create_btn {
   background-color: var(--tsc-color-600);
   color: var(--tsc-color-900);
 }
@@ -16,7 +16,7 @@
   color: var(--tsc-color-900);
 }
 
-.sc-main button {
+.tsc-main button {
   align-self: center;
   background-color: var(--tsc-color-600);
   border: var(--tsc-border-100) solid var(--tsc-color-600);
@@ -28,13 +28,22 @@
   height: var(--tsc-height-200);
 }
 
-.sc-main button:hover {
+.tsc-main button:hover {
   background-color: var(--tsc-color-900);
   border-color: var(--tsc-color-900);
   color: var(--tsc-color-600);
 }
 
-.sc-main-profile_info-editProfile_btn {
+.tsc-main-login_form-login_submit,
+.tsc-main-register_form-register_submit {
+  padding-top: var(--tsc-padding-200);
+}
+
+.tsc-main-edit_profile_form-edit_profile_submit {
+  padding-top: var(--tsc-padding-200);
+}
+
+.tsc-main-profile_info-editProfile_btn {
   display: flex;
   align-items: center;
   background-color: var(--tsc-color-600);
@@ -47,19 +56,19 @@
   transition: background-color 0.3s ease;
 }
 
-.sc-main-profile_info-editProfile_btn:hover {
+.tsc-main-profile_info-editProfile_btn:hover {
   background-color: var(--tsc-color-900);
   color: var(--tsc-color-600);
 }
 
 @media screen and (min-width: 400px) {
-  .sc-main button {
+  .tsc-main button {
     font-size: var(--tsc-font-size-300);
   }
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
-  .sc-main button {
+  .tsc-main button {
     font-size: var(--tsc-font-size-500);
   }
 }

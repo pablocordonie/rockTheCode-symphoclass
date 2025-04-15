@@ -1,29 +1,29 @@
-.sc-main-events-list {
+.tsc-main-events-list {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-600);
 }
 
 @media screen and (min-width: 360px) {
-  .sc-main-events-list {
+  .tsc-main-events-list {
     padding: var(--tsc-padding-000) var(--tsc-padding-400);
   }
 }
 
 @media screen and (min-width: 400px) {
-  .sc-main-events-list {
+  .tsc-main-events-list {
     padding: var(--tsc-padding-000) var(--tsc-padding-900);
   }
 }
 
 @media screen and (min-width: 500px) {
-  .sc-main-events-list {
+  .tsc-main-events-list {
     padding: var(--tsc-padding-000) var(--tsc-padding-1000);
   }
 }
 
 @media screen and (min-width: 768px) {
-  .sc-main-events-list {
+  .tsc-main-events-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }

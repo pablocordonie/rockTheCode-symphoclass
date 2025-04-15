@@ -1,9 +1,14 @@
-.sc-main-events-card p {
+.tsc-main-login_form-register_message,
+.tsc-main-register_form-login_message {
+  padding-bottom: var(--tsc-padding-200);
+}
+
+.tsc-main-events-card p {
   color: var(--tsc-color-000);
 }
 
-.sc-main-profile_info-profile_email,
-.sc-main-profile_info-profile_fullname {
+.tsc-main-profile_info-profile_email,
+.tsc-main-profile_info-profile_fullname {
   color: var(--tsc-color-100);
   font-size: var(--tsc-font-size-500);
 }

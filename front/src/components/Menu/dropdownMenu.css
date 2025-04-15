@@ -1,4 +1,4 @@
-.sc-header-nav-dropdown_menu {
+.tsc-header-nav-dropdown_menu {
   background-color: var(--tsc-color-900);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-200) var(--tsc-color-000-transparent);
@@ -13,10 +13,10 @@
   z-index: var(--tsc-z-index-100);
 }
 
-.sc-header-nav-dropdown_menu p {
+.tsc-header-nav-dropdown_menu p {
   color: var(--tsc-color-100);
 }
 
-.sc-header-nav-dropdown_menu p:hover {
+.tsc-header-nav-dropdown_menu p:hover {
   color: var(--tsc-color-800);
 }

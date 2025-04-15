@@ -6,8 +6,8 @@ const toggleLoader = (appConfig, isVisible) => {
     const loader = querySelectorChecker(`.${loaderClassName}`, 'toggleLoader');
     loader.style.display = isVisible ? 'flex' : 'none';
 
-    const sc = querySelectorChecker(`.${scClassName}`, 'toggleLoader');
-    sc.style.display = isVisible ? 'none' : 'grid';
+    const tsc = querySelectorChecker(`.${scClassName}`, 'toggleLoader');
+    tsc.style.display = isVisible ? 'none' : 'grid';
 };
 
 export default toggleLoader;

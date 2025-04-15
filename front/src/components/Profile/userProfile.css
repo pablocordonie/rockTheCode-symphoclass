@@ -1,10 +1,10 @@
-.sc-main-profile {
+.tsc-main-profile {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.sc-main-profile_info {
+.tsc-main-profile_info {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -12,13 +12,13 @@
   overflow: hidden;
 }
 
-.sc-main-profile_info-profile_avatar {
+.tsc-main-profile_info-profile_avatar {
   display: flex;
   justify-content: center;
   width: var(--tsc-width-full);
 }
 
-.sc-main-profile_info-profile_data {
+.tsc-main-profile_info-profile_data {
   display: flex;
   align-items: center;
   background-color: var(--tsc-color-900);

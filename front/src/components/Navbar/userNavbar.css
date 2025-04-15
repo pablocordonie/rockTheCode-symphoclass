@@ -1,4 +1,4 @@
-.sc-header-nav {
+.tsc-header-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,13 +14,13 @@
     var(--tsc-box-shadow-300) var(--tsc-color-000-transparent);
 }
 
-.sc-header-nav-user_info {
+.tsc-header-nav-user_info {
   display: flex;
   align-items: center;
   gap: var(--tsc-gap-200);
 }
 
-.sc-header-nav-user_name {
+.tsc-header-nav-user_name {
   font-size: var(--tsc-font-size-400);
   font-weight: var(--tsc-font-weight-200);
 }

@@ -2,7 +2,7 @@ import createConfirmAttendanceListeners from '../../utils/Listeners/Event/Confir
 import createEditProfileListener from '../../utils/Listeners/Menu/editProfileListener';
 import createEventsFilter from '../../utils/Listeners/Filter/eventsFilter';
 import createEventsList from '../../components/Event/List/eventsList';
-import createEventListener from '../../utils/Listeners/Event/eventListener';
+import createEventCreatorPageListener from '../../utils/Listeners/Event/eventCreatorListener';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
 import createNewButton from '../../components/Button/button';
 import createNewInput from '../../components/Input/input';
@@ -41,12 +41,11 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
         const eventsList = createEventsList(main.className, testCards);
         main.appendChild(eventsList);
 
-        createEventListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createEventCreatorPageListener(appConfig, currentPage, HTMLElementsWithListeners);
         createEventsFilter(header.className, appConfig, HTMLElementsWithListeners);
 
         const eventItems = Array.from(document.querySelectorAll(`.${main.className}-card`));
         createConfirmAttendanceListeners(appConfig, eventItems, HTMLElementsWithListeners);
-
         return main;
     } catch (error) {
         return errorHandler(error, 'printEventsList', appConfig, HTMLElementsWithListeners);

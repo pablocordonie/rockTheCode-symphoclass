@@ -10,7 +10,7 @@ const printLoader = (appConfig) => {
 
     if (!loader) {
         const newLoader = createLoader(loaderClassName);
-        app.insertAdjacentHTML('beforeend', newLoader);
+        app.insertAdjacentHTML('afterbegin', newLoader);
     }
     toggleLoader(appConfig, true);
 

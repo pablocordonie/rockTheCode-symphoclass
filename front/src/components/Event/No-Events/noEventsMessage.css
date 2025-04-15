@@ -1,8 +1,8 @@
-.sc-main-events-no_events {
+.tsc-main-events-no_events {
   padding-top: var(--tsc-padding-1100);
 }
 
-.sc-main-events-no_events-message {
+.tsc-main-events-no_events-message {
   color: var(--tsc-color-700);
   font-size: var(--tsc-font-size-800);
   font-weight: var(--tsc-font-weight-100);

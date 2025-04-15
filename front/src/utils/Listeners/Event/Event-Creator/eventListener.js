@@ -1,8 +1,8 @@
-import activatePageCleaner from '../../../../utils/Cleaner/pageCleaner';
+import activatePageCleaner from '../../../Cleaner/pageCleaner';
 import createListenerConstructor from '../../Listener/Constructor/listener';
 import createNewListener from '../../Listener/newListener';
-import errorHandler from '../../../../utils/Error/errorHandler';
-import launchNewPage from '../../../../utils/Launcher/launchNewPage';
+import errorHandler from '../../../Error/errorHandler';
+import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 import testCards from '../../../Data/testCards';
 

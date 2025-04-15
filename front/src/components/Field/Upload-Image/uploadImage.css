@@ -1,8 +1,8 @@
-.sc-main-create_event_form-img_field-input {
+.tsc-main-create_event_form-img_field-input {
   display: none;
 }
 
-.sc-main-create_event_form-img_field-preview_img {
+.tsc-main-create_event_form-img_field-preview_img {
   display: none;
   align-self: center;
   height: var(--tsc-height-400);

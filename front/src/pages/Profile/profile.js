@@ -1,6 +1,6 @@
 import createEditProfileListener from '../../utils/Listeners/Menu/editProfileListener';
 import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
-import createUserNavbar from '../../components/Navbar/userNavbar';
+import createUserNavbar from '../../components/Nav/UserNavbar/userNavbar';
 import createUserProfileInfo from '../../components/Profile/userProfile';
 import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../utils/Error/errorHandler';

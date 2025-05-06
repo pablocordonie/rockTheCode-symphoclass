@@ -1,0 +1,12 @@
+.tsc-main-hero {
+  position: relative;
+  background: var(--tsc-background-desktop);
+  background-size: cover;
+  color: var(--tsc-color-900);
+  text-align: center;
+  padding: var(--tsc-padding-1100) var(--tsc-padding-400);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

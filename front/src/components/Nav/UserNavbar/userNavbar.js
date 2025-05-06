@@ -1,12 +1,13 @@
 import './userNavbar.css';
-import createDropdownBars from '../Icons/Bars/bars';
-import createDropdownMenu from '../Menu/dropdownMenu';
-import createNewParagraph from '../Paragraph/paragraph';
-import createNewTagTemplate from '../Tag/tag';
-import createUserIcon from '../Icons/User/userIcon';
+import createDropdownBars from '../../Icons/Bars/bars';
+import createDropdownMenu from '../../Menu/dropdownMenu';
+import createNewNav from '../nav';
+import createNewParagraph from '../../Paragraph/paragraph';
+import createNewTagTemplate from '../../Tag/tag';
+import createUserIcon from '../../Icons/User/userIcon';
 
 const createUserNavbar = (className, currentPage, userName) => {
-    const userNavbar = createNewTagTemplate('nav', className);
+    const userNavbar = createNewNav('nav', className);
 
     const userInfoContainer = createNewTagTemplate('div', `${className}-user_info`);
 

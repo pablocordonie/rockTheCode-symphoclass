@@ -1,0 +1,5 @@
+@media screen and (min-width: 768px) {
+  .tsc-header-logo {
+    padding-left: var(--tsc-padding-300);
+  }
+}

@@ -1,6 +1,24 @@
+.tsc-main-hero-title {
+  font-size: var(--tsc-font-size-900);
+  margin-bottom: var(--tsc-margin-300);
+  color: var(--tsc-color-700);
+}
+
 .tsc-main-profile_info-profile_username {
   color: var(--tsc-color-600);
   font-size: var(--tsc-font-size-700);
   font-weight: var(--tsc-font-weight-200);
   margin: var(--tsc-margin-000);
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-hero-title {
+    font-size: var(--tsc-font-size-1000);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tsc-main-hero-title {
+    font-size: var(--tsc-font-size-1100);
+  }
 }

@@ -14,8 +14,8 @@
   text-align: center;
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-200) var(--tsc-color-000);
-  z-index: var(--tsc-z-index-200);
-  width: var(--tsc-width-900);
+  z-index: var(--tsc-z-index-400);
+  width: var(--tsc-width-1000);
   animation: fadeIn 0.3s ease-in-out;
 }
 

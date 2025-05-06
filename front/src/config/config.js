@@ -2,6 +2,7 @@ import printAuthForm from '../pages/Auth/auth';
 import printEventCreatorForm from '../pages/Events/Event-Creator/eventCreator';
 import printEventsForm from '../pages/Events/events';
 import printEditProfileForm from '../pages/Profile/Edit-Profile/editProfile';
+import printHeroPage from '../pages/Hero/hero';
 import printUserProfile from '../pages/Profile/profile';
 import querySelectorChecker from '../utils/QuerySelector/querySelectorChecker';
 
@@ -13,7 +14,7 @@ const loaderTimeout = 2000;
 const main = querySelectorChecker('.tsc-main', 'appConfig');
 const tsc = querySelectorChecker('.tsc', 'appConfig');
 let state = {
-    currentPage: 'login'
+    currentPage: 'hero'
 };
 
 export const appConfig = {
@@ -31,6 +32,7 @@ export const pageRenderers = {
     create_event: printEventCreatorForm,
     edit_profile: printEditProfileForm,
     events: printEventsForm,
+    hero: printHeroPage,
     login: printAuthForm,
     profile: printUserProfile,
     register: printAuthForm

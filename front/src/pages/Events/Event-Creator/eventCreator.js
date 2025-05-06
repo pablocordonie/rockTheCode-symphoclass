@@ -5,7 +5,7 @@ import createLogoutListener from '../../../utils/Listeners/Menu/logoutListener';
 import createEditProfileListener from '../../../utils/Listeners/Menu/editProfileListener';
 import createProfileListener from '../../../utils/Listeners/Menu/profileListener';
 import createUploadImageListener from '../../../utils/Listeners/Image/Upload-Image/uploadImageListener';
-import createUserNavBar from '../../../components/Navbar/userNavbar';
+import createUserNavBar from '../../../components/Nav/UserNavbar/userNavbar';
 import dropdownMenuToggle from '../../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../../utils/Error/errorHandler';
 import querySelectorChecker from '../../../utils/QuerySelector/querySelectorChecker';

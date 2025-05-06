@@ -1,3 +1,9 @@
+.tsc-main-hero-subtitle {
+  font-size: var(--tsc-font-size-600);
+  margin-bottom: var(--tsc-margin-400);
+  line-height: var(--tsc-line-height-100);
+}
+
 .tsc-main-login_form-register_message,
 .tsc-main-register_form-login_message {
   padding-bottom: var(--tsc-padding-200);

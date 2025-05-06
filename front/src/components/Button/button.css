@@ -1,3 +1,33 @@
+.tsc-main > .tsc-main-hero-button {
+  padding: var(--tsc-padding-300) var(--tsc-padding-600);
+  border-radius: var(--tsc-border-100);
+  font-weight: var(--tsc-font-weight-100);
+  font-size: var(--tsc-font-size-500);
+  transition: all 0.3s ease;
+  min-width: var(--tsc-width-600);
+}
+
+.tsc-main > .tsc-main-hero-button-primary {
+  background-color: var(--tsc-color-600);
+  color: var(--tsc-color-900);
+}
+
+.tsc-main > .tsc-hero-button-primary:hover {
+  background-color: var(--tsc-color-700);
+  color: var(--tsc-color-000);
+}
+
+.tsc-main > .tsc-hero-button-secondary {
+  background-color: transparent;
+  color: var(--tsc-color-900);
+  border: 2px solid var(--tsc-color-900);
+}
+
+.tsc-main > .tsc-hero-button-secondary:hover {
+  background-color: var(--tsc-color-900);
+  color: var(--tsc-color-000);
+}
+
 .tsc-header-events-create_btn,
 .tsc-main-events-card-options button {
   padding: var(--tsc-padding-200) var(--tsc-padding-400);

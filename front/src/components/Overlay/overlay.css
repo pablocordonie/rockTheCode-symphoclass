@@ -1,0 +1,9 @@
+.tsc-main-hero-overlay {
+  position: absolute;
+  top: var(--tsc-position-top-000);
+  left: var(--tsc-position-left-000);
+  right: var(--tsc-position-right-000);
+  bottom: var(--tsc-position-bottom-000);
+  background-color: var(--tsc-color-200);
+  z-index: var(--tsc-z-index-100);
+}

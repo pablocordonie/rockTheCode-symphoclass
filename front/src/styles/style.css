@@ -105,6 +105,7 @@
   --tsc-padding-1100: 8rem;
 
   /* POSITION */
+  --tsc-position-bottom-000: 0;
   --tsc-position-bottom-100: 0.75rem;
   --tsc-position-bottom-200: 50%;
   --tsc-position-left-000: 0;
@@ -128,12 +129,15 @@
   --tsc-width-600: 12rem;
   --tsc-width-700: 16rem;
   --tsc-width-800: 24rem;
-  --tsc-width-900: 80%;
+  --tsc-width-900: 50rem;
+  --tsc-width-1000: 80%;
   --tsc-width-full: 100%;
 
   /* Z-INDEX */
-  --tsc-z-index-100: 100;
-  --tsc-z-index-200: 1000;
+  --tsc-z-index-100: 1;
+  --tsc-z-index-200: 10;
+  --tsc-z-index-300: 100;
+  --tsc-z-index-400: 1000;
 }
 
 * {

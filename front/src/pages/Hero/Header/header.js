@@ -1,12 +1,12 @@
-import createHeroNavbar from '../../../components/Nav/HeroNavbar/heroNavbar';
+import createNewContainer from '../../../components/Div/div';
 import createNewAnchor from '../../../components/Anchor/anchor';
 import createNewH1Title from '../../../components/Title/H1/h1';
-import createNewTagTemplate from '../../../components/Tag/tag';
+import createNewNav from '../../../components/Nav/nav';
 
 const createHeroHeaderContent = (appConfig) => {
     const { headerClassName } = appConfig;
 
-    const heroHeaderNav = createHeroNavbar(`${headerClassName}-nav`);
+    const heroHeaderNav = createNewNav(`${headerClassName}-nav`);
 
     const heroHeaderTitleAnchor = createNewAnchor(`${headerClassName}-logo`, '#main');
     heroHeaderNav.appendChild(heroHeaderTitleAnchor);
@@ -14,17 +14,13 @@ const createHeroHeaderContent = (appConfig) => {
     const heroHeaderTitle = createNewH1Title(`${headerClassName}-h1`, 'The SymphoClass');
     heroHeaderTitleAnchor.appendChild(heroHeaderTitle);
 
-    const heroHeaderMenu = createNewTagTemplate('div', `${headerClassName}-menu`);
-    const { heroHeaderMenuClassName } = heroHeaderMenu
+    const heroHeaderMenu = createNewContainer(`${headerClassName}-menu`);
     heroHeaderNav.appendChild(heroHeaderMenu);
 
-    const menuItems = ['Features', 'Testimonials', 'About', 'Login'];
+    const menuItems = ['Features', 'Testimonials', 'About'/*, 'Login'*/];
     for (const menuItem of menuItems) {
-        let heroHeaderMenuAnchor = createNewAnchor(`${heroHeaderMenuClassName}-anchor`, `#${menuItem.toLowerCase()}`);
+        let heroHeaderMenuAnchor = createNewAnchor(`${heroHeaderMenu.className}-${menuItem.toLowerCase()}_anchor`, `#${menuItem.toLowerCase()}`);
         menuItem === 'About' ? heroHeaderMenuAnchor.textContent = `${menuItem} Us` : heroHeaderMenuAnchor.textContent = menuItem;
-        if (menuItem === 'Login') {
-            heroHeaderMenuAnchor.classList.add(`${heroHeaderMenuClassName}-login`);
-        }
         heroHeaderMenu.appendChild(heroHeaderMenuAnchor);
     }
 

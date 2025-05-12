@@ -1,8 +1,8 @@
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createListenerConstructor = (querySelector, context, callback, type, scope = document) => {
+const createListenerConstructor = (querySelectorClassName, context, callback, type, scope = document) => {
     const eventListener = {
-        querySelector: querySelectorChecker(querySelector, context, scope),
+        querySelector: querySelectorChecker(querySelectorClassName, context, scope),
         callback,
         type
     };

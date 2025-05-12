@@ -4,6 +4,61 @@
   line-height: var(--tsc-line-height-100);
 }
 
+.tsc-main-feature-description {
+  color: var(--tsc-color-000);
+  line-height: var(--tsc-line-height-100);
+}
+
+.tsc-main-testimonial p {
+  color: var(--tsc-color-000);
+}
+
+.tsc-main-testimonial-p {
+  font-size: var(--tsc-font-size-500);
+  font-style: italic;
+  line-height: var(--tsc-line-height-100);
+}
+
+.tsc-main-testimonial-name {
+  font-weight: var(--tsc-font-weight-100);
+}
+
+.tsc-main-testimonial-role {
+  font-size: var(--tsc-font-size-300);
+  opacity: var(--tsc-opacity-100);
+}
+
+.tsc-main-about-description {
+  color: var(--tsc-color-000);
+  font-size: var(--tsc-font-size-500);
+  line-height: var(--tsc-line-height-300);
+  margin-bottom: var(--tsc-margin-400);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tsc-main-about-stat-number {
+  font-size: var(--tsc-font-size-1100);
+  font-weight: var(--tsc-font-weight-100);
+  color: var(--tsc-color-700);
+  margin-bottom: var(--tsc-margin-200);
+}
+
+.tsc-main-about-stat-label {
+  font-size: var(--tsc-font-size-500);
+}
+
+.tsc-main-about-team-member-role {
+  color: var(--tsc-color-600);
+  font-size: var(--tsc-font-size-400);
+}
+
+.tsc-main-about-team-member-bio {
+  color: var(--tsc-color-000);
+  font-size: var(--tsc-font-size-400);
+  line-height: var(--tsc-line-height-200);
+}
+
 .tsc-main-login_form-register_message,
 .tsc-main-register_form-login_message {
   padding-bottom: var(--tsc-padding-200);

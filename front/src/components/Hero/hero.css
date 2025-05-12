@@ -1,6 +1,0 @@
-.tsc-main-hero-content {
-  position: relative;
-  z-index: var(--tsc-z-index-200);
-  max-width: var(--tsc-width-900);
-  margin: var(--tsc-margin-000) auto;
-}

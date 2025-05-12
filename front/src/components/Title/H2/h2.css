@@ -4,6 +4,12 @@
   color: var(--tsc-color-700);
 }
 
+.tsc-main-section-title {
+  color: var(--tsc-color-600);
+  font-size: var(--tsc-font-size-900);
+  text-align: center;
+}
+
 .tsc-main-profile_info-profile_username {
   color: var(--tsc-color-600);
   font-size: var(--tsc-font-size-700);

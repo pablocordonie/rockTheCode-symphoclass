@@ -1,29 +1,30 @@
-.tsc-main > .tsc-main-hero-button {
-  padding: var(--tsc-padding-300) var(--tsc-padding-600);
+.tsc-main-hero-cta-button {
   border-radius: var(--tsc-border-100);
   font-weight: var(--tsc-font-weight-100);
   font-size: var(--tsc-font-size-500);
-  transition: all 0.3s ease;
   min-width: var(--tsc-width-600);
+  padding: var(--tsc-padding-300) var(--tsc-padding-600);
+  transition: all 0.3s ease;
 }
 
-.tsc-main > .tsc-main-hero-button-primary {
+.tsc-main-hero-cta-signup-button-primary {
   background-color: var(--tsc-color-600);
+  border: none;
   color: var(--tsc-color-900);
 }
 
-.tsc-main > .tsc-hero-button-primary:hover {
+.tsc-main-hero-cta-signup-button-primary:hover {
   background-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
 }
 
-.tsc-main > .tsc-hero-button-secondary {
+.tsc-main-hero-cta-info-button-secondary {
   background-color: transparent;
-  color: var(--tsc-color-900);
   border: 2px solid var(--tsc-color-900);
+  color: var(--tsc-color-900);
 }
 
-.tsc-main > .tsc-hero-button-secondary:hover {
+.tsc-main-hero-cta-info-button-secondary:hover {
   background-color: var(--tsc-color-900);
   color: var(--tsc-color-000);
 }
@@ -45,7 +46,7 @@
   background-color: var(--tsc-color-400);
   color: var(--tsc-color-900);
 }
-
+/*
 .tsc-main button {
   align-self: center;
   background-color: var(--tsc-color-600);
@@ -63,7 +64,7 @@
   border-color: var(--tsc-color-900);
   color: var(--tsc-color-600);
 }
-
+*/
 .tsc-main-login_form-login_submit,
 .tsc-main-register_form-register_submit {
   padding-top: var(--tsc-padding-200);
@@ -90,7 +91,7 @@
   background-color: var(--tsc-color-900);
   color: var(--tsc-color-600);
 }
-
+/*
 @media screen and (min-width: 400px) {
   .tsc-main button {
     font-size: var(--tsc-font-size-300);
@@ -102,3 +103,4 @@
     font-size: var(--tsc-font-size-500);
   }
 }
+*/

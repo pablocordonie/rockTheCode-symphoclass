@@ -1,6 +1,6 @@
 import './eventCard.css';
 import createNewH3Title from '../../Title/H3/h3';
-import createConfirmedIcon from '../../Icons/Confirmed/confirmed';
+import createConfirmedIcon from '../../Icon/Confirmed/confirmed';
 import createNewButton from '../../Button/button';
 import createNewParagraph from '../../Paragraph/paragraph';
 import createNewTagTemplate from '../../Tag/tag';

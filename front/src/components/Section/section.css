@@ -1,12 +1,34 @@
 .tsc-main-hero {
-  position: relative;
   background: var(--tsc-background-desktop);
   background-size: cover;
   color: var(--tsc-color-900);
-  text-align: center;
+  min-height: var(--tsc-height-900);
   padding: var(--tsc-padding-1100) var(--tsc-padding-400);
-  min-height: 80vh;
+  position: relative;
+  text-align: center;
+}
+
+.tsc-main-features {
+  background-color: var(--tsc-color-900);
+  padding: var(--tsc-padding-1000) var(--tsc-padding-400);
+  text-align: center;
+}
+
+.tsc-main-testimonials {
+  background-color: var(--tsc-color-300);
+  padding: var(--tsc-padding-1000) var(--tsc-padding-400);
+  text-align: center;
+}
+
+.tsc-main-about {
+  background-color: var(--tsc-color-900);
+  padding: var(--tsc-padding-1000) var(--tsc-padding-400);
+}
+
+.tsc-main-features,
+.tsc-main-testimonials,
+.tsc-main-about {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: var(--tsc-gap-1000);
 }

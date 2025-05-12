@@ -1,3 +1,11 @@
+.tsc-main-about-team-member-photo {
+  border: var(--tsc-border-100) solid var(--tsc-color-600);
+  border-radius: var(--tsc-border-300);
+  height: var(--tsc-height-600);
+  object-fit: cover;
+  width: var(--tsc-width-500);
+}
+
 .tsc-main-profile_info-profile_avatar-img {
   width: var(--tsc-width-700);
 }

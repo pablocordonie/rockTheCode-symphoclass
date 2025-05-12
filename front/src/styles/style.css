@@ -16,10 +16,15 @@
   --tsc-box-shadow-100: 0.25rem;
   --tsc-box-shadow-200: 0.5rem;
   --tsc-box-shadow-300: 0.75rem;
+  --tsc-box-shadow-400: 1rem;
+  --tsc-box-shadow-500: 1.25rem;
+  --tsc-box-shadow-600: 1.5rem;
 
   /* COLOR PALETTE */
   --tsc-color-000: #1a1a1a;
   --tsc-color-000-transparent: #1a1a1aef;
+  --tsc-color-000-box-shadow-1: #0000001a;
+  --tsc-color-000-box-shadow-2: #00000026;
   --tsc-color-100: #010818;
   --tsc-color-200: #0f3fa78c;
   --tsc-color-300: #3498db;
@@ -70,22 +75,35 @@
   --tsc-gap-900: 2.25rem;
   --tsc-gap-1000: 2.5rem;
 
+  /* GRID */
+  --tsc-grid-100: 1fr;
+
   /* HEIGHT */
   --tsc-height-100: 1.25rem;
   --tsc-height-200: 1.75rem;
   --tsc-height-300: 2.5rem;
   --tsc-height-400: 4rem;
   --tsc-height-500: 5rem;
+  --tsc-height-600: 6rem;
+  --tsc-height-700: 7.5rem;
+  --tsc-height-800: 8rem;
+  --tsc-height-900: 90svh;
+  --tsc-height-1000: 100%;
   --tsc-height-full: 110svh;
 
   /* LINE-HEIGHT */
   line-height: 1.25;
   --tsc-line-height-100: 1.5;
+  --tsc-line-height-200: 1.6;
+  --tsc-line-height-300: 1.75;
 
   /* MARGIN */
   --tsc-margin-000: 0;
   --tsc-margin-100: 0.5rem;
   --tsc-margin-200: 1rem;
+
+  /* OPACITY */
+  --tsc-opacity-100: 0.8;
 
   /* OUTLINE */
   --tsc-outline-100: 0.25rem;
@@ -162,6 +180,10 @@ a {
 
 a {
   text-decoration: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 .app {

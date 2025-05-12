@@ -1,6 +1,6 @@
 import './section.css';
 import createNewTagTemplate from '../Tag/tag';
 
-const createNewSection = (className) => createNewTagTemplate('section', className);
+const createNewSection = (className, id = '') => createNewTagTemplate('section', className, { id });
 
 export default createNewSection;

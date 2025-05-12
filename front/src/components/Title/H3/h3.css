@@ -1,3 +1,9 @@
+.tsc-main-feature-title {
+  color: var(--tsc-color-000);
+  font-size: var(--tsc-font-size-700);
+  margin-bottom: var(--tsc-margin-200);
+}
+
 .tsc-main-events-card-title {
   color: var(--tsc-color-000);
   font-size: var(--tsc-font-size-600);

@@ -1,6 +1,6 @@
-const createNewTagTemplate = (tag, className, attr = { alt: '', dataId: '', for: '', href: '', id: '', method: '', placeholder: '', src: '', type: '' }, text = '') => {
+const createNewTagTemplate = (tag, className = '', attr = { alt: '', dataId: '', for: '', href: '', id: '', method: '', placeholder: '', src: '', type: '' }, text = '') => {
     const newHTMLElement = document.createElement(tag);
-    newHTMLElement.className = className;
+    if (className !== '') newHTMLElement.className = className;
     if (text !== '') newHTMLElement.textContent = text;
 
     Object.entries(attr).forEach(([key, value]) => {

@@ -1,24 +1,23 @@
 import createNewContainer from '../../../../components/Div/div';
 import createNewH2Title from '../../../../components/Title/H2/h2';
-import createNewH3Title from '../../../../components/Title/H3/h3';
 import createNewH4Title from '../../../../components/Title/H4/h4';
 import createNewImg from '../../../../components/Image/image';
 import createNewParagraph from '../../../../components/Paragraph/paragraph';
 import createNewSection from '../../../../components/Section/section';
 
-const createHeroAboutSection = (appConfig) => {
+const createHeroAboutSection = (appConfig, currentPage) => {
     const { mainClassName } = appConfig;
 
-    const aboutSection = createNewSection(`${mainClassName}-about`, 'about');
+    const aboutSection = createNewSection(`${mainClassName}-${currentPage}-about`, 'about');
 
-    const aboutTitle = createNewH2Title(`${mainClassName}-section-title`, 'About Us');
+    const aboutTitle = createNewH2Title(`${aboutSection.className}-title`, 'About Us');
     aboutSection.appendChild(aboutTitle);
 
-    const aboutContainer = createNewContainer(`${aboutSection.className}-container`);
-    aboutSection.appendChild(aboutContainer);
-
     const aboutContent = createNewContainer(`${aboutSection.className}-content`);
-    aboutContainer.appendChild(aboutContent);
+    aboutSection.appendChild(aboutContent);
+
+    const aboutInfo = createNewContainer(`${aboutSection.className}-info`);
+    aboutContent.appendChild(aboutInfo);
 
     const paragraphs = [
         {
@@ -29,12 +28,12 @@ const createHeroAboutSection = (appConfig) => {
     ];
 
     paragraphs.forEach(paragraph => {
-        const aboutDescription = createNewParagraph(`${aboutSection.className}-description`, paragraph.text);
-        aboutContent.appendChild(aboutDescription);
+        const aboutParagraph = createNewParagraph(`${aboutSection.className}-paragraph`, paragraph.text);
+        aboutInfo.appendChild(aboutParagraph);
     });
 
     const aboutStats = createNewContainer(`${aboutSection.className}-stats`);
-    aboutContainer.appendChild(aboutStats);
+    aboutContent.appendChild(aboutStats);
 
     const stats = [
         {
@@ -62,11 +61,11 @@ const createHeroAboutSection = (appConfig) => {
         aboutStat.appendChild(aboutLabelStat);
     });
 
-    const aboutTeamTitle = createNewH3Title(`${mainClassName}-section-title`, 'Our Team');
+    const aboutTeamTitle = createNewH2Title(`${aboutSection.className}-title`, 'Our Team');
     aboutSection.appendChild(aboutTeamTitle);
 
-    const aboutTeamContainer = createNewContainer(`${aboutSection.className}-team`);
-    aboutSection.appendChild(aboutTeamContainer);
+    const aboutTeamContent = createNewContainer(`${aboutSection.className}-team`);
+    aboutSection.appendChild(aboutTeamContent);
 
     const teamMembers = [
         {
@@ -90,8 +89,8 @@ const createHeroAboutSection = (appConfig) => {
     ];
 
     teamMembers.forEach(member => {
-        const aboutTeamMember = createNewContainer(`${aboutTeamContainer.className}-member`);
-        aboutTeamContainer.appendChild(aboutTeamMember);
+        const aboutTeamMember = createNewContainer(`${aboutTeamContent.className}-member`);
+        aboutTeamContent.appendChild(aboutTeamMember);
 
         const aboutTeamMemberImage = createNewImg(`${aboutTeamMember.className}-photo`, member.imgSrc, member.name);
         aboutTeamMember.appendChild(aboutTeamMemberImage);

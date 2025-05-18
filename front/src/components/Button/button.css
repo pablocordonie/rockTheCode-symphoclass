@@ -1,31 +1,31 @@
-.tsc-main-hero-cta-button {
-  border-radius: var(--tsc-border-100);
+.tsc-main-hero-section-cta-signup-button {
+  background-color: var(--tsc-color-600);
+  border: none;
+  border-radius: var(--tsc-border-200);
+  color: var(--tsc-color-1000);
   font-weight: var(--tsc-font-weight-100);
   font-size: var(--tsc-font-size-500);
   min-width: var(--tsc-width-600);
   padding: var(--tsc-padding-300) var(--tsc-padding-600);
-  transition: all 0.3s ease;
 }
 
-.tsc-main-hero-cta-signup-button-primary {
-  background-color: var(--tsc-color-600);
-  border: none;
-  color: var(--tsc-color-900);
-}
-
-.tsc-main-hero-cta-signup-button-primary:hover {
+.tsc-main-hero-section-cta-signup-button:hover {
   background-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
 }
 
-.tsc-main-hero-cta-info-button-secondary {
-  background-color: transparent;
-  border: 2px solid var(--tsc-color-900);
-  color: var(--tsc-color-900);
+.tsc-main-hero-cta-signup_button {
+  background-color: var(--tsc-color-600);
+  border: none;
+  border-radius: var(--tsc-border-200);
+  color: var(--tsc-color-1000);
+  font-weight: var(--tsc-font-weight-100);
+  font-size: var(--tsc-font-size-500);
+  padding: var(--tsc-padding-300) var(--tsc-padding-600);
 }
 
-.tsc-main-hero-cta-info-button-secondary:hover {
-  background-color: var(--tsc-color-900);
+.tsc-main-hero-cta-signup_button:hover {
+  background-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
 }
 
@@ -33,26 +33,26 @@
 .tsc-main-events-card-options button {
   padding: var(--tsc-padding-200) var(--tsc-padding-400);
   border: var(--tsc-border-000);
-  border-radius: var(--tsc-border-100);
+  border-radius: var(--tsc-border-200);
   cursor: pointer;
 }
 
 .tsc-header-events-create_btn {
   background-color: var(--tsc-color-600);
-  color: var(--tsc-color-900);
+  color: var(--tsc-color-1000);
 }
 
 .confirm-btn {
   background-color: var(--tsc-color-400);
-  color: var(--tsc-color-900);
+  color: var(--tsc-color-1000);
 }
 /*
 .tsc-main button {
   align-self: center;
   background-color: var(--tsc-color-600);
-  border: var(--tsc-border-100) solid var(--tsc-color-600);
-  border-radius: var(--tsc-border-200);
-  color: var(--tsc-color-900);
+  border: var(--tsc-border-200) solid var(--tsc-color-600);
+  border-radius: var(--tsc-border-300);
+  color: var(--tsc-color-1000);
   cursor: pointer;
   font-size: var(--tsc-font-size-200);
   font-weight: var(--tsc-font-weight-100);
@@ -60,8 +60,8 @@
 }
 
 .tsc-main button:hover {
-  background-color: var(--tsc-color-900);
-  border-color: var(--tsc-color-900);
+  background-color: var(--tsc-color-1000);
+  border-color: var(--tsc-color-1000);
   color: var(--tsc-color-600);
 }
 */
@@ -79,8 +79,8 @@
   align-items: center;
   background-color: var(--tsc-color-600);
   border: var(--tsc-border-000);
-  border-radius: var(--tsc-border-100);
-  color: var(--tsc-color-900);
+  border-radius: var(--tsc-border-200);
+  color: var(--tsc-color-1000);
   cursor: pointer;
   font-size: var(--tsc-font-size-400);
   padding: var(--tsc-padding-200) var(--tsc-padding-500);
@@ -88,7 +88,7 @@
 }
 
 .tsc-main-profile_info-editProfile_btn:hover {
-  background-color: var(--tsc-color-900);
+  background-color: var(--tsc-color-1000);
   color: var(--tsc-color-600);
 }
 /*

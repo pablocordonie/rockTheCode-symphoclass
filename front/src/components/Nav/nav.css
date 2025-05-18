@@ -1,9 +1,9 @@
-.tsc-header-nav {
+.tsc-header-hero-nav {
   align-items: center;
   background-color: var(--tsc-color-100);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-300) var(--tsc-color-000-transparent);
-  color: var(--tsc-color-900);
+  color: var(--tsc-color-1000);
   display: flex;
   justify-content: center;
   left: var(--tsc-position-left-000);
@@ -16,19 +16,19 @@
 }
 
 @media screen and (min-width: 768px) {
-  .tsc-header-nav {
+  .tsc-header-hero-nav {
     justify-content: space-between;
   }
 }
 
 @media screen and (min-width: 900px) {
-  .tsc-header-nav {
+  .tsc-header-hero-nav {
     padding-right: var(--tsc-padding-1000);
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .tsc-header-nav {
+  .tsc-header-hero-nav {
     padding-right: var(--tsc-padding-1100);
   }
 }

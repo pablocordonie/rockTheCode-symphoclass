@@ -1,6 +1,6 @@
 .tsc-loader {
   align-items: center;
-  background-color: var(--tsc-color-900-transparent);
+  background-color: var(--tsc-color-1000-transparent);
   display: flex;
   flex-direction: column;
   height: inherit;
@@ -11,9 +11,9 @@
 
 .tsc-spinner {
   animation: spin 1s linear infinite;
-  border: var(--tsc-border-200) solid var(--tsc-color-800);
-  border-radius: var(--tsc-border-300);
-  border-top: var(--tsc-border-200) solid var(--tsc-color-300);
+  border: var(--tsc-border-300) solid var(--tsc-color-800);
+  border-radius: var(--tsc-border-400);
+  border-top: var(--tsc-border-300) solid var(--tsc-color-300);
   height: var(--tsc-height-500);
   width: var(--tsc-width-400);
 }

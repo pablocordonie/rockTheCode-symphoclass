@@ -1,7 +1,7 @@
 .tsc-header-nav-user_icon {
   align-items: center;
-  background-color: var(--tsc-color-900);
-  border-radius: var(--tsc-border-300);
+  background-color: var(--tsc-color-1000);
+  border-radius: var(--tsc-border-400);
   display: flex;
   justify-content: center;
   height: var(--tsc-height-300);

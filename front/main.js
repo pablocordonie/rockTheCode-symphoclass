@@ -3,7 +3,6 @@ import adjustMainContentHeight from './src/utils/Height/adjustMainContentHeight'
 import { appConfig, pageRenderers } from './src/config/config';
 import errorHandler from './src/utils/Error/errorHandler';
 import printLoader from './src/utils/Loader/printLoader';
-import scrollToAnchor from './src/utils/Listeners/Scroll/scroll';
 
 let { currentPage, HTMLElementsWithListeners } = appConfig;
 
@@ -18,8 +17,6 @@ export const renderApp = (appConfig, currentPage, HTMLElementsWithListeners) => 
         const renderPage = pageRenderers[currentPage];
         renderPage(appConfig, currentPage, HTMLElementsWithListeners);
         adjustMainContentHeight(appConfig, currentPage);
-        scrollToAnchor(appConfig, HTMLElementsWithListeners);
-
     } catch (error) {
         return errorHandler(error, 'renderApp', appConfig, HTMLElementsWithListeners, 'critical');
     }

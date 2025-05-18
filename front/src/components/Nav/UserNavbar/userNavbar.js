@@ -9,17 +9,17 @@ import createUserIcon from '../../Icon/User/userIcon';
 const createUserNavbar = (className, currentPage, userName) => {
     const userNavbar = createNewNav('nav', className);
 
-    const userInfoContainer = createNewTagTemplate('div', `${className}-user_info`);
+    const userInfoContent = createNewTagTemplate('div', `${className}-user_info`);
 
-    const userIconContainer = createUserIcon(`${className}-user_icon`);
-    userInfoContainer.appendChild(userIconContainer);
+    const userIconContent = createUserIcon(`${className}-user_icon`);
+    userInfoContent.appendChild(userIconContent);
 
     const userNameParagraph = createNewParagraph(`${className}-user_name`, userName);
-    userInfoContainer.appendChild(userNameParagraph);
-    userNavbar.appendChild(userInfoContainer);
+    userInfoContent.appendChild(userNameParagraph);
+    userNavbar.appendChild(userInfoContent);
 
-    const dropdownBarsContainer = createDropdownBars(`${className}-user_options`);
-    userNavbar.appendChild(dropdownBarsContainer);
+    const dropdownBarsContent = createDropdownBars(`${className}-user_options`);
+    userNavbar.appendChild(dropdownBarsContent);
 
     const dropdownMenu = createDropdownMenu(`${className}-dropdown_menu`, currentPage);
     userNavbar.appendChild(dropdownMenu);

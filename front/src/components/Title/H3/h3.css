@@ -1,7 +1,11 @@
-.tsc-main-feature-title {
+.tsc-main-hero-feature-title {
   color: var(--tsc-color-000);
   font-size: var(--tsc-font-size-700);
-  margin-bottom: var(--tsc-margin-200);
+}
+
+.tsc-footer-link-heading {
+  color: var(--tsc-color-600);
+  font-size: var(--tsc-font-size-500);
 }
 
 .tsc-main-events-card-title {

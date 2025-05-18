@@ -11,15 +11,15 @@ const createUserProfileInfo = (appConfig, currentPage) => {
     const { email, fullname, img, username } = userInfo;
 
     const userProfile = createNewTagTemplate('div', `${mainClassName}-${currentPage}`);
-    const userProfileContainer = createNewTagTemplate('div', `${mainClassName}-${currentPage}_info`);
+    const userProfileContent = createNewTagTemplate('div', `${mainClassName}-${currentPage}_info`);
 
     const userProfileAvatar = createNewTagTemplate('div', `${mainClassName}-${currentPage}_info-${currentPage}_avatar`);
     const userProfileImg = createNewImage(`${mainClassName}-${currentPage}_info-${currentPage}_avatar-img`, img, 'User Avatar');
     userProfileAvatar.appendChild(userProfileImg);
-    userProfileContainer.appendChild(userProfileAvatar);
+    userProfileContent.appendChild(userProfileAvatar);
 
     const userProfileData = createNewTagTemplate('div', `${mainClassName}-${currentPage}_info-${currentPage}_data`);
-    userProfileContainer.appendChild(userProfileData);
+    userProfileContent.appendChild(userProfileData);
 
     const userProfileName = createNewH2Title(`${mainClassName}-${currentPage}_info-${currentPage}_username`, username);
     userProfileData.appendChild(userProfileName);
@@ -31,9 +31,9 @@ const createUserProfileInfo = (appConfig, currentPage) => {
     userProfileData.appendChild(userProfileEmail);
 
     const editProfileButton = createNewButton(`${mainClassName}-${currentPage}_info-editProfile_btn`, 'Editar', 'edit-profile');
-    userProfileContainer.appendChild(editProfileButton);
+    userProfileContent.appendChild(editProfileButton);
 
-    userProfile.appendChild(userProfileContainer);
+    userProfile.appendChild(userProfileContent);
 
     return userProfile;
 };

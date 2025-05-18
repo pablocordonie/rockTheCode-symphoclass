@@ -1,13 +1,26 @@
-.tsc-main-hero-title {
+.tsc-main-hero-section-title {
   font-size: var(--tsc-font-size-900);
   margin-bottom: var(--tsc-margin-300);
   color: var(--tsc-color-700);
 }
 
-.tsc-main-section-title {
+.tsc-main-hero-features-title,
+.tsc-main-hero-testimonials-title,
+.tsc-main-hero-about-title {
   color: var(--tsc-color-600);
   font-size: var(--tsc-font-size-900);
   text-align: center;
+}
+
+.tsc-main-hero-cta-title {
+  color: var(--tsc-color-700);
+  font-size: var(--tsc-font-size-900);
+}
+
+.tsc-footer-logo {
+  color: var(--tsc-color-700);
+  font-family: 'Dancing Script', sans-serif;
+  font-size: var(--tsc-font-size-900);
 }
 
 .tsc-main-profile_info-profile_username {

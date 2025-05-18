@@ -3,46 +3,46 @@ import createNewH2Title from '../../../../components/Title/H2/h2';
 import createNewParagraph from '../../../../components/Paragraph/paragraph';
 import createNewSection from '../../../../components/Section/section';
 
-const createHeroTestimonialsSection = (appConfig) => {
+const createHeroTestimonialsSection = (appConfig, currentPage) => {
     const { mainClassName } = appConfig;
 
-    const testimonialsSection = createNewSection(`${mainClassName}-testimonials`, 'testimonials');
+    const testimonialsSection = createNewSection(`${mainClassName}-${currentPage}-testimonials`, 'testimonials');
 
-    const testimonialsTitle = createNewH2Title(`${mainClassName}-section-title`, 'What Our Users Say');
+    const testimonialsTitle = createNewH2Title(`${testimonialsSection.className}-title`, 'What Our Users Say');
     testimonialsSection.appendChild(testimonialsTitle);
 
-    const testimonialsContainer = createNewContainer(`${testimonialsSection.className}-container`);
-    testimonialsSection.appendChild(testimonialsContainer);
+    const testimonialsContent = createNewContainer(`${testimonialsSection.className}-content`);
+    testimonialsSection.appendChild(testimonialsContent);
 
     const testimonials = [{
         name: 'María Rodríguez',
         role: 'Piano Instructor, Madrid Conservatory',
-        description: `"SymphoClass transformed my teaching career. I now connect with students from around the world
+        paragraph: `"SymphoClass transformed my teaching career. I now connect with students from around the world
                   without leaving my studio."`
     }, {
         name: 'James Chen',
         role: 'Violin Student',
-        description: `"As a student in a small town, I never thought I'd have access to world-class violin instruction.
+        paragraph: `"As a student in a small town, I never thought I'd have access to world-class violin instruction.
                   SymphoClass made it possible."`
     }];
 
     testimonials.forEach(testimonial => {
-        const testimonialContainer = createNewContainer(`${mainClassName}-testimonial`);
-        testimonialsContainer.appendChild(testimonialContainer);
+        const testimonialCard = createNewContainer(`${mainClassName}-${currentPage}-testimonial`);
+        testimonialsContent.appendChild(testimonialCard);
 
-        const testimonialContent = createNewContainer(`${testimonialContainer.className}-content`);
-        testimonialContainer.appendChild(testimonialContent);
+        const testimonialContent = createNewContainer(`${testimonialCard.className}-content`);
+        testimonialCard.appendChild(testimonialContent);
 
-        const testimonialDescription = createNewParagraph(`${testimonialContainer.className}-p`, testimonial.description);
-        testimonialContent.appendChild(testimonialDescription);
+        const testimonialParagraph = createNewParagraph(`${testimonialCard.className}-paragraph`, testimonial.paragraph);
+        testimonialContent.appendChild(testimonialParagraph);
 
-        const testimonialAuthor = createNewContainer(`${testimonialContainer.className}-author`);
+        const testimonialAuthor = createNewContainer(`${testimonialCard.className}-author`);
         testimonialContent.appendChild(testimonialAuthor);
 
-        const testimonialName = createNewParagraph(`${testimonialContainer.className}-name`, testimonial.name);
+        const testimonialName = createNewParagraph(`${testimonialCard.className}-name`, testimonial.name);
         testimonialAuthor.appendChild(testimonialName);
 
-        const testimonialRole = createNewParagraph(`${testimonialContainer.className}-role`, testimonial.role);
+        const testimonialRole = createNewParagraph(`${testimonialCard.className}-role`, testimonial.role);
         testimonialAuthor.appendChild(testimonialRole);
     });
 

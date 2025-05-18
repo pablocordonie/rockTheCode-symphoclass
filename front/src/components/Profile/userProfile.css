@@ -21,9 +21,9 @@
 .tsc-main-profile_info-profile_data {
   display: flex;
   align-items: center;
-  background-color: var(--tsc-color-900);
-  border: var(--tsc-border-200) solid var(--tsc-color-600);
-  border-radius: var(--tsc-border-200);
+  background-color: var(--tsc-color-1000);
+  border: var(--tsc-border-300) solid var(--tsc-color-600);
+  border-radius: var(--tsc-border-300);
   flex-direction: column;
   gap: var(--tsc-gap-200);
   padding: var(--tsc-padding-600) var(--tsc-padding-800);

@@ -4,15 +4,15 @@ import createNewParagraph from '../../Paragraph/paragraph';
 import createNewTagTemplate from '../../Tag/tag';
 
 const createRegisterLink = (className) => {
-    const registerLinkContainer = createNewTagTemplate('li', `${className}_option`);
+    const registerLinkContent = createNewTagTemplate('li', `${className}_option`);
 
     const registerParagraph = createNewParagraph(`${className}_message`, '¿No estás registrado en The SymphoClass?');
-    registerLinkContainer.appendChild(registerParagraph);
+    registerLinkContent.appendChild(registerParagraph);
 
     const registerButton = createNewButton(`${className}_button`, 'Regístrate');
-    registerLinkContainer.appendChild(registerButton);
+    registerLinkContent.appendChild(registerButton);
 
-    return registerLinkContainer;
+    return registerLinkContent;
 };
 
 export default createRegisterLink;

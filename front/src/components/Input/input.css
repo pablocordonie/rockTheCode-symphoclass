@@ -1,14 +1,14 @@
 input {
-  background-color: var(--tsc-color-900);
-  border: var(--tsc-border-100) solid var(--tsc-color-600);
-  border-radius: var(--tsc-border-200);
+  background-color: var(--tsc-color-1000);
+  border: var(--tsc-border-200) solid var(--tsc-color-600);
+  border-radius: var(--tsc-border-300);
   color: var(--tsc-color-000);
   height: var(--tsc-height-200);
   width: var(--tsc-width-600);
 }
 
 input:hover {
-  border: var(--tsc-border-100) solid var(--tsc-color-600);
+  border: var(--tsc-border-200) solid var(--tsc-color-600);
 }
 
 .tsc-main-create_event_form-fields div input {

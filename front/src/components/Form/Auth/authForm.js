@@ -3,7 +3,7 @@ import createLoginLink from '../../Link/Login/loginLink';
 import createNewField from '../../Field/field';
 import createRegisterLink from '../../Link/Register/registerLink';
 import createNewFieldData from '../../Field/Data/fieldData';
-import createNewList from '../../List/list';
+import createNewList from '../../../utils/List/list';
 import createNewSubmitButton from '../../Button/Submit/submitButton';
 import createNewTagTemplate from '../../Tag/tag';
 

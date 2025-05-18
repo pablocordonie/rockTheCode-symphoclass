@@ -1,8 +1,8 @@
 .tsc-header-nav-dropdown_menu {
-  background-color: var(--tsc-color-900);
+  background-color: var(--tsc-color-1000);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-200) var(--tsc-color-000-transparent);
-  border-radius: var(--tsc-border-100);
+  border-radius: var(--tsc-border-200);
   display: none;
   flex-direction: column;
   gap: var(--tsc-gap-500);

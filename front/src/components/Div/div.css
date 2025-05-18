@@ -1,125 +1,118 @@
-.tsc-header-menu {
+.tsc-header-hero-menu {
   display: none;
 }
 
-.tsc-main-hero-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--tsc-gap-400);
-  margin: var(--tsc-margin-000) auto;
-  position: relative;
+.tsc-main-hero-section-content {
   z-index: var(--tsc-z-index-200);
 }
 
-.tsc-main-hero-cta {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: var(--tsc-gap-400);
-  margin-top: var(--tsc-margin-400);
+.tsc-main-hero-section-cta {
+  padding-top: var(--tsc-padding-800);
 }
 
-.tsc-main-hero-overlay {
+.tsc-main-hero-section-overlay {
   background-color: var(--tsc-color-200);
   bottom: var(--tsc-position-bottom-000);
   left: var(--tsc-position-left-000);
   position: absolute;
   right: var(--tsc-position-right-000);
   top: var(--tsc-position-top-000);
-  z-index: var(--tsc-z-index-100);
 }
 
-.tsc-main-features-grid {
+.tsc-main-hero-features-grid {
   display: grid;
   grid-template-columns: var(--tsc-grid-100);
-  gap: var(--tsc-gap-600);
+  gap: var(--tsc-gap-800);
   margin: var(--tsc-margin-000) auto;
 }
 
-.tsc-main-feature-card {
-  background-color: var(--tsc-color-900);
-  border-radius: var(--tsc-border-200);
-  padding: var(--tsc-padding-600);
+.tsc-main-hero-feature-card {
+  background-color: var(--tsc-color-1000);
+  border-radius: var(--tsc-border-300);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-300) var(--tsc-color-000-box-shadow-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-500);
+  padding: var(--tsc-padding-600);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.tsc-main-feature-card:hover {
-  transform: translateY(-5px);
+.tsc-main-hero-feature-card:hover {
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-200)
     var(--tsc-box-shadow-600) var(--tsc-color-000-box-shadow-2);
+  transform: translateY(-5px);
 }
 
-.tsc-main-testimonials-container {
+.tsc-main-hero-testimonials-content {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-600);
   margin: var(--tsc-margin-000) auto;
 }
 
-.tsc-main-testimonial {
-  background-color: var(--tsc-color-900);
-  border-radius: var(--tsc-border-200);
+.tsc-main-hero-testimonial {
+  background-color: var(--tsc-color-1000);
+  border-radius: var(--tsc-border-300);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-300) var(--tsc-color-000-box-shadow-1);
   padding: var(--tsc-padding-600);
 }
 
-.tsc-main-testimonial-content {
+.tsc-main-hero-testimonial-content {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-300);
 }
 
-.tsc-main-testimonial-author {
+.tsc-main-hero-testimonial-author {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-100);
   text-align: right;
 }
 
-.tsc-main-about-container {
+.tsc-main-hero-about-content {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-800);
   margin: var(--tsc-margin-000) auto;
 }
 
-.tsc-main-about-content {
+.tsc-main-hero-about-info {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-400);
   text-align: center;
 }
 
-.tsc-main-about-stats {
+.tsc-main-hero-about-stats {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--tsc-gap-400);
   margin-top: var(--tsc-margin-400);
 }
 
-.tsc-main-about-stat {
+.tsc-main-hero-about-stat {
   background-color: var(--tsc-color-100);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-300) var(--tsc-color-000-box-shadow-1);
-  color: var(--tsc-color-900);
-  border-radius: var(--tsc-border-200);
+  color: var(--tsc-color-1000);
+  border-radius: var(--tsc-border-300);
   padding: var(--tsc-padding-600);
   text-align: center;
 }
 
-.tsc-main-about-team {
+.tsc-main-hero-about-team {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--tsc-gap-600);
+  gap: var(--tsc-gap-800);
 }
 
-.tsc-main-about-team-member {
+.tsc-main-hero-about-team-member {
   align-items: center;
-  background-color: var(--tsc-color-900);
-  border-radius: var(--tsc-border-200);
+  background-color: var(--tsc-color-1000);
+  border-radius: var(--tsc-border-300);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-300) var(--tsc-color-000-box-shadow-1);
   display: flex;
@@ -129,8 +122,52 @@
   text-align: center;
 }
 
+.tsc-main-hero-cta-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-800);
+  position: relative;
+}
+
+.tsc-footer {
+  background-color: var(--tsc-color-100);
+  color: var(--tsc-color-1000);
+  padding-top: var(--tsc-padding-800);
+}
+
+.tsc-footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-800);
+  margin: var(--tsc-margin-000) auto;
+  padding: var(--tsc-padding-000) var(--tsc-padding-400);
+}
+
+.tsc-footer-logo-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-200);
+}
+
+.tsc-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-600);
+}
+
+.tsc-footer-link-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-300);
+}
+
+.tsc-footer-bottom {
+  border-top: var(--tsc-border-100) solid var(--tsc-color-1000);
+  padding: var(--tsc-padding-400);
+}
+
 @media screen and (min-width: 768px) {
-  .tsc-header-menu {
+  .tsc-header-hero-menu {
     align-items: center;
     display: flex;
     gap: var(--tsc-gap-600);
@@ -140,16 +177,37 @@
     flex-direction: row;
     justify-content: center;
   }
+
+  .tsc-main-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tsc-main-testimonials-content {
+    flex-direction: row;
+  }
+
+  .tsc-main-about-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tsc-main-about-team {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tsc-footer-links {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 @media screen and (min-width: 1100px) {
-  .tsc-header-menu {
+  .tsc-header-hero-menu {
     gap: var(--tsc-gap-800);
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .tsc-header-menu {
+  .tsc-header-hero-menu {
     gap: var(--tsc-gap-1000);
   }
 }

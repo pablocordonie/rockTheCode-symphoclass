@@ -1,6 +1,6 @@
 .confirm-btn-confirmed_icon {
   background-color: white;
-  border-radius: var(--tsc-border-300);
+  border-radius: var(--tsc-border-400);
   color: var(--tsc-color-400);
   font-size: var(--tsc-font-size-300);
   height: var(--tsc-height-100);

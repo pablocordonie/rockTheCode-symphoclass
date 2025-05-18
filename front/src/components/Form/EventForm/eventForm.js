@@ -2,7 +2,7 @@ import './eventForm.css';
 import createNewField from '../../Field/field';
 import createUploadImageField from '../../Field/Upload-Image/uploadImage';
 import createNewFieldData from '../../Field/Data/fieldData';
-import createNewList from '../../List/list';
+import createNewList from '../../../utils/List/list';
 import createNewSubmitButton from '../../Button/Submit/submitButton';
 import createNewTagTemplate from '../../Tag/tag';
 

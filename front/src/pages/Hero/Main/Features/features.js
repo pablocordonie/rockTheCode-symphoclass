@@ -5,12 +5,12 @@ import createNewIcon from '../../../../components/Icon/icon';
 import createNewParagraph from '../../../../components/Paragraph/paragraph';
 import createNewSection from '../../../../components/Section/section';
 
-const createHeroFeaturesSection = (appConfig) => {
+const createHeroFeaturesSection = (appConfig, currentPage) => {
     const { mainClassName } = appConfig;
 
-    const featuresSection = createNewSection(`${mainClassName}-features`, 'features');
+    const featuresSection = createNewSection(`${mainClassName}-${currentPage}-features`, 'features');
 
-    const featuresTitle = createNewH2Title(`${mainClassName}-section-title`, 'Why Choose The SymphoClass');
+    const featuresTitle = createNewH2Title(`${featuresSection.className}-title`, 'Why Choose The SymphoClass');
     featuresSection.appendChild(featuresTitle);
 
     const featuresGrid = createNewContainer(`${featuresSection.className}-grid`);
@@ -20,34 +20,34 @@ const createHeroFeaturesSection = (appConfig) => {
         {
             icon: 'fa-music',
             title: 'Expert Instructors',
-            description: 'Connect with renowned musicians and educators from prestigious institutions worldwide'
+            paragraph: 'Connect with renowned musicians and educators from prestigious institutions worldwide'
         }, {
             icon: 'fa-calendar-check',
             title: 'Easy Scheduling',
-            description: 'Book masterclasses that fit your schedule with our intuitive calendar system'
+            paragraph: 'Book masterclasses that fit your schedule with our intuitive calendar system'
         }, {
             icon: 'fa-globe',
             title: 'Global Community',
-            description: 'Join a worldwide network of musicians, students, and educators passionate about music'
+            paragraph: 'Join a worldwide network of musicians, students, and educators passionate about music'
         }, {
             icon: 'fa-graduation-cap',
             title: 'Personalized Learning',
-            description: 'Receive tailored instruction that addresses your specific musical goals and challenges'
+            paragraph: 'Receive tailored instruction that addresses your specific musical goals and challenges'
         }
     ];
 
     features.forEach(feature => {
-        const featureCard = createNewContainer(`${mainClassName}-feature-card`);
+        const featureCard = createNewContainer(`${mainClassName}-${currentPage}-feature-card`);
         featuresGrid.appendChild(featureCard);
 
-        const featureIcon = createNewIcon(`fa-solid ${feature.icon} ${mainClassName}-feature-icon`);
+        const featureIcon = createNewIcon(`fa-solid ${feature.icon} ${mainClassName}-${currentPage}-feature-icon`);
         featureCard.appendChild(featureIcon);
 
-        const featureTitle = createNewH3Title(`${mainClassName}-feature-title`, feature.title);
+        const featureTitle = createNewH3Title(`${mainClassName}-${currentPage}-feature-title`, feature.title);
         featureCard.appendChild(featureTitle);
 
-        const featureDescription = createNewParagraph(`${mainClassName}-feature-description`, feature.description);
-        featureCard.appendChild(featureDescription);
+        const featureParagraph = createNewParagraph(`${mainClassName}-${currentPage}-feature-paragraph`, feature.paragraph);
+        featureCard.appendChild(featureParagraph);
     });
 
     return featuresSection;

@@ -1,7 +1,7 @@
 import './eventsList.css';
 import createEventCard from '../Card/eventCard';
 import createNoEventsMessage from '../No-Events/noEventsMessage';
-import createNewList from '../../List/list';
+import createNewList from '../../../utils/List/list';
 import createNewTagTemplate from '../../Tag/tag';
 
 const createEventsList = (mainClassName, testCards) => {

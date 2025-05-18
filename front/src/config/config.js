@@ -7,6 +7,7 @@ import printUserProfile from '../pages/Profile/profile';
 import querySelectorChecker from '../utils/QuerySelector/querySelectorChecker';
 
 const app = querySelectorChecker('#app', 'appConfig');
+const footer = querySelectorChecker('.tsc-footer', 'appConfig');
 const header = querySelectorChecker('.tsc-header', 'appConfig');
 let HTMLElementsWithListeners = [];
 const loaderClassName = 'tsc-loader';
@@ -20,6 +21,7 @@ let state = {
 export const appConfig = {
     appId: app.id,
     currentPage: state.currentPage,
+    footerClassName: footer.className,
     headerClassName: header.className,
     HTMLElementsWithListeners,
     loaderClassName,

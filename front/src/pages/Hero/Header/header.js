@@ -3,21 +3,21 @@ import createNewAnchor from '../../../components/Anchor/anchor';
 import createNewH1Title from '../../../components/Title/H1/h1';
 import createNewNav from '../../../components/Nav/nav';
 
-const createHeroHeaderContent = (appConfig) => {
+const createHeroHeaderContent = (appConfig, currentPage) => {
     const { headerClassName } = appConfig;
 
-    const heroHeaderNav = createNewNav(`${headerClassName}-nav`);
+    const heroHeaderNav = createNewNav(`${headerClassName}-${currentPage}-nav`);
 
-    const heroHeaderTitleAnchor = createNewAnchor(`${headerClassName}-logo`, '#main');
+    const heroHeaderTitleAnchor = createNewAnchor(`${headerClassName}-${currentPage}-logo`, '#main');
     heroHeaderNav.appendChild(heroHeaderTitleAnchor);
 
     const heroHeaderTitle = createNewH1Title(`${headerClassName}-h1`, 'The SymphoClass');
     heroHeaderTitleAnchor.appendChild(heroHeaderTitle);
 
-    const heroHeaderMenu = createNewContainer(`${headerClassName}-menu`);
+    const heroHeaderMenu = createNewContainer(`${headerClassName}-${currentPage}-menu`);
     heroHeaderNav.appendChild(heroHeaderMenu);
 
-    const menuItems = ['Features', 'Testimonials', 'About'/*, 'Login'*/];
+    const menuItems = ['Features', 'Testimonials', 'About', 'Login'];
     for (const menuItem of menuItems) {
         let heroHeaderMenuAnchor = createNewAnchor(`${heroHeaderMenu.className}-${menuItem.toLowerCase()}_anchor`, `#${menuItem.toLowerCase()}`);
         menuItem === 'About' ? heroHeaderMenuAnchor.textContent = `${menuItem} Us` : heroHeaderMenuAnchor.textContent = menuItem;

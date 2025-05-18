@@ -3,14 +3,14 @@ import createNewIcon from '../icon';
 import createNewTagTemplate from '../../Tag/tag';
 
 const createUserIcon = (className) => {
-    const userIconContainer = createNewTagTemplate('div', className);
+    const userIconContent = createNewTagTemplate('div', className);
 
     const iconClassNames = ['fa-solid', 'fa-user', 'fa-sm'];
     const userIcon = createNewIcon(`${className}-icon`);
     iconClassNames.forEach(iconClassName => userIcon.classList.add(iconClassName));
-    userIconContainer.appendChild(userIcon);
+    userIconContent.appendChild(userIcon);
 
-    return userIconContainer;
+    return userIconContent;
 };
 
 export default createUserIcon;

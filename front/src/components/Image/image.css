@@ -1,6 +1,8 @@
-.tsc-main-about-team-member-photo {
-  border: var(--tsc-border-100) solid var(--tsc-color-600);
-  border-radius: var(--tsc-border-300);
+.tsc-main-hero-about-team-member-photo {
+  border: var(--tsc-border-200) solid var(--tsc-color-600);
+  border-radius: var(--tsc-border-400);
+  color: var(--tsc-color-000);
+  font-size: var(--tsc-font-size-100);
   height: var(--tsc-height-600);
   object-fit: cover;
   width: var(--tsc-width-500);

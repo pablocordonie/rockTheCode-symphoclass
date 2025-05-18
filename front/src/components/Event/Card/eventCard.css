@@ -1,6 +1,6 @@
 .tsc-main-events-card {
-  background-color: var(--tsc-color-900);
-  border-radius: var(--tsc-border-200);
+  background-color: var(--tsc-color-1000);
+  border-radius: var(--tsc-border-300);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-200) var(--tsc-color-000-transparent);
   display: flex;

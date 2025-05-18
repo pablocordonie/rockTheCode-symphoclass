@@ -6,9 +6,9 @@
   bottom: var(--tsc-position-bottom-200);
   left: var(--tsc-position-left-100);
   transform: translateX(-50%);
-  background-color: var(--tsc-color-900);
+  background-color: var(--tsc-color-1000);
   padding: var(--tsc-padding-400) var(--tsc-padding-500);
-  border-radius: var(--tsc-border-100);
+  border-radius: var(--tsc-border-200);
   font-size: var(--tsc-font-size-300);
   font-weight: var(--tsc-font-weight-200);
   text-align: center;
@@ -34,7 +34,7 @@
 
 .error-critical > .error-title,
 .error-critical > .error-message {
-  color: var(--tsc-color-900);
+  color: var(--tsc-color-1000);
 }
 
 .error-btn {

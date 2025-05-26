@@ -1,0 +1,23 @@
+.tsc-header-home-menu {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-header-home-menu {
+    align-items: center;
+    display: flex;
+    gap: var(--tsc-gap-600);
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .tsc-header-home-menu {
+    gap: var(--tsc-gap-800);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .tsc-header-home-menu {
+    gap: var(--tsc-gap-1000);
+  }
+}

@@ -1,40 +1,8 @@
-.tsc-main-hero-section-cta-signup-button {
-  background-color: var(--tsc-color-600);
-  border: none;
-  border-radius: var(--tsc-border-200);
-  color: var(--tsc-color-1000);
-  font-weight: var(--tsc-font-weight-100);
-  font-size: var(--tsc-font-size-500);
-  min-width: var(--tsc-width-600);
-  padding: var(--tsc-padding-300) var(--tsc-padding-600);
-}
-
-.tsc-main-hero-section-cta-signup-button:hover {
-  background-color: var(--tsc-color-700);
-  color: var(--tsc-color-000);
-}
-
-.tsc-main-hero-cta-signup_button {
-  background-color: var(--tsc-color-600);
-  border: none;
-  border-radius: var(--tsc-border-200);
-  color: var(--tsc-color-1000);
-  font-weight: var(--tsc-font-weight-100);
-  font-size: var(--tsc-font-size-500);
-  padding: var(--tsc-padding-300) var(--tsc-padding-600);
-}
-
-.tsc-main-hero-cta-signup_button:hover {
-  background-color: var(--tsc-color-700);
-  color: var(--tsc-color-000);
-}
-
 .tsc-header-events-create_btn,
 .tsc-main-events-card-options button {
   padding: var(--tsc-padding-200) var(--tsc-padding-400);
   border: var(--tsc-border-000);
   border-radius: var(--tsc-border-200);
-  cursor: pointer;
 }
 
 .tsc-header-events-create_btn {
@@ -46,25 +14,24 @@
   background-color: var(--tsc-color-400);
   color: var(--tsc-color-1000);
 }
-/*
-.tsc-main button {
+
+.tsc-main-login-button {
   align-self: center;
   background-color: var(--tsc-color-600);
   border: var(--tsc-border-200) solid var(--tsc-color-600);
   border-radius: var(--tsc-border-300);
   color: var(--tsc-color-1000);
-  cursor: pointer;
   font-size: var(--tsc-font-size-200);
   font-weight: var(--tsc-font-weight-100);
   height: var(--tsc-height-200);
 }
 
-.tsc-main button:hover {
+.tsc-main-login-button:hover {
   background-color: var(--tsc-color-1000);
   border-color: var(--tsc-color-1000);
   color: var(--tsc-color-600);
 }
-*/
+
 .tsc-main-login_form-login_submit,
 .tsc-main-register_form-register_submit {
   padding-top: var(--tsc-padding-200);
@@ -81,7 +48,6 @@
   border: var(--tsc-border-000);
   border-radius: var(--tsc-border-200);
   color: var(--tsc-color-1000);
-  cursor: pointer;
   font-size: var(--tsc-font-size-400);
   padding: var(--tsc-padding-200) var(--tsc-padding-500);
   transition: background-color 0.3s ease;
@@ -91,16 +57,15 @@
   background-color: var(--tsc-color-1000);
   color: var(--tsc-color-600);
 }
-/*
+
 @media screen and (min-width: 400px) {
-  .tsc-main button {
+  .tsc-main-login-button {
     font-size: var(--tsc-font-size-300);
   }
 }
 
 @media screen and (min-width: 350px) and (min-height: 750px) {
-  .tsc-main button {
+  .tsc-main-login-button {
     font-size: var(--tsc-font-size-500);
   }
 }
-*/

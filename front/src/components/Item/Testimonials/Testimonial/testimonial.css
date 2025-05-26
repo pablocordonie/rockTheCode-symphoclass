@@ -1,0 +1,7 @@
+.tsc-main-home-testimonial {
+  background-color: var(--tsc-color-1000);
+  border-radius: var(--tsc-border-300);
+  box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
+    var(--tsc-box-shadow-300) var(--tsc-color-000-box-shadow-1);
+  padding: var(--tsc-padding-600);
+}

@@ -1,10 +1,12 @@
 import activateContentCleaner from '../Cleaner/contentCleaner';
-import createNewH1Title from '../../components/Title/H1/h1';
+import createLogo from '../../components/Title/H1/Logo/logo';
 
-const activateHeaderCleaner = (header) => {
+const activateHeaderCleaner = (header, appConfig) => {
+    const { headerClassName } = appConfig;
+
     activateContentCleaner(header);
 
-    const mainTitle = createNewH1Title('tsc-header-h1', 'The SymphoClass');
+    const mainTitle = createLogo(`${headerClassName}-h1`, 'The SymphoClass');
     header.appendChild(mainTitle);
 
     return header;

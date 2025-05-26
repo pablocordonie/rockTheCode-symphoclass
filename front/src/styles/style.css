@@ -186,27 +186,28 @@ a {
   text-decoration: none;
 }
 
+a,
 button {
   cursor: pointer;
 }
 
 .app {
+  background-color: var(--tsc-color-200);
   height: var(--tsc-height-full);
 }
 
 .tsc {
-  /*background: var(--tsc-color-200);*/
   flex-direction: column;
-  /*
+}
+
+.tsc-grid {
+  display: grid;
   grid-gap: var(--tsc-gap-500);
   grid-template-rows: auto 1fr auto;
-  min-height: var(--tsc-height-full);
-  */
 }
 
 .tsc-header {
-  display: flex;
-  justify-content: center;
+  height: 4rem;
 }
 
 .tsc-header-events {
@@ -220,20 +221,15 @@ button {
   display: flex;
   flex-direction: column;
 }
-/*
-.tsc-footer > p {
+
+.tsc-footer {
+  background-color: var(--tsc-color-100);
   color: var(--tsc-color-1000);
-  font-weight: var(--tsc-font-weight-100);
-  margin: var(--tsc-margin-000) var(--tsc-margin-100);
 }
-*/
+
 @media screen and (min-width: 600px) {
   body {
     background: var(--tsc-background-desktop);
     background-size: cover;
-  }
-
-  .tsc-footer > p {
-    margin: var(--tsc-margin-000) var(--tsc-margin-200);
   }
 }

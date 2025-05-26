@@ -1,6 +1,5 @@
 .tsc-header-nav-user_options {
   align-items: center;
-  cursor: pointer;
   display: flex;
   height: var(--tsc-height-300);
 }

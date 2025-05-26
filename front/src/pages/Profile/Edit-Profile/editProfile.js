@@ -3,7 +3,7 @@ import createLogoutListener from '../../../utils/Listeners/Menu/logoutListener';
 import createNewForm from '../../../components/Form/form';
 import createProfileListener from '../../../utils/Listeners/Menu/profileListener';
 import createUpdateProfileListener from '../../../utils/Listeners/Profile/updateListener';
-import createUserNavbar from '../../../components/Nav/UserNavbar/userNavbar';
+import createUserNavbar from '../../../components/Nav/User/userNav';
 import dropdownMenuToggle from '../../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../../utils/Error/errorHandler';
 import querySelectorChecker from '../../../utils/QuerySelector/querySelectorChecker';

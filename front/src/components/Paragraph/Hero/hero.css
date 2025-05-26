@@ -1,0 +1,5 @@
+.tsc-main-home-hero-subtitle {
+  font-size: var(--tsc-font-size-600);
+  line-height: var(--tsc-line-height-100);
+  padding-top: var(--tsc-padding-400);
+}

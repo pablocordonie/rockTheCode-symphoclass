@@ -1,0 +1,6 @@
+.tsc-main-home-testimonial-paragraph {
+  color: var(--tsc-color-000);
+  font-size: var(--tsc-font-size-500);
+  font-style: italic;
+  line-height: var(--tsc-line-height-100);
+}

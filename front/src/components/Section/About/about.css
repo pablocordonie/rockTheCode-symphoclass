@@ -1,0 +1,7 @@
+.tsc-main-home-about {
+  background-color: var(--tsc-color-1000);
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-1000);
+  padding: var(--tsc-padding-1000) var(--tsc-padding-400);
+}

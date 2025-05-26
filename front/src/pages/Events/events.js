@@ -7,7 +7,7 @@ import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
 import createNewButton from '../../components/Button/button';
 import createNewInput from '../../components/Input/input';
 import createProfileListener from '../../utils/Listeners/Menu/profileListener';
-import createUserNavbar from '../../components/Nav/UserNavbar/userNavbar';
+import createUserNavbar from '../../components/Nav/User/userNav';
 import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
 import errorHandler from '../../utils/Error/errorHandler';
 import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';

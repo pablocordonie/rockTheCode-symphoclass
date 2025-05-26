@@ -2,11 +2,11 @@ import createListenerConstructor from '../Listener/Constructor/listener';
 import createNewListener from '../Listener/newListener';
 import errorHandler from '../../Error/errorHandler';
 
-const scrollToAnchor = (appConfig, HTMLElementsWithListeners) => {
+const createAutoScrollToAnchor = (appConfig, HTMLElementsWithListeners) => {
     const anchors = Array.from(document.querySelectorAll('a'));
 
     let anchorListener = {};
-    const context = 'scrollToAnchor';
+    const context = 'createAutoScrollToAnchor';
 
     anchors.forEach(anchor => {
         try {
@@ -30,4 +30,4 @@ const scrollToAnchor = (appConfig, HTMLElementsWithListeners) => {
     });
 };
 
-export default scrollToAnchor;
+export default createAutoScrollToAnchor;

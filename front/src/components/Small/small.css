@@ -1,0 +1,4 @@
+.tsc-footer-home-bottom small {
+  border-top: var(--tsc-border-100) solid var(--tsc-color-1000);
+  padding: var(--tsc-padding-400);
+}

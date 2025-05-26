@@ -1,0 +1,5 @@
+.tsc-footer-home-logo {
+  color: var(--tsc-color-700);
+  font-family: 'Dancing Script', sans-serif;
+  font-size: var(--tsc-font-size-900);
+}

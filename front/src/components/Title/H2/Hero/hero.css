@@ -1,0 +1,17 @@
+.tsc-main-home-hero-title {
+  color: var(--tsc-color-700);
+  font-size: var(--tsc-font-size-900);
+  margin-bottom: var(--tsc-margin-300);
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-home-hero-title {
+    font-size: var(--tsc-font-size-1000);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tsc-main-home-hero-title {
+    font-size: var(--tsc-font-size-1100);
+  }
+}

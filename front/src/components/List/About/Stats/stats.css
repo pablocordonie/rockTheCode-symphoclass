@@ -1,0 +1,12 @@
+.tsc-main-home-about-stats {
+  display: grid;
+  grid-template-columns: var(--tsc-grid-100);
+  gap: var(--tsc-gap-400);
+  margin-top: var(--tsc-margin-400);
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-home-about-stats {
+    grid-template-columns: repeat(3, var(--tsc-grid-100));
+  }
+}

@@ -1,0 +1,7 @@
+.tsc-footer-home-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-800);
+  padding: var(--tsc-padding-800) var(--tsc-padding-400) var(--tsc-padding-400)
+    var(--tsc-padding-400);
+}

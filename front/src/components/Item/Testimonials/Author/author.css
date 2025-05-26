@@ -1,0 +1,6 @@
+.tsc-main-home-testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-100);
+  text-align: right;
+}

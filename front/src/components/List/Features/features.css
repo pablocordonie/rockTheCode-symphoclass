@@ -1,0 +1,12 @@
+.tsc-main-home-features-grid {
+  display: grid;
+  grid-template-columns: var(--tsc-grid-100);
+  gap: var(--tsc-gap-800);
+  margin: var(--tsc-margin-000) auto;
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-home-features-grid {
+    grid-template-columns: repeat(2, var(--tsc-grid-100));
+  }
+}

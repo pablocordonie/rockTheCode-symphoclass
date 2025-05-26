@@ -1,4 +1,3 @@
-import './icon.css';
 import createNewTagTemplate from '../../components/Tag/tag';
 
 const createNewIcon = (className) => createNewTagTemplate('i', className);

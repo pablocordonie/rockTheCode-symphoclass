@@ -1,47 +1,4 @@
-.tsc-main-hero-section-cta-signup,
 .tsc-main-hero-cta-signup {
   display: inline-block;
   transition: all 0.3s ease;
-}
-
-.tsc-main-hero-section-cta-signup:hover,
-.tsc-main-hero-cta-signup:hover {
-  transform: scale(1.05);
-}
-
-.tsc-main-hero-section-cta-signup {
-  padding-top: var(--tsc-padding-800);
-}
-
-.tsc-header-hero-menu-features_anchor,
-.tsc-header-hero-menu-testimonials_anchor,
-.tsc-header-hero-menu-about_anchor {
-  color: var(--tsc-color-1000);
-  font-weight: var(--tsc-font-weight-100);
-  transition: color 0.3s ease;
-}
-
-.tsc-header-hero-menu-features_anchor:hover,
-.tsc-header-hero-menu-testimonials_anchor:hover,
-.tsc-header-hero-menu-about_anchor:hover {
-  color: var(--tsc-color-700);
-}
-
-.tsc-header-hero-menu-login_anchor {
-  background-color: var(--tsc-color-600);
-  color: var(--tsc-color-1000);
-  border-radius: var(--tsc-border-200);
-  padding: var(--tsc-padding-200) var(--tsc-padding-400);
-  transition: background-color 0.3s ease;
-}
-
-.tsc-header-hero-menu-login_anchor:hover {
-  background-color: var(--tsc-color-700);
-  color: var(--tsc-color-000);
-}
-
-@media screen and (min-width: 768px) {
-  .tsc-header-hero-logo {
-    padding-left: var(--tsc-padding-300);
-  }
 }

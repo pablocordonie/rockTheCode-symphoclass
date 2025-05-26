@@ -1,0 +1,17 @@
+.tsc-main-home-features-title {
+  color: var(--tsc-color-600);
+  font-size: var(--tsc-font-size-900);
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-home-features-title {
+    font-size: var(--tsc-font-size-1000);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tsc-main-home-features-title {
+    font-size: var(--tsc-font-size-1100);
+  }
+}

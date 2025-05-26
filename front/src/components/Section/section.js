@@ -1,4 +1,3 @@
-import './section.css';
 import createNewTagTemplate from '../Tag/tag';
 
 const createNewSection = (className, id = '') => createNewTagTemplate('section', className, { id });

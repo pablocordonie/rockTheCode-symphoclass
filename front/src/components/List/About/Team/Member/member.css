@@ -1,0 +1,6 @@
+.tsc-main-home-about-team-member-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-300);
+}

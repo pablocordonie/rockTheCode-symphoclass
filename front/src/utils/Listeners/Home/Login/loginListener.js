@@ -1,5 +1,4 @@
-import activateContentCleaner from '../../../Cleaner/contentCleaner';
-import activateHeaderCleaner from '../../../Cleaner/headerCleaner';
+import activatePageCleaner from '../../../Cleaner/pageCleaner';
 import createListenerConstructor from '../../Listener/Constructor/listener';
 import createNewListener from '../../Listener/newListener';
 import errorHandler from '../../../Error/errorHandler';
@@ -15,14 +14,12 @@ const createHomeLoginListener = (querySelector, appConfig, currentPage, HTMLElem
             event.preventDefault();
 
             const header = querySelectorChecker(`.${headerClassName}`, context);
-            activateHeaderCleaner(header);
 
             const main = querySelectorChecker(`.${mainClassName}`, context);
-            activateContentCleaner(main);
 
             const footer = querySelectorChecker(`.${footerClassName}`, context);
-            footer.style.paddingTop = 0;
-            activateContentCleaner(footer);
+
+            activatePageCleaner(header, main, footer);
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'login');
 

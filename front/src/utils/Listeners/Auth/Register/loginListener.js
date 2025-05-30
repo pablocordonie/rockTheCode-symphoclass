@@ -1,4 +1,4 @@
-import activateContentCleaner from '../../../Cleaner/contentCleaner';
+import activatePageCleaner from '../../../Cleaner/pageCleaner';
 import createListenerConstructor from '../../Listener/Constructor/listener';
 import createNewListener from '../../Listener/newListener';
 import errorHandler from '../../../Error/errorHandler';
@@ -6,15 +6,20 @@ import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
 const createLoginListenerFromRegisterPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
-    const { mainClassName } = appConfig;
+    const { footerClassName, headerClassName, mainClassName } = appConfig;
     const context = 'createLoginListenerFromRegisterPage';
 
     const callback = event => {
         try {
             event.preventDefault();
 
+            const header = querySelectorChecker(`.${headerClassName}`, context);
+
             const main = querySelectorChecker(`.${mainClassName}`, context);
-            activateContentCleaner(main);
+
+            const footer = querySelectorChecker(`.${footerClassName}`, context);
+
+            activatePageCleaner(header, main, footer);
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'login');
         } catch (error) {
@@ -22,7 +27,7 @@ const createLoginListenerFromRegisterPage = (className, appConfig, currentPage, 
         }
     };
 
-    const registerEventListenerFromRegisterPage = createListenerConstructor(`.${className}-login_button`, context, callback, 'click');
+    const registerEventListenerFromRegisterPage = createListenerConstructor(`.${className}-login-btn`, context, callback, 'click');
 
     createNewListener(registerEventListenerFromRegisterPage, appConfig, HTMLElementsWithListeners, context);
 };

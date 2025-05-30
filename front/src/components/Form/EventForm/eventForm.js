@@ -1,9 +1,7 @@
 import './eventForm.css';
-import createNewField from '../../Field/field';
-import createUploadImageField from '../../Field/Upload-Image/uploadImage';
-import createNewFieldData from '../../Field/Data/fieldData';
-import createNewList from '../../../utils/List/list';
-import createNewSubmitButton from '../../Button/Submit/submitButton';
+import { createFieldData } from '../../../config/config';
+import createUploadImageField from '../../Upload-Image/uploadImage';
+import createSubmitBtn from '../../Button/Submit/submit';
 import createNewTagTemplate from '../../Tag/tag';
 
 const createEventForm = (appConfig, className, currentPage) => {
@@ -12,25 +10,25 @@ const createEventForm = (appConfig, className, currentPage) => {
 
     const eventFormFieldsList = createNewTagTemplate('ul', className);
 
-    const eventTitleField = createNewFieldData(`${mainClassName}-${currentPage}_form-title_field`, 'title', 'Nombre del evento');
+    const eventTitleField = createFieldData(`${mainClassName}-${currentPage}_form-title_field`, 'title', 'Nombre del evento');
     eventFormFields.push(eventTitleField);
 
-    const eventDateField = createNewFieldData(`${mainClassName}-${currentPage}_form-date_field`, 'date', 'Fecha');
+    const eventDateField = createFieldData(`${mainClassName}-${currentPage}_form-date_field`, 'date', 'Fecha');
     eventFormFields.push(eventDateField);
 
-    const eventAddressField = createNewFieldData(`${mainClassName}-${currentPage}_form-address_field`, 'address', 'Dirección');
+    const eventAddressField = createFieldData(`${mainClassName}-${currentPage}_form-address_field`, 'address', 'Dirección');
     eventFormFields.push(eventAddressField);
 
-    const eventCenterField = createNewFieldData(`${mainClassName}-${currentPage}_form-center_field`, 'center', 'Centro de enseñanza');
+    const eventCenterField = createFieldData(`${mainClassName}-${currentPage}_form-center_field`, 'center', 'Centro de enseñanza');
     eventFormFields.push(eventCenterField);
 
-    createNewList(eventFormFieldsList, eventFormFields, field => createNewField(field));
+    // TO-DO: Crear una lista de campos para el formulario de evento
 
-    const eventImageField = createNewFieldData(`${mainClassName}-${currentPage}_form-img_field`, 'image', 'Imagen', 'file');
+    const eventImageField = createFieldData(`${mainClassName}-${currentPage}_form-img_field`, 'image', 'Imagen', 'file');
     const eventUploadImageField = createUploadImageField(eventImageField);
     eventFormFieldsList.appendChild(eventUploadImageField);
 
-    const submitEventItem = createNewSubmitButton(`${mainClassName}-${currentPage}_form`, currentPage, 'Crear Evento');
+    const submitEventItem = createSubmitBtn(`${mainClassName}-${currentPage}_form`, currentPage, 'Crear Evento');
     eventFormFieldsList.appendChild(submitEventItem);
 
     return eventFormFieldsList;

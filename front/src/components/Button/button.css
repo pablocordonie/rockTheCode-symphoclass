@@ -15,28 +15,6 @@
   color: var(--tsc-color-1000);
 }
 
-.tsc-main-login-button {
-  align-self: center;
-  background-color: var(--tsc-color-600);
-  border: var(--tsc-border-200) solid var(--tsc-color-600);
-  border-radius: var(--tsc-border-300);
-  color: var(--tsc-color-1000);
-  font-size: var(--tsc-font-size-200);
-  font-weight: var(--tsc-font-weight-100);
-  height: var(--tsc-height-200);
-}
-
-.tsc-main-login-button:hover {
-  background-color: var(--tsc-color-1000);
-  border-color: var(--tsc-color-1000);
-  color: var(--tsc-color-600);
-}
-
-.tsc-main-login_form-login_submit,
-.tsc-main-register_form-register_submit {
-  padding-top: var(--tsc-padding-200);
-}
-
 .tsc-main-edit_profile_form-edit_profile_submit {
   padding-top: var(--tsc-padding-200);
 }
@@ -56,16 +34,4 @@
 .tsc-main-profile_info-editProfile_btn:hover {
   background-color: var(--tsc-color-1000);
   color: var(--tsc-color-600);
-}
-
-@media screen and (min-width: 400px) {
-  .tsc-main-login-button {
-    font-size: var(--tsc-font-size-300);
-  }
-}
-
-@media screen and (min-width: 350px) and (min-height: 750px) {
-  .tsc-main-login-button {
-    font-size: var(--tsc-font-size-500);
-  }
 }

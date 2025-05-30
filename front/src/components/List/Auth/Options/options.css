@@ -1,0 +1,7 @@
+.tsc-main-login-form-options,
+.tsc-main-register-form-options {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-400);
+}

@@ -1,4 +1,5 @@
-.tsc-footer-home-bottom {
+.tsc-footer-home-bottom,
+.tsc-footer-login-bottom {
   display: flex;
   justify-content: center;
 }

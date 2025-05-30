@@ -6,25 +6,28 @@ import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
 const createRegisterListenerFromRegisterPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
-    const { headerClassName, mainClassName } = appConfig;
+    const { footerClassName, headerClassName, mainClassName } = appConfig;
     const context = 'createRegisterListenerFromRegisterPage';
 
     const callback = event => {
         try {
             event.preventDefault();
 
-            const header = querySelectorChecker(`.${headerClassName}`, 'createRegisterListenerFromRegisterPage');
+            const header = querySelectorChecker(`.${headerClassName}`, context);
 
-            const main = querySelectorChecker(`.${mainClassName}`, 'createRegisterListenerFromRegisterPage');
-            activatePageCleaner(header, main);
+            const main = querySelectorChecker(`.${mainClassName}`, context);
+
+            const footer = querySelectorChecker(`.${footerClassName}`, context);
+
+            activatePageCleaner(header, main, footer);
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
         } catch (error) {
-            return errorHandler(error, 'createRegisterListenerFromRegisterPage', appConfig, HTMLElementsWithListeners, 'critical');
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
         }
     };
 
-    const registerEventListenerFromRegisterPage = createListenerConstructor(`.${className}-${currentPage}_button`, context, callback, 'click');
+    const registerEventListenerFromRegisterPage = createListenerConstructor(`.${className}-submit-btn`, context, callback, 'click');
 
     createNewListener(registerEventListenerFromRegisterPage, appConfig, HTMLElementsWithListeners, context);
 };

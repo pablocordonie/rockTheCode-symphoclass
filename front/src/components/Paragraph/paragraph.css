@@ -1,8 +1,3 @@
-.tsc-main-login_form-register_message,
-.tsc-main-register_form-login_message {
-  padding-bottom: var(--tsc-padding-200);
-}
-
 .tsc-main-events-card p {
   color: var(--tsc-color-000);
 }

@@ -1,11 +1,6 @@
 import './form.css';
 import createNewTagTemplate from '../Tag/tag';
 
-const createNewForm = (className, content) => {
-    const newForm = createNewTagTemplate('form', className, { method: 'post' });
-    newForm.appendChild(content);
-
-    return newForm;
-};
+const createNewForm = (className) => createNewTagTemplate('form', className, { method: 'post' });
 
 export default createNewForm;

@@ -30,6 +30,17 @@ export const appConfig = {
     scClassName: tsc.className
 };
 
+export const createFieldData = (className, name, title, inputType = 'text', inputId = '', placeholderText = '') => {
+    return {
+        className,
+        inputId,
+        inputType,
+        name,
+        placeholderText,
+        title
+    }
+};
+
 export const homeAboutParagraphs = [
     {
         text: 'Founded in 2020, The SymphoClass was born from a simple idea: to connect passionate music students with world-class instructors regardless of geographical limitations. Our platform bridges the gap between talented musicians seeking knowledge and experienced instructors eager to share their expertise.'

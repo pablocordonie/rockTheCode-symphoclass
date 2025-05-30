@@ -12,10 +12,11 @@ const printLoader = (appConfig) => {
         const newLoader = createLoader(loaderClassName);
         app.insertAdjacentHTML('afterbegin', newLoader);
     }
-    toggleLoader(appConfig, true);
+
+    toggleLoader(true, appConfig, app);
 
     setTimeout(function () {
-        toggleLoader(appConfig, false);
+        toggleLoader(false, appConfig, app);
     }, loaderTimeout);
 };
 

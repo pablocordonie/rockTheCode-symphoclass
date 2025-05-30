@@ -1,0 +1,6 @@
+.tsc-main-login-form,
+.tsc-main-register-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-600);
+}

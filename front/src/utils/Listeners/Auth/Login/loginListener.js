@@ -6,7 +6,7 @@ import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
 const createLoginListenerFromLoginPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
-    const { headerClassName, mainClassName } = appConfig;
+    const { footerClassName, headerClassName, mainClassName } = appConfig;
     const context = 'createLoginListenerFromLoginPage';
 
     const callback = event => {
@@ -16,7 +16,10 @@ const createLoginListenerFromLoginPage = (className, appConfig, currentPage, HTM
             const header = querySelectorChecker(`.${headerClassName}`, context);
 
             const main = querySelectorChecker(`.${mainClassName}`, context);
-            activatePageCleaner(header, main);
+
+            const footer = querySelectorChecker(`.${footerClassName}`, context);
+
+            activatePageCleaner(header, main, footer);
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
         } catch (error) {
@@ -24,7 +27,7 @@ const createLoginListenerFromLoginPage = (className, appConfig, currentPage, HTM
         }
     };
 
-    const loginEventListenerFromLoginPage = createListenerConstructor(`.${className}-${currentPage}_button`, context, callback, 'click');
+    const loginEventListenerFromLoginPage = createListenerConstructor(`.${className}-submit-btn`, context, callback, 'click');
 
     createNewListener(loginEventListenerFromLoginPage, appConfig, HTMLElementsWithListeners, context);
 };

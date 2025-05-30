@@ -193,11 +193,15 @@ button {
 
 .app {
   background-color: var(--tsc-color-200);
-  height: var(--tsc-height-full);
 }
 
 .tsc {
   flex-direction: column;
+}
+
+.tsc-flex {
+  align-items: center;
+  gap: var(--tsc-gap-400);
 }
 
 .tsc-grid {
@@ -208,6 +212,11 @@ button {
 
 .tsc-header {
   height: 4rem;
+}
+
+.tsc-header-flex {
+  align-items: center;
+  display: flex;
 }
 
 .tsc-header-events {

@@ -1,8 +1,6 @@
 import './editProfileForm.css';
-import createNewField from '../../Field/field';
-import createNewFieldData from '../../Field/Data/fieldData';
-import createNewList from '../../../utils/List/list';
-import createNewSubmitButton from '../../Button/Submit/submitButton';
+import { createFieldData } from '../../../config/config';
+import createSubmitBtn from '../../Button/Submit/submit';
 import createNewTagTemplate from '../../Tag/tag';
 
 const createEditProfileForm = (className, appConfig, currentPage) => {
@@ -14,21 +12,21 @@ const createEditProfileForm = (className, appConfig, currentPage) => {
 
     /* TO-DO: Dar opción para poder cambiar la imagen del perfil */
 
-    const userNameField = createNewFieldData(`${mainClassName}-${currentPage}_form-username_field`, 'username', 'Nombre de Usuario');
+    const userNameField = createFieldData(`${mainClassName}-${currentPage}_form-username_field`, 'username', 'Nombre de Usuario');
     editProfileFormFields.push(userNameField);
 
-    const fullNameField = createNewFieldData(`${mainClassName}-${currentPage}_form-fullname_field`, 'fullname', 'Nombre Completo');
+    const fullNameField = createFieldData(`${mainClassName}-${currentPage}_form-fullname_field`, 'fullname', 'Nombre Completo');
     editProfileFormFields.push(fullNameField);
 
-    const emailField = createNewFieldData(`${mainClassName}-${currentPage}_form-email_field`, 'email', 'Email');
+    const emailField = createFieldData(`${mainClassName}-${currentPage}_form-email_field`, 'email', 'Email');
     editProfileFormFields.push(emailField);
 
-    const passwordField = createNewFieldData(`${mainClassName}-${currentPage}_form-password_field`, 'password', 'Contraseña', 'password');
+    const passwordField = createFieldData(`${mainClassName}-${currentPage}_form-password_field`, 'password', 'Contraseña', 'password');
     editProfileFormFields.push(passwordField);
 
-    createNewList(editProfileFormList, editProfileFormFields, field => createNewField(field));
+    // TO-DO: Crear una lista de campos para el formulario de la edición del perfil
 
-    const submitProfileItem = createNewSubmitButton(`${mainClassName}-${currentPage}_form`, currentPage, 'Actualizar');
+    const submitProfileItem = createSubmitBtn(`${mainClassName}-${currentPage}_form`, 'Actualizar');
     editProfileFormList.appendChild(submitProfileItem);
 
     /* TO-DO: Dar opción para poder eliminar la cuenta del usuario y volver a la página de login */

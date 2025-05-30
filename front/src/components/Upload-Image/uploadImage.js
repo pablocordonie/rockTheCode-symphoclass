@@ -1,8 +1,8 @@
 import './uploadImage.css';
-import createNewButton from '../../Button/button';
-import createNewImage from '../../Image/image';
-import createNewInput from '../../Input/input';
-import createNewTagTemplate from '../../Tag/tag';
+import createNewButton from '../Button/button';
+import createNewImage from '../Image/image';
+import createNewInput from '../Input/input';
+import createNewTagTemplate from '../Tag/tag';
 
 const createUploadImageField = (field) => {
     const { className, inputType, name, title } = field;

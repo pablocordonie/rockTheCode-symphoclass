@@ -1,10 +1,15 @@
 import createLogo from '../../../components/Title/H1/Logo/logo';
+import createLogoContent from '../../../components/Div/Logo/logo';
 
-const createAuthHeaderContent = (headerSelector, appConfig) => {
+const createAuthHeaderContent = (appConfig) => {
     const { headerClassName } = appConfig;
 
-    const mainTitle = createLogo(`${headerClassName}-logo`, 'The SymphoClass');
-    headerSelector.appendChild(mainTitle);
+    const authLogoContent = createLogoContent(`${headerClassName}-logo-content`);
+
+    const authLogo = createLogo(`${headerClassName}-logo`, 'The SymphoClass');
+    authLogoContent.appendChild(authLogo);
+
+    return authLogoContent;
 };
 
 export default createAuthHeaderContent;

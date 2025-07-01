@@ -1,0 +1,6 @@
+.tsc-main-events-message-content {
+  align-items: center;
+  display: flex;
+  height: var(--tsc-height-900);
+  justify-content: center;
+}

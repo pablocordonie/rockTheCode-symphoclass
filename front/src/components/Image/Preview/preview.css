@@ -1,0 +1,7 @@
+.tsc-main-edit_profile-form-img-field-preview,
+.tsc-event-form-img-field-preview {
+  align-self: center;
+  display: none;
+  height: var(--tsc-height-400);
+  width: var(--tsc-width-500);
+}

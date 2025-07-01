@@ -1,10 +1,10 @@
-import createTestimonialAuthor from '../../../../components/Item/Testimonials/Author/author';
-import createTestimonialItem from '../../../../components/Item/Testimonials/Testimonial/testimonial';
-import createTestimonialContent from '../../../../components/List/Testimonials/Testimonial/testimonial';
-import createTestimonialName from '../../../../components/Paragraph/Testimonials/Author/Name/name';
-import createTestimonialParagraph from '../../../../components/Paragraph/Testimonials/Testimonial/testimonial';
-import createTestimonialRole from '../../../../components/Paragraph/Testimonials/Author/Role/role';
-import createTestimonialsContent from '../../../../components/List/Testimonials/testimonials';
+import createTestimonialAuthor from '../../../../components/Item/Home/Testimonials/Author/author';
+import createTestimonialItem from '../../../../components/Item/Home/Testimonials/Testimonial/testimonial';
+import createTestimonialContent from '../../../../components/List/Home/Testimonials/Testimonial/testimonial';
+import createTestimonialName from '../../../../components/Paragraph/Home/Testimonials/Author/Name/name';
+import createTestimonialParagraph from '../../../../components/Paragraph/Home/Testimonials/Testimonial/testimonial';
+import createTestimonialRole from '../../../../components/Paragraph/Home/Testimonials/Author/Role/role';
+import createTestimonialsContent from '../../../../components/List/Home/Testimonials/testimonials';
 import createTestimonialsSection from '../../../../components/Section/Testimonials/testimonials';
 import createTestimonialsTitle from '../../../../components/Title/H2/Testimonials/testimonials';
 import { homeTestimonials } from '../../../../config/config';
@@ -14,7 +14,7 @@ const createHomeTestimonialsSection = (appConfig, currentPage) => {
 
     const testimonialsSection = createTestimonialsSection(`${mainClassName}-${currentPage}-testimonials`, 'testimonials');
 
-    const testimonialsTitle = createTestimonialsTitle(`${testimonialsSection.className}-title`, 'What Our Users Say');
+    const testimonialsTitle = createTestimonialsTitle(`${testimonialsSection.className}-title`, 'La música a través de The SymphoClass');
     testimonialsSection.appendChild(testimonialsTitle);
 
     const testimonialsContent = createTestimonialsContent(`${testimonialsSection.className}-content`);

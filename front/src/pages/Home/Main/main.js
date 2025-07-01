@@ -4,7 +4,7 @@ import createHomeFeaturesSection from './Features/features';
 import createHomeHeroSection from './Hero/hero';
 import createHomeTestimonialsSection from './Testimonials/testimonials';
 
-const createHomeMain = (mainSelector, appConfig, currentPage) => {
+const createHomeMainContent = (mainSelector, appConfig, currentPage) => {
     const heroSection = createHomeHeroSection(appConfig, currentPage);
     mainSelector.appendChild(heroSection);
 
@@ -21,4 +21,4 @@ const createHomeMain = (mainSelector, appConfig, currentPage) => {
     mainSelector.appendChild(ctaSection);
 };
 
-export default createHomeMain;
+export default createHomeMainContent;

@@ -1,33 +1,34 @@
 import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 
 const adjustMainContentHeight = (appConfig, currentPage) => {
-    const { mainClassName, scClassName } = appConfig;
-    let main = '';
-    const tsc = querySelectorChecker(`.${scClassName}`, 'adjustMainContentHeight');
+    const { mainClassName, tscClassName } = appConfig;
+    const context = 'adjustMainContentHeight';
 
-    const windowHeight = window.innerHeight;
-    const windowWidth = window.innerWidth;
-    const authPaddingAmount = windowHeight * 0.015;
-    const paddingAmount = windowHeight * 0.01;
+    const authPaddingAmount = window.innerHeight * 0.015;
+    const paddingAmount = window.innerHeight * 0.01;
+    const main = querySelectorChecker(`.${mainClassName}`, context);
+    const tsc = querySelectorChecker(`.${tscClassName}`, context);
 
-    if (currentPage === 'login' || currentPage === 'register') {
-        main = querySelectorChecker(`.${mainClassName}`, 'adjustMainContentHeight');
+    if (currentPage === 'login') {
+        const paddingTop = window.innerWidth > 900 ? authPaddingAmount + 0.005 : window.innerHeight * 0.0125;
 
-        if (currentPage === 'login') {
-            const paddingTop = windowWidth > 900 ? authPaddingAmount + 0.005 : windowHeight * 0.0125;
-            tsc.style.paddingTop = `${paddingTop}rem`;
-            main.style.paddingBottom = `${authPaddingAmount}rem`;
-        } else if (currentPage === 'register') {
-            const paddingTop = windowHeight * 0.005;
-            tsc.style.paddingTop = `${paddingTop}rem`;
-            main.style.paddingBottom = `${authPaddingAmount}rem`;
-        }
-    } else if (currentPage === 'events') {
-        main = querySelectorChecker(`.${mainClassName}-events`, 'adjustMainContentHeight');
-
-        const paddingTop = windowHeight * 0.0075;
+        main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
         tsc.style.paddingTop = `${paddingTop}rem`;
-        main.style.paddingBottom = `${paddingAmount}rem`;
+    } else if (currentPage === 'edit_profile') {
+        const paddingTop = window.innerHeight * 0.0025;
+
+        main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
+        tsc.style.paddingTop = `${paddingTop}rem`;
+    } else if (currentPage === 'register') {
+        const paddingTop = window.innerHeight * 0.005;
+
+        main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
+        tsc.style.paddingTop = `${paddingTop}rem`;
+    } else if (currentPage === 'events') {
+        const paddingTop = window.innerHeight * 0.008;
+
+        main.style.padding = `${paddingTop}rem var(--tsc-padding-000) ${paddingAmount}rem`;
+        tsc.style.paddingTop = 'var(--tsc-padding-000)';
     }
 };
 

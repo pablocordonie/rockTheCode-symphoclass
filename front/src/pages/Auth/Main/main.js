@@ -21,17 +21,17 @@ const createAuthMainContent = (className, currentPage) => {
 
     if (currentPage === 'register') {
 
-        const usernameField = createFieldData(`${className}-username_field`, 'username', 'Username');
+        const usernameField = createFieldData(`${className}-username_field`, 'username', 'username', 'Nombre de Usuario');
         authFormFields.push(usernameField);
 
-        const fullnameField = createFieldData(`${className}-fullname_field`, 'fullname', 'Fullname');
+        const fullnameField = createFieldData(`${className}-fullname_field`, 'fullname', 'fullname', 'Nombre Completo');
         authFormFields.push(fullnameField);
     }
 
-    const emailField = createFieldData(`${className}-email_field`, 'email', 'Email');
+    const emailField = createFieldData(`${className}-email_field`, 'email', 'email', 'Correo electrónico');
     authFormFields.push(emailField);
 
-    const passwordField = createFieldData(`${className}-password_field`, 'password', 'Contraseña', 'password');
+    const passwordField = createFieldData(`${className}-password_field`, 'password', 'password', 'Contraseña', 'password');
     authFormFields.push(passwordField);
 
     authFormFields.forEach(field => {
@@ -41,12 +41,14 @@ const createAuthMainContent = (className, currentPage) => {
         const authFormFieldLabel = createNewLabel(`${authFormField.className}-label`, field.name, field.title);
         authFormField.appendChild(authFormFieldLabel);
 
-        const authFormFieldInput = createNewInput(`${authFormField.className}-input`, field.name, field.placeholderText, field.inputType);
+        const authFormFieldInput = createNewInput(`${authFormField.className}-input`, field.id, field.name, field.placeholderText, field.inputType);
         authFormField.appendChild(authFormFieldInput);
     });
 
     const authFormOptions = createAuthFormOptions(`${className}-options`);
     authForm.appendChild(authFormOptions);
+
+    // TO-DO: Falta crear un botón en forma de flecha que haga de retorno a la página de inicio
 
     if (currentPage === 'login') {
         const submitBtn = createSubmitBtn(`${className}-submit-btn`, 'Iniciar sesión');

@@ -1,0 +1,10 @@
+.tsc-header-events-nav-user-item:nth-child(2) {
+  align-items: center;
+  background-color: var(--tsc-color-1000);
+  border-radius: var(--tsc-border-400);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  height: var(--tsc-height-300);
+  width: var(--tsc-width-200);
+}

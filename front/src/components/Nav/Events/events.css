@@ -1,0 +1,14 @@
+.tsc-header-events-nav {
+  background-color: var(--tsc-color-100);
+  box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
+    var(--tsc-box-shadow-300) var(--tsc-color-000-transparent);
+  color: var(--tsc-color-1000);
+  height: inherit;
+  left: var(--tsc-position-left-000);
+  padding: var(--tsc-padding-100) var(--tsc-padding-000) var(--tsc-padding-100)
+    var(--tsc-padding-300);
+  position: fixed;
+  right: var(--tsc-position-right-000);
+  top: var(--tsc-position-top-000);
+  z-index: var(--tsc-z-index-300);
+}

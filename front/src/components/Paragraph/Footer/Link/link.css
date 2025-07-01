@@ -1,9 +1,11 @@
-.tsc-footer-home-link-item p {
+.tsc-footer-home-link-item p,
+.tsc-footer-events-link-item p {
   cursor: pointer;
   display: inline-block;
 }
 
-.tsc-footer-home-link-item p:hover {
+.tsc-footer-home-link-item p:hover,
+.tsc-footer-events-link-item p:hover {
   color: var(--tsc-color-700);
   opacity: var(--tsc-opacity-200);
 }

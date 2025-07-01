@@ -1,4 +1,5 @@
-.tsc-footer-home-link-heading {
+.tsc-footer-home-link-heading,
+.tsc-footer-events-link-heading {
   color: var(--tsc-color-600);
   font-size: var(--tsc-font-size-500);
 }

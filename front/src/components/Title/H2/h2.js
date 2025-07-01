@@ -1,4 +1,3 @@
-import './h2.css';
 import createNewTagTemplate from '../../Tag/tag';
 
 const createNewH2Title = (className, text) => createNewTagTemplate('h2', className, {}, text);

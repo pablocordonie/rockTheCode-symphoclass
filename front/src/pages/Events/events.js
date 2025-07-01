@@ -1,54 +1,58 @@
-import createConfirmAttendanceListeners from '../../utils/Listeners/Event/Confirm-Attendance/confirmAttendanceListeners';
-import createEditProfileListener from '../../utils/Listeners/Menu/editProfileListener';
+import createConfirmAttendanceListeners from '../../utils/Listeners/Event/Confirm-Attendance/confirmAttendance';
+import createEditProfileListener from '../../utils/Listeners/Menu/editProfile';
 import createEventsFilter from '../../utils/Listeners/Filter/eventsFilter';
-import createEventsList from '../../components/Event/List/eventsList';
-import createEventCreatorPageListener from '../../utils/Listeners/Event/eventCreatorListener';
-import createLogoutListener from '../../utils/Listeners/Menu/logoutListener';
-import createNewButton from '../../components/Button/button';
-import createNewInput from '../../components/Input/input';
-import createProfileListener from '../../utils/Listeners/Menu/profileListener';
-import createUserNavbar from '../../components/Nav/User/userNav';
-import dropdownMenuToggle from '../../utils/Toggle/dropdownMenuToggle';
+import createEventsFooterContent from './Footer/footer';
+import createEventsHeaderContent from './Header/header';
+import createEventsMainContent from './Main/main';
+import createLogoutListener from '../../utils/Listeners/Menu/logout';
+import createNewEventCreator from '../../components/Event/event';
+import createNewEventListener from '../../utils/Listeners/Event/Event-Creator/event';
+import dropdownMenuToggle from '../../utils/Toggle/dropdownMenu';
 import errorHandler from '../../utils/Error/errorHandler';
+import eventCreatorListener from '../../utils/Toggle/eventCreator';
 import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';
 import testCards from '../../utils/Data/testCards';
-import toggleClass from '../../utils/Toggle/toggleClass';
 
 const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
-    const { headerClassName, mainClassName } = appConfig;
+    const { appId, footerClassName, headerClassName, mainClassName, tscClassName } = appConfig;
+    const context = 'printEventsList';
 
     try {
-        const header = querySelectorChecker(`.${headerClassName}`, 'printEventsList');
-        toggleClass(header, headerClassName, `${headerClassName}-events`);
+        const appContent = querySelectorChecker(`#${appId}`, context);
 
-        const headerNavbar = createUserNavbar(`${headerClassName}-nav`, currentPage, 'random_user');
-        header.appendChild(headerNavbar);
+        const eventCreator = createNewEventCreator(appConfig);
+        appContent.insertAdjacentHTML('afterbegin', eventCreator.outerHTML);
 
-        const headerInput = createNewInput(`${header.className}-search_input`, '', 'Buscar eventos...');
-        header.appendChild(headerInput);
+        createNewEventListener(appConfig, currentPage, HTMLElementsWithListeners);
 
-        const headerEventCreatorButton = createNewButton(`${headerClassName}-events-create_btn`, 'Crear Nuevo Evento');
-        header.appendChild(headerEventCreatorButton);
+        const header = querySelectorChecker(`.${headerClassName}`, context);
+        header.classList.remove(`${headerClassName}-flex`);
 
-        dropdownMenuToggle(`${headerClassName}-nav`, appConfig, HTMLElementsWithListeners);
-        createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
+        const headerContent = createEventsHeaderContent(appConfig, currentPage);
+        header.appendChild(headerContent);
+
+        eventCreatorListener(appConfig, currentPage, HTMLElementsWithListeners);
+        dropdownMenuToggle(appConfig, currentPage, HTMLElementsWithListeners);
         createEditProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
-        createProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createLogoutListener(appConfig, currentPage, HTMLElementsWithListeners);
 
-        const main = querySelectorChecker(`.${mainClassName}`, 'printEventsList');
-        toggleClass(main, mainClassName, `${mainClassName}-events`);
+        const main = querySelectorChecker(`.${mainClassName}`, context);
 
-        const eventsList = createEventsList(main.className, testCards);
-        main.appendChild(eventsList);
+        const eventsMainContent = createEventsMainContent(appConfig, currentPage, testCards);
+        main.appendChild(eventsMainContent);
 
-        createEventCreatorPageListener(appConfig, currentPage, HTMLElementsWithListeners);
-        createEventsFilter(header.className, appConfig, HTMLElementsWithListeners);
+        createConfirmAttendanceListeners(appConfig, currentPage, HTMLElementsWithListeners);
+        createEventsFilter(header.className, appConfig, currentPage, HTMLElementsWithListeners);
 
-        const eventItems = Array.from(document.querySelectorAll(`.${main.className}-card`));
-        createConfirmAttendanceListeners(appConfig, eventItems, HTMLElementsWithListeners);
+        const footer = querySelectorChecker(`.${footerClassName}`, context);
+        footer.style.backgroundColor = 'var(--tsc-color-100)';
+
+        const footerContent = createEventsFooterContent(appConfig, currentPage);
+        footer.appendChild(footerContent);
+
         return main;
     } catch (error) {
-        return errorHandler(error, 'printEventsList', appConfig, HTMLElementsWithListeners);
+        return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
     }
 };
 

@@ -1,0 +1,6 @@
+.tsc-main-home-cta-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-400);
+  position: relative;
+}

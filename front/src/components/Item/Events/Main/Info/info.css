@@ -1,0 +1,4 @@
+.tsc-main-events-card-info-item:last-child {
+  display: flex;
+  justify-content: center;
+}

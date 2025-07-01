@@ -1,0 +1,12 @@
+.tsc-header-events-nav-user-menu-profile-option,
+.tsc-header-events-nav-user-menu-edit-profile-option,
+.tsc-header-events-nav-user-menu-logout-option {
+  color: var(--tsc-color-100);
+  cursor: pointer;
+}
+
+.tsc-header-events-nav-user-menu-profile-option:hover,
+.tsc-header-events-nav-user-menu-edit-profile-option:hover,
+.tsc-header-events-nav-user-menu-logout-option:hover {
+  color: var(--tsc-color-600);
+}

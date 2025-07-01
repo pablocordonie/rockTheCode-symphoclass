@@ -1,4 +1,4 @@
-import createListenerConstructor from '../Listener/Constructor/listener';
+import createListenerConstructor from '../Listener/Constructor/constructor';
 import createNewListener from '../Listener/newListener';
 import errorHandler from '../../Error/errorHandler';
 

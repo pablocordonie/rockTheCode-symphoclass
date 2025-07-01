@@ -1,0 +1,5 @@
+.tsc-header-events-nav-main-content {
+  align-items: center;
+  display: flex;
+  gap: var(--tsc-gap-800);
+}

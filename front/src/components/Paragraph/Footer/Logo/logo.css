@@ -1,4 +1,5 @@
-.tsc-footer-home-logo-tagline {
+.tsc-footer-home-logo-tagline,
+.tsc-footer-events-logo-tagline {
   color: var(--tsc-color-1000);
   opacity: var(--tsc-opacity-100);
 }

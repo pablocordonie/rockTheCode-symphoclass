@@ -1,9 +1,0 @@
-.tsc-main-profile_info-profile_avatar-img {
-  width: var(--tsc-width-700);
-}
-
-@media screen and (min-width: 900px) {
-  .tsc-main-profile_info-profile_avatar-img {
-    width: var(--tsc-width-800);
-  }
-}

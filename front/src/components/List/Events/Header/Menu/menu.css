@@ -1,0 +1,14 @@
+.tsc-header-events-nav-user-menu {
+  background-color: var(--tsc-color-1000);
+  box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
+    var(--tsc-box-shadow-200) var(--tsc-color-000-transparent);
+  border-radius: var(--tsc-border-200);
+  display: none;
+  flex-direction: column;
+  gap: var(--tsc-gap-500);
+  padding: var(--tsc-padding-200) var(--tsc-padding-100);
+  position: absolute;
+  right: var(--tsc-position-top-000);
+  top: var(--tsc-position-top-200);
+  z-index: var(--tsc-z-index-300);
+}

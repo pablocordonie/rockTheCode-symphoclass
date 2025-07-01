@@ -1,4 +1,4 @@
-import createCloseErrorListener from '../Listeners/Error/errorListener';
+import createCloseErrorListener from '../Listeners/Error/error';
 import createErrorNotification from '../../components/Error/error';
 import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 

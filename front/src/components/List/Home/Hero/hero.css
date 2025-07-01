@@ -1,0 +1,6 @@
+.tsc-main-home-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-400);
+  z-index: var(--tsc-z-index-200);
+}

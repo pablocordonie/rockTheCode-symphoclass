@@ -76,6 +76,12 @@
   --tsc-gap-800: 2rem;
   --tsc-gap-900: 2.25rem;
   --tsc-gap-1000: 2.5rem;
+  --tsc-gap-1100: 5rem;
+  --tsc-gap-1200: 7.5rem;
+  --tsc-gap-1300: 10rem;
+  --tsc-gap-1400: 12.5rem;
+  --tsc-gap-1500: 15rem;
+  --tsc-gap-1600: 17.5rem;
 
   /* GRID */
   --tsc-grid-100: 1fr;
@@ -91,7 +97,8 @@
   --tsc-height-800: 8rem;
   --tsc-height-900: 90svh;
   --tsc-height-1000: 100svh;
-  --tsc-height-full: 110svh;
+  --tsc-height-1100: 110svh;
+  --tsc-height-1200: 200%;
 
   /* LINE-HEIGHT */
   line-height: 1.25;
@@ -124,7 +131,7 @@
   --tsc-padding-900: 2.5rem;
   --tsc-padding-1000: 6rem;
   --tsc-padding-1100: 8rem;
-  --tsc-padding-1200: 10rem;
+  --tsc-padding-1200: 15rem;
 
   /* POSITION */
   --tsc-position-bottom-000: 0;
@@ -137,7 +144,8 @@
   --tsc-position-right-200: 1.25rem;
   --tsc-position-top-000: 0;
   --tsc-position-top-100: 0.25rem;
-  --tsc-position-top-200: 3.75rem;
+  --tsc-position-top-200: 3.7rem;
+  --tsc-position-top-300: 5rem;
 
   /* TEXT */
   text-rendering: optimizeLegibility;
@@ -160,6 +168,7 @@
   --tsc-z-index-200: 10;
   --tsc-z-index-300: 100;
   --tsc-z-index-400: 1000;
+  --tsc-z-index-500: 10000;
 }
 
 * {

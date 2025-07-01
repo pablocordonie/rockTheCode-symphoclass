@@ -1,4 +1,4 @@
-input {
+input:not(.tsc-main-edit_profile-form-img-field-input) {
   background-color: var(--tsc-color-1000);
   border: var(--tsc-border-200) solid var(--tsc-color-600);
   border-radius: var(--tsc-border-300);
@@ -7,10 +7,6 @@ input {
   width: var(--tsc-width-600);
 }
 
-input:hover {
+input:not(.tsc-main-edit_profile-form-img-field-input):hover {
   border: var(--tsc-border-200) solid var(--tsc-color-600);
-}
-
-.tsc-main-create_event_form-fields div input {
-  width: var(--tsc-width-full);
 }

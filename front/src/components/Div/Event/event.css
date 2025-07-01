@@ -1,0 +1,9 @@
+.tsc-event {
+  background-color: var(--tsc-color-000-transparent);
+  display: none;
+  justify-content: center;
+  min-height: var(--tsc-height-1200);
+  min-width: var(--tsc-width-full);
+  position: absolute;
+  z-index: var(--tsc-z-index-500);
+}

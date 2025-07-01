@@ -1,0 +1,12 @@
+.tsc-main-edit_profile-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-300);
+}
+
+@media screen and (min-width: 360px) {
+  .tsc-main-edit_profile-form {
+    gap: var(--tsc-gap-400);
+  }
+}

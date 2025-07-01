@@ -1,9 +1,7 @@
 import printAuthForm from '../pages/Auth/auth';
-import printEventCreatorForm from '../pages/Events/Event-Creator/eventCreator';
 import printEventsForm from '../pages/Events/events';
-import printEditProfileForm from '../pages/Profile/Edit-Profile/editProfile';
+import printEditProfileForm from '../pages/Edit-Profile/editProfile';
 import printHomePage from '../pages/Home/home';
-import printUserProfile from '../pages/Profile/profile';
 import querySelectorChecker from '../utils/QuerySelector/querySelectorChecker';
 
 const app = querySelectorChecker('#app', 'appConfig');
@@ -27,13 +25,15 @@ export const appConfig = {
     loaderClassName,
     loaderTimeout,
     mainClassName: main.className,
-    scClassName: tsc.className
+    tscClassName: tsc.className
 };
 
-export const createFieldData = (className, name, title, inputType = 'text', inputId = '', placeholderText = '') => {
+export const barsClassNames = ['fa-solid', 'fa-bars'];
+
+export const createFieldData = (className, id, name, title, inputType = 'text', placeholderText = '') => {
     return {
         className,
-        inputId,
+        id,
         inputType,
         name,
         placeholderText,
@@ -43,108 +43,124 @@ export const createFieldData = (className, name, title, inputType = 'text', inpu
 
 export const homeAboutParagraphs = [
     {
-        text: 'Founded in 2020, The SymphoClass was born from a simple idea: to connect passionate music students with world-class instructors regardless of geographical limitations. Our platform bridges the gap between talented musicians seeking knowledge and experienced instructors eager to share their expertise.'
+        text: 'Fundado en 2020, The SymphoClass nació a partir de una simple idea: conectar a estudiantes apasionados por la música con el mejor profesorado a nivel mundial sin limitaciones geográficas de por medio. Nuestra plataforma busca infundir el mejor conocimiento musical posible para nuestros alumnos a través de gente ávida de compartir su enorme experiencia con ellos.'
     }, {
-        text: 'We believe that quality music education should be accessible to everyone. Our mission is to democratize access to exceptional musical instruction and foster a global community of musicians who inspire and support each other.'
+        text: 'Creemos que la calidad educativa no debe estar rivalizada con la accesibilidad a dicha educación. Por lo tanto, nuestra misión es democratizar el acceso al aprendizaje musical de gran nivel y fomentar una comunidad global de músicos que se inspiren y se apoyen mutuamente.'
     }
 ];
 
 export const homeAboutStats = [
     {
         number: '5000+',
-        label: 'Active Students'
+        label: 'Estudiantes'
     },
     {
         number: '750+',
-        label: 'Expert Instructors'
+        label: 'Profesores'
     },
     {
         number: '45+',
-        label: 'Countries Represented'
+        label: 'Países'
     }
 ];
 
+// TO-DO: Añadir un url con la imagen de cada miembro del equipo
 export const homeAboutTeamMembers = [
     {
         name: 'Sofía Martínez',
         imgSrc: '#',
-        role: 'Founder & CEO',
-        bio: 'Former concert pianist with a passion for music education and technology. Sofía founded The SymphoClass to make quality music instruction accessible worldwide.'
+        role: 'Fundadora & Directora Ejecutiva',
+        bio: 'Ex-pianista apasionada por la conjunción entre la educación musical y la tecnología. Sofía fundó The SymphoClass para que el aprendizaje musical de calidad fuera accesible a todo el mundo.'
     },
     {
         name: 'David Kim',
         imgSrc: '#',
-        role: 'CTO',
-        bio: 'Violinist and software engineer who combines his love for music and technology to create innovative solutions for music education.'
+        role: 'Director de Software',
+        bio: 'Violonchelista e ingeniero de software que combina su amor por la música y la tecnología para conseguir crear soluciones innovadoras para The SymphoClass.'
     },
     {
         name: 'Emma Johnson',
         imgSrc: '#',
-        role: 'Head of Education',
-        bio: 'Former professor at Juilliard with over 20 years of experience in music education. Emma ensures the highest quality of instruction on our platform.'
+        role: 'Jefa de Educación',
+        bio: 'Con más de 20 años de experiencia en la educación musical, Emma supone para nosotros poder enseñar a nuestros alumnos con la más alta calidad en nuestra plataforma.'
     }
 ];
 
 export const homeFeatures = [
     {
         icon: 'fa-music',
-        title: 'Expert Instructors',
-        paragraph: 'Connect with renowned musicians and educators from prestigious institutions worldwide'
+        title: 'Instrucción Inmejorable',
+        paragraph: 'Conecta con los artistas y educadores más reconocidos y prestigiosos a nivel mundial'
     }, {
         icon: 'fa-calendar-check',
-        title: 'Easy Scheduling',
-        paragraph: 'Book masterclasses that fit your schedule with our intuitive calendar system'
+        title: 'Agenda Flexible',
+        paragraph: 'Reserva el taller que mejor encaje con tu experiencia y con tu tiempo'
     }, {
         icon: 'fa-globe',
-        title: 'Global Community',
-        paragraph: 'Join a worldwide network of musicians, students, and educators passionate about music'
+        title: 'Comunidad Global',
+        paragraph: 'Únete a la mayor red de artistas apasionados por la música'
     }, {
         icon: 'fa-graduation-cap',
-        title: 'Personalized Learning',
-        paragraph: 'Receive tailored instruction that addresses your specific musical goals and challenges'
+        title: 'Aprendizaje Personalizado',
+        paragraph: 'Recibe la mejor enseñanza para cubrir tus metas musicales'
     }
 ];
 
 export const homeFooterColumns = [
     {
-        title: 'Platform',
-        items: ['Features', 'Testimonials', 'Pricing']
+        title: 'Plataforma',
+        items: ['Características', 'Testimonios', 'FAQ']
     },
     {
-        title: 'Company',
-        items: ['About Us', 'Careers', 'Contact']
+        title: 'Empresa',
+        items: ['Propósito', 'Trayectoria', 'Contacto']
     },
     {
-        title: 'Legal',
-        items: ['Terms', 'Privacy', 'Cookies']
+        title: 'Legalidad',
+        items: ['Términos', 'Privacidad', 'Cookies']
     }
 ];
 
-export const homeHeaderMenuItems = ['Features', 'Testimonials', 'About', 'Login'];
+export const homeHeaderMenuItems = [
+    {
+        item: 'features',
+        title: 'Características'
+    },
+    {
+        item: 'testimonials',
+        title: 'Testimonios'
+    },
+    {
+        item: 'about',
+        title: 'Propósito'
+    },
+    {
+        item: 'login',
+        title: 'Login'
+    }
+];
 
 export const homeTestimonials = [
     {
         name: 'María Rodríguez',
-        role: 'Piano Instructor, Madrid Conservatory',
-        paragraph: `"SymphoClass transformed my teaching career. I now connect with students from around the world
-                  without leaving my studio."`
+        role: 'Profesora de Piano, Conservatorio Real de Madrid',
+        paragraph: `"The SymphoClass ha cambiado mi vida laboral por completo. Ahora conecto con estudiantes de todo el mundo sin salir de mi estudio."`
     }, {
         name: 'James Chen',
-        role: 'Violin Student',
-        paragraph: `"As a student in a small town, I never thought I'd have access to world-class violin instruction.
-                  SymphoClass made it possible."`
+        role: 'Estudiante de Violín, Berklee College of Music de Valencia',
+        paragraph: `"Vivir en el extranjero me impedía acceder a la mejor enseñanza de mi instrumento, el violín. The SymphoClass me lo ha facilitado."`
     }
 ];
 
 export const pageRenderers = {
-    create_event: printEventCreatorForm,
     edit_profile: printEditProfileForm,
     events: printEventsForm,
     home: printHomePage,
     login: printAuthForm,
-    profile: printUserProfile,
     register: printAuthForm
 };
+
+export const userIconClassNames = ['fa-solid', 'fa-user', 'fa-sm'];
 
 export const userInfo = {
     email: 'randomuser@email.com',

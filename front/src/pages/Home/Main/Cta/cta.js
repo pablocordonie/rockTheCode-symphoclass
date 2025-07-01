@@ -1,9 +1,9 @@
-import createCtaContent from '../../../../components/List/Cta/cta';
-import createCtaItem from '../../../../components/Item/Cta/cta';
-import createCtaParagraph from '../../../../components/Paragraph/Cta/cta';
+import createCtaContent from '../../../../components/List/Home/Cta/cta';
+import createCtaItem from '../../../../components/Item/Home/Cta/cta';
+import createCtaParagraph from '../../../../components/Paragraph/Home/Cta/cta';
 import createCtaSection from '../../../../components/Section/Cta/cta';
 import createCtaSignup from '../../../../components/Anchor/Signup/Cta/signup';
-import createCtaSignupButton from '../../../../components/Button/Signup/Cta/signup';
+import createCtaSignupButton from '../../../../components/Button/Home/Cta/cta';
 import createCtaTitle from '../../../../components/Title/H2/Cta/cta';
 
 const createHomeCtaSection = (appConfig, currentPage) => {
@@ -15,10 +15,10 @@ const createHomeCtaSection = (appConfig, currentPage) => {
     const ctaContent = createCtaContent(`${ctaSection.className}-content`);
     ctaSection.appendChild(ctaContent);
 
-    const ctaTitle = createCtaTitle(`${ctaSection.className}-title`, 'Ready to Start Your Musical Journey?');
+    const ctaTitle = createCtaTitle(`${ctaSection.className}-title`, 'Estás list@ para empezar tu trayectoria musical?');
     ctaTags.push(ctaTitle);
 
-    const ctaParagraph = createCtaParagraph(`${ctaSection.className}-paragraph`, 'Join thousands of musicians who are already using SymphoClass to teach and learn');
+    const ctaParagraph = createCtaParagraph(`${ctaSection.className}-paragraph`, 'Únete a miles de artistas de todo el mundo que aprenden cada día con The SymphoClass');
     ctaTags.push(ctaParagraph);
 
     const ctaSignupAnchor = createCtaSignup(`${ctaSection.className}-signup`, '#register');
@@ -31,7 +31,7 @@ const createHomeCtaSection = (appConfig, currentPage) => {
         ctaItem.appendChild(tag);
     });
 
-    const ctaSignupButton = createCtaSignupButton(`${ctaSignupAnchor.className}-btn`, 'Create Account');
+    const ctaSignupButton = createCtaSignupButton(`${ctaSignupAnchor.className}-btn`, 'Regístrate');
     ctaSignupAnchor.appendChild(ctaSignupButton);
 
     return ctaSection;

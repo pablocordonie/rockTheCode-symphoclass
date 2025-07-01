@@ -7,7 +7,7 @@ import createFooterLogoItems from './Logo/logo';
 import createFooterLinksContent from '../../../components/List/Footer/Links/links';
 import createFooterLinksItems from './Links/links';
 
-const createHomeFooter = (appConfig, currentPage) => {
+const createHomeFooterContent = (appConfig, currentPage) => {
     const { footerClassName } = appConfig;
     const footerContentTags = [];
 
@@ -38,4 +38,4 @@ const createHomeFooter = (appConfig, currentPage) => {
     return footerContent;
 };
 
-export default createHomeFooter;
+export default createHomeFooterContent;

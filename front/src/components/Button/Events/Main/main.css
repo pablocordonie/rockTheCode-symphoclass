@@ -1,0 +1,7 @@
+.tsc-main-events-card-confirm-btn {
+  background-color: var(--tsc-color-400);
+  border: var(--tsc-border-000);
+  border-radius: var(--tsc-border-200);
+  color: var(--tsc-color-1000);
+  padding: var(--tsc-padding-200) var(--tsc-padding-400);
+}

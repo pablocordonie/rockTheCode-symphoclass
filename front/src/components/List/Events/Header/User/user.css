@@ -1,0 +1,5 @@
+.tsc-header-events-nav-profile-user {
+  display: flex;
+  align-items: center;
+  gap: var(--tsc-gap-200);
+}

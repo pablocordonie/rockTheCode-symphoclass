@@ -1,9 +1,9 @@
 import createAutoScrollToAnchor from '../../utils/Listeners/Scroll/scroll';
-import createHomeFooter from './Footer/footer';
-import createHomeHeader from './Header/header';
-import createHomeLoginListener from '../../utils/Listeners/Home/Login/loginListener';
-import createHomeMain from './Main/main';
-import createHomeRegisterListener from '../../utils/Listeners/Home/Register/registerListener';
+import createHomeFooterContent from './Footer/footer';
+import createHomeHeaderContent from './Header/header';
+import createHomeLoginListener from '../../utils/Listeners/Home/Login/login';
+import createHomeMainContent from './Main/main';
+import createHomeRegisterListener from '../../utils/Listeners/Home/Register/register';
 import errorHandler from '../../utils/Error/errorHandler';
 import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';
 
@@ -13,11 +13,11 @@ const printHomePage = (appConfig, currentPage, HTMLElementsWithListeners) => {
     try {
         const header = querySelectorChecker(`.${headerClassName}`, 'printHomePage');
 
-        const headerContent = createHomeHeader(appConfig, currentPage);
+        const headerContent = createHomeHeaderContent(appConfig, currentPage);
         header.appendChild(headerContent);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printHomePage');
-        createHomeMain(main, appConfig, currentPage);
+        createHomeMainContent(main, appConfig, currentPage);
 
         const loginLink = querySelectorChecker(`.${headerClassName}-${currentPage}-menu-login_anchor`, 'printHomePage');
         createHomeLoginListener(loginLink, appConfig, currentPage, HTMLElementsWithListeners);
@@ -27,7 +27,7 @@ const printHomePage = (appConfig, currentPage, HTMLElementsWithListeners) => {
 
         const footer = querySelectorChecker('footer', 'printHomePage');
 
-        const footerContent = createHomeFooter(appConfig, currentPage);
+        const footerContent = createHomeFooterContent(appConfig, currentPage);
         footer.appendChild(footerContent);
 
         createAutoScrollToAnchor(appConfig, HTMLElementsWithListeners);

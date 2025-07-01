@@ -1,11 +1,13 @@
-.tsc-footer-home-links-content {
+.tsc-footer-home-links-content,
+.tsc-footer-events-links-content {
   display: flex;
   flex-direction: column;
   gap: var(--tsc-gap-600);
 }
 
 @media screen and (min-width: 768px) {
-  .tsc-footer-home-links-content {
+  .tsc-footer-home-links-content,
+  .tsc-footer-events-links-content {
     flex-direction: row;
     justify-content: space-between;
   }

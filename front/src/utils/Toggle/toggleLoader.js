@@ -1,13 +1,13 @@
 import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 
 const toggleLoader = (isVisible, appConfig, appSelector) => {
-    const { loaderClassName, scClassName } = appConfig;
+    const { loaderClassName, tscClassName } = appConfig;
     const context = 'toggleLoader';
 
     const loader = querySelectorChecker(`.${loaderClassName}`, context);
-    const tsc = querySelectorChecker(`.${scClassName}`, context);
+    const tsc = querySelectorChecker(`.${tscClassName}`, context);
 
-    appSelector.style.height = isVisible ? 'var(--tsc-height-full)' : '';
+    appSelector.style.height = isVisible ? 'var(--tsc-height-1100)' : '';
     loader.style.display = isVisible ? 'flex' : 'none';
     tsc.style.display = isVisible ? 'none' : 'flex';
 };

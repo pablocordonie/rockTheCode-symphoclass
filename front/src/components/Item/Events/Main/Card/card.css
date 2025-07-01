@@ -1,0 +1,20 @@
+.tsc-main-events-card {
+  background-color: var(--tsc-color-1000);
+  border-radius: var(--tsc-border-300);
+  box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
+    var(--tsc-box-shadow-200) var(--tsc-color-000-transparent);
+  padding: var(--tsc-padding-500);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.confirmed {
+  outline: var(--tsc-outline-100) solid var(--tsc-color-400);
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-events-card:hover {
+    box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
+      var(--tsc-box-shadow-300) var(--tsc-color-000-transparent);
+    transform: translateY(-10px);
+  }
+}

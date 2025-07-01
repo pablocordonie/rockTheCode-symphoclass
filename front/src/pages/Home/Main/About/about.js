@@ -1,19 +1,19 @@
-import createAboutContent from '../../../../components/List/About/about';
-import createAboutInfo from '../../../../components/List/About/Info/info';
-import createAboutInfoParagraph from '../../../../components/Paragraph/About/Info/info';
-import createAboutItem from '../../../../components/Item/About/about';
-import createAboutLabel from '../../../../components/Paragraph/About/Stats/Label/label';
-import createAboutNumber from '../../../../components/Paragraph/About/Stats/Number/number';
+import createAboutContent from '../../../../components/List/Home/About/about';
+import createAboutInfo from '../../../../components/List/Home/About/Info/info';
+import createAboutInfoParagraph from '../../../../components/Paragraph/Home/About/Info/info';
+import createAboutItem from '../../../../components/Item/Home/About/about';
+import createAboutLabel from '../../../../components/Paragraph/Home/About/Stats/Label/label';
+import createAboutNumber from '../../../../components/Paragraph/Home/About/Stats/Number/number';
 import createAboutSection from '../../../../components/Section/About/about';
-import createAboutStat from '../../../../components/Item/About/Stats/stats';
-import createAboutStats from '../../../../components/List/About/Stats/stats';
-import createAboutTeamContent from '../../../../components/List/About/Team/team';
-import createAboutTeamMemberItem from '../../../../components/Item/About/Team/team';
-import createAboutTeamMemberBio from '../../../../components/Paragraph/About/Team/Bio/bio';
+import createAboutStat from '../../../../components/Item/Home/About/Stats/stats';
+import createAboutStats from '../../../../components/List/Home/About/Stats/stats';
+import createAboutTeamContent from '../../../../components/List/Home/About/Team/team';
+import createAboutTeamMemberItem from '../../../../components/Item/Home/About/Team/team';
+import createAboutTeamMemberBio from '../../../../components/Paragraph/Home/About/Team/Bio/bio';
 import createAboutTeamMemberImage from '../../../../components/Image/Team/team';
-import createAboutTeamMemberInfo from '../../../../components/List/About/Team/Member/member';
+import createAboutTeamMemberInfo from '../../../../components/List/Home/About/Team/Member/member';
 import createAboutTeamMemberName from '../../../../components/Title/H4/Team/team';
-import createAboutTeamMemberRole from '../../../../components/Paragraph/About/Team/Role/role';
+import createAboutTeamMemberRole from '../../../../components/Paragraph/Home/About/Team/Role/role';
 import createAboutTitle from '../../../../components/Title/H2/About/about';
 import { homeAboutParagraphs, homeAboutStats, homeAboutTeamMembers } from '../../../../config/config';
 
@@ -22,7 +22,7 @@ const createHomeAboutSection = (appConfig, currentPage) => {
 
     const aboutSection = createAboutSection(`${mainClassName}-${currentPage}-about`, 'about');
 
-    const aboutTitle = createAboutTitle(`${aboutSection.className}-title`, 'About Us');
+    const aboutTitle = createAboutTitle(`${aboutSection.className}-title`, 'Nuestro Propósito');
     aboutSection.appendChild(aboutTitle);
 
     const aboutContent = createAboutContent(`${aboutSection.className}-content`);
@@ -59,7 +59,7 @@ const createHomeAboutSection = (appConfig, currentPage) => {
         aboutStat.appendChild(aboutLabel);
     });
 
-    const aboutTeamTitle = createAboutTitle(`${aboutSection.className}-title`, 'Our Team');
+    const aboutTeamTitle = createAboutTitle(`${aboutSection.className}-title`, 'Nuestro Equipo');
     aboutSection.appendChild(aboutTeamTitle);
 
     const aboutTeamContent = createAboutTeamContent(`${aboutSection.className}-team`);

@@ -1,33 +1,31 @@
 import activateContentCleaner from '../../../utils/Cleaner/contentCleaner';
-import createConfirmAttendanceListeners from '../Event/Confirm-Attendance/confirmAttendanceListeners';
-import createEventsList from '../../../components/Event/List/eventsList';
-import createListenerConstructor from '../Listener/Constructor/listener';
+import createConfirmAttendanceListeners from '../Event/Confirm-Attendance/confirmAttendance';
+import createEventsMainContent from '../../../pages/Events/Main/main';
+import createListenerConstructor from '../Listener/Constructor/constructor';
 import createNewListener from '../Listener/newListener';
 import errorHandler from '../../Error/errorHandler';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
 import testCards from '../../Data/testCards';
 
-const createEventsFilter = (className, appConfig, HTMLElementsWithListeners) => {
+const createEventsFilter = (headerClassName, appConfig, currentPage, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;
     const context = 'createEventsFilter';
 
     const callback = event => {
         try {
-            const main = querySelectorChecker(`.${mainClassName}-events`, context);
+            const main = querySelectorChecker(`.${mainClassName}`, context);
             activateContentCleaner(main);
 
-            if (testCards.length) {
+            if (testCards) {
                 const filteredCards = testCards.filter(card => card.title.toLowerCase().includes(event.target.value));
 
-                const eventsList = createEventsList(main.className, filteredCards);
-                main.appendChild(eventsList);
+                const eventsMainContent = createEventsMainContent(appConfig, currentPage, filteredCards);
+                main.appendChild(eventsMainContent);
 
-                const eventItems = Array.from(eventsList.querySelectorAll(`.${mainClassName}-events-card`));
+                const eventCards = Array.from(eventsMainContent.querySelectorAll(`.${mainClassName}-events-card`));
 
-                if (eventItems.length === 0) {
-                    return;
-                } else {
-                    createConfirmAttendanceListeners(appConfig, eventItems, HTMLElementsWithListeners);
+                if (eventCards) {
+                    createConfirmAttendanceListeners(appConfig, currentPage, HTMLElementsWithListeners);
                 }
             }
             return main;
@@ -36,7 +34,7 @@ const createEventsFilter = (className, appConfig, HTMLElementsWithListeners) => 
         }
     };
 
-    const eventsFilter = createListenerConstructor(`.${className}-search_input`, context, callback, 'input');
+    const eventsFilter = createListenerConstructor(`.${headerClassName}-events-nav-search-input`, context, callback, 'input');
 
     createNewListener(eventsFilter, appConfig, HTMLElementsWithListeners, context);
 };

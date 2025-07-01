@@ -1,9 +1,0 @@
-.tsc-main-events-card p {
-  color: var(--tsc-color-000);
-}
-
-.tsc-main-profile_info-profile_email,
-.tsc-main-profile_info-profile_fullname {
-  color: var(--tsc-color-100);
-  font-size: var(--tsc-font-size-500);
-}

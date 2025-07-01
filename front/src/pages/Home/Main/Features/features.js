@@ -1,8 +1,8 @@
-import createFeatureCard from '../../../../components/Item/Features/features';
-import createFeatureIcon from '../../../../components/Icon/Features/features';
-import createFeatureParagraph from '../../../../components/Paragraph/Features/features';
+import createFeatureCard from '../../../../components/Item/Home/Features/features';
+import createFeatureIcon from '../../../../components/Icon/Home/Features/features';
+import createFeatureParagraph from '../../../../components/Paragraph/Home/Features/features';
 import createFeatureTitle from '../../../../components/Title/H3/Features/features';
-import createFeaturesGrid from '../../../../components/List/Features/features';
+import createFeaturesGrid from '../../../../components/List/Home/Features/features';
 import createFeaturesSection from '../../../../components/Section/Features/features';
 import createFeaturesTitle from '../../../../components/Title/H2/Features/features';
 import { homeFeatures } from '../../../../config/config';
@@ -12,7 +12,7 @@ const createHomeFeaturesSection = (appConfig, currentPage) => {
 
     const featuresSection = createFeaturesSection(`${mainClassName}-${currentPage}-features`, 'features');
 
-    const featuresTitle = createFeaturesTitle(`${featuresSection.className}-title`, 'Why Choose The SymphoClass');
+    const featuresTitle = createFeaturesTitle(`${featuresSection.className}-title`, 'Por qué escoger The SymphoClass');
     featuresSection.appendChild(featuresTitle);
 
     const featuresGrid = createFeaturesGrid(`${featuresSection.className}-grid`);

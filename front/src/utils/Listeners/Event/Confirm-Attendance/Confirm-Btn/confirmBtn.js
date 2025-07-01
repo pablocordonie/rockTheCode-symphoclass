@@ -1,32 +1,33 @@
-import createListenerConstructor from '../../../Listener/Constructor/listener';
+import createListenerConstructor from '../../../Listener/Constructor/constructor';
 import createNewListener from '../../../Listener/newListener';
 import errorHandler from '../../../../Error/errorHandler';
 import testCards from '../../../../Data/testCards';
 
-const createConfirmBtnListener = (appConfig, confirmedIcon, eventItem, HTMLElementsWithListeners) => {
+const createConfirmBtnListener = (checkIconContent, eventCard, appConfig, currentPage, HTMLElementsWithListeners) => {
+    const { mainClassName } = appConfig;
     const context = 'createConfirmBtnListener';
 
     const callback = event => {
         event.preventDefault();
 
         try {
-            const eventId = parseInt(eventItem.dataset.id, 10);
+            const eventId = parseInt(eventCard.dataset.id, 10);
             const eventData = testCards.find(card => card.id === eventId);
             if (!eventData) {
                 throw new Error(`El evento con ID ${eventId} no ha sido encontrado`);
             };
 
-            if (eventItem.classList.contains('confirmed')) {
-                eventItem.classList.remove('confirmed');
+            if (eventCard.classList.contains('confirmed')) {
+                eventCard.classList.remove('confirmed');
 
-                if (confirmedIcon && confirmedIcon.parentNode === eventItem) {
-                    eventItem.removeChild(confirmedIcon);
+                if (checkIconContent && checkIconContent.parentNode === eventCard) {
+                    eventCard.removeChild(checkIconContent);
                 }
 
                 eventData.confirmed = false;
             } else {
-                eventItem.classList.add('confirmed');
-                eventItem.appendChild(confirmedIcon);
+                eventCard.classList.add('confirmed');
+                eventCard.appendChild(checkIconContent);
                 eventData.confirmed = true;
             };
         } catch (error) {
@@ -34,7 +35,7 @@ const createConfirmBtnListener = (appConfig, confirmedIcon, eventItem, HTMLEleme
         }
     };
 
-    const confirmBtnListener = createListenerConstructor('.confirm-btn', context, callback, 'click', eventItem);
+    const confirmBtnListener = createListenerConstructor(`.${mainClassName}-${currentPage}-card-confirm-btn`, context, callback, 'click', eventCard);
 
     createNewListener(confirmBtnListener, appConfig, HTMLElementsWithListeners, context);
 };

@@ -1,9 +1,9 @@
-import createHeroContent from '../../../../components/List/Home/Hero/hero';
-import createHeroListItem from '../../../../components/Item/Home/Hero/hero';
-import createHeroOverlay from '../../../../components/Div/Hero/hero';
+import createHeroContent from '../../../../components/List/Home/Main/Hero/hero';
+import createHeroItem from '../../../../components/Item/Home/Main/Hero/hero';
+import createHeroOverlay from '../../../../components/Div/Home/Hero/hero';
 import createHeroSection from '../../../../components/Section/Hero/hero';
-import createHeroSignup from '../../../../components/Anchor/Signup/Hero/signup';
-import createHeroSignupBtn from '../../../../components/Button/Home/Hero/hero';
+import createHeroSignup from '../../../../components/Anchor/Signup/Hero/hero';
+import createHeroSignupBtn from '../../../../components/Button/Home/Signup/Hero/hero';
 import createHeroSubtitle from '../../../../components/Paragraph/Home/Hero/hero';
 import createHeroTitle from '../../../../components/Title/H2/Hero/hero';
 
@@ -29,7 +29,7 @@ const createHomeHeroSection = (appConfig, currentPage) => {
     heroSignupAnchor.appendChild(heroSignupButton);
 
     heroTags.forEach(tag => {
-        const heroItem = createHeroListItem(`${heroSection.className}-item`);
+        const heroItem = createHeroItem(`${heroSection.className}-item`);
         heroContent.appendChild(heroItem);
 
         heroItem.appendChild(tag);

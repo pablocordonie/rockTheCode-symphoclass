@@ -5,7 +5,7 @@ import errorHandler from '../../../Error/errorHandler';
 import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createHomeLoginListener = (querySelector, appConfig, currentPage, HTMLElementsWithListeners) => {
+const createHomeLoginListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { headerClassName, footerClassName, mainClassName } = appConfig;
     const context = 'createHomeLoginListener';
 
@@ -28,7 +28,7 @@ const createHomeLoginListener = (querySelector, appConfig, currentPage, HTMLElem
         }
     };
 
-    const heroLoginListener = createListenerConstructor(`.${querySelector.className}`, context, callback, 'click');
+    const heroLoginListener = createListenerConstructor(`.${headerClassName}-${currentPage}-menu-login-btn`, context, callback, 'click');
     createNewListener(heroLoginListener, appConfig, HTMLElementsWithListeners, context);
 };
 

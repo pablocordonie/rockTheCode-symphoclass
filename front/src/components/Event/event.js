@@ -1,14 +1,14 @@
 import createEventCreatorContent from '../Div/Event/event';
 import createEventCreatorField from '../Item/Events/Event/event';
-import createEventCreatorFieldInput from '../Input/Events/Event/event';
+import createEventCreatorFieldInput from '../Input/Events/Event/Event-Creator/event';
 import createEventCreatorFieldLabel from '../Label/Event/event';
-import createEventCreatorForm from '../Form/Event/event';
+import createEventCreatorForm from '../Form/Events/Event-Creator/eventCreator';
 import createEventCreatorFormContent from '../List/Events/Event/event';
 import { createFieldData } from '../../config/config';
 import createImagePreview from '../Image/Preview/preview';
 import createSubmitBtn from '../Button/Submit/submit';
 import createSubmitContent from '../Div/Submit/submit';
-import createUploadImageBtn from '../Button/Events/Event/event';
+import createUploadImageBtn from '../Button/Events/Main/Image/image';
 import createUploadImageFieldInput from '../Input/Events/Event/Upload-Image/uploadImage';
 
 const createNewEventCreator = (appConfig) => {

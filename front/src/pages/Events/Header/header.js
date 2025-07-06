@@ -1,19 +1,19 @@
 import { /*barsClassNames, */userIconClassNames } from '../../../config/config';
 import createEventsNav from '../../../components/Nav/Events/events';
-import createEventsNavCreateEventBtn from '../../../components/Button/Events/Header/header';
+import createEventsNavCreateEventBtn from '../../../components/Button/Events/Header/Event/event';
 // import createEventsNavDropdownBars from '../../../components/Icon/Events/Bars/bars';
 import createEventsNavDropdownMenu from '../../../components/List/Events/Header/Menu/menu';
 import createEventsNavItem from '../../../components/Item/Events/Header/Nav/nav';
 import createEventsNavItems from '../../../components/List/Events/Header/Nav/nav';
 import createEventsNavLogoContent from '../../../components/Div/Logo/logo';
-import createEventsNavMainContent from '../../../components/List/Events/Header/Content/mainContent';
-import createEventsNavMainItem from '../../../components/Item/Events/Header/Content/mainContent';
+import createEventsNavMainContentList from '../../../components/List/Events/Header/Content/mainContent';
+import createEventsNavMainContentItem from '../../../components/Item/Events/Header/Content/mainContent';
 import createEventsNavProfileMenuOption from '../../../components/Item/Events/Header/Menu/menu';
-import createEventsNavProfileOptionParagraph from '../../../components/Paragraph/Events/Header/Menu/menu';
+import createEventsNavProfileOptionParagraph from '../../../components/Paragraph/Events/Header/Menu/Option/option';
 import createEventsNavSearchInput from '../../../components/Input/Events/Search/search';
 import createEventsNavUserContent from '../../../components/List/Events/Header/Profile/profile';
 import createEventsNavUserInfoItem from '../../../components/Item/Events/Header/User/user';
-import createEventsNavUserIcon from '../../../components/Icon/Events/User/userIcon';
+import createEventsNavUserIcon from '../../../components/Icon/Events/User/user';
 import createEventsNavUsername from '../../../components/Paragraph/Events/Header/User/user';
 import createLogo from '../../../components/Title/H1/Logo/logo';
 
@@ -28,7 +28,7 @@ const createEventsHeaderContent = (appConfig, currentPage) => {
     const eventsNavItems = createEventsNavItems(`${eventsNav.className}-items`);
     eventsNav.appendChild(eventsNavItems);
 
-    const eventsNavMainContent = createEventsNavMainContent(`${eventsNav.className}-main-content`);
+    const eventsNavMainContent = createEventsNavMainContentList(`${eventsNav.className}-main-content`);
     navItems.push(eventsNavMainContent);
 
     // TO-DO: Crear componente de barras para almacenar las opciones de filtrado y de creación de nuevos eventos en dispositivos móviles a la izquierda del logo
@@ -51,7 +51,7 @@ const createEventsHeaderContent = (appConfig, currentPage) => {
     navMainItems.push(eventsNavCreateEventBtn);
 
     navMainItems.forEach(item => {
-        const eventsNavMainItem = createEventsNavMainItem(`${eventsNav.className}-main-item`);
+        const eventsNavMainItem = createEventsNavMainContentItem(`${eventsNav.className}-main-item`);
         eventsNavMainContent.appendChild(eventsNavMainItem);
 
         eventsNavMainItem.appendChild(item);

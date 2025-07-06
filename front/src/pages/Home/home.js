@@ -8,7 +8,7 @@ import errorHandler from '../../utils/Error/errorHandler';
 import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';
 
 const printHomePage = (appConfig, currentPage, HTMLElementsWithListeners) => {
-    const { headerClassName, mainClassName } = appConfig;
+    const { headerClassName } = appConfig;
 
     try {
         const header = querySelectorChecker(`.${headerClassName}`, 'printHomePage');
@@ -16,14 +16,10 @@ const printHomePage = (appConfig, currentPage, HTMLElementsWithListeners) => {
         const headerContent = createHomeHeaderContent(appConfig, currentPage);
         header.appendChild(headerContent);
 
-        const main = querySelectorChecker(`.${mainClassName}`, 'printHomePage');
-        createHomeMainContent(main, appConfig, currentPage);
+        createHomeMainContent(appConfig, currentPage);
 
-        const loginLink = querySelectorChecker(`.${headerClassName}-${currentPage}-menu-login_anchor`, 'printHomePage');
-        createHomeLoginListener(loginLink, appConfig, currentPage, HTMLElementsWithListeners);
-
-        const registerLink = querySelectorChecker(`.${mainClassName}-${currentPage}-cta-signup-btn`, 'printHomePage');
-        createHomeRegisterListener(registerLink, appConfig, currentPage, HTMLElementsWithListeners);
+        createHomeLoginListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createHomeRegisterListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const footer = querySelectorChecker('footer', 'printHomePage');
 

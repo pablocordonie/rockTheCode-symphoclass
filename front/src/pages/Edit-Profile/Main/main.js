@@ -1,11 +1,11 @@
 import createEditProfileForm from '../../../components/Form/Edit-Profile/editProfile';
 import createEditProfileFormContent from '../../../components/List/Edit-Profile/editProfile';
 import createEditProfileFormField from '../../../components/Item/Edit-Profile/editProfile';
-import createEditProfileFormImageBtn from '../../../components/Button/Edit-Profile/editProfile';
+import createEditProfileFormImageBtn from '../../../components/Button/Edit-Profile/Image/image';
 import createEditProfileFormInput from '../../../components/Input/Edit-Profile/editProfile';
 import createEditProfileFormLabel from '../../../components/Label/Edit-Profile/editProfile';
 import { createFieldData } from '../../../config/config';
-import createPreviewImage from '../../../components/Image/Preview/preview';
+import createImagePreview from '../../../components/Image/Preview/preview';
 import createSubmitBtn from '../../../components/Button/Submit/submit';
 import createSubmitContent from '../../../components/Div/Submit/submit';
 
@@ -17,8 +17,6 @@ const createEditProfileMainContent = (appConfig, currentPage) => {
 
     const editProfileFormContent = createEditProfileFormContent(`${editProfileForm.className}-content`);
     editProfileForm.appendChild(editProfileFormContent);
-
-    // TO-DO: Dar opción para poder cambiar la imagen del perfil
 
     const userNameField = createFieldData(`${editProfileForm.className}-username`, 'username', 'username', 'Nombre de Usuario');
     editProfileFormFields.push(userNameField);
@@ -54,7 +52,7 @@ const createEditProfileMainContent = (appConfig, currentPage) => {
         if (field.name === 'image') {
             editProfileFormInput.setAttribute('accept', 'image/*');
 
-            const editProfileFormPreviewImage = createPreviewImage(`${editProfileFormField.className}-preview`, '#', 'Preview image');
+            const editProfileFormPreviewImage = createImagePreview(`${editProfileFormField.className}-preview`, '#', 'Preview image');
             editProfileFormField.appendChild(editProfileFormPreviewImage);
 
             const editProfileFormImageBtn = createEditProfileFormImageBtn(`${editProfileFormField.className}-upload-btn`, 'Seleccionar');

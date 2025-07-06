@@ -5,7 +5,7 @@ import errorHandler from '../../../Error/errorHandler';
 import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createHomeRegisterListener = (querySelector, appConfig, currentPage, HTMLElementsWithListeners) => {
+const createHomeRegisterListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { footerClassName, headerClassName, mainClassName } = appConfig;
     const context = 'createHomeRegisterListener';
 
@@ -28,7 +28,7 @@ const createHomeRegisterListener = (querySelector, appConfig, currentPage, HTMLE
         }
     };
 
-    const heroRegisterListener = createListenerConstructor(`.${querySelector.className}`, context, callback, 'click');
+    const heroRegisterListener = createListenerConstructor(`.${mainClassName}-${currentPage}-cta-signup-btn`, context, callback, 'click');
     createNewListener(heroRegisterListener, appConfig, HTMLElementsWithListeners, context);
 };
 

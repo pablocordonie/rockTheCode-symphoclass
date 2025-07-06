@@ -1,0 +1,9 @@
+.error-btn {
+  background-color: var(--tsc-color-600);
+  border: var(--tsc-border-100) solid var(--tsc-color-600);
+  border-radius: var(--tsc-border-200);
+  font-size: var(--tsc-font-size-300);
+  font-weight: var(--tsc-font-weight-100);
+  padding: var(--tsc-padding-100);
+  width: var(--tsc-width-500);
+}

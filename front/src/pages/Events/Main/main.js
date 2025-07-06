@@ -1,14 +1,14 @@
 import createEventCard from '../../../components/Item/Events/Main/Card/card';
 import createEventCardAddress from '../../../components/Paragraph/Events/Main/Address/address';
-import createEventCardBtn from '../../../components/Button/Events/Main/main';
+import createEventCardBtn from '../../../components/Button/Events/Main/Card/card';
 import createEventCardCenter from '../../../components/Paragraph/Events/Main/Center/center';
 import createEventCardDate from '../../../components/Paragraph/Events/Main/Date/date';
 import createEventCardInfo from '../../../components/List/Events/Main/Info/info';
 import createEventCardInfoItem from '../../../components/Item/Events/Main/Info/info';
 import createEventCardTitle from '../../../components/Title/H3/Card/card';
 import createEventsList from '../../../components/List/Events/Main/List/list';
-import createEventsMessage from '../../../components/Paragraph/Events/Main/No-Events/noEvents';
-import createEventsMessageContent from '../../../components/Item/Events/Main/No-Events/noEvents';
+import createEventsMessage from '../../../components/Paragraph/Events/Main/Message/message';
+import createEventsMessageContent from '../../../components/Item/Events/Main/Message/message';
 
 const createEventsMainContent = (appConfig, currentPage, testCards) => {
     const { mainClassName } = appConfig;

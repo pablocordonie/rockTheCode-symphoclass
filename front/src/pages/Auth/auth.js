@@ -1,3 +1,4 @@
+import createAuthBackBtnListener from '../../utils/Listeners/Auth/Back/back';
 import createAuthFooterContent from './Footer/footer';
 import createAuthHeaderContent from './Header/header';
 import createAuthMainContent from './Main/main';
@@ -24,21 +25,20 @@ const printAuthForm = (appConfig, currentPage, HTMLElementsWithListeners) => {
         const header = querySelectorChecker(`.${headerClassName}`, context);
         header.classList.add(`${headerClassName}-flex`);
 
-        const headerContent = createAuthHeaderContent(appConfig);
+        const headerContent = createAuthHeaderContent(appConfig, currentPage);
         header.appendChild(headerContent);
+
+        createAuthBackBtnListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, 'printAuthForm');
 
         const authForm = createAuthMainContent(`${mainClassName}-${currentPage}-form`, currentPage);
         main.appendChild(authForm);
 
-        // TO-DO: Falta un listener para poder volver a la página de inicio
-
         listenerCreators[currentPage].forEach(activateListener => activateListener(`${mainClassName}-${currentPage}-form`, appConfig, currentPage, HTMLElementsWithListeners));
 
         const footer = querySelectorChecker(`.${footerClassName}`, context);
         footer.style.backgroundColor = 'transparent';
-        footer.style.paddingTop = 'var(--tsc-padding-000)';
         createAuthFooterContent(footer, appConfig, currentPage);
 
         return main;

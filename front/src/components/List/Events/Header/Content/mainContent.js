@@ -1,6 +1,6 @@
 import './mainContent.css';
 import createNewUnorderedList from '../../../list';
 
-const createEventsNavMainContent = (className) => createNewUnorderedList(className);
+const createEventsNavMainContentList = (className) => createNewUnorderedList(className);
 
-export default createEventsNavMainContent;
+export default createEventsNavMainContentList;

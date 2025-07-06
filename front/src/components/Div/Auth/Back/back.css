@@ -1,0 +1,9 @@
+.tsc-header-login-back-arrow-content,
+.tsc-header-register-back-arrow-content {
+  display: flex;
+  gap: var(--tsc-gap-400);
+  justify-content: center;
+  left: var(--tsc-position-left-100);
+  position: absolute;
+  top: var(--tsc-position-top-200);
+}

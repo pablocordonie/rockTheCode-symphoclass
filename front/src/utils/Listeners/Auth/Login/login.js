@@ -5,9 +5,9 @@ import errorHandler from '../../../Error/errorHandler';
 import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createLoginListenerFromLoginPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
+const createLoginListenerInLoginPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
     const { footerClassName, headerClassName, mainClassName, tscClassName } = appConfig;
-    const context = 'createLoginListenerFromLoginPage';
+    const context = 'createLoginListenerInLoginPage';
 
     const callback = event => {
         try {
@@ -35,4 +35,4 @@ const createLoginListenerFromLoginPage = (className, appConfig, currentPage, HTM
     createNewListener(loginEventListenerFromLoginPage, appConfig, HTMLElementsWithListeners, context);
 };
 
-export default createLoginListenerFromLoginPage;
+export default createLoginListenerInLoginPage;

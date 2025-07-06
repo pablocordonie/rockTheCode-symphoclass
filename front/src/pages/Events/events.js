@@ -24,6 +24,7 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
         appContent.insertAdjacentHTML('afterbegin', eventCreator.outerHTML);
 
         createNewEventListener(appConfig, currentPage, HTMLElementsWithListeners);
+        // TO-DO: Crear un listener para la subida de imagen del formulario de nuevo evento
 
         const header = querySelectorChecker(`.${headerClassName}`, context);
         header.classList.remove(`${headerClassName}-flex`);
@@ -52,7 +53,7 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
 
         return main;
     } catch (error) {
-        return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
+        return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
     }
 };
 

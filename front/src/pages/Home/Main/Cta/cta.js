@@ -1,9 +1,9 @@
-import createCtaContent from '../../../../components/List/Home/Cta/cta';
-import createCtaItem from '../../../../components/Item/Home/Cta/cta';
+import createCtaContent from '../../../../components/List/Home/Main/Cta/cta';
+import createCtaItem from '../../../../components/Item/Home/Main/Cta/cta';
 import createCtaParagraph from '../../../../components/Paragraph/Home/Cta/cta';
 import createCtaSection from '../../../../components/Section/Cta/cta';
-import createCtaSignup from '../../../../components/Anchor/Signup/Cta/signup';
-import createCtaSignupButton from '../../../../components/Button/Home/Cta/cta';
+import createCtaSignup from '../../../../components/Anchor/Signup/Cta/cta';
+import createCtaSignupButton from '../../../../components/Button/Home/Signup/Cta/cta';
 import createCtaTitle from '../../../../components/Title/H2/Cta/cta';
 
 const createHomeCtaSection = (appConfig, currentPage) => {

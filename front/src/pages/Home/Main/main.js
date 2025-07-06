@@ -3,22 +3,29 @@ import createHomeCtaSection from './Cta/cta';
 import createHomeFeaturesSection from './Features/features';
 import createHomeHeroSection from './Hero/hero';
 import createHomeTestimonialsSection from './Testimonials/testimonials';
+import querySelectorChecker from '../../../utils/QuerySelector/querySelectorChecker';
 
-const createHomeMainContent = (mainSelector, appConfig, currentPage) => {
+const createHomeMainContent = (appConfig, currentPage) => {
+    const { mainClassName } = appConfig;
+
+    const main = querySelectorChecker(`.${mainClassName}`, 'createHomeMainContent');
+
     const heroSection = createHomeHeroSection(appConfig, currentPage);
-    mainSelector.appendChild(heroSection);
+    main.appendChild(heroSection);
 
     const featuresSection = createHomeFeaturesSection(appConfig, currentPage);
-    mainSelector.appendChild(featuresSection);
+    main.appendChild(featuresSection);
 
     const testimonialsSection = createHomeTestimonialsSection(appConfig, currentPage);
-    mainSelector.appendChild(testimonialsSection);
+    main.appendChild(testimonialsSection);
 
     const aboutSection = createHomeAboutSection(appConfig, currentPage);
-    mainSelector.appendChild(aboutSection);
+    main.appendChild(aboutSection);
 
     const ctaSection = createHomeCtaSection(appConfig, currentPage);
-    mainSelector.appendChild(ctaSection);
+    main.appendChild(ctaSection);
+
+    return main;
 };
 
 export default createHomeMainContent;

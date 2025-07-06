@@ -1,4 +1,4 @@
-header .tsc-header-logo {
+.tsc-header-logo {
   color: var(--tsc-color-700);
   font-family: 'Dancing Script', sans-serif;
   font-size: var(--tsc-font-size-900);
@@ -6,13 +6,13 @@ header .tsc-header-logo {
 }
 
 @media screen and (min-width: 800px) {
-  header .tsc-header-logo {
+  .tsc-header-logo {
     font-size: var(--tsc-font-size-1000);
   }
 }
 
 @media screen and (min-width: 900px) {
-  header .tsc-header-logo {
+  .tsc-header-logo {
     font-size: var(--tsc-font-size-1100);
   }
 }

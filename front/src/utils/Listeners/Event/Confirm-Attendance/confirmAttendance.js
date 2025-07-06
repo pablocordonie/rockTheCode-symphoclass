@@ -1,7 +1,6 @@
 import createCheckIcon from '../../../../components/Icon/Events/Check/check';
-import createCheckIconContent from '../../../../components/Div/Check/check';
+import createCheckIconContent from '../../../../components/Div/Events/Check/check';
 import createConfirmBtnListener from './Confirm-Btn/confirmBtn';
-// import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
 const createConfirmAttendanceListeners = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;

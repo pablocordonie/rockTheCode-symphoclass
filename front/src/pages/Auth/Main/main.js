@@ -3,8 +3,8 @@ import createAuthForm from '../../../components/Form/Auth/auth';
 import createAuthFormField from '../../../components/Item/Auth/Field/field';
 import createAuthFormFields from '../../../components/List/Auth/Fields/fields';
 import createAuthFormOption from '../../../components/Item/Auth/Option/option';
-import createAuthFormOptionBtn from '../../../components/Button/Auth/auth';
-import createAuthFormOptionParagraph from '../../../components/Paragraph/Auth/auth';
+import createAuthFormOptionBtn from '../../../components/Button/Auth/Option/option';
+import createAuthFormOptionParagraph from '../../../components/Paragraph/Auth/Option/option';
 import createAuthFormOptions from '../../../components/List/Auth/Options/options';
 import createNewInput from '../../../components/Input/input';
 import createNewLabel from '../../../components/Label/label';
@@ -47,8 +47,6 @@ const createAuthMainContent = (className, currentPage) => {
 
     const authFormOptions = createAuthFormOptions(`${className}-options`);
     authForm.appendChild(authFormOptions);
-
-    // TO-DO: Falta crear un botón en forma de flecha que haga de retorno a la página de inicio
 
     if (currentPage === 'login') {
         const submitBtn = createSubmitBtn(`${className}-submit-btn`, 'Iniciar sesión');

@@ -1,0 +1,7 @@
+.error-title {
+  color: var(--tsc-color-000);
+}
+
+.error-critical > .error-title {
+  color: var(--tsc-color-1000);
+}

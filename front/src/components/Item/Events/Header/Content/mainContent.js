@@ -1,5 +1,5 @@
 import createNewListItem from '../../../listItem';
 
-const createEventsNavMainItem = (className) => createNewListItem(className);
+const createEventsNavMainContentItem = (className) => createNewListItem(className);
 
-export default createEventsNavMainItem;
+export default createEventsNavMainContentItem;

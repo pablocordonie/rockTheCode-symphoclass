@@ -1,4 +1,4 @@
-.tsc-header-home-menu-item a {
+.tsc-header-home-menu-item a:not(.tsc-header-home-menu-login-anchor) {
   color: var(--tsc-color-1000);
   font-weight: var(--tsc-font-weight-100);
   transition: color 0.3s ease;
@@ -6,17 +6,4 @@
 
 .tsc-header-home-menu-item a:hover {
   color: var(--tsc-color-700);
-}
-
-.tsc-header-home-menu-item .tsc-header-home-menu-login_anchor {
-  background-color: var(--tsc-color-600);
-  color: var(--tsc-color-1000);
-  border-radius: var(--tsc-border-200);
-  padding: var(--tsc-padding-200) var(--tsc-padding-400);
-  transition: background-color 0.3s ease;
-}
-
-.tsc-header-home-menu-item .tsc-header-home-menu-login_anchor:hover {
-  background-color: var(--tsc-color-700);
-  color: var(--tsc-color-000);
 }

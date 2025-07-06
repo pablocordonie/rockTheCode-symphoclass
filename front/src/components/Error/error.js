@@ -1,25 +1,24 @@
-import './error.css';
-import createNewButton from '../Button/button';
-import createNewH3Title from '../Title/H3/h3';
-import createNewParagraph from '../Paragraph/paragraph';
+import createErrorNotificationCloseBtn from '../Button/Error/error';
+import createErrorNotificationContent from '../Div/Error/error';
+import createErrorNotificationMessage from '../Paragraph/Error/error';
+import createErrorNotificationTitle from '../Title/H3/Error/error';
 
 const createErrorNotification = (severity) => {
-    const errorNotification = document.createElement('div');
-    errorNotification.className = `error-notification${severity === 'critical' ? ' error-critical' : ''}`;
+    const errorNotification = createErrorNotificationContent(`error-notification${severity === 'critical' ? ' error-critical' : ''}`);
     errorNotification.style.display = 'flex';
 
-    const errorTitle = createNewH3Title('error-title', `${severity === 'critical' ? 'Error Crítico' : 'Error'}`);
+    const errorTitle = createErrorNotificationTitle('error-title', `${severity === 'critical' ? 'Error Crítico' : 'Error'}`);
     errorNotification.appendChild(errorTitle);
 
-    const errorMessage = createNewParagraph('error-message',
+    const errorMessage = createErrorNotificationMessage('error-message',
         severity === 'critical'
             ? 'Recarga la página o inténtalo más tarde'
             : 'Ocurrió un problema al procesar la solicitud'
     );
     errorNotification.appendChild(errorMessage);
 
-    const okBtn = createNewButton('error-btn', 'OK');
-    errorNotification.appendChild(okBtn);
+    const errorCloseBtn = createErrorNotificationCloseBtn('error-btn', 'OK');
+    errorNotification.appendChild(errorCloseBtn);
 
     return errorNotification;
 };

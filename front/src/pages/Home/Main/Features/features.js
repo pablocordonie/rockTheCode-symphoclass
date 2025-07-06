@@ -1,8 +1,8 @@
-import createFeatureCard from '../../../../components/Item/Home/Features/features';
-import createFeatureIcon from '../../../../components/Icon/Home/Features/features';
+import createFeatureCard from '../../../../components/Item/Home/Main/Features/Feature/feature';
+import createFeatureIcon from '../../../../components/Icon/Home/Features/Feature/feature';
 import createFeatureParagraph from '../../../../components/Paragraph/Home/Features/features';
 import createFeatureTitle from '../../../../components/Title/H3/Features/features';
-import createFeaturesGrid from '../../../../components/List/Home/Features/features';
+import createFeaturesGrid from '../../../../components/List/Home/Main/Features/features';
 import createFeaturesSection from '../../../../components/Section/Features/features';
 import createFeaturesTitle from '../../../../components/Title/H2/Features/features';
 import { homeFeatures } from '../../../../config/config';

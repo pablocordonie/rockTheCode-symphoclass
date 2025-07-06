@@ -1,0 +1,5 @@
+.tsc-header-login-back-house-icon,
+.tsc-header-register-back-house-icon {
+  color: var(--tsc-color-700);
+  font-size: var(--tsc-font-size-800);
+}

@@ -30,7 +30,7 @@
   --tsc-color-200: #0f3fa78c;
   --tsc-color-300: #3498db;
   --tsc-color-400: #28a745;
-  --tsc-color-500: #dc3545e6;
+  --tsc-color-500: #dc3545;
   --tsc-color-600: #ff7f0f;
   --tsc-color-700: #ffea2b;
   --tsc-color-800: #8fafca;
@@ -136,16 +136,17 @@
   /* POSITION */
   --tsc-position-bottom-000: 0;
   --tsc-position-bottom-100: 0.75rem;
-  --tsc-position-bottom-200: 50%;
+  --tsc-position-bottom-200: 45%;
   --tsc-position-left-000: 0;
-  --tsc-position-left-100: 50%;
+  --tsc-position-left-100: 1.5rem;
+  --tsc-position-left-200: 50%;
   --tsc-position-right-000: 0;
   --tsc-position-right-100: 0.25rem;
   --tsc-position-right-200: 1.25rem;
   --tsc-position-top-000: 0;
   --tsc-position-top-100: 0.25rem;
-  --tsc-position-top-200: 3.7rem;
-  --tsc-position-top-300: 5rem;
+  --tsc-position-top-200: 1.5rem;
+  --tsc-position-top-300: 3.7rem;
 
   /* TEXT */
   text-rendering: optimizeLegibility;
@@ -160,7 +161,7 @@
   --tsc-width-700: 16rem;
   --tsc-width-800: 24rem;
   --tsc-width-900: 50rem;
-  --tsc-width-1000: 80%;
+  --tsc-width-1000: 50%;
   --tsc-width-full: 100%;
 
   /* Z-INDEX */

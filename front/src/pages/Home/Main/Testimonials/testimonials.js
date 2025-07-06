@@ -1,10 +1,10 @@
-import createTestimonialAuthor from '../../../../components/Item/Home/Testimonials/Author/author';
-import createTestimonialItem from '../../../../components/Item/Home/Testimonials/Testimonial/testimonial';
-import createTestimonialContent from '../../../../components/List/Home/Testimonials/Testimonial/testimonial';
+import createTestimonialAuthor from '../../../../components/Item/Home/Main/Testimonials/Author/author';
+import createTestimonialItem from '../../../../components/Item/Home/Main/Testimonials/Testimonial/testimonial';
+import createTestimonialContent from '../../../../components/List/Home/Main/Testimonials/Testimonial/testimonial';
 import createTestimonialName from '../../../../components/Paragraph/Home/Testimonials/Author/Name/name';
 import createTestimonialParagraph from '../../../../components/Paragraph/Home/Testimonials/Testimonial/testimonial';
 import createTestimonialRole from '../../../../components/Paragraph/Home/Testimonials/Author/Role/role';
-import createTestimonialsContent from '../../../../components/List/Home/Testimonials/testimonials';
+import createTestimonialsContent from '../../../../components/List/Home/Main/Testimonials/testimonials';
 import createTestimonialsSection from '../../../../components/Section/Testimonials/testimonials';
 import createTestimonialsTitle from '../../../../components/Title/H2/Testimonials/testimonials';
 import { homeTestimonials } from '../../../../config/config';

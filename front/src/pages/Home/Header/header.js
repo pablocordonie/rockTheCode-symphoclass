@@ -1,7 +1,8 @@
-import createHomeHeaderMenu from '../../../components/List/Home/Menu/menu';
-import createHomeHeaderMenuItem from '../../../components/Item/Home/Menu/menu';
-import createHomeHeaderNavItem from '../../../components/Item/Home/Nav/nav';
-import createHomeHeaderNavItems from '../../../components/List/Home/Header/header';
+import createHomeHeaderLoginBtn from '../../../components/Button/Auth/Login/login';
+import createHomeHeaderMenu from '../../../components/List/Home/Header/Menu/menu';
+import createHomeHeaderMenuItem from '../../../components/Item/Home/Header/Menu/menu';
+import createHomeHeaderNavItem from '../../../components/Item/Home/Header/Nav/nav';
+import createHomeHeaderNavItems from '../../../components/List/Home/Header/Nav/nav';
 import createHomeLogoContent from '../../../components/Anchor/Logo/logo';
 import createHomeNav from '../../../components/Nav/Home/home';
 import createLogo from '../../../components/Title/H1/Logo/logo';
@@ -37,9 +38,16 @@ const createHomeHeaderContent = (appConfig, currentPage) => {
         const homeHeaderMenuItem = createHomeHeaderMenuItem(`${homeHeaderMenu.className}-item`);
         homeHeaderMenu.appendChild(homeHeaderMenuItem);
 
-        const homeHeaderMenuAnchor = createHomeHeaderMenuAnchor(`${homeHeaderMenu.className}-${menuItem.item}_anchor`, `#${menuItem.item}`);
-        homeHeaderMenuAnchor.textContent = menuItem.title;
+        const homeHeaderMenuAnchor = createHomeHeaderMenuAnchor(`${homeHeaderMenu.className}-${menuItem.item}-anchor`, `#${menuItem.item}`);
         homeHeaderMenuItem.appendChild(homeHeaderMenuAnchor);
+
+        if (menuItem.item === 'login') {
+            const homeHeaderLoginBtn = createHomeHeaderLoginBtn(`${homeHeaderMenu.className}-${menuItem.item}-btn`);
+            homeHeaderLoginBtn.textContent = menuItem.title;
+            homeHeaderMenuAnchor.appendChild(homeHeaderLoginBtn);
+        } else {
+            homeHeaderMenuAnchor.textContent = menuItem.title;
+        }
     }
 
     return homeHeaderNav;

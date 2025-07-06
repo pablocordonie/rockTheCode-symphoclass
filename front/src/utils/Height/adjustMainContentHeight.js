@@ -9,13 +9,11 @@ const adjustMainContentHeight = (appConfig, currentPage) => {
     const main = querySelectorChecker(`.${mainClassName}`, context);
     const tsc = querySelectorChecker(`.${tscClassName}`, context);
 
-    if (currentPage === 'login') {
+    if (currentPage === 'home') {
+        main.style.padding = 'var(--tsc-padding-000)';
+        tsc.style.paddingTop = 'var(--tsc-padding-000)';
+    } else if (currentPage === 'login') {
         const paddingTop = window.innerWidth > 900 ? authPaddingAmount + 0.005 : window.innerHeight * 0.0125;
-
-        main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
-        tsc.style.paddingTop = `${paddingTop}rem`;
-    } else if (currentPage === 'edit_profile') {
-        const paddingTop = window.innerHeight * 0.0025;
 
         main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
         tsc.style.paddingTop = `${paddingTop}rem`;
@@ -29,6 +27,11 @@ const adjustMainContentHeight = (appConfig, currentPage) => {
 
         main.style.padding = `${paddingTop}rem var(--tsc-padding-000) ${paddingAmount}rem`;
         tsc.style.paddingTop = 'var(--tsc-padding-000)';
+    } else if (currentPage === 'edit_profile') {
+        const paddingTop = window.innerHeight * 0.0025;
+
+        main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
+        tsc.style.paddingTop = `${paddingTop}rem`;
     }
 };
 

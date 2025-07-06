@@ -13,7 +13,7 @@ const createUploadImageListener = (appConfig, currentPage, HTMLElementsWithListe
         try {
             const fileInput = querySelectorChecker(`.${mainClassName}-${currentPage}-form-img-field-input`, context);
 
-            const previewImage = querySelectorChecker(`.${mainClassName}-${currentPage}-form-img-field-preview`, context);
+            const imagePreview = querySelectorChecker(`.${mainClassName}-${currentPage}-form-img-field-preview`, context);
 
             const handleFileChange = () => {
                 const file = fileInput.files[0];
@@ -21,8 +21,8 @@ const createUploadImageListener = (appConfig, currentPage, HTMLElementsWithListe
                     if (file.type.startsWith('image/') && file.size < 2 * 1024 * 1024) {
                         const reader = new FileReader();
                         reader.onload = () => {
-                            previewImage.src = reader.result;
-                            previewImage.style.display = 'flex';
+                            imagePreview.src = reader.result;
+                            imagePreview.style.display = 'flex';
                         };
                         reader.readAsDataURL(file);
                     } else {

@@ -1,0 +1,8 @@
+.error-message {
+  color: var(--tsc-color-000);
+  padding-bottom: var(--tsc-padding-200);
+}
+
+.error-critical > .error-message {
+  color: var(--tsc-color-1000);
+}

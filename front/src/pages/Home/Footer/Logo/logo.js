@@ -1,4 +1,4 @@
-import createFooterContentItem from '../../../../components/Item/Footer/footer';
+import createFooterContentItem from '../../../../components/Item/Footer/Content/content';
 import createFooterLogo from '../../../../components/Title/H2/Footer/footer';
 import createFooterTagline from '../../../../components/Paragraph/Footer/Logo/logo';
 

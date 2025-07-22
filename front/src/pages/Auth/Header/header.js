@@ -5,8 +5,7 @@ import createLogo from '../../../components/Title/H1/Logo/logo';
 import createLogoContent from '../../../components/Div/Logo/logo';
 
 const createAuthHeaderContent = (appConfig, currentPage) => {
-    const { headerClassName } = appConfig;
-    const solidIcon = 'fa-solid';
+    const { headerClassName, solidIcon } = appConfig;
     const arrowClassNames = [solidIcon, 'fa-arrow-left'];
     const houseClassNames = [solidIcon, 'fa-house'];
 

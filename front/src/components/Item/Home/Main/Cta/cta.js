@@ -1,3 +1,4 @@
+import './cta.css';
 import createNewListItem from '../../../listItem';
 
 const createCtaItem = (className) => createNewListItem(className);

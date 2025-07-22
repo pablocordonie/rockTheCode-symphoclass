@@ -10,3 +10,9 @@
     grid-template-columns: repeat(2, var(--tsc-grid-100));
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .tsc-main-home-features-grid {
+    gap: var(--tsc-gap-1000);
+  }
+}

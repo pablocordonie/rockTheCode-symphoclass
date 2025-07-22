@@ -1,5 +1,8 @@
 import createConfirmAttendanceListeners from '../../utils/Listeners/Event/Confirm-Attendance/confirmAttendance';
 import createEditProfileListener from '../../utils/Listeners/Menu/editProfile';
+import createEventCreatorCloseListener from '../../utils/Listeners/Event/Event-Creator/Close/close';
+import createEventImageListener from '../../utils/Listeners/Image/Event/event';
+import createEventImageSelectorListener from '../../utils/Listeners/Event/Image/image';
 import createEventsFilter from '../../utils/Listeners/Filter/eventsFilter';
 import createEventsFooterContent from './Footer/footer';
 import createEventsHeaderContent from './Header/header';
@@ -23,8 +26,10 @@ const printEventsList = (appConfig, currentPage, HTMLElementsWithListeners) => {
         const eventCreator = createNewEventCreator(appConfig);
         appContent.insertAdjacentHTML('afterbegin', eventCreator.outerHTML);
 
+        createEventCreatorCloseListener(appConfig, HTMLElementsWithListeners);
+        createEventImageSelectorListener(appConfig, HTMLElementsWithListeners);
+        createEventImageListener(appConfig, HTMLElementsWithListeners);
         createNewEventListener(appConfig, currentPage, HTMLElementsWithListeners);
-        // TO-DO: Crear un listener para la subida de imagen del formulario de nuevo evento
 
         const header = querySelectorChecker(`.${headerClassName}`, context);
         header.classList.remove(`${headerClassName}-flex`);

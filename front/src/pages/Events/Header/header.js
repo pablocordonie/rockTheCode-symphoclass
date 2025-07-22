@@ -10,10 +10,12 @@ import createEventsNavMainContentList from '../../../components/List/Events/Head
 import createEventsNavMainContentItem from '../../../components/Item/Events/Header/Content/mainContent';
 import createEventsNavProfileMenuOption from '../../../components/Item/Events/Header/Menu/menu';
 import createEventsNavProfileOptionParagraph from '../../../components/Paragraph/Events/Header/Menu/Option/option';
+import createEventsNavSearchContent from '../../../components/Div/Events/Search/search';
 import createEventsNavSearchInput from '../../../components/Input/Events/Search/search';
+import createEventsNavUserAvatar from '../../../components/Image/User/user';
 import createEventsNavUserContent from '../../../components/List/Events/Header/Profile/profile';
-import createEventsNavUserInfoItem from '../../../components/Item/Events/Header/User/user';
 import createEventsNavUserIcon from '../../../components/Icon/Events/User/user';
+import createEventsNavUserInfoItem from '../../../components/Item/Events/Header/User/user';
 import createEventsNavUsername from '../../../components/Paragraph/Events/Header/User/user';
 import createLogo from '../../../components/Title/H1/Logo/logo';
 
@@ -23,6 +25,8 @@ const createEventsHeaderContent = (appConfig, currentPage) => {
     const navMainItems = [];
     const navUserItems = [];
 
+    let { userData } = appConfig;
+
     const eventsNav = createEventsNav(`${headerClassName}-${currentPage}-nav`);
 
     const eventsNavItems = createEventsNavItems(`${eventsNav.className}-items`);
@@ -31,7 +35,7 @@ const createEventsHeaderContent = (appConfig, currentPage) => {
     const eventsNavMainContent = createEventsNavMainContentList(`${eventsNav.className}-main-content`);
     navItems.push(eventsNavMainContent);
 
-    // TO-DO: Crear componente de barras para almacenar las opciones de filtrado y de creación de nuevos eventos en dispositivos móviles a la izquierda del logo
+    // TO-DO: Crear componente de barras para almacenar la creación de nuevos eventos en dispositivos móviles a la izquierda del logo
     /*
     const eventsNavDropdownBars = createEventsNavDropdownBars(`${eventsNavUserContent.className}-options-icon`);
     barsClassNames.forEach(barsClassName => eventsNavDropdownBars.classList.add(barsClassName));
@@ -44,11 +48,14 @@ const createEventsHeaderContent = (appConfig, currentPage) => {
     const eventsNavLogo = createLogo(`${headerClassName}-logo`, 'The SymphoClass');
     eventsNavLogoContent.appendChild(eventsNavLogo);
 
+    const eventsNavSearchContent = createEventsNavSearchContent(`${eventsNav.className}-search-content`);
+    navMainItems.push(eventsNavSearchContent);
+
     const eventsNavSearchInput = createEventsNavSearchInput(`${eventsNav.className}-search-input`, 'search', 'search', 'Buscar eventos...');
-    navMainItems.push(eventsNavSearchInput);
+    eventsNavSearchContent.appendChild(eventsNavSearchInput);
 
     const eventsNavCreateEventBtn = createEventsNavCreateEventBtn(`${eventsNav.className}-create-btn`, 'Crear Nuevo Evento', 'create-event');
-    navMainItems.push(eventsNavCreateEventBtn);
+    eventsNavSearchContent.appendChild(eventsNavCreateEventBtn);
 
     navMainItems.forEach(item => {
         const eventsNavMainItem = createEventsNavMainContentItem(`${eventsNav.className}-main-item`);
@@ -60,12 +67,17 @@ const createEventsHeaderContent = (appConfig, currentPage) => {
     const eventsNavUserContent = createEventsNavUserContent(`${eventsNav.className}-user`);
     navItems.push(eventsNavUserContent);
 
-    const eventsNavUsername = createEventsNavUsername(`${eventsNavUserContent.className}-name`, 'random_user');
+    const eventsNavUsername = createEventsNavUsername(`${eventsNavUserContent.className}-name`, userData.username);
     navUserItems.push(eventsNavUsername);
 
-    const eventsNavUserIcon = createEventsNavUserIcon(`${eventsNavUserContent.className}-icon`);
-    userIconClassNames.forEach(iconClassName => eventsNavUserIcon.classList.add(iconClassName));
-    navUserItems.push(eventsNavUserIcon);
+    if (userData.img) {
+        const eventsNavUserAvatar = createEventsNavUserAvatar(`${eventsNavUserContent.className}-avatar`, userData.img, 'Avatar del usuario');
+        navUserItems.push(eventsNavUserAvatar);
+    } else {
+        const eventsNavUserIcon = createEventsNavUserIcon(`${eventsNavUserContent.className}-icon`);
+        userIconClassNames.forEach(iconClassName => eventsNavUserIcon.classList.add(iconClassName));
+        navUserItems.push(eventsNavUserIcon);
+    }
 
     const eventsNavDropdownMenu = createEventsNavDropdownMenu(`${eventsNavUserContent.className}-menu`);
     navUserItems.push(eventsNavDropdownMenu);

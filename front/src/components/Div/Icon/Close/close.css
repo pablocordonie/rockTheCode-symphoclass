@@ -1,0 +1,7 @@
+.tsc-event-close-icon-content {
+  display: inline;
+  position: absolute;
+  right: var(--tsc-position-right-300);
+  top: var(--tsc-position-top-400);
+  z-index: var(--tsc-z-index-500);
+}

@@ -1,8 +1,8 @@
 import createEditProfileHeaderContent from './Header/header';
+import createEditProfileImageListener from '../../utils/Listeners/Image/Edit-Profile/editProfile';
 import createEditProfileMainContent from './Main/main';
-import createImageSelectorListener from '../../utils/Listeners/Edit-Profile/imageSelector';
+import createEditProfileImageSelectorListener from '../../utils/Listeners/Edit-Profile/Image/image';
 import createUpdateProfileListener from '../../utils/Listeners/Profile/updateProfile';
-import createUploadImageListener from '../../utils/Listeners/Image/uploadImage';
 import errorHandler from '../../utils/Error/errorHandler';
 import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';
 
@@ -25,8 +25,8 @@ const printEditProfileForm = (appConfig, currentPage, HTMLElementsWithListeners)
         const mainContent = createEditProfileMainContent(appConfig, currentPage);
         main.appendChild(mainContent);
 
-        createImageSelectorListener(appConfig, currentPage, HTMLElementsWithListeners);
-        createUploadImageListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createEditProfileImageSelectorListener(appConfig, currentPage, HTMLElementsWithListeners);
+        createEditProfileImageListener(appConfig, currentPage, HTMLElementsWithListeners);
         createUpdateProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         return main;

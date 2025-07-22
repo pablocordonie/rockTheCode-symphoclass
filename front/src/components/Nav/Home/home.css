@@ -3,9 +3,9 @@
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-300) var(--tsc-color-000-transparent);
   display: flex;
-  height: inherit;
   justify-content: center;
   left: var(--tsc-position-left-000);
+  padding: var(--tsc-padding-200) var(--tsc-padding-000);
   position: fixed;
   right: var(--tsc-position-right-000);
   top: var(--tsc-position-top-000);

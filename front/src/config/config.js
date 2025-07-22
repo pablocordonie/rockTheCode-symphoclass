@@ -4,6 +4,9 @@ import printEditProfileForm from '../pages/Edit-Profile/editProfile';
 import printHomePage from '../pages/Home/home';
 import querySelectorChecker from '../utils/QuerySelector/querySelectorChecker';
 
+const PORT = 8080;
+const LOCALHOST = `http://localhost:${PORT}/api/v1`;
+
 const app = querySelectorChecker('#app', 'appConfig');
 const footer = querySelectorChecker('.tsc-footer', 'appConfig');
 const header = querySelectorChecker('.tsc-header', 'appConfig');
@@ -11,9 +14,19 @@ let HTMLElementsWithListeners = [];
 const loaderClassName = 'tsc-loader';
 const loaderTimeout = 2000;
 const main = querySelectorChecker('.tsc-main', 'appConfig');
+const solidIcon = 'fa-solid';
 const tsc = querySelectorChecker('.tsc', 'appConfig');
+
 let state = {
-    currentPage: 'home'
+    currentPage: 'register'
+};
+let userData = {
+    email: 'randomuser@email.com',
+    fullname: 'Random User',
+    img: '',
+    password: '',
+    token: '',
+    username: 'random_user'
 };
 
 export const appConfig = {
@@ -25,10 +38,16 @@ export const appConfig = {
     loaderClassName,
     loaderTimeout,
     mainClassName: main.className,
-    tscClassName: tsc.className
+    solidIcon,
+    tscClassName: tsc.className,
+    urlsList: {
+        loginUrl: `${LOCALHOST}/auth/login`,
+        registerUrl: `${LOCALHOST}/auth/register`
+    },
+    userData
 };
 
-export const barsClassNames = ['fa-solid', 'fa-bars'];
+export const barsClassNames = [solidIcon, 'fa-bars'];
 
 export const createFieldData = (className, id, name, title, inputType = 'text', placeholderText = '') => {
     return {
@@ -64,23 +83,19 @@ export const homeAboutStats = [
     }
 ];
 
-// TO-DO: Añadir un url con la imagen de cada miembro del equipo
 export const homeAboutTeamMembers = [
     {
         name: 'Sofía Martínez',
-        imgSrc: '#',
         role: 'Fundadora & Directora Ejecutiva',
         bio: 'Ex-pianista apasionada por la conjunción entre la educación musical y la tecnología. Sofía fundó The SymphoClass para que el aprendizaje musical de calidad fuera accesible a todo el mundo.'
     },
     {
         name: 'David Kim',
-        imgSrc: '#',
         role: 'Director de Software',
         bio: 'Violonchelista e ingeniero de software que combina su amor por la música y la tecnología para conseguir crear soluciones innovadoras para The SymphoClass.'
     },
     {
         name: 'Emma Johnson',
-        imgSrc: '#',
         role: 'Jefa de Educación',
         bio: 'Con más de 20 años de experiencia en la educación musical, Emma supone para nosotros poder enseñar a nuestros alumnos con la más alta calidad en nuestra plataforma.'
     }
@@ -136,7 +151,7 @@ export const homeHeaderMenuItems = [
     },
     {
         item: 'login',
-        title: 'Login'
+        title: 'Iniciar sesión'
     }
 ];
 
@@ -160,11 +175,4 @@ export const pageRenderers = {
     register: printAuthForm
 };
 
-export const userIconClassNames = ['fa-solid', 'fa-user', 'fa-sm'];
-
-export const userInfo = {
-    email: 'randomuser@email.com',
-    fullname: 'Random User',
-    img: 'https://res.cloudinary.com/ddd5cycm4/image/upload/v1736876054/pngtree-user-profile-icon-image-vector-png-image_12640450_ejfhhg.png',
-    username: 'random_user'
-};
+export const userIconClassNames = [solidIcon, 'fa-user', 'fa-sm'];

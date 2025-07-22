@@ -9,6 +9,8 @@ const createLogoutListener = (appConfig, currentPage, HTMLElementsWithListeners)
     const { footerClassName, headerClassName, mainClassName, tscClassName } = appConfig;
     const context = 'createLogoutListener';
 
+    let { userData } = appConfig;
+
     const callback = () => {
         try {
             const eventCreatorContent = querySelectorChecker(`.${tscClassName}-event`);
@@ -21,6 +23,16 @@ const createLogoutListener = (appConfig, currentPage, HTMLElementsWithListeners)
             const footer = querySelectorChecker(`.${footerClassName}`, context);
 
             activatePageCleaner(header, main, footer);
+
+            userData = {
+                email: 'randomuser@email.com',
+                fullname: 'Random User',
+                img: '',
+                password: '',
+                token: '',
+                username: 'random_user'
+            };
+            appConfig.userData = userData;
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'login');
         } catch (error) {

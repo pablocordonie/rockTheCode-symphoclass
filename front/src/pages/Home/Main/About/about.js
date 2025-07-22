@@ -10,7 +10,6 @@ import createAboutStats from '../../../../components/List/Home/Main/About/Stats/
 import createAboutTeamContent from '../../../../components/List/Home/Main/About/Team/team';
 import createAboutTeamMemberItem from '../../../../components/Item/Home/Main/About/Team/team';
 import createAboutTeamMemberBio from '../../../../components/Paragraph/Home/About/Team/Bio/bio';
-import createAboutTeamMemberImage from '../../../../components/Image/Team/team';
 import createAboutTeamMemberInfo from '../../../../components/List/Home/Main/About/Team/Member/member';
 import createAboutTeamMemberName from '../../../../components/Title/H4/Team/team';
 import createAboutTeamMemberRole from '../../../../components/Paragraph/Home/About/Team/Role/role';
@@ -73,9 +72,6 @@ const createHomeAboutSection = (appConfig, currentPage) => {
 
         const aboutTeamMemberInfo = createAboutTeamMemberInfo(`${aboutTeamMember.className}-info`);
         aboutTeamMember.appendChild(aboutTeamMemberInfo);
-
-        const aboutTeamMemberImage = createAboutTeamMemberImage(`${aboutTeamMemberInfo.className}-photo`, member.imgSrc, member.name);
-        teamMemberInfoTags.push(aboutTeamMemberImage);
 
         const aboutTeamMemberName = createAboutTeamMemberName(`${aboutTeamMemberInfo.className}-name`, member.name);
         teamMemberInfoTags.push(aboutTeamMemberName);

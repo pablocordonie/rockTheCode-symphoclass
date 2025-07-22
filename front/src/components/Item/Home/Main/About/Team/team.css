@@ -3,6 +3,7 @@
   border-radius: var(--tsc-border-300);
   box-shadow: var(--tsc-box-shadow-000) var(--tsc-box-shadow-100)
     var(--tsc-box-shadow-300) var(--tsc-color-000-box-shadow-1);
-  padding: var(--tsc-padding-600);
+  padding: var(--tsc-padding-800) var(--tsc-padding-600) var(--tsc-padding-600)
+    var(--tsc-padding-600);
   text-align: center;
 }

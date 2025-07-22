@@ -1,0 +1,21 @@
+.tsc-main-home-hero-item:nth-child(2) {
+  padding: var(--tsc-padding-000) var(--tsc-padding-400);
+}
+
+@media screen and (min-width: 600px) {
+  .tsc-main-home-hero-item:nth-child(2) {
+    padding: var(--tsc-padding-000) var(--tsc-padding-900);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-home-hero-item:nth-child(2) {
+    padding: var(--tsc-padding-000) var(--tsc-padding-1000);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .tsc-main-home-hero-item:nth-child(2) {
+    padding: var(--tsc-padding-000) var(--tsc-padding-1100);
+  }
+}

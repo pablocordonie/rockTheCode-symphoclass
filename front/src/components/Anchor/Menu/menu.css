@@ -4,6 +4,34 @@
   transition: color 0.3s ease;
 }
 
+.tsc-header-home-menu-item a {
+  font-size: var(--tsc-font-size-400);
+}
+
 .tsc-header-home-menu-item a:hover {
   color: var(--tsc-color-700);
+}
+
+@media screen and (min-width: 1024px) {
+  .tsc-header-home-menu-item a {
+    font-size: var(--tsc-font-size-500);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .tsc-header-home-menu-item a {
+    font-size: var(--tsc-font-size-600);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .tsc-header-home-menu-item a {
+    font-size: var(--tsc-font-size-700);
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .tsc-header-home-menu-item a {
+    font-size: var(--tsc-font-size-800);
+  }
 }

@@ -28,8 +28,12 @@ const createHomeLoginListener = (appConfig, currentPage, HTMLElementsWithListene
         }
     };
 
-    const heroLoginListener = createListenerConstructor(`.${headerClassName}-${currentPage}-menu-login-btn`, context, callback, 'click');
-    createNewListener(heroLoginListener, appConfig, HTMLElementsWithListeners, context);
+    const homeHeaderLoginListener = createListenerConstructor(`.${headerClassName}-${currentPage}-menu-login-btn`, context, callback, 'click');
+
+    const homeMainLoginListener = createListenerConstructor(`.${mainClassName}-${currentPage}-hero-login-btn`, context, callback, 'click');
+
+    const loginListeners = [homeHeaderLoginListener, homeMainLoginListener];
+    loginListeners.forEach(loginListener => createNewListener(loginListener, appConfig, HTMLElementsWithListeners, context));
 };
 
 export default createHomeLoginListener;

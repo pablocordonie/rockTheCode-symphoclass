@@ -1,4 +1,8 @@
+import createAuthOptionBtn from '../../../../components/Button/Auth/Option/option';
+import createAuthOptionParagraph from '../../../../components/Paragraph/Auth/Option/option';
 import createHeroContent from '../../../../components/List/Home/Main/Hero/hero';
+import createHeroLoginAnchor from '../../../../components/Anchor/Signup/Hero/Login/login';
+import createHeroLoginContent from '../../../../components/Div/Home/Hero/Login/login';
 import createHeroItem from '../../../../components/Item/Home/Main/Hero/hero';
 import createHeroOverlay from '../../../../components/Div/Home/Hero/hero';
 import createHeroSection from '../../../../components/Section/Hero/hero';
@@ -27,6 +31,18 @@ const createHomeHeroSection = (appConfig, currentPage) => {
 
     const heroSignupButton = createHeroSignupBtn(`${heroSignupAnchor.className}-btn`, 'Apúntate');
     heroSignupAnchor.appendChild(heroSignupButton);
+
+    const heroLoginContent = createHeroLoginContent(`${heroSection.className}-login-content`);
+    heroTags.push(heroLoginContent);
+
+    const heroLoginParagraph = createAuthOptionParagraph(`${heroSection.className}-login-message`, '¿Ya estás registrado en The SymphoClass?');
+    heroLoginContent.appendChild(heroLoginParagraph);
+
+    const heroLoginAnchor = createHeroLoginAnchor(`${heroSection.className}-login-anchor`, '#login');
+    heroLoginContent.appendChild(heroLoginAnchor);
+
+    const heroLoginBtn = createAuthOptionBtn(`${heroSection.className}-login-btn`, 'Iniciar sesión');
+    heroLoginAnchor.appendChild(heroLoginBtn);
 
     heroTags.forEach(tag => {
         const heroItem = createHeroItem(`${heroSection.className}-item`);

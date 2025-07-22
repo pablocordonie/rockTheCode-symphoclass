@@ -3,6 +3,7 @@
   border: var(--tsc-border-000);
   border-radius: var(--tsc-border-200);
   color: var(--tsc-color-1000);
+  display: none;
   font-weight: var(--tsc-font-weight-100);
   padding: var(--tsc-padding-200) var(--tsc-padding-400);
 }
@@ -11,4 +12,10 @@
   background-color: var(--tsc-color-700);
   border-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-header-events-nav-create-btn {
+    display: inline-block;
+  }
 }

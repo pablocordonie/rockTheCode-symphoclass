@@ -1,11 +1,35 @@
 .tsc-main-home-about-team {
   display: grid;
+  gap: var(--tsc-gap-600);
   grid-template-columns: var(--tsc-grid-100);
-  gap: var(--tsc-gap-800);
 }
 
 @media screen and (min-width: 768px) {
   .tsc-main-home-about-team {
     grid-template-columns: repeat(3, var(--tsc-grid-100));
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tsc-main-home-about-team {
+    gap: var(--tsc-gap-800);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .tsc-main-home-about-team {
+    gap: var(--tsc-gap-1050);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .tsc-main-home-about-team {
+    gap: var(--tsc-gap-1200);
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .tsc-main-home-about-team {
+    gap: var(--tsc-gap-1300);
   }
 }

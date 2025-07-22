@@ -4,11 +4,17 @@
   border-radius: var(--tsc-border-200);
   color: var(--tsc-color-1000);
   font-weight: var(--tsc-font-weight-100);
-  font-size: var(--tsc-font-size-500);
+  font-size: var(--tsc-font-size-400);
   padding: var(--tsc-padding-300) var(--tsc-padding-600);
 }
 
 .tsc-main-home-hero-signup-btn:hover {
   background-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-home-hero-signup-btn {
+    font-size: var(--tsc-font-size-500);
+  }
 }

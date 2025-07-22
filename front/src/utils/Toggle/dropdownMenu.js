@@ -17,7 +17,7 @@ const dropdownMenuToggle = (appConfig, currentPage, HTMLElementsWithListeners) =
         }
     };
 
-    const dropdownMenuListener = createListenerConstructor(`.${headerClassName}-${currentPage}-nav-user-icon`, context, callback, 'click');
+    const dropdownMenuListener = createListenerConstructor(`.${headerClassName}-${currentPage}-nav-user-item:nth-child(2)`, context, callback, 'click');
 
     createNewListener(dropdownMenuListener, appConfig, HTMLElementsWithListeners, context);
 };

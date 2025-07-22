@@ -11,7 +11,7 @@ const errorHandler = (error, context, appConfig, HTMLElementsWithListeners, seve
     const appContent = querySelectorChecker(`#${appId}`, errorHandlerContext);
     const errorNotification = document.querySelector('.error-notification');
     if (error && !errorNotification) {
-        const newErrorNotification = createErrorNotification(severity);
+        const newErrorNotification = createErrorNotification(error, severity);
         appContent.insertAdjacentHTML('afterbegin', newErrorNotification.outerHTML);
         createCloseErrorListener(appConfig, HTMLElementsWithListeners);
     }

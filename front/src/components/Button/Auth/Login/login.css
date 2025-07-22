@@ -13,3 +13,28 @@
   background-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
 }
+
+@media screen and (min-width: 1024px) {
+  .tsc-header-home-menu-login-btn {
+    font-size: var(--tsc-font-size-500);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .tsc-header-home-menu-login-btn {
+    font-size: var(--tsc-font-size-600);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .tsc-header-home-menu-login-btn {
+    font-size: var(--tsc-font-size-700);
+    padding: var(--tsc-padding-300) var(--tsc-padding-500);
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .tsc-header-home-menu-login-btn {
+    font-size: var(--tsc-font-size-800);
+  }
+}

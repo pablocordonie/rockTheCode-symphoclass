@@ -1,0 +1,3 @@
+.tsc-main-home-cta-item:nth-child(2) {
+  padding: var(--tsc-padding-000) var(--tsc-padding-400);
+}

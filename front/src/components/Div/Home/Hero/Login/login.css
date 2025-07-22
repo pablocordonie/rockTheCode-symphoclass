@@ -1,0 +1,25 @@
+.tsc-main-home-hero-login-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsc-gap-400);
+  padding-top: var(--tsc-padding-400);
+}
+
+@media screen and (min-width: 400px) {
+  .tsc-main-home-hero-login-content {
+    gap: var(--tsc-gap-500);
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .tsc-main-home-hero-login-content {
+    gap: var(--tsc-gap-600);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-home-hero-login-content {
+    display: none;
+  }
+}

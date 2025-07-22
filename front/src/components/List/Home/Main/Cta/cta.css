@@ -4,3 +4,15 @@
   gap: var(--tsc-gap-400);
   position: relative;
 }
+
+@media screen and (min-width: 768px) {
+  .tsc-main-home-cta-content {
+    gap: var(--tsc-gap-600);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tsc-main-home-cta-content {
+    gap: var(--tsc-gap-800);
+  }
+}

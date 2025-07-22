@@ -5,14 +5,32 @@
   font-weight: var(--tsc-font-weight-100);
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .tsc-header-logo {
     font-size: var(--tsc-font-size-1000);
   }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1200px) {
   .tsc-header-logo {
     font-size: var(--tsc-font-size-1100);
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .tsc-header-logo {
+    font-size: var(--tsc-font-size-1300);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .tsc-header-logo {
+    font-size: var(--tsc-font-size-1400);
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .tsc-header-logo {
+    font-size: var(--tsc-font-size-1500);
   }
 }

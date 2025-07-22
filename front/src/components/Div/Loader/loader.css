@@ -4,7 +4,6 @@
   flex-direction: column;
   height: inherit;
   justify-content: center;
-  position: absolute;
   width: var(--tsc-width-full);
 }
 
@@ -23,5 +22,18 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-height: 750px) {
+  .tsc-loader {
+    justify-content: normal;
+    padding-top: 75%;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .tsc-loader {
+    padding-top: 80%;
   }
 }

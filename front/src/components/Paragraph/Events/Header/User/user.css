@@ -1,5 +1,12 @@
 .tsc-header-events-nav-user-name {
-  cursor: default;
-  font-size: var(--tsc-font-size-400);
-  font-weight: var(--tsc-font-weight-200);
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .tsc-header-events-nav-user-name {
+    cursor: default;
+    display: block;
+    font-size: var(--tsc-font-size-400);
+    font-weight: var(--tsc-font-weight-200);
+  }
 }

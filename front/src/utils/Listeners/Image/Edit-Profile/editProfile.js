@@ -1,11 +1,11 @@
-import createListenerConstructor from '../Listener/Constructor/constructor';
-import createNewListener from '../Listener/newListener';
-import errorHandler from '../../Error/errorHandler';
-import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
+import createListenerConstructor from '../../Listener/Constructor/constructor';
+import createNewListener from '../../Listener/newListener';
+import errorHandler from '../../../Error/errorHandler';
+import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
-const createUploadImageListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
+const createEditProfileImageListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;
-    const context = 'createUploadImageListener';
+    const context = 'createEditProfileImageListener';
 
     const callback = (event) => {
         event.preventDefault();
@@ -44,4 +44,4 @@ const createUploadImageListener = (appConfig, currentPage, HTMLElementsWithListe
     createNewListener(uploadImageListener, appConfig, HTMLElementsWithListeners, context);
 };
 
-export default createUploadImageListener;
+export default createEditProfileImageListener;

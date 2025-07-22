@@ -3,7 +3,7 @@ import createErrorNotificationContent from '../Div/Error/error';
 import createErrorNotificationMessage from '../Paragraph/Error/error';
 import createErrorNotificationTitle from '../Title/H3/Error/error';
 
-const createErrorNotification = (severity) => {
+const createErrorNotification = (error, severity) => {
     const errorNotification = createErrorNotificationContent(`error-notification${severity === 'critical' ? ' error-critical' : ''}`);
     errorNotification.style.display = 'flex';
 
@@ -13,7 +13,7 @@ const createErrorNotification = (severity) => {
     const errorMessage = createErrorNotificationMessage('error-message',
         severity === 'critical'
             ? 'Recarga la página o inténtalo más tarde'
-            : 'Ocurrió un problema al procesar la solicitud'
+            : error.message
     );
     errorNotification.appendChild(errorMessage);
 

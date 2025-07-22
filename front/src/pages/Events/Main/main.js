@@ -30,7 +30,6 @@ const createEventsMainContent = (appConfig, currentPage, testCards) => {
 
             if (card.confirmed) {
                 eventCard.classList.add('confirmed');
-                // TO-DO: Crear una notificación de aviso de que se ha confirmado la asistencia al evento con una duración de 2 seg aprox
             }
 
             const eventCardInfo = createEventCardInfo(`${eventCard.className}-info`);

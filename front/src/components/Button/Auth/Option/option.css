@@ -1,15 +1,17 @@
+.tsc-main-home-hero-login-btn,
 .tsc-main-login-form-register-btn,
 .tsc-main-register-form-login-btn {
   background-color: var(--tsc-color-600);
   border: var(--tsc-border-100) solid var(--tsc-color-600);
   border-radius: var(--tsc-border-200);
   color: var(--tsc-color-1000);
-  font-size: var(--tsc-font-size-200);
+  font-size: var(--tsc-font-size-300);
   font-weight: var(--tsc-font-weight-100);
-  padding: var(--tsc-padding-200) var(--tsc-padding-400);
+  padding: var(--tsc-padding-200) var(--tsc-padding-300);
   transition: background-color 0.3s ease;
 }
 
+.tsc-main-home-hero-login-btn:hover,
 .tsc-main-login-form-register-btn:hover,
 .tsc-main-register-form-login-btn:hover {
   background-color: var(--tsc-color-700);
@@ -18,15 +20,17 @@
 }
 
 @media screen and (min-width: 400px) {
+  .tsc-main-home-hero-login-btn,
   .tsc-main-login-form-register-btn,
   .tsc-main-register-form-login-btn {
-    font-size: var(--tsc-font-size-300);
+    padding: var(--tsc-padding-200) var(--tsc-padding-400);
   }
 }
 
-@media screen and (min-width: 350px) and (min-height: 750px) {
+@media screen and (min-width: 500px) {
+  .tsc-main-home-hero-login-btn,
   .tsc-main-login-form-register-btn,
   .tsc-main-register-form-login-btn {
-    font-size: var(--tsc-font-size-500);
+    font-size: var(--tsc-font-size-400);
   }
 }

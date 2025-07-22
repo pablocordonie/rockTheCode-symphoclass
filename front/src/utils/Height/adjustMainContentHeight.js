@@ -18,12 +18,12 @@ const adjustMainContentHeight = (appConfig, currentPage) => {
         main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
         tsc.style.paddingTop = `${paddingTop}rem`;
     } else if (currentPage === 'register') {
-        const paddingTop = window.innerHeight * 0.005;
+        const paddingTop = window.innerHeight * 0.0075;
 
         main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
         tsc.style.paddingTop = `${paddingTop}rem`;
     } else if (currentPage === 'events') {
-        const paddingTop = window.innerHeight * 0.008;
+        const paddingTop = window.innerHeight * 0.006;
 
         main.style.padding = `${paddingTop}rem var(--tsc-padding-000) ${paddingAmount}rem`;
         tsc.style.paddingTop = 'var(--tsc-padding-000)';

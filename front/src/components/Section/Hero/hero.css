@@ -1,12 +1,22 @@
 .tsc-main-home-hero {
-  align-items: center;
   background: var(--tsc-background-desktop);
   background-size: cover;
   color: var(--tsc-color-1000);
   display: flex;
-  justify-content: center;
-  min-height: var(--tsc-height-900);
-  padding: var(--tsc-padding-000) var(--tsc-padding-400);
+  padding: var(--tsc-padding-1200) var(--tsc-padding-400);
   position: relative;
   text-align: center;
+}
+
+@media screen and (min-width: 400px) {
+  .tsc-main-home-hero {
+    padding-top: var(--tsc-padding-1300);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tsc-main-home-hero {
+    justify-content: center;
+    padding: var(--tsc-padding-1400) var(--tsc-padding-400);
+  }
 }

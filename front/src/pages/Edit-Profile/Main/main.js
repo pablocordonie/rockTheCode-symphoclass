@@ -66,7 +66,7 @@ const createEditProfileMainContent = (appConfig, currentPage) => {
     const editProfileSubmitBtn = createSubmitBtn(`${editProfileSubmitContent.className}-btn`, 'Actualizar');
     editProfileSubmitContent.appendChild(editProfileSubmitBtn);
 
-    // TO-DO: Dar opción para poder eliminar la cuenta del usuario y volver a la página de login
+    // TO-DO: Dar opción para poder eliminar la cuenta del usuario, en caso de intentarlo, imprimir una ventana de confirmación de dicha acción, y, en caso afirmativo, volver a la página de login
 
     return editProfileForm;
 };

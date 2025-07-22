@@ -52,13 +52,18 @@
   --tsc-font-size-200: 0.85rem;
   --tsc-font-size-300: 0.9rem;
   --tsc-font-size-400: 1rem;
-  --tsc-font-size-500: 1.15rem;
+  --tsc-font-size-500: 1.05rem;
   --tsc-font-size-600: 1.25rem;
   --tsc-font-size-700: 1.5rem;
   --tsc-font-size-800: 1.75rem;
   --tsc-font-size-900: 2rem;
   --tsc-font-size-1000: 2.25rem;
   --tsc-font-size-1100: 2.5rem;
+  --tsc-font-size-1200: 2.75rem;
+  --tsc-font-size-1300: 3rem;
+  --tsc-font-size-1400: 3.25rem;
+  --tsc-font-size-1500: 3.5rem;
+  --tsc-font-size-1600: 3.75rem;
 
   /* FONT-WEIGHT */
   font-weight: 400;
@@ -76,12 +81,17 @@
   --tsc-gap-800: 2rem;
   --tsc-gap-900: 2.25rem;
   --tsc-gap-1000: 2.5rem;
+  --tsc-gap-1050: 4rem;
   --tsc-gap-1100: 5rem;
   --tsc-gap-1200: 7.5rem;
   --tsc-gap-1300: 10rem;
   --tsc-gap-1400: 12.5rem;
   --tsc-gap-1500: 15rem;
   --tsc-gap-1600: 17.5rem;
+  --tsc-gap-1700: 20rem;
+  --tsc-gap-1800: 22.5rem;
+  --tsc-gap-1900: 25rem;
+  --tsc-gap-2000: 45rem;
 
   /* GRID */
   --tsc-grid-100: 1fr;
@@ -128,10 +138,18 @@
   --tsc-padding-600: 1.5rem;
   --tsc-padding-700: 1.75rem;
   --tsc-padding-800: 2rem;
-  --tsc-padding-900: 2.5rem;
+  --tsc-padding-900: 4rem;
   --tsc-padding-1000: 6rem;
   --tsc-padding-1100: 8rem;
-  --tsc-padding-1200: 15rem;
+  --tsc-padding-1200: 10rem;
+  --tsc-padding-1300: 12rem;
+  --tsc-padding-1400: 14rem;
+  --tsc-padding-1500: 16rem;
+  --tsc-padding-1600: 24rem;
+  --tsc-padding-1700: 30rem;
+  --tsc-padding-1800: 36rem;
+  --tsc-padding-1900: 42rem;
+  --tsc-padding-2000: 60rem;
 
   /* POSITION */
   --tsc-position-bottom-000: 0;
@@ -143,10 +161,13 @@
   --tsc-position-right-000: 0;
   --tsc-position-right-100: 0.25rem;
   --tsc-position-right-200: 1.25rem;
+  --tsc-position-right-300: 25rem;
   --tsc-position-top-000: 0;
   --tsc-position-top-100: 0.25rem;
   --tsc-position-top-200: 1.5rem;
   --tsc-position-top-300: 3.7rem;
+  --tsc-position-top-400: 4.25rem;
+  --tsc-position-top-500: 7.5rem;
 
   /* TEXT */
   text-rendering: optimizeLegibility;
@@ -220,13 +241,10 @@ button {
   grid-template-rows: auto 1fr auto;
 }
 
-.tsc-header {
-  height: 4rem;
-}
-
 .tsc-header-flex {
   align-items: center;
   display: flex;
+  justify-content: center;
 }
 
 .tsc-header-events {

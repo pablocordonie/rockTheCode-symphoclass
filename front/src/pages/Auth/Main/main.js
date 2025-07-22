@@ -3,9 +3,9 @@ import createAuthForm from '../../../components/Form/Auth/auth';
 import createAuthFormField from '../../../components/Item/Auth/Field/field';
 import createAuthFormFields from '../../../components/List/Auth/Fields/fields';
 import createAuthFormOption from '../../../components/Item/Auth/Option/option';
-import createAuthFormOptionBtn from '../../../components/Button/Auth/Option/option';
-import createAuthFormOptionParagraph from '../../../components/Paragraph/Auth/Option/option';
 import createAuthFormOptions from '../../../components/List/Auth/Options/options';
+import createAuthOptionBtn from '../../../components/Button/Auth/Option/option';
+import createAuthOptionParagraph from '../../../components/Paragraph/Auth/Option/option';
 import createNewInput from '../../../components/Input/input';
 import createNewLabel from '../../../components/Label/label';
 import createSubmitBtn from '../../../components/Button/Submit/submit';
@@ -26,6 +26,9 @@ const createAuthMainContent = (className, currentPage) => {
 
         const fullnameField = createFieldData(`${className}-fullname_field`, 'fullname', 'fullname', 'Nombre Completo');
         authFormFields.push(fullnameField);
+
+        const birthdateField = createFieldData(`${className}-birthdate_field`, 'birthdate', 'birthdate', 'Fecha de nacimiento', 'date');
+        authFormFields.push(birthdateField);
     }
 
     const emailField = createFieldData(`${className}-email_field`, 'email', 'email', 'Correo electrónico');
@@ -52,20 +55,20 @@ const createAuthMainContent = (className, currentPage) => {
         const submitBtn = createSubmitBtn(`${className}-submit-btn`, 'Iniciar sesión');
         authOptionalTags.push(submitBtn);
 
-        const registerParagraph = createAuthFormOptionParagraph(`${className}-register-message`, '¿No estás registrado en The SymphoClass?');
+        const registerParagraph = createAuthOptionParagraph(`${className}-register-message`, '¿No estás registrado en The SymphoClass?');
         authOptionalTags.push(registerParagraph);
 
-        const registerButton = createAuthFormOptionBtn(`${className}-register-btn`, 'Regístrate');
+        const registerButton = createAuthOptionBtn(`${className}-register-btn`, 'Regístrate');
         authOptionalTags.push(registerButton);
 
     } else {
         const submitBtn = createSubmitBtn(`${className}-submit-btn`, 'Registrarse');
         authOptionalTags.push(submitBtn);
 
-        const loginParagraph = createAuthFormOptionParagraph(`${className}-login-message`, '¿Ya estás registrado en The SymphoClass?');
+        const loginParagraph = createAuthOptionParagraph(`${className}-login-message`, '¿Ya estás registrado en The SymphoClass?');
         authOptionalTags.push(loginParagraph);
 
-        const loginButton = createAuthFormOptionBtn(`${className}-login-btn`, 'Iniciar sesión');
+        const loginButton = createAuthOptionBtn(`${className}-login-btn`, 'Iniciar sesión');
         authOptionalTags.push(loginButton);
     }
 

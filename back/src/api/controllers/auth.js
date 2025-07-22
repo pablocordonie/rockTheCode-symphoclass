@@ -43,10 +43,10 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     try {
-        const { username, password } = req.body;
+        const { email, password } = req.body;
 
         // Buscar al usuario por nombre de usuario
-        const user = await User.findOne({ username });
+        const user = await User.findOne({ email });
 
         // Devolver un error HTTP 404 si el usuario no existe
         if (!user) {

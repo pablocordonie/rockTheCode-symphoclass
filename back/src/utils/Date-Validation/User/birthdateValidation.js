@@ -5,7 +5,7 @@ const customBirthdateValidation = (value, helpers) => {
     const dateParts = value.split(/[-/]/);
 
     // Introducir las partes en un objeto de fecha
-    const [day, month, year] = dateParts.map(datePart => Number(datePart));
+    const [year, month, day] = dateParts.map(datePart => Number(datePart));
 
     // Verificar que el mes y el día estén en tiempo pasado (dependiendo del mes y del año) así como la cantidad de días del mes correspondiente
     const daysInMonth = new Date(year, month, 0).getDate(); // Nº de días del mes de la fecha

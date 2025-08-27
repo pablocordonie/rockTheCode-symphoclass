@@ -1,18 +1,23 @@
 import createListenerConstructor from '../../../Listener/Constructor/constructor';
 import createNewListener from '../../../Listener/newListener';
 import errorHandler from '../../../../Error/errorHandler';
-import testCards from '../../../../Data/testCards';
 
-const createConfirmBtnListener = (checkIconContent, eventCard, appConfig, currentPage, HTMLElementsWithListeners) => {
+const createConfirmBtnListener = (checkIconContent, eventCard, appConfig, currentPage, eventsResponse, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;
     const context = 'createConfirmBtnListener';
 
-    const callback = event => {
+    const callback = async (event) => {
         event.preventDefault();
 
         try {
+            // TO-DO: Rehacer la asignación de evento
             const eventId = parseInt(eventCard.dataset.id, 10);
-            const eventData = testCards.find(card => card.id === eventId);
+            console.log(eventId);
+
+            const eventData = eventsResponse.data.find(card => card._id === eventId);
+            console.log(eventsResponse.data[0]);
+            console.log(eventData);
+
             if (!eventData) {
                 throw new Error(`El evento con ID ${eventId} no ha sido encontrado`);
             };
@@ -31,7 +36,7 @@ const createConfirmBtnListener = (checkIconContent, eventCard, appConfig, curren
                 eventData.confirmed = true;
             };
         } catch (error) {
-            return errorHandler(error, 'createConfirmBtnListener', appConfig, HTMLElementsWithListeners, 'critical');
+            return errorHandler(error, 'createConfirmBtnListener', appConfig, HTMLElementsWithListeners);
         }
     };
 

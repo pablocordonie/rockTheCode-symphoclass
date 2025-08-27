@@ -1,4 +1,4 @@
-const fetchData = async (url, method, errorMessage, bodyText = '', headers = {}) => {
+const fetchData = async (url, method, errorMessage, headers = {}, bodyText = '') => {
     const options = {
         method: method.toUpperCase(),
         headers: headers

@@ -1,7 +1,7 @@
 .tsc-main-edit_profile-form-img-field-upload-btn {
   align-self: center;
   background-color: var(--tsc-color-600);
-  border: var(--tsc-border-000);
+  border: none;
   border-radius: var(--tsc-border-200);
   font-size: var(--tsc-font-size-300);
   font-weight: var(--tsc-font-weight-100);
@@ -10,6 +10,5 @@
 
 .tsc-main-edit_profile-form-img-field-upload-btn:hover {
   background-color: var(--tsc-color-700);
-  border-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
 }

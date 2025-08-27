@@ -1,14 +1,13 @@
 import activatePageCleaner from '../../../Cleaner/pageCleaner';
-import createData from '../../../Fetch/POST/createData';
 import createListenerConstructor from '../../Listener/Constructor/constructor';
 import createNewListener from '../../Listener/newListener';
 import errorHandler from '../../../Error/errorHandler';
 import launchNewPage from '../../../Launcher/launchNewPage';
+import loginResponse from '../../../Data/Login/login';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
 const createLoginListenerInLoginPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
-    const { footerClassName, headerClassName, mainClassName, tscClassName, urlsList } = appConfig;
-    const { loginUrl } = urlsList;
+    const { footerClassName, headerClassName, mainClassName } = appConfig;
     const context = 'createLoginListenerInLoginPage';
 
     let { userData } = appConfig;
@@ -17,39 +16,37 @@ const createLoginListenerInLoginPage = (className, appConfig, currentPage, HTMLE
         try {
             event.preventDefault();
 
-            const tsc = querySelectorChecker(`.${tscClassName}`, context);
-
             const header = querySelectorChecker(`.${headerClassName}`, context);
-
             const main = querySelectorChecker(`.${mainClassName}`, context);
-
             const footer = querySelectorChecker(`.${footerClassName}`, context);
+
+            let userCredentials = {};
+            let res = {};
 
             const emailInput = querySelectorChecker(`.${mainClassName}-${currentPage}-form-email_field-input`, context);
             const passwordInput = querySelectorChecker(`.${mainClassName}-${currentPage}-form-password_field-input`, context);
 
-            const userCredentials = JSON.stringify({ email: emailInput.value, password: passwordInput.value });
+            userCredentials = JSON.stringify({ email: emailInput.value, password: passwordInput.value });
 
-            const res = await createData(loginUrl, userCredentials, { 'Content-Type': 'application/json' }, appConfig, HTMLElementsWithListeners);
+            res = await loginResponse(appConfig, HTMLElementsWithListeners, userCredentials);
 
-            if (res.statusCode !== 200) {
-                throw new Error('Ha ocurrido un error al iniciar sesión');
+            if (res.error) {
+                throw new Error(`${res.error.message}`);
+            } else if (res.statusCode.toString().startsWith('4')) {
+                throw new Error(`${res.message}`);
             } else {
-                tsc.classList.remove('tsc-flex');
-
-                activatePageCleaner(header, main, footer);
-
                 userData = {
+                    id: res.data._id,
                     email: res.data.email,
                     fullname: res.data.fullname,
                     img: res.data.img,
                     birthdate: res.data.birthdate,
-                    password: res.data.password,
                     token: res.token,
                     username: res.data.username
                 };
                 appConfig.userData = userData;
 
+                activatePageCleaner(appConfig, currentPage, header, main, footer);
                 launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'events');
             }
         } catch (error) {

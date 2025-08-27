@@ -6,15 +6,12 @@ import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
 const createRegisterListenerFromLoginPage = (className, appConfig, currentPage, HTMLElementsWithListeners) => {
-    const { footerClassName, headerClassName, mainClassName, tscClassName } = appConfig;
+    const { footerClassName, headerClassName, mainClassName } = appConfig;
     const context = 'createRegisterListenerFromLoginPage';
 
     const callback = event => {
         try {
             event.preventDefault();
-
-            const tsc = querySelectorChecker(`.${tscClassName}`, context);
-            tsc.classList.remove('tsc-flex');
 
             const header = querySelectorChecker(`.${headerClassName}`, context);
 
@@ -22,7 +19,7 @@ const createRegisterListenerFromLoginPage = (className, appConfig, currentPage, 
 
             const footer = querySelectorChecker(`.${footerClassName}`, context);
 
-            activatePageCleaner(header, main, footer);
+            activatePageCleaner(appConfig, currentPage, header, main, footer);
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'register');
         } catch (error) {

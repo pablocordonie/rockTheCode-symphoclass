@@ -1,7 +1,8 @@
+.tsc-header-edit_profile-back-arrow-content,
 .tsc-header-login-back-arrow-content,
 .tsc-header-register-back-arrow-content {
   display: flex;
-  gap: var(--tsc-gap-400);
+  gap: var(--tsc-gap-300);
   justify-content: center;
   left: var(--tsc-position-left-100);
   position: absolute;

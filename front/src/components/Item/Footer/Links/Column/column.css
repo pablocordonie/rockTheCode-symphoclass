@@ -1,6 +1,6 @@
-.tsc-footer-home-link-column,
+.tsc-footer-events-link-column,
 .tsc-footer-home-link-column {
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-300);
+  gap: var(--tsc-gap-200);
 }

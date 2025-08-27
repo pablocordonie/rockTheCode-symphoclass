@@ -4,7 +4,7 @@
   color: var(--tsc-color-700);
   font-size: var(--tsc-font-size-200);
   font-weight: var(--tsc-font-weight-100);
-  padding-top: var(--tsc-padding-200);
+  padding-top: var(--tsc-padding-800);
 }
 
 @media screen and (min-width: 400px) {

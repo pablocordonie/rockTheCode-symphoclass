@@ -6,15 +6,12 @@ import launchNewPage from '../../../Launcher/launchNewPage';
 import querySelectorChecker from '../../../QuerySelector/querySelectorChecker';
 
 const createAuthBackBtnListener = (appConfig, currentPage, HTMLElementsWithListeners) => {
-    const { footerClassName, headerClassName, mainClassName, tscClassName } = appConfig;
+    const { footerClassName, headerClassName, mainClassName } = appConfig;
     const context = 'createAuthBackBtnListener';
 
     const callback = (event) => {
         try {
             event.preventDefault();
-
-            const tsc = querySelectorChecker(`.${tscClassName}`, context);
-            tsc.classList.remove(`${tscClassName}-flex`);
 
             const header = querySelectorChecker(`.${headerClassName}`, context);
             header.classList.remove(`${headerClassName}-flex`);
@@ -24,7 +21,7 @@ const createAuthBackBtnListener = (appConfig, currentPage, HTMLElementsWithListe
             const footer = querySelectorChecker(`.${footerClassName}`, context);
             footer.removeAttribute('style');
 
-            activatePageCleaner(header, main, footer);
+            activatePageCleaner(appConfig, currentPage, header, main, footer);
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'home');
         } catch (error) {

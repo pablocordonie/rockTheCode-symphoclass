@@ -2,6 +2,7 @@
 .tsc-footer-events-link-item p {
   cursor: pointer;
   display: inline-block;
+  font-size: var(--tsc-font-size-500);
 }
 
 .tsc-footer-home-link-item p:hover,

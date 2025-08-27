@@ -19,7 +19,7 @@ const createHomeLoginListener = (appConfig, currentPage, HTMLElementsWithListene
 
             const footer = querySelectorChecker(`.${footerClassName}`, context);
 
-            activatePageCleaner(header, main, footer);
+            activatePageCleaner(appConfig, currentPage, header, main, footer);
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'login');
 

@@ -3,7 +3,6 @@ input:not(.tsc-main-edit_profile-form-img-field-input) {
   border: var(--tsc-border-200) solid var(--tsc-color-600);
   border-radius: var(--tsc-border-300);
   color: var(--tsc-color-000);
-  height: var(--tsc-height-200);
   width: var(--tsc-width-600);
 }
 

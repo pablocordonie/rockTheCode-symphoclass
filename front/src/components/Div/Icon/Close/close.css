@@ -1,7 +1,115 @@
 .tsc-event-close-icon-content {
   display: inline;
-  position: absolute;
+  position: inherit;
   right: var(--tsc-position-right-300);
   top: var(--tsc-position-top-400);
   z-index: var(--tsc-z-index-500);
+}
+
+@media screen and (min-width: 330px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-400);
+  }
+}
+
+@media screen and (min-width: 360px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-500);
+  }
+}
+
+@media screen and (min-width: 390px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-600);
+  }
+}
+
+@media screen and (min-width: 414px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-700);
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-800);
+  }
+}
+
+@media screen and (min-width: 490px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-900);
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1000);
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1100);
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1200);
+  }
+}
+
+@media screen and (min-width: 820px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1300);
+  }
+}
+
+@media screen and (min-width: 930px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1400);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1500);
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1600);
+  }
+}
+
+@media screen and (min-width: 1575px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1700);
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1800);
+  }
+}
+
+@media screen and (min-width: 2040px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-1900);
+  }
+}
+
+@media screen and (min-width: 2260px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-2000);
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .tsc-event-close-icon-content {
+    right: var(--tsc-position-right-2100);
+  }
 }

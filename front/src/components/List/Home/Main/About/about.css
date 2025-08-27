@@ -1,6 +1,6 @@
 .tsc-main-home-about-content {
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-1000);
+  gap: var(--tsc-gap-900);
   padding-bottom: var(--tsc-padding-800);
 }

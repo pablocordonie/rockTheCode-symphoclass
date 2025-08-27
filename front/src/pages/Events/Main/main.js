@@ -10,21 +10,28 @@ import createEventsList from '../../../components/List/Events/Main/List/list';
 import createEventsMessage from '../../../components/Paragraph/Events/Main/Message/message';
 import createEventsMessageContent from '../../../components/Item/Events/Main/Message/message';
 
-const createEventsMainContent = (appConfig, currentPage, testCards) => {
+const createEventsMainContent = (appConfig, currentPage, eventsResponse) => {
     const { mainClassName } = appConfig;
     let eventCardInfoItems = [];
 
-    if (!testCards.length) {
+    if (eventsResponse.error) {
+        console.log(`Events Response: Server StatusCode --> ${eventsResponse.error.statusCode}`);
+        throw new Error(`${eventsResponse.error.message}`);
+    } else if (!eventsResponse.data.length) {
+        console.log(`Events Response: Server StatusCode --> ${eventsResponse.statusCode}`);
+
         const noEventsMessageContainer = createEventsMessageContent(`${mainClassName}-${currentPage}-message-content`);
 
-        const noEventsMessage = createEventsMessage(`${mainClassName}-${currentPage}-message`, 'No hay eventos');
+        const noEventsMessage = createEventsMessage(`${mainClassName}-${currentPage}-message`, 'The SymphoClass no registra eventos disponibles');
         noEventsMessageContainer.appendChild(noEventsMessage);
 
         return noEventsMessageContainer;
     } else {
+        console.log(`Events Response: Server StatusCode --> ${eventsResponse.statusCode}`);
+
         const eventsList = createEventsList(`${mainClassName}-${currentPage}-list`);
 
-        testCards.forEach(card => {
+        eventsResponse.data.forEach(card => {
             const eventCard = createEventCard(`${mainClassName}-${currentPage}-card`, card.id);
             eventsList.appendChild(eventCard);
 
@@ -38,7 +45,7 @@ const createEventsMainContent = (appConfig, currentPage, testCards) => {
             const eventCardTitle = createEventCardTitle(`${eventCardInfo.className}-title`, card.title);
             eventCardInfoItems.push(eventCardTitle);
 
-            const eventCardDate = createEventCardDate(`${eventCardInfo.className}-date`, card.date);
+            const eventCardDate = createEventCardDate(`${eventCardInfo.className}-date`, card.datetime);
             eventCardInfoItems.push(eventCardDate);
 
             const eventCardCenter = createEventCardCenter(`${eventCardInfo.className}-center`, card.center);

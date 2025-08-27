@@ -2,6 +2,7 @@
 .tsc-header-events-nav-user-menu-edit-profile-option,
 .tsc-header-events-nav-user-menu-logout-option {
   color: var(--tsc-color-100);
+  font-size: var(--tsc-font-size-500);
   cursor: pointer;
 }
 

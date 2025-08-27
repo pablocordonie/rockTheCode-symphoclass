@@ -1,7 +1,7 @@
 .tsc-main-home-about-stats {
   display: grid;
   grid-template-columns: var(--tsc-grid-100);
-  gap: var(--tsc-gap-600);
+  gap: var(--tsc-gap-500);
   margin: var(--tsc-margin-000) auto;
 }
 
@@ -13,24 +13,24 @@
 
 @media screen and (min-width: 1024px) {
   .tsc-main-home-about-stats {
-    gap: var(--tsc-gap-800);
+    gap: var(--tsc-gap-700);
   }
 }
 
 @media screen and (min-width: 1440px) {
   .tsc-main-home-about-stats {
-    gap: var(--tsc-gap-1050);
+    gap: var(--tsc-gap-1000);
   }
 }
 
 @media screen and (min-width: 1920px) {
   .tsc-main-home-about-stats {
-    gap: var(--tsc-gap-1200);
+    gap: var(--tsc-gap-1100);
   }
 }
 
 @media screen and (min-width: 2560px) {
   .tsc-main-home-about-stats {
-    gap: var(--tsc-gap-1300);
+    gap: var(--tsc-gap-1200);
   }
 }

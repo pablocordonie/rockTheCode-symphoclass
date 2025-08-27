@@ -13,6 +13,8 @@ const createEditProfileMainContent = (appConfig, currentPage) => {
     const { mainClassName } = appConfig;
     const editProfileFormFields = [];
 
+    let { userData } = appConfig;
+
     const editProfileForm = createEditProfileForm(`${mainClassName}-${currentPage}-form`);
 
     const editProfileFormContent = createEditProfileFormContent(`${editProfileForm.className}-content`);
@@ -33,11 +35,8 @@ const createEditProfileMainContent = (appConfig, currentPage) => {
     const imgField = createFieldData(`${editProfileForm.className}-img`, 'image', 'image', 'Imagen', 'file');
     editProfileFormFields.push(imgField);
 
-    const passwordField = createFieldData(`${editProfileForm.className}-password`, 'password', 'password', 'Contraseña Actual', 'password');
+    const passwordField = createFieldData(`${editProfileForm.className}-password`, 'password', 'password', 'Contraseña', 'password');
     editProfileFormFields.push(passwordField);
-
-    const newPasswordField = createFieldData(`${editProfileForm.className}-new-password`, 'new-password', 'new-password', 'Nueva Contraseña', 'password');
-    editProfileFormFields.push(newPasswordField);
 
     editProfileFormFields.forEach(field => {
         const editProfileFormField = createEditProfileFormField(`${field.className}-field`);
@@ -52,11 +51,13 @@ const createEditProfileMainContent = (appConfig, currentPage) => {
         if (field.name === 'image') {
             editProfileFormInput.setAttribute('accept', 'image/*');
 
-            const editProfileFormPreviewImage = createImagePreview(`${editProfileFormField.className}-preview`, '#', 'Preview image');
+            const editProfileFormPreviewImage = createImagePreview(`${editProfileFormField.className}-preview`, `${userData.img.length ? userData.img : '#'}`, 'Preview image');
             editProfileFormField.appendChild(editProfileFormPreviewImage);
 
             const editProfileFormImageBtn = createEditProfileFormImageBtn(`${editProfileFormField.className}-upload-btn`, 'Seleccionar');
             editProfileFormField.appendChild(editProfileFormImageBtn);
+
+            // TO-DO: Crear un botón Eliminar para poder eliminar la imagen de perfil si el usuario tiene asignada una a su perfil
         }
     });
 

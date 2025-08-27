@@ -24,6 +24,6 @@
 
 @media screen and (min-width: 768px) {
   .tsc-main-home-cta {
-    padding: var(--tsc-padding-1400) var(--tsc-padding-400);
+    padding: var(--tsc-padding-1300) var(--tsc-padding-400);
   }
 }

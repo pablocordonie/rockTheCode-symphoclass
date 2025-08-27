@@ -1,13 +1,12 @@
 import activateContentCleaner from '../../../utils/Cleaner/contentCleaner';
-import createConfirmAttendanceListeners from '../Event/Confirm-Attendance/confirmAttendance';
+// import createConfirmAttendanceListeners from '../Event/Confirm-Attendance/confirmAttendance';
 import createEventsMainContent from '../../../pages/Events/Main/main';
 import createListenerConstructor from '../Listener/Constructor/constructor';
 import createNewListener from '../Listener/newListener';
 import errorHandler from '../../Error/errorHandler';
 import querySelectorChecker from '../../QuerySelector/querySelectorChecker';
-import testCards from '../../Data/testCards';
 
-const createEventsFilter = (headerClassName, appConfig, currentPage, HTMLElementsWithListeners) => {
+const createEventsFilter = (headerClassName, appConfig, currentPage, eventsResponse, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;
     const context = 'createEventsFilter';
 
@@ -16,8 +15,8 @@ const createEventsFilter = (headerClassName, appConfig, currentPage, HTMLElement
             const main = querySelectorChecker(`.${mainClassName}`, context);
             activateContentCleaner(main);
 
-            if (testCards) {
-                const filteredCards = testCards.filter(card => card.title.toLowerCase().includes(event.target.value));
+            if (eventsResponse) {
+                const filteredCards = eventsResponse.filter(card => card.title.toLowerCase().includes(event.target.value));
 
                 const eventsMainContent = createEventsMainContent(appConfig, currentPage, filteredCards);
                 main.appendChild(eventsMainContent);
@@ -25,7 +24,7 @@ const createEventsFilter = (headerClassName, appConfig, currentPage, HTMLElement
                 const eventCards = Array.from(eventsMainContent.querySelectorAll(`.${mainClassName}-events-card`));
 
                 if (eventCards) {
-                    createConfirmAttendanceListeners(appConfig, currentPage, HTMLElementsWithListeners);
+                    // createConfirmAttendanceListeners(appConfig, currentPage, HTMLElementsWithListeners);
                 }
             }
             return main;

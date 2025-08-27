@@ -2,7 +2,7 @@ import createCheckIcon from '../../../../components/Icon/Events/Check/check';
 import createCheckIconContent from '../../../../components/Div/Events/Check/check';
 import createConfirmBtnListener from './Confirm-Btn/confirmBtn';
 
-const createConfirmAttendanceListeners = (appConfig, currentPage, HTMLElementsWithListeners) => {
+const createConfirmAttendanceListeners = (appConfig, currentPage, eventsResponse, HTMLElementsWithListeners) => {
     const { mainClassName } = appConfig;
 
     const eventCards = Array.from(document.querySelectorAll(`.${mainClassName}-${currentPage}-card`));
@@ -14,7 +14,7 @@ const createConfirmAttendanceListeners = (appConfig, currentPage, HTMLElementsWi
 
     eventCards.forEach(eventCard => {
         eventCard.appendChild(checkIconContent);
-        createConfirmBtnListener(checkIconContent.cloneNode(true), eventCard, appConfig, currentPage, HTMLElementsWithListeners);
+        createConfirmBtnListener(checkIconContent.cloneNode(true), eventCard, appConfig, currentPage, eventsResponse, HTMLElementsWithListeners);
     });
 };
 

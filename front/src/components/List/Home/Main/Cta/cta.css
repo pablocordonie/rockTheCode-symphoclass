@@ -1,18 +1,18 @@
 .tsc-main-home-cta-content {
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-400);
+  gap: var(--tsc-gap-300);
   position: relative;
 }
 
 @media screen and (min-width: 768px) {
   .tsc-main-home-cta-content {
-    gap: var(--tsc-gap-600);
+    gap: var(--tsc-gap-500);
   }
 }
 
 @media screen and (min-width: 1024px) {
   .tsc-main-home-cta-content {
-    gap: var(--tsc-gap-800);
+    gap: var(--tsc-gap-700);
   }
 }

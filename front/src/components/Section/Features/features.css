@@ -2,7 +2,7 @@
   background-color: var(--tsc-color-1000);
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-1000);
+  gap: var(--tsc-gap-900);
   padding: var(--tsc-padding-1100) var(--tsc-padding-400);
   text-align: center;
 }
@@ -21,7 +21,7 @@
 
 @media screen and (min-width: 768px) {
   .tsc-main-home-features {
-    gap: var(--tsc-gap-1050);
+    gap: var(--tsc-gap-1000);
     padding: var(--tsc-padding-1100) var(--tsc-padding-900);
   }
 }

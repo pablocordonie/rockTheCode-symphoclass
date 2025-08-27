@@ -3,7 +3,7 @@
 .tsc-main-login-form-submit-btn,
 .tsc-main-register-form-submit-btn {
   background-color: var(--tsc-color-600);
-  border: var(--tsc-border-100) solid var(--tsc-color-600);
+  border: none;
   border-radius: var(--tsc-border-200);
   color: var(--tsc-color-1000);
   font-size: var(--tsc-font-size-200);
@@ -17,7 +17,6 @@
 .tsc-main-login-form-submit-btn:hover,
 .tsc-main-register-form-submit-btn:hover {
   background-color: var(--tsc-color-700);
-  border-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
 }
 

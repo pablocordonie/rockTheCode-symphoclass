@@ -1,8 +1,9 @@
+import createEditProfileBackBtnListener from '../../utils/Listeners/Edit-Profile/Back/back';
 import createEditProfileHeaderContent from './Header/header';
 import createEditProfileImageListener from '../../utils/Listeners/Image/Edit-Profile/editProfile';
 import createEditProfileMainContent from './Main/main';
 import createEditProfileImageSelectorListener from '../../utils/Listeners/Edit-Profile/Image/image';
-import createUpdateProfileListener from '../../utils/Listeners/Profile/updateProfile';
+import createUpdateProfileListener from '../../utils/Listeners/Profile/update';
 import errorHandler from '../../utils/Error/errorHandler';
 import querySelectorChecker from '../../utils/QuerySelector/querySelectorChecker';
 
@@ -17,8 +18,10 @@ const printEditProfileForm = (appConfig, currentPage, HTMLElementsWithListeners)
         const header = querySelectorChecker(`.${headerClassName}`, context);
         header.classList.add(`${headerClassName}-flex`);
 
-        const headerContent = createEditProfileHeaderContent(appConfig);
+        const headerContent = createEditProfileHeaderContent(appConfig, currentPage);
         header.appendChild(headerContent);
+
+        createEditProfileBackBtnListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         const main = querySelectorChecker(`.${mainClassName}`, context);
 
@@ -27,6 +30,7 @@ const printEditProfileForm = (appConfig, currentPage, HTMLElementsWithListeners)
 
         createEditProfileImageSelectorListener(appConfig, currentPage, HTMLElementsWithListeners);
         createEditProfileImageListener(appConfig, currentPage, HTMLElementsWithListeners);
+        // TO-DO: Crear un listener para poder eliminar la imagen de perfil en caso de que el usuario tenga una asignada a su perfil
         createUpdateProfileListener(appConfig, currentPage, HTMLElementsWithListeners);
 
         return main;

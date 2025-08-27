@@ -17,7 +17,7 @@ const adjustMainContentHeight = (appConfig, currentPage) => {
 
         main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
         tsc.style.paddingTop = `${paddingTop}rem`;
-    } else if (currentPage === 'register') {
+    } else if (currentPage === 'register' || currentPage === 'edit_profile') {
         const paddingTop = window.innerHeight * 0.0075;
 
         main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
@@ -27,11 +27,6 @@ const adjustMainContentHeight = (appConfig, currentPage) => {
 
         main.style.padding = `${paddingTop}rem var(--tsc-padding-000) ${paddingAmount}rem`;
         tsc.style.paddingTop = 'var(--tsc-padding-000)';
-    } else if (currentPage === 'edit_profile') {
-        const paddingTop = window.innerHeight * 0.0025;
-
-        main.style.padding = `var(--tsc-padding-000) var(--tsc-padding-000) ${authPaddingAmount}rem var(--tsc-padding-000)`;
-        tsc.style.paddingTop = `${paddingTop}rem`;
     }
 };
 

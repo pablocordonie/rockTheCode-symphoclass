@@ -3,7 +3,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-800);
+  gap: var(--tsc-gap-700);
   padding: var(--tsc-padding-000) var(--tsc-padding-400) var(--tsc-padding-400)
     var(--tsc-padding-400);
 }

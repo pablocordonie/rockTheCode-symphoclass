@@ -1,78 +1,78 @@
 .tsc-main-events-list {
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-600);
-  padding: var(--tsc-padding-000) var(--tsc-padding-400);
+  gap: var(--tsc-gap-500);
+  padding: var(--tsc-padding-800) var(--tsc-padding-400);
 }
 
 @media screen and (min-width: 360px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-800);
+    padding: var(--tsc-padding-800) var(--tsc-padding-800);
   }
 }
 
 @media screen and (min-width: 425px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-900);
+    padding: var(--tsc-padding-800) var(--tsc-padding-900);
   }
 }
 
 @media screen and (min-width: 500px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-1000);
+    padding: var(--tsc-padding-800) var(--tsc-padding-1000);
   }
 }
 
 @media screen and (min-width: 600px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-1100);
+    padding: var(--tsc-padding-800) var(--tsc-padding-1100);
   }
 }
 
 @media screen and (min-width: 768px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-1200);
+    padding: var(--tsc-padding-900) var(--tsc-padding-1200);
   }
 }
 
 @media screen and (min-width: 900px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-1400);
+    padding: var(--tsc-padding-900) var(--tsc-padding-1400);
   }
 }
 
 @media screen and (min-width: 1024px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-1500);
+    padding: var(--tsc-padding-900) var(--tsc-padding-1500);
   }
 }
 
 @media screen and (min-width: 1200px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-1600);
+    padding: var(--tsc-padding-900) var(--tsc-padding-1600);
   }
 }
 
 @media screen and (min-width: 1440px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-1700);
+    padding: var(--tsc-padding-900) var(--tsc-padding-1700);
   }
 }
 
 @media screen and (min-width: 1600px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-1800);
+    padding: var(--tsc-padding-900) var(--tsc-padding-1800);
   }
 }
 
 @media screen and (min-width: 1920px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-1900);
+    padding: var(--tsc-padding-900) var(--tsc-padding-1900);
   }
 }
 
 @media screen and (min-width: 2560px) {
   .tsc-main-events-list {
-    padding: var(--tsc-padding-000) var(--tsc-padding-2000);
+    padding: var(--tsc-padding-900) var(--tsc-padding-2000);
   }
 }

@@ -1,6 +1,6 @@
 .tsc-header-events-nav-create-btn {
   background-color: var(--tsc-color-600);
-  border: var(--tsc-border-000);
+  border: none;
   border-radius: var(--tsc-border-200);
   color: var(--tsc-color-1000);
   display: none;
@@ -10,7 +10,6 @@
 
 .tsc-header-events-nav-create-btn:hover {
   background-color: var(--tsc-color-700);
-  border-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
 }
 

@@ -20,7 +20,7 @@ const createEditProfileListener = (appConfig, currentPage, HTMLElementsWithListe
 
             const footer = querySelectorChecker(`.${footerClassName}`, context);
 
-            activatePageCleaner(header, main, footer);
+            activatePageCleaner(appConfig, currentPage, header, main, footer);
 
             launchNewPage(appConfig, currentPage, HTMLElementsWithListeners, 'edit_profile');
         } catch (error) {

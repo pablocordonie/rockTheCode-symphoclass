@@ -1,5 +1,5 @@
 .tsc-header-events-nav-user {
   align-items: center;
   display: flex;
-  gap: var(--tsc-gap-400);
+  gap: var(--tsc-gap-300);
 }

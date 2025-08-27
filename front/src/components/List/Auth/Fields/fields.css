@@ -6,9 +6,9 @@
 }
 
 .tsc-main-login-form-fields {
-  gap: var(--tsc-gap-400);
+  gap: var(--tsc-gap-300);
 }
 
 .tsc-main-register-form-fields {
-  gap: var(--tsc-gap-300);
+  gap: var(--tsc-gap-200);
 }

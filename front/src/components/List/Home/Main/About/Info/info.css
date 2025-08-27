@@ -1,6 +1,6 @@
 .tsc-main-home-about-info {
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-400);
+  gap: var(--tsc-gap-300);
   text-align: center;
 }

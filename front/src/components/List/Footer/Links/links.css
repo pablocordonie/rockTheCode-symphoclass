@@ -2,7 +2,7 @@
 .tsc-footer-events-links-content {
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-600);
+  gap: var(--tsc-gap-500);
 }
 
 @media screen and (min-width: 768px) {

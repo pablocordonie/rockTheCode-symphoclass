@@ -29,13 +29,12 @@ const createEditProfileImageListener = (appConfig, currentPage, HTMLElementsWith
                         throw new Error('Por favor, seleccione un archivo de imagen inferior a 2 MB');
                     }
                 }
-                fileInput.value = '';
             };
 
             fileInput.removeEventListener('change', handleFileChange);
             fileInput.addEventListener('change', handleFileChange);
         } catch (error) {
-            return errorHandler(error, context, appConfig, HTMLElementsWithListeners, 'critical');
+            return errorHandler(error, context, appConfig, HTMLElementsWithListeners);
         }
     };
 

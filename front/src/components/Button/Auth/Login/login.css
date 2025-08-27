@@ -1,6 +1,6 @@
 .tsc-header-home-menu-login-btn {
   background-color: var(--tsc-color-600);
-  border: var(--tsc-border-100) solid var(--tsc-color-600);
+  border: none;
   border-radius: var(--tsc-border-200);
   color: var(--tsc-color-1000);
   font-size: var(--tsc-font-size-400);

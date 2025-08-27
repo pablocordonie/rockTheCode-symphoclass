@@ -1,4 +1,6 @@
-const testCards = [
+import readData from '../../Fetch/GET/readData';
+
+/*const testCards = [
     {
         id: 1,
         address: 'C/ de la Palma, 35, 28004 Madrid',
@@ -35,6 +37,15 @@ const testCards = [
         date: '20 de Septiembre, 2025',
         title: 'Evento 5'
     }
-];
+];*/
 
-export default testCards;
+const eventsData = async (appConfig, HTMLElementsWithListeners) => {
+    const { urlsList } = appConfig;
+    const { eventsUrl } = urlsList;
+
+    let { userData } = appConfig;
+
+    return await readData(eventsUrl, userData.token, appConfig, HTMLElementsWithListeners);
+};
+
+export default eventsData;

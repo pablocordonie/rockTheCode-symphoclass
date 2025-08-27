@@ -2,7 +2,7 @@
 .tsc-main-login-form-register-btn,
 .tsc-main-register-form-login-btn {
   background-color: var(--tsc-color-600);
-  border: var(--tsc-border-100) solid var(--tsc-color-600);
+  border: none;
   border-radius: var(--tsc-border-200);
   color: var(--tsc-color-1000);
   font-size: var(--tsc-font-size-300);
@@ -15,7 +15,6 @@
 .tsc-main-login-form-register-btn:hover,
 .tsc-main-register-form-login-btn:hover {
   background-color: var(--tsc-color-700);
-  border-color: var(--tsc-color-700);
   color: var(--tsc-color-000);
 }
 

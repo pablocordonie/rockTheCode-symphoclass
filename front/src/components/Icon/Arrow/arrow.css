@@ -1,3 +1,4 @@
+.tsc-header-edit_profile-back-arrow-icon,
 .tsc-header-login-back-arrow-icon,
 .tsc-header-register-back-arrow-icon {
   cursor: pointer;
@@ -5,6 +6,7 @@
   font-size: var(--tsc-font-size-800);
 }
 
+.tsc-header-edit_profile-back-arrow-icon:hover,
 .tsc-header-login-back-arrow-icon:hover,
 .tsc-header-register-back-arrow-icon:hover {
   color: var(--tsc-color-600);

@@ -1,7 +1,13 @@
 import activateContentCleaner from './contentCleaner';
+import querySelectorChecker from '../QuerySelector/querySelectorChecker';
 
-const activatePageCleaner = (headerSelector, mainSelector, footerSelector = '') => {
-    let selectors = [headerSelector, mainSelector];
+const activatePageCleaner = (appConfig, currentPage, headerSelector, mainSelector, footerSelector = '') => {
+    const { tscClassName } = appConfig;
+    let selectors = [];
+
+    const tsc = querySelectorChecker(`.${tscClassName}`, 'activatePageCleaner');
+
+    selectors = [headerSelector, mainSelector];
 
     if (footerSelector) {
         selectors.push(footerSelector);
@@ -11,7 +17,9 @@ const activatePageCleaner = (headerSelector, mainSelector, footerSelector = '') 
         activateContentCleaner(selector);
     }
 
-    selectors = [];
+    if (currentPage === 'login' || currentPage === 'register' || currentPage === 'edit_profile') {
+        tsc.classList.remove(`${tscClassName}-flex`);
+    }
 };
 
 export default activatePageCleaner;

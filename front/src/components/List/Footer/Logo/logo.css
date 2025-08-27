@@ -1,6 +1,6 @@
 .tsc-footer-home-logo-content,
 .tsc-footer-events-logo-content {
-  gap: var(--tsc-gap-200);
+  gap: var(--tsc-gap-100);
 }
 
 .tsc-footer-events-logo-content,

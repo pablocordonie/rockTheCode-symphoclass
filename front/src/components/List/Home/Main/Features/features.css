@@ -1,7 +1,7 @@
 .tsc-main-home-features-grid {
   display: grid;
   grid-template-columns: var(--tsc-grid-100);
-  gap: var(--tsc-gap-800);
+  gap: var(--tsc-gap-700);
   margin: var(--tsc-margin-000) auto;
 }
 
@@ -13,6 +13,6 @@
 
 @media screen and (min-width: 1024px) {
   .tsc-main-home-features-grid {
-    gap: var(--tsc-gap-1000);
+    gap: var(--tsc-gap-900);
   }
 }

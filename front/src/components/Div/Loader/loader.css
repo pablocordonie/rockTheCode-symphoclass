@@ -12,8 +12,8 @@
   border: var(--tsc-border-300) solid var(--tsc-color-800);
   border-radius: var(--tsc-border-400);
   border-top: var(--tsc-border-300) solid var(--tsc-color-300);
-  height: var(--tsc-height-500);
-  width: var(--tsc-width-400);
+  height: var(--tsc-height-400);
+  width: var(--tsc-width-300);
 }
 
 @keyframes spin {

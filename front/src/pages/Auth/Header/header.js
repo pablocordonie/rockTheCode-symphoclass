@@ -1,6 +1,6 @@
-import createAuthBackActionContent from '../../../components/Div/Auth/Back/back';
-import createAuthBackArrowIcon from '../../../components/Icon/Auth/Arrow/arrow';
-import createAuthBackHouseIcon from '../../../components/Icon/Auth/House/house';
+import createBackActionContent from '../../../components/Div/Back/back';
+import createBackArrowIcon from '../../../components/Icon/Arrow/arrow';
+import createBackHouseIcon from '../../../components/Icon/House/house';
 import createLogo from '../../../components/Title/H1/Logo/logo';
 import createLogoContent from '../../../components/Div/Logo/logo';
 
@@ -11,14 +11,14 @@ const createAuthHeaderContent = (appConfig, currentPage) => {
 
     const authLogoContent = createLogoContent(`${headerClassName}-${currentPage}-logo-content`);
 
-    const authBackContent = createAuthBackActionContent(`${headerClassName}-${currentPage}-back-arrow-content`);
+    const authBackContent = createBackActionContent(`${headerClassName}-${currentPage}-back-arrow-content`);
     authLogoContent.appendChild(authBackContent);
 
-    const authBackArrowIcon = createAuthBackArrowIcon(`${headerClassName}-${currentPage}-back-arrow-icon`);
+    const authBackArrowIcon = createBackArrowIcon(`${headerClassName}-${currentPage}-back-arrow-icon`);
     arrowClassNames.forEach(className => authBackArrowIcon.classList.add(className));
     authBackContent.appendChild(authBackArrowIcon);
 
-    const authBackHouseIcon = createAuthBackHouseIcon(`${headerClassName}-${currentPage}-back-house-icon`);
+    const authBackHouseIcon = createBackHouseIcon(`${headerClassName}-${currentPage}-back-house-icon`);
     houseClassNames.forEach(className => authBackHouseIcon.classList.add(className));
     authBackContent.appendChild(authBackHouseIcon);
 

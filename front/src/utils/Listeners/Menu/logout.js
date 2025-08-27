@@ -22,13 +22,12 @@ const createLogoutListener = (appConfig, currentPage, HTMLElementsWithListeners)
 
             const footer = querySelectorChecker(`.${footerClassName}`, context);
 
-            activatePageCleaner(header, main, footer);
+            activatePageCleaner(appConfig, currentPage, header, main, footer);
 
             userData = {
                 email: 'randomuser@email.com',
                 fullname: 'Random User',
                 img: '',
-                password: '',
                 token: '',
                 username: 'random_user'
             };

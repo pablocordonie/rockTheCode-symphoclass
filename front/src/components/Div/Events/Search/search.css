@@ -1,4 +1,4 @@
 .tsc-header-events-nav-search-content {
   display: flex;
-  gap: var(--tsc-gap-800);
+  gap: var(--tsc-gap-700);
 }

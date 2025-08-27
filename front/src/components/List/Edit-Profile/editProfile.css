@@ -1,5 +1,5 @@
 .tsc-main-edit_profile-form-content {
   display: flex;
   flex-direction: column;
-  gap: var(--tsc-gap-300);
+  gap: var(--tsc-gap-200);
 }

@@ -10,7 +10,7 @@
   flex-direction: column;
   font-size: var(--tsc-font-size-300);
   font-weight: var(--tsc-font-weight-200);
-  gap: var(--tsc-gap-400);
+  gap: var(--tsc-gap-300);
   left: var(--tsc-position-left-200);
   padding: var(--tsc-padding-400) var(--tsc-padding-500);
   position: fixed;

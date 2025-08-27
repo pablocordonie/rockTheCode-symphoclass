@@ -3,12 +3,12 @@ const { customBirthdateValidation } = require('../../../../utils/Date-Validation
 const { validateSchema } = require('../../validateSchema');
 
 const updatedUserSchema = Joi.object({
-    username: Joi.string().trim().min(3).max(30).optional(),
-    fullname: Joi.string().trim().min(3).max(100).optional(),
-    email: Joi.string().trim().email().optional(),
-    birthdate: Joi.string().trim().optional().custom(customBirthdateValidation),
-    img: Joi.string().trim().uri().allow('').optional(),
-    password: Joi.string().trim().min(6).optional()
+    username: Joi.string().trim().min(3).max(30).allow(''),
+    fullname: Joi.string().trim().min(3).max(100).allow(''),
+    email: Joi.string().trim().email().allow(''),
+    birthdate: Joi.string().trim().allow('').custom(customBirthdateValidation),
+    img: Joi.string().trim().uri().allow(''),
+    password: Joi.string().trim().min(6).allow('')
 });
 
 const validateUpdatedUser = validateSchema(updatedUserSchema);

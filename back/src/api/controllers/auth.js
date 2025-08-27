@@ -13,7 +13,7 @@ const register = async (req, res, next) => {
 
         // Devolver un error HTTP 400 si el nombre de usuario o el correo electrónico ya estaban registrados previamente
         if (duplicatedUser || duplicatedEmail) {
-            const error = new Error('El usuario ya está registrado');
+            const error = new Error('Este usuario ya ha sido registrado previamente');
             error.statusCode = 400;
             // Eliminar la imagen subida si existe
             if (req.file) {
@@ -50,7 +50,7 @@ const login = async (req, res, next) => {
 
         // Devolver un error HTTP 404 si el usuario no existe
         if (!user) {
-            const error = new Error('No se ha podido encontrar a este usuario');
+            const error = new Error('Este usuario no se ha registrado previamente');
             error.statusCode = 404;
             return next(error);
         }

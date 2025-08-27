@@ -50,6 +50,7 @@ const getUserById = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
     try {
         const { id } = req.params;
+        const { username, email } = req.body;
 
         // Buscar a un usuario que coincida con su respectiva ID
         const oldUser = await User.findById(id);
@@ -74,6 +75,23 @@ const updateUser = async (req, res, next) => {
                 await deleteFile(req.file.path);
             }
             return next(error);
+        }
+
+        // Devolver un error HTTP 400 si el nombre de usuario o el correo electrónico ya estaban registrados previamente
+        if (username || email) {
+            // Buscar a un usuario por su nombre de usuario y por su correo electrónico
+            const duplicatedUser = await User.findOne({ username });
+            const duplicatedEmail = await User.findOne({ email });
+
+            if (duplicatedUser || duplicatedEmail) {
+                const error = new Error('Este usuario ya ha sido registrado previamente');
+                error.statusCode = 400;
+                // Eliminar la imagen subida si existe
+                if (req.file) {
+                    await deleteFile(req.file.path);
+                }
+                return next(error);
+            }
         }
 
         // Manejar la actualización de la imagen en caso de que el usuario suba un archivo en forma de imagen que represente al usuario
